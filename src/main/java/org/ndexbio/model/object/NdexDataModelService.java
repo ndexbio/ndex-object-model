@@ -15,10 +15,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public interface NdexDataModelService {
 	public Network getNetworkById(String networkId);
 	
-	public Iterable<Citation> getCitationsByNetworkId(String networkId);
+	public List<Citation> getCitationsByNetworkId(String networkId);
 	public Network getSubnetworkByCitationId(String networkId, String citationId);
-	public Iterable<Edge> getEdgesBySupportId(String supportId);
-	public Iterable<Namespace> getNamespacesByNetworkId(String networkId);
+	public List<Edge> getEdgesBySupportId(String supportId);
+	public List<Namespace> getNamespacesByNetworkId(String networkId);
 	public List<Network> findNetworks(String string);
 
 	public List<Network> findNetworksByText(String searchString, String searchType, Integer blockSize, Integer skipBlocks) 
