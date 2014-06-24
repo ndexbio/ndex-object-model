@@ -6,16 +6,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.ndexbio.model.object.Citation;
-import org.ndexbio.model.object.Edge;
-import org.ndexbio.model.object.FunctionTerm;
-import org.ndexbio.model.object.Network;
-import org.ndexbio.model.object.Node;
-import org.ndexbio.model.object.Support;
-import org.ndexbio.model.object.Term;
+import org.ndexbio.model.object.network.Citation;
+import org.ndexbio.model.object.network.Edge;
+import org.ndexbio.model.object.network.FunctionTerm;
+import org.ndexbio.model.object.network.Network;
+import org.ndexbio.model.object.network.Node;
+import org.ndexbio.model.object.network.Support;
+import org.ndexbio.model.object.network.Term;
 
 public class ObjectModelTools {
-	
+	/*
 	   public static void summarizeNetwork(Network network){
 		   System.out.println("_________________________________");
 		   System.out.println("Summarizing Object Model Network:");
@@ -60,7 +60,7 @@ public class ObjectModelTools {
 	    
 	    public static void getAllTermIds(String termId, Network network, Set<String>termIds){
 	    	termIds.add(termId);
-	    	Term term = network.getTerms().get(termId);
+	    	Term term = network.getBaseTerms().get(termId);
 	    	if (null == term){
 	    		System.out.println("  Missing term " + termId );
 	    	} else if ("Function".equals(term.getTermType())){
@@ -113,5 +113,5 @@ public class ObjectModelTools {
 			}
 			
 		}
-
+*/
 }

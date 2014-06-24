@@ -2,13 +2,14 @@ package org.ndexbio.model.helpers;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.ndexbio.model.object.BaseTerm;
-import org.ndexbio.model.object.FunctionTerm;
-import org.ndexbio.model.object.ReifiedEdgeTerm;
-import org.ndexbio.model.object.Term;
+import org.ndexbio.model.object.network.BaseTerm;
+import org.ndexbio.model.object.network.FunctionTerm;
+import org.ndexbio.model.object.network.ReifiedEdgeTerm;
+import org.ndexbio.model.object.network.Term;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,11 +26,11 @@ public class TermDeserializer extends JsonDeserializer<Term>
     }
     
     
-    
+   
     @Override
     public Term deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException
     {
-        final ObjectMapper jsonMapper = new ObjectMapper();
+   /*     final ObjectMapper jsonMapper = new ObjectMapper();
         final JsonNode serializedTerm = jsonMapper.readTree(jsonParser);
         final JsonNode termType = serializedTerm.get("termType");
         
@@ -56,16 +57,16 @@ public class TermDeserializer extends JsonDeserializer<Term>
             if (reifiedEdgeProperty != null)
                 return populateReifiedEdgeTerm(serializedTerm);
         }
-        
+     */   
         throw context.mappingException("Unsupported term type.");
     }
     
     
     
-    private Term populateReifiedEdgeTerm(JsonNode serializedTerm) {
+  /*  private ReifiedTerm populateReifiedEdgeTerm(JsonNode serializedTerm) {
         final ReifiedEdgeTerm reifiedEdgeTerm = new ReifiedEdgeTerm();
         
-        reifiedEdgeTerm.setTermEdge(serializedTerm.get("termEdge").asText());
+        reifiedEdgeTerm.setTermEdge(serializedTerm.get("termEdge").asLong);
                 
         return reifiedEdgeTerm;
 	}
@@ -79,7 +80,7 @@ public class TermDeserializer extends JsonDeserializer<Term>
         
         if (serializedTerm.get("namespace") != null)
         {        
-            baseTerm.setNamespace(serializedTerm.get("namespace").asText());
+            baseTerm.setNamespace(serializedTerm.get("namespace").asLong());
         }
         
         return baseTerm;
@@ -88,8 +89,8 @@ public class TermDeserializer extends JsonDeserializer<Term>
     private FunctionTerm populateFunctionTerm(JsonNode serializedTerm)
     {
         final FunctionTerm functionTerm = new FunctionTerm();
-        functionTerm.setTermFunction(serializedTerm.get("termFunction").asText());
-        final Map<String, String> parameters = functionTerm.getParameters();
+        functionTerm.setTermFunction((BaseTerm)(serializedTerm.get("termFunction")));
+        final List<Long> parameters = functionTerm.getParameters();
         Iterator<Entry<String, JsonNode>> fieldIterator = serializedTerm.get("parameters").fields();
 
         while (fieldIterator.hasNext()){
@@ -100,5 +101,5 @@ public class TermDeserializer extends JsonDeserializer<Term>
         
         return functionTerm;
     }
-
+ */
 }

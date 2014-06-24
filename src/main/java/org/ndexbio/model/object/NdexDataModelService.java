@@ -3,6 +3,12 @@ package org.ndexbio.model.object;
 import java.io.IOException;
 import java.util.List;
 
+import org.ndexbio.model.object.network.BaseTerm;
+import org.ndexbio.model.object.network.Citation;
+import org.ndexbio.model.object.network.Edge;
+import org.ndexbio.model.object.network.Namespace;
+import org.ndexbio.model.object.network.Network;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 /*

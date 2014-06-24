@@ -1,12 +1,12 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BaseTerm extends Term
+public class BaseTerm extends NetworkElement
 {
     private String _name;
-    private String _namespace;
+    private long _namespace;
     
     
     
@@ -16,8 +16,7 @@ public class BaseTerm extends Term
     public BaseTerm()
     {
         super();
-        
-        this.setTermType("Base");
+        _type = this.getClass().getSimpleName();
     }
     
     
@@ -31,12 +30,12 @@ public class BaseTerm extends Term
         _name = termName;
     }
 
-    public String getNamespace()
+    public long getNamespace()
     {
         return _namespace;
     }
 
-    public void setNamespace(String namespace)
+    public void setNamespace(long namespace)
     {
         _namespace = namespace;
     }

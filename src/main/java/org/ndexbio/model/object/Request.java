@@ -1,18 +1,20 @@
 package org.ndexbio.model.object;
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Request extends NdexObject
+public class Request extends NdexExternalObject
 {
-    private String _fromId;
-    private String _fromName;
-    private String _toId;
-    private String _toName;
+    private UUID _sourceUUIDd;
+    private String _sourceName;
+    private UUID _destinationUUID;
+    private String _destinationName;
     private String _message;
-    private String _requestType;
+    private RequestType _requestType;
     private String _responder;
-    private String _response;
+    private ResponseType _response;
     private String _responseMessage;
 
     
@@ -25,31 +27,6 @@ public class Request extends NdexObject
         super();
     }
     
-
-
-    
-    
-    
-    public String getFrom()
-    {
-        return _fromName;
-    }
-
-    public void setFrom(String fromName)
-    {
-        _fromName = fromName;
-    }
-
-    public String getFromId()
-    {
-        return _fromId;
-    }
-
-    public void setFromId(String fromId)
-    {
-        _fromId = fromId;
-    }
-
     public String getMessage()
     {
         return _message;
@@ -60,34 +37,10 @@ public class Request extends NdexObject
         _message = message;
     }
 
-    public String getRequestType()
-    {
-        return _requestType;
-    }
-
-    public void setRequestType(String requestType)
-    {
-        _requestType = requestType;
-    }
-    
-    public String getResponder()
-    {
-        return _responder;
-    }
     
     public void setResponder(String responder)
     {
         _responder = responder;
-    }
-    
-    public String getResponse()
-    {
-        return _response;
-    }
-    
-    public void setResponse(String response)
-    {
-        _response = response;
     }
     
     public String getResponseMessage()
@@ -100,23 +53,58 @@ public class Request extends NdexObject
         _responseMessage = responseMessage;
     }
 
-    public String getTo()
-    {
-        return _toName;
-    }
+	public UUID getSourceUUIDd() {
+		return _sourceUUIDd;
+	}
 
-    public void setTo(String toName)
-    {
-        _toName = toName;
-    }
+	public void setSourceUUIDd(UUID _sourceUUIDd) {
+		this._sourceUUIDd = _sourceUUIDd;
+	}
 
-    public String getToId()
-    {
-        return _toId;
-    }
+	public UUID getDestinationUUID() {
+		return _destinationUUID;
+	}
 
-    public void setToId(String toId)
-    {
-        _toId = toId;
-    }
+	public void setDestinationUUID(UUID _destinationUUID) {
+		this._destinationUUID = _destinationUUID;
+	}
+
+	public String getSourceName() {
+		return _sourceName;
+	}
+
+	public void setSourceName(String _sourceName) {
+		this._sourceName = _sourceName;
+	}
+
+	public String getDestinationName() {
+		return _destinationName;
+	}
+
+	public void setDestinationName(String _destinationName) {
+		this._destinationName = _destinationName;
+	}
+
+	public RequestType getRequestType() {
+		return _requestType;
+	}
+
+	public void setRequestType(RequestType _requestType) {
+		this._requestType = _requestType;
+	}
+
+	public String getResponder() {
+		return _responder;
+	}
+
+	public ResponseType getResponse() {
+		return _response;
+	}
+
+	public void setResponse(ResponseType _response) {
+		this._response = _response;
+	}
+    
+    
+
 }

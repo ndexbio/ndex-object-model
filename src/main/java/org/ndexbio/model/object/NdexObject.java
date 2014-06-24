@@ -1,21 +1,21 @@
 package org.ndexbio.model.object;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class NdexObject
 {
-    private String _id;
-    private Date _createdDate;
+ //   private String _id;
+ //   private Date _createdDate;
+    
+    protected String _type;
 
     
     
     /**************************************************************************
     * Default constructor - initializes the created date. 
     **************************************************************************/
-    public NdexObject()
+/*    public NdexObject()
     {
         _createdDate = new Date();
     }
@@ -38,6 +38,9 @@ public abstract class NdexObject
     public void setId(String id)
     {
         _id = id;
-    }
+    }  */
+    
+ //   public abstract void setType (String type);
+    public String getType () { return _type;}
 
 }

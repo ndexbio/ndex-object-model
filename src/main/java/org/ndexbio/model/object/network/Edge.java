@@ -1,18 +1,21 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.PropertiedObject;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Edge extends MetadataObject
+public class Edge extends PropertiedNetworkElement 
 {
-    private String _objectId;
-    private String _predicateId;
-    private String _subjectId;
-    private List<String> _citations;
-    private List<String> _supports;
+    private long _objectId;
+    private long _predicateId;
+    private long _subjectId;
+    private List<Long> _citations;
+    private List<Long> _supports;
 
 
 
@@ -22,6 +25,7 @@ public class Edge extends MetadataObject
     public Edge()
     {
         super();
+        _type = this.getClass().getSimpleName();
         this.initCollections();
     }
 
@@ -29,58 +33,59 @@ public class Edge extends MetadataObject
      * initialize class Collection fields
      */
     private void initCollections() {
-    	this._citations = new ArrayList<String>();
-    	this._supports = new ArrayList<String>();
+    	this._citations = new ArrayList<Long>();
+    	this._supports = new ArrayList<Long>();
     }
 
 
-    public List<String> getCitations()
+    public List<Long> getCitations()
     {
         return _citations;
     }
 
-    public void setCitations(List<String> citations)
+    public void setCitations(List<Long> citations)
     {
         _citations = citations;
     }
 
-    public String getO()
+    public long getObjectId()
     {
         return _objectId;
     }
 
-    public void setO(String objectId)
+    public void setObjectId(long objectId)
     {
         _objectId = objectId;
     }
 
-    public String getP()
+    public long getPredicateId()
     {
         return _predicateId;
     }
 
-    public void setP(String predicateId)
+    public void setPredicateId(long predicateId)
     {
         _predicateId = predicateId;
     }
     
-    public String getS()
+    public long getSubjectId()
     {
         return _subjectId;
     }
 
-    public void setS(String subjectId)
+    public void setSubjectId(long subjectId)
     {
         _subjectId = subjectId;
     }
     
-    public List<String> getSupports()
+    public List<Long> getSupports()
     {
         return _supports;
     }
 
-    public void setSupports(List<String> supports)
+    public void setSupports(List<Long> supports)
     {
         _supports = supports;
     }
+
 }

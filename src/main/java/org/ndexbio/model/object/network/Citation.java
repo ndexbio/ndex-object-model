@@ -1,19 +1,19 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.PropertiedObject;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Citation extends MetadataObject
+public class Citation extends NetworkElement implements PropertiedObject
 {
     private List<String> _contributors;
-    private String _identifier;
     private String _title;
-    private String _type;
-    private List<String> _supports;
-
+    private List<Support> _supports;
 
 
     /**************************************************************************
@@ -22,9 +22,9 @@ public class Citation extends MetadataObject
     public Citation()
     {
         super();
-
+        _type = this.getClass().getSimpleName();
         _contributors = new ArrayList<String>();
-        _supports = new ArrayList<String>();
+        _supports = new ArrayList<Support>();
     }
 
     public List<String> getContributors()
@@ -37,22 +37,13 @@ public class Citation extends MetadataObject
         _contributors = contributors;
     }
 
-    public String getIdentifier()
-    {
-        return _identifier;
-    }
     
-    public void setIdentifier(String identifier)
-    {
-        _identifier = identifier;
-    }
-    
-    public List<String> getSupports()
+    public List<Support> getSupports()
     {
         return _supports;
     }
     
-    public void setSupports(List<String> supports)
+    public void setSupports(List<Support> supports)
     {
         _supports = supports;
     }
@@ -67,13 +58,27 @@ public class Citation extends MetadataObject
         _title = title;
     }
 
-    public String getType()
-    {
-        return _type;
-    }
+    
+    private List<NdexProperty> _properties;
+	private List<NdexProperty> _presentationProperties;
 
-    public void setType(String type)
-    {
-        _type = type;
-    }
+
+	public List<NdexProperty> getProperties() {
+		return _properties;
+	}
+
+	public List<NdexProperty> getPresentationProperties() {
+		return _presentationProperties;
+	}
+
+	public void setProperties(List<NdexProperty> properties) {
+		_properties = properties;
+	}
+
+	public void setPresentationProperties(List<NdexProperty> properties) {
+		_presentationProperties = properties;
+	}
+
+
+    
 }

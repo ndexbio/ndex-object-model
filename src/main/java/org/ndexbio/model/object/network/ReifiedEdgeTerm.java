@@ -1,11 +1,11 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ReifiedEdgeTerm extends Term
+public class ReifiedEdgeTerm extends NetworkElement
 {
-    private String _termEdge;
+    private  long _edgeId;
 
     
     
@@ -15,15 +15,15 @@ public class ReifiedEdgeTerm extends Term
     public ReifiedEdgeTerm()
     {
         super();
-        this.setTermType("ReifiedEdge");
+        _type = this.getClass().getSimpleName();
     }
 
-	public String getTermEdge() {
-		return _termEdge;
+	public long getEdgeId() {
+		return _edgeId;
 	}
 
-	public void setTermEdge(String termEdge) {
-		this._termEdge = termEdge;
+	public void setEdgeId(long termEdge) {
+		this._edgeId = termEdge;
 	}
 
 

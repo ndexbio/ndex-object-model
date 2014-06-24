@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Task extends NdexObject
+public class Task extends NdexExternalObject
 {
     private String _description;
     private Priority _priority;
     private int _progress;
     private String _resource;
     private Status _status;
-    private TaskType _type;
+    private TaskType _taskType;
 
     
     
@@ -75,13 +75,13 @@ public class Task extends NdexObject
         _status = status;
     }
     
-    public TaskType getType()
+    public TaskType getTaskType()
     {
-        return _type;
+        return _taskType;
     }
     
-    public void setType(TaskType type)
+    public void setTaskType(TaskType type)
     {
-        _type = type;
+        _taskType = type;
     }
 }

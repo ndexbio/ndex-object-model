@@ -1,13 +1,19 @@
 package org.ndexbio.model.object;
 
+import java.util.UUID;
+
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Membership
+public class Membership extends NdexExternalObject
 {
     private Permissions _memberPermissions;
-    private String _resourceId;
+    private MembershipType _membershipType;
+    private UUID _memberUUID;
+    private UUID _resourceUUID;
     private String _resourceName;
+    private String _memberAccountName;
     
     
     
@@ -16,7 +22,7 @@ public class Membership
     **************************************************************************/
     public Membership()
     {
-        
+        _type = this.getClass().getSimpleName();
     }
       
     public Permissions getPermissions()
@@ -29,15 +35,6 @@ public class Membership
         _memberPermissions = memberPermissions;
     }
     
-    public String getResourceId()
-    {
-        return _resourceId;
-    }
-    
-    public void setResourceId(String resourceId)
-    {
-        _resourceId = resourceId;
-    }
     
     public String getResourceName()
     {
@@ -48,4 +45,37 @@ public class Membership
     {
         _resourceName = resourceName;
     }
+
+	public MembershipType getMembershipType() {
+		return _membershipType;
+	}
+
+	public void setMembershipType(MembershipType membershipType) {
+		this._membershipType = membershipType;
+	}
+
+	public UUID getMemberUUID() {
+		return _memberUUID;
+	}
+
+	public void setMemberUUID(UUID _memberUUID) {
+		this._memberUUID = _memberUUID;
+	}
+
+	public UUID getResourceUUID() {
+		return _resourceUUID;
+	}
+
+	public void setResourceUUID(UUID _resourceUUID) {
+		this._resourceUUID = _resourceUUID;
+	}
+
+	public String getMemberAccountName() {
+		return _memberAccountName;
+	}
+
+	public void setMemberAccountName(String _memberAccountName) {
+		this._memberAccountName = _memberAccountName;
+	}
+
 }

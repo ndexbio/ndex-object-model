@@ -1,18 +1,16 @@
 package org.ndexbio.model.object;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Group extends Account
 {
-    private String _name;
-    private List<Membership> _members;
+    private String _organizationName;
+ /*   private List<Membership> _members;
     private String _organizationName;
     private List<Membership> _networkMemberships;
-    private List<Request> _requests;
+    private List<Request> _requests; */
 
     
     
@@ -23,10 +21,12 @@ public class Group extends Account
     {
         super();
 
-        initCollections();
+        _type = this.getClass().getSimpleName();
+
+       // initCollections();
     } 
     
-    public List<Membership> getMembers()
+/*    public List<Membership> getMembers()
     {
         return _members;
     }
@@ -38,12 +38,12 @@ public class Group extends Account
 
     public String getName()
     {
-        return _name;
+        return _organizationName;
     }
     
     public void setName(String name)
     {
-        _name = name;
+        _organizationName = name;
     }
 
     public List<Membership> getNetworks()
@@ -55,7 +55,7 @@ public class Group extends Account
     {
         _networkMemberships = networkMemberships;
     }
-    
+  */  
     public String getOrganizationName()
     {
         return _organizationName;
@@ -66,7 +66,7 @@ public class Group extends Account
         _organizationName = organizationName;
     }
     
-    public List<Request> getRequests()
+/*    public List<Request> getRequests()
     {
         return _requests;
     }
@@ -75,16 +75,18 @@ public class Group extends Account
     {
         _requests = requests;
     }
-
+*/
     
 
     /**************************************************************************
     * Initializes the collections. 
     **************************************************************************/
-    private void initCollections()
+/*    private void initCollections()
     {
         _members = new ArrayList<Membership>();
         _networkMemberships = new ArrayList<Membership>();
         _requests = new ArrayList<Request>();
     }
+*/    
+    
 }

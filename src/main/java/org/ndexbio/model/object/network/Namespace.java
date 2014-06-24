@@ -1,11 +1,10 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Namespace extends MetadataObject
+public class Namespace extends NetworkElement
 {
-    private String _jdexId;
     private String _prefix;
     private String _uri;
     
@@ -17,25 +16,18 @@ public class Namespace extends MetadataObject
     public Namespace()
     {
         super();
+        _type = this.getClass().getSimpleName();
     }
       
-    public String getJdexId()
-    {
-        return _jdexId;
-    }
-    
-    public void setJdexId(String jdexId)
-    {
-        _jdexId = jdexId;
-    }
     
     public String getPrefix()
     {
         return _prefix;
     }
     
-    public void setPrefix(String prefix)
+    public void setPrefix(String prefix) throws Exception
     {
+    	if ( prefix == null ) throw new Exception("Prefix for Namespace can't be null.");
         _prefix = prefix;
     }
     

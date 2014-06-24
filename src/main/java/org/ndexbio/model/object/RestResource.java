@@ -1,7 +1,7 @@
 package org.ndexbio.model.object;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -9,13 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class RestResource extends NdexObject
 {
     private String _methodName;
-    private Collection<String> _parameterTypes;
+    private List<String> _parameterTypes;
     private String _requestType;
-    private String _path;
-    private String _consumes;
-    private String _produces;
+    private String _route;
+    private String _data;
+    private String _returns;
     private String _apiDoc;
-    private String _authentication;
+    private boolean _authentication;
     
 
     /**************************************************************************
@@ -35,7 +35,7 @@ public class RestResource extends NdexObject
 		this._methodName = _methodName;
 	}
 
-	public Collection<String> getParameterTypes() {
+	public List<String> getParameterTypes() {
 		return _parameterTypes;
 	}
 
@@ -43,7 +43,7 @@ public class RestResource extends NdexObject
 		this._parameterTypes.add(_parameterType);
 	}
 
-	public void setParameterTypes(Collection<String> _parameterTypes) {
+	public void setParameterTypes(List<String> _parameterTypes) {
 		this._parameterTypes = _parameterTypes;
 	}
 
@@ -56,27 +56,27 @@ public class RestResource extends NdexObject
 	}
 
 	public String getPath() {
-		return _path;
+		return _route;
 	}
 
 	public void setPath(String _path) {
-		this._path = _path;
+		this._route = _path;
 	}
 
 	public String getConsumes() {
-		return _consumes;
+		return _data;
 	}
 
 	public void setConsumes(String _consumes) {
-		this._consumes = _consumes;
+		this._data = _consumes;
 	}
 
 	public String getProduces() {
-		return _produces;
+		return _returns;
 	}
 	
 	public void setProduces(String _produces) {
-		this._produces = _produces;
+		this._returns = _produces;
 	}
 
 	public String getApiDoc() {
@@ -87,12 +87,12 @@ public class RestResource extends NdexObject
 		this._apiDoc = _apiDoc;
 	}
 
-	public String getAuthentication() {
+	public boolean getAuthentication() {
 		return _authentication;
 	}
 
-	public void setAuthentication(String _authentication) {
-		this._authentication = _authentication;
+	public void setAuthentication(boolean authentication) {
+		this._authentication = authentication;
 	}
 	
 	

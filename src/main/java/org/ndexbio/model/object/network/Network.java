@@ -1,32 +1,48 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+
+import org.ndexbio.model.object.Membership;
+import org.ndexbio.model.object.NdexExternalObject;
+import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.PropertiedObject;
+import org.ndexbio.model.object.Request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Network extends MetadataObject
+
+//TODO: some members such as elements are not defined in the class yet.
+public class Network extends NdexExternalObject implements PropertiedObject
 {
-    private Map<String, Citation> _citations;
+    private List<Citation> _citations;
     private String _description;
     private int _edgeCount;
-    private Map<String, Edge> _edges;
+    private Map<Long, Edge> _edges;
     private boolean _isComplete;
     private boolean _isLocked;
-    private boolean _isPublic;
+    private VisibilityType _visibility;
     private List<Membership> _members;
     private String _name;
-    private Map<String, Namespace> _namespaces;
+    private Collection<Namespace> _namespaces;
     private int _nodeCount;
-    private Map<String, Node> _nodes;
+    private List<Long> _nodes;
     private List<Request> _requests;
     private Map<String, Support> _supports;
-    private Map<String, Term> _terms;
+    private List<Long> _baseTermIds;
 
 
+	private List<NdexProperty> _properties;
+	private List<NdexProperty> _presentationProperties;
+
+	
+	private long _highestElementId;
+	private String _version;
 
     /**************************************************************************
     * Default constructor.
@@ -34,10 +50,11 @@ public class Network extends MetadataObject
     public Network()
     {
         super();
+        _type = this.getClass().getSimpleName();
 
         _isComplete = false;
         _isLocked = false;
-        _isPublic = false;
+        setVisibility(VisibilityType.PRIVATE);
         _edgeCount = 0;
         _nodeCount = 0;
         
@@ -47,12 +64,12 @@ public class Network extends MetadataObject
 
     
 
-    public Map<String, Citation> getCitations()
+    public List<Citation> getCitations()
     {
         return _citations;
     }
 
-    public void setCitations(Map<String, Citation> citations)
+    public void setCitations(List<Citation> citations)
     {
         _citations = citations;
     }
@@ -77,12 +94,12 @@ public class Network extends MetadataObject
         _edgeCount = edgeCount;
     }
 
-    public Map<String, Edge> getEdges()
+    public Map<Long, Edge> getEdges()
     {
         return _edges;
     }
 
-    public void setEdges(Map<String, Edge> edges)
+    public void setEdges(Map<Long, Edge> edges)
     {
         _edges = edges;
     }
@@ -107,16 +124,7 @@ public class Network extends MetadataObject
         _isLocked = isLocked;
     }
     
-    public boolean getIsPublic()
-    {
-        return _isPublic;
-    }
-    
-    public void setIsPublic(boolean isPublic)
-    {
-        _isPublic = isPublic;
-    }
-    
+   
     public List<Membership> getMembers()
     {
         return _members;
@@ -137,12 +145,12 @@ public class Network extends MetadataObject
         _name = name;
     }
 
-    public Map<String, Namespace> getNamespaces()
+    public Collection<Namespace> getNamespaces()
     {
         return _namespaces;
     }
 
-    public void setNamespaces(Map<String, Namespace> namespaces)
+    public void setNamespaces(Collection<Namespace> namespaces)
     {
         _namespaces = namespaces;
     }
@@ -157,12 +165,12 @@ public class Network extends MetadataObject
         _nodeCount = nodeCount;
     }
 
-    public Map<String, Node> getNodes()
+    public List<Long> getNodes()
     {
         return _nodes;
     }
 
-    public void setNodes(Map<String, Node> nodes)
+    public void setNodes(List<Long> nodes)
     {
         _nodes = nodes;
     }
@@ -187,16 +195,6 @@ public class Network extends MetadataObject
         _supports = supports;
     }
 
-    public Map<String, Term> getTerms()
-    {
-        return _terms;
-    }
-
-    public void setTerms(Map<String, Term> terms)
-    {
-        _terms = terms;
-    }
-
     
 
     /**************************************************************************
@@ -204,13 +202,73 @@ public class Network extends MetadataObject
     **************************************************************************/
     private void initCollections()
     {
-        _citations = new HashMap<String, Citation>();
-        _edges = new HashMap<String, Edge>();
+        _citations = new ArrayList<Citation>();
+        _edges = new HashMap<Long, Edge>();
         _members = new ArrayList<Membership>();
-        _namespaces = new HashMap<String, Namespace>();
-        _nodes = new HashMap<String, Node>();
+        _namespaces = new HashSet<Namespace>();
+        _nodes = new ArrayList<Long>(100);
         _requests = new ArrayList<Request>();
         _supports = new HashMap<String, Support>();
-        _terms = new HashMap<String, Term>();
+        _baseTermIds = new ArrayList<Long>(10);
     }
+
+
+	public List<NdexProperty> getProperties() {
+		return _properties;
+	}
+
+	public List<NdexProperty> getPresentationProperties() {
+		return _presentationProperties;
+	}
+
+	public void setProperties(List<NdexProperty> properties) {
+		_properties = properties;
+	}
+
+	public void setPresentationProperties(List<NdexProperty> properties) {
+		_presentationProperties = properties;
+	}
+
+
+	public VisibilityType getVisibility() {
+		return _visibility;
+	}
+
+
+	public void setVisibility(VisibilityType _visibility) {
+		this._visibility = _visibility;
+	}
+
+
+	public long getHighestElementId() {
+		return _highestElementId;
+	}
+
+
+
+	public void setHighestElementId(long _highestElementId) {
+		this._highestElementId = _highestElementId;
+	}
+
+
+	public String getVersion() {
+		return _version;
+	}
+
+
+	public void setVersion(String _version) {
+		this._version = _version;
+	}
+
+
+	public List<Long> getBaseTermIds() {
+		return _baseTermIds;
+	}
+
+
+
+
+	public void setBaseTermIds(List<Long> _baseTerms) {
+		this._baseTermIds = _baseTerms;
+	}
 }

@@ -1,7 +1,5 @@
 package org.ndexbio.model.object;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,12 +9,12 @@ public class User extends Account
     private String _emailAddress;
     private String _firstName;
     private String _lastName;
-    private List<Membership> _groupMemberships;
+/*    private List<Membership> _groupMemberships;
     private List<Membership> _networkMemberships;
     private List<Request> _requests;
     private List<Task> _tasks;
     private String _username;
-    private List<Network> _workSurface;
+    private List<Network> _workSurface; */
 
     
     
@@ -26,8 +24,8 @@ public class User extends Account
     public User()
     {
         super();
-
-        initCollections();
+        _type = this.getClass().getSimpleName();
+    //    initCollections();
     }
     
  
@@ -62,7 +60,7 @@ public class User extends Account
     {
         _lastName = lastName;
     }
-
+/*
     public List<Membership> getGroups()
     {
         return _groupMemberships;
@@ -122,18 +120,18 @@ public class User extends Account
     {
         _workSurface = workSurface;
     }
-
+*/
     
 
     /**************************************************************************
     * Initializes the collections. 
     **************************************************************************/
-    private void initCollections()
+  /*  private void initCollections()
     {
         _groupMemberships = new ArrayList<Membership>();
         _networkMemberships = new ArrayList<Membership>();
         _requests = new ArrayList<Request>();
         _tasks = new ArrayList<Task>();
         _workSurface = new ArrayList<Network>();
-    }
+    } */
 }

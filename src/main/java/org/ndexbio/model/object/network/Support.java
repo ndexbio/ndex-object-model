@@ -1,13 +1,13 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Support extends MetadataObject
+public class Support extends NetworkElement
 {
-    private String _jdexId;
-    private String _text;
-    private String _citation;
+
+	private String _text;
+    private Citation _citation;
 
 
 
@@ -17,18 +17,10 @@ public class Support extends MetadataObject
     public Support()
     {
         super();
+        _type = this.getClass().getSimpleName();
     }
 
 
-    public String getJdexId()
-    {
-        return _jdexId;
-    }
-
-    public void setJdexId(String jdexId)
-    {
-        _jdexId = jdexId;
-    }
 
     public String getText()
     {
@@ -40,11 +32,11 @@ public class Support extends MetadataObject
         _text = text;
     }
 
-	public String getCitation() {
+	public Citation getCitation() {
 		return _citation;
 	}
 
-	public void setCitation(String _citation) {
+	public void setCitation(Citation _citation) {
 		this._citation = _citation;
 	}
     

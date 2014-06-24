@@ -1,8 +1,11 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.ndexbio.model.object.NdexObject;
+
+@Deprecated
 public class MetadataObject extends NdexObject
 {
     private Map<String, String> _metadata;

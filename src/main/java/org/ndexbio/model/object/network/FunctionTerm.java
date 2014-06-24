@@ -1,15 +1,17 @@
-package org.ndexbio.model.object;
+package org.ndexbio.model.object.network;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class FunctionTerm extends Term
+public class FunctionTerm extends NetworkElement
 {
-    private String _termFunction;
-    private Map<String, String> _parameters;
+    private BaseTerm _termFunction;
+    private List<Long> _parameters;
 
     
     
@@ -19,26 +21,26 @@ public class FunctionTerm extends Term
     public FunctionTerm()
     {
         super();
-        this._parameters = new HashMap<String, String>();
-        this.setTermType("Function");
+        _type = this.getClass().getSimpleName();
+        this._parameters = new ArrayList<Long>(10);
     }
 
-    public Map<String, String> getParameters()
+    public List<Long> getParameters()
     {
         return _parameters;
     }
 
-    public void setParameters(Map<String, String> parameters)
+    public void setParameters(List<Long> parameters)
     {
         _parameters = parameters;
     }
 
-    public String getTermFunction()
+    public BaseTerm getTermFunction()
     {
         return _termFunction;
     }
 
-    public void setTermFunction(String termFunction)
+    public void setTermFunction(BaseTerm termFunction)
     {
         _termFunction = termFunction;
     }
