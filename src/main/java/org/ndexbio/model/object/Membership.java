@@ -22,6 +22,7 @@ public class Membership extends NdexExternalObject
     **************************************************************************/
     public Membership()
     {
+    	super();
         _type = this.getClass().getSimpleName();
     }
       
