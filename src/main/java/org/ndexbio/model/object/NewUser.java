@@ -8,6 +8,8 @@ public class NewUser
     private String _emailAddress;
     private String _password;
     private String _username;
+    private String _firstname;
+    private String _lastname;
 
     
     
@@ -40,4 +42,20 @@ public class NewUser
     {
         _username = username;
     }
+
+	public String getFirstname() {
+		return _firstname;
+	}
+
+	public void setFirstname(String _firstname) {
+		this._firstname = _firstname;
+	}
+
+	public String getLastname() {
+		return _lastname;
+	}
+
+	public void setLastname(String _lastname) {
+		this._lastname = _lastname;
+	}
 }

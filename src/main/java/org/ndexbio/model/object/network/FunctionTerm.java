@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class FunctionTerm extends NetworkElement
 {
     private BaseTerm _termFunction;
+    
+    // element id list of other terms
     private List<Long> _parameters;
 
     
