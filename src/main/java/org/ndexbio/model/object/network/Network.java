@@ -31,10 +31,14 @@ public class Network extends NdexExternalObject implements PropertiedObject
     private String _name;
     private Collection<Namespace> _namespaces;
     private int _nodeCount;
+    
+    // list of Element ids of nodes
     private List<Long> _nodes;
     private List<Request> _requests;
     private Map<String, Support> _supports;
     private List<Long> _baseTermIds;
+    private List<Long> _functionTerms;
+    private List<Long> _reifiedEdgeTerms;
 
 
 	private List<NdexProperty> _properties;
@@ -210,6 +214,12 @@ public class Network extends NdexExternalObject implements PropertiedObject
         _requests = new ArrayList<Request>();
         _supports = new HashMap<String, Support>();
         _baseTermIds = new ArrayList<Long>(10);
+        
+        _functionTerms = new ArrayList<Long>(10);
+        _reifiedEdgeTerms = new ArrayList<Long> (10);
+        
+        _properties = new ArrayList<NdexProperty> (10);
+    	_presentationProperties = new ArrayList<NdexProperty> (10);
     }
 
 
@@ -270,5 +280,33 @@ public class Network extends NdexExternalObject implements PropertiedObject
 
 	public void setBaseTermIds(List<Long> _baseTerms) {
 		this._baseTermIds = _baseTerms;
+	}
+
+
+
+
+	public List<Long> getFunctionTerms() {
+		return _functionTerms;
+	}
+
+
+
+
+	public void setFunctionTerms(List<Long> _functionTerms) {
+		this._functionTerms = _functionTerms;
+	}
+
+
+
+
+	public List<Long> getReifiedEdgeTerms() {
+		return _reifiedEdgeTerms;
+	}
+
+
+
+
+	public void setReifiedEdgeTerms(List<Long> _reifiedEdgeTerms) {
+		this._reifiedEdgeTerms = _reifiedEdgeTerms;
 	}
 }

@@ -1,15 +1,16 @@
 package org.ndexbio.model.object;
 
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Group extends Account
 {
     private String _organizationName;
- /*   private List<Membership> _members;
-    private String _organizationName;
-    private List<Membership> _networkMemberships;
+    private List<Membership> _members;
+ /*   private List<Membership> _networkMemberships;
     private List<Request> _requests; */
 
     
@@ -65,6 +66,14 @@ public class Group extends Account
     {
         _organizationName = organizationName;
     }
+
+	public List<Membership> getMembers() {
+		return _members;
+	}
+
+	public void setMembers(List<Membership> _members) {
+		this._members = _members;
+	}
     
 /*    public List<Request> getRequests()
     {
