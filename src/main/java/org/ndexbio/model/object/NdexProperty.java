@@ -7,7 +7,8 @@ public class NdexProperty extends NdexObject {
 
 	public static final String STRING = "String"; 
 	
-	private long _predicateId;
+	private long   _predicateId;
+	private String _predicateString;
 	private long _valueId;
 	private String _value;
 	private String _dataType;
@@ -41,6 +42,14 @@ public class NdexProperty extends NdexObject {
 	}
 	public void setDataType(String _dataType) {
 		this._dataType = _dataType;
+	}
+
+	public String getPredicateString() {
+		return _predicateString;
+	}
+
+	public void setPredicateString(String _predicateString) {
+		this._predicateString = _predicateString;
 	}
 	
 
