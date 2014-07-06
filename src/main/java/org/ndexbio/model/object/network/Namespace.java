@@ -25,9 +25,9 @@ public class Namespace extends NetworkElement
         return _prefix;
     }
     
-    public void setPrefix(String prefix) throws Exception
+    public void setPrefix(String prefix) //throws Exception
     {
-    	if ( prefix == null ) throw new Exception("Prefix for Namespace can't be null.");
+//    	if ( prefix == null ) throw new Exception("Prefix for Namespace can't be null.");
         _prefix = prefix;
     }
     
