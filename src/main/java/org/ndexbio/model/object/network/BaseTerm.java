@@ -1,9 +1,10 @@
 package org.ndexbio.model.object.network;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BaseTerm extends NetworkElement
+public class BaseTerm extends NetworkElement implements Comparable<BaseTerm> 
 {
     private String _name;
     private long _namespace;
@@ -39,4 +40,23 @@ public class BaseTerm extends NetworkElement
     {
         _namespace = namespace;
     }
+
+
+	public int compareTo(BaseTerm o) {
+		long c = this.getId() - o.getId();
+		if ( c==0)
+			return 0;
+		return c>0? 1 : -1;
+		
+	}
+	
+	public int hasCode() {
+		return (int)getId();
+	}
+	
+	public boolean Equals (Object b2) {
+		if (b2 instanceof BaseTerm)
+			return compareTo((BaseTerm)b2)==0;
+		return false;
+	}
 }
