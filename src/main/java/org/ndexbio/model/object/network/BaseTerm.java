@@ -50,11 +50,13 @@ public class BaseTerm extends NetworkElement implements Comparable<BaseTerm>
 		
 	}
 	
-	public int hasCode() {
+	@Override
+	public int hashCode() {
 		return (int)getId();
 	}
 	
-	public boolean Equals (Object b2) {
+	@Override
+	public boolean equals (Object b2) {
 		if (b2 instanceof BaseTerm)
 			return compareTo((BaseTerm)b2)==0;
 		return false;
