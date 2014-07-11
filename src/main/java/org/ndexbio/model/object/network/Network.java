@@ -18,19 +18,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 //TODO: some members such as elements are not defined in the class yet.
-public class Network extends NdexExternalObject implements PropertiedObject
+public class Network extends NetworkSummary implements PropertiedObject
 {
     private List<Citation> _citations;
-    private String _description;
-    private int _edgeCount;
     private Map<Long, Edge> _edges;
-    private boolean _isComplete;
-    private boolean _isLocked;
-    private VisibilityType _visibility;
     private List<Membership> _members;
-    private String _name;
     private Collection<Namespace> _namespaces;
-    private int _nodeCount;
     
     // list of Element ids of nodes
     private List<Long> _nodes;
@@ -45,8 +38,6 @@ public class Network extends NdexExternalObject implements PropertiedObject
 	private List<NdexProperty> _presentationProperties;
 
 	
-	private long _highestElementId;
-	private String _version;
 
     /**************************************************************************
     * Default constructor.
@@ -56,12 +47,6 @@ public class Network extends NdexExternalObject implements PropertiedObject
         super();
         _type = this.getClass().getSimpleName();
 
-        _isComplete = false;
-        _isLocked = false;
-        setVisibility(VisibilityType.PRIVATE);
-        _edgeCount = 0;
-        _nodeCount = 0;
-        
         initCollections();
     }
 
@@ -78,27 +63,7 @@ public class Network extends NdexExternalObject implements PropertiedObject
         _citations = citations;
     }
 
-    public String getDescription()
-    {
-        return _description;
-    }
-    
-    public void setDescription(String description)
-    {
-        _description = description;
-    }
-    
-    public int getEdgeCount()
-    {
-        return _edgeCount;
-    }
-
-    public void setEdgeCount(int edgeCount)
-    {
-        _edgeCount = edgeCount;
-    }
-
-    public Map<Long, Edge> getEdges()
+     public Map<Long, Edge> getEdges()
     {
         return _edges;
     }
@@ -108,26 +73,6 @@ public class Network extends NdexExternalObject implements PropertiedObject
         _edges = edges;
     }
 
-    public boolean getIsComplete()
-    {
-        return _isComplete;
-    }
-    
-    public void setIsComplete(boolean isComplete)
-    {
-        _isComplete = isComplete;
-    }
-
-    public boolean getIsLocked()
-    {
-        return _isLocked;
-    }
-    
-    public void setIsLocked(boolean isLocked)
-    {
-        _isLocked = isLocked;
-    }
-    
    
     public List<Membership> getMembers()
     {
@@ -139,15 +84,6 @@ public class Network extends NdexExternalObject implements PropertiedObject
         _members = members;
     }
     
-    public String getName()
-    {
-        return _name;
-    }
-    
-    public void setName(String name)
-    {
-        _name = name;
-    }
 
     public Collection<Namespace> getNamespaces()
     {
@@ -157,16 +93,6 @@ public class Network extends NdexExternalObject implements PropertiedObject
     public void setNamespaces(Collection<Namespace> namespaces)
     {
         _namespaces = namespaces;
-    }
-
-    public int getNodeCount()
-    {
-        return _nodeCount;
-    }
-
-    public void setNodeCount(int nodeCount)
-    {
-        _nodeCount = nodeCount;
     }
 
     public List<Long> getNodes()
@@ -239,17 +165,7 @@ public class Network extends NdexExternalObject implements PropertiedObject
 		_presentationProperties = properties;
 	}
 
-
-	public VisibilityType getVisibility() {
-		return _visibility;
-	}
-
-
-	public void setVisibility(VisibilityType _visibility) {
-		this._visibility = _visibility;
-	}
-
-
+/*
 	public long getHighestElementId() {
 		return _highestElementId;
 	}
@@ -259,16 +175,7 @@ public class Network extends NdexExternalObject implements PropertiedObject
 	public void setHighestElementId(long _highestElementId) {
 		this._highestElementId = _highestElementId;
 	}
-
-
-	public String getVersion() {
-		return _version;
-	}
-
-
-	public void setVersion(String _version) {
-		this._version = _version;
-	}
+*/
 
 
 	public List<Long> getBaseTermIds() {
