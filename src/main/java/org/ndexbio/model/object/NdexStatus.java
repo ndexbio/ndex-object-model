@@ -2,6 +2,7 @@ package org.ndexbio.model.object;
 
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,6 +23,7 @@ public class NdexStatus extends NdexObject
     public NdexStatus()
     {
         super();
+        _properties = new HashMap<String,String>();
     }
 
 
