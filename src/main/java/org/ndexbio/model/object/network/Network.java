@@ -175,14 +175,14 @@ public class Network extends NetworkSummary implements PropertiedObject
 */
 
 
-	public Map<Long,BaseTerm> getBaseTermIds() {
+	public Map<Long,BaseTerm> getBaseTerms() {
 		return _baseTerms;
 	}
 
 
 
 
-	public void setBaseTermIds(Map<Long,BaseTerm> _baseTerms) {
+	public void setBaseTerms(Map<Long,BaseTerm> _baseTerms) {
 		this._baseTerms = _baseTerms;
 	}
 
