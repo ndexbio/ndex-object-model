@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.ndexbio.model.object.Membership;
 import org.ndexbio.model.object.NdexExternalObject;
@@ -17,27 +18,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-//TODO: some members such as elements are not defined in the class yet.
 public class Network extends NetworkSummary implements PropertiedObject
 {
-    private List<Citation> _citations;
+    private Map<Long,Citation> _citations;
     private Map<Long, Edge> _edges;
-    private List<Membership> _members;
-    private Collection<Namespace> _namespaces;
+    private Map<Long,Membership> _members;
+    private Map<Long,Namespace> _namespaces;
     
-    // list of Element ids of nodes
-    private List<Long> _nodes;
-    private List<Request> _requests;
-    private Map<String, Support> _supports;
-    private List<Long> _baseTermIds;
-    private List<Long> _functionTerms;
-    private List<Long> _reifiedEdgeTerms;
+    private Map<Long, Node> _nodes;
+    private Map<Long, Request> _requests;
+    private Map<Long, Support> _supports;
+    private Map<Long, BaseTerm> _baseTerms;
+    private Map<Long, FunctionTerm> _functionTerms;
+    private Map<Long, ReifiedEdgeTerm> _reifiedEdgeTerms;
 
 
 	private List<NdexProperty> _properties;
 	private List<NdexProperty> _presentationProperties;
-
-	
 
     /**************************************************************************
     * Default constructor.
@@ -53,12 +50,12 @@ public class Network extends NetworkSummary implements PropertiedObject
 
     
 
-    public List<Citation> getCitations()
+    public Map<Long,Citation> getCitations()
     {
         return _citations;
     }
 
-    public void setCitations(List<Citation> citations)
+    public void setCitations(Map<Long,Citation> citations)
     {
         _citations = citations;
     }
@@ -74,53 +71,53 @@ public class Network extends NetworkSummary implements PropertiedObject
     }
 
    
-    public List<Membership> getMembers()
+    public Map<Long,Membership> getMembers()
     {
         return _members;
     }
     
-    public void setMembers(List<Membership> members)
+    public void setMembers(Map<Long,Membership> members)
     {
         _members = members;
     }
     
 
-    public Collection<Namespace> getNamespaces()
+    public Map<Long,Namespace> getNamespaces()
     {
         return _namespaces;
     }
 
-    public void setNamespaces(Collection<Namespace> namespaces)
+    public void setNamespaces( Map<Long,Namespace> namespaces)
     {
         _namespaces = namespaces;
     }
 
-    public List<Long> getNodes()
+    public Map<Long,Node> getNodes()
     {
         return _nodes;
     }
 
-    public void setNodes(List<Long> nodes)
+    public void setNodes(Map<Long,Node> nodes)
     {
         _nodes = nodes;
     }
     
-    public List<Request> getRequests()
+    public Map<Long,Request> getRequests()
     {
         return _requests;
     }
     
-    public void setRequests(List<Request> requests)
+    public void setRequests(Map<Long,Request> requests)
     {
         _requests = requests;
     }
 
-    public Map<String, Support> getSupports()
+    public Map<Long, Support> getSupports()
     {
         return _supports;
     }
 
-    public void setSupports(Map<String, Support> supports)
+    public void setSupports(Map<Long, Support> supports)
     {
         _supports = supports;
     }
@@ -132,17 +129,17 @@ public class Network extends NetworkSummary implements PropertiedObject
     **************************************************************************/
     private void initCollections()
     {
-        _citations = new ArrayList<Citation>();
-        _edges = new HashMap<Long, Edge>();
-        _members = new ArrayList<Membership>();
-        _namespaces = new HashSet<Namespace>();
-        _nodes = new ArrayList<Long>(100);
-        _requests = new ArrayList<Request>();
-        _supports = new HashMap<String, Support>();
-        _baseTermIds = new ArrayList<Long>(10);
+        _citations = new HashMap<Long,Citation>();
+        _edges = new TreeMap<Long, Edge>();
+        _members = new HashMap<Long,Membership>();
+        _namespaces = new HashMap<Long,Namespace>();
+        _nodes = new TreeMap<Long,Node>();
+        _requests = new HashMap<Long,Request>();
+        _supports = new HashMap<Long, Support>();
+        _baseTerms = new HashMap<Long,BaseTerm>(10);
         
-        _functionTerms = new ArrayList<Long>(10);
-        _reifiedEdgeTerms = new ArrayList<Long> (10);
+        _functionTerms = new HashMap<Long,FunctionTerm>(10);
+        _reifiedEdgeTerms = new HashMap<Long,ReifiedEdgeTerm> (10);
         
         _properties = new ArrayList<NdexProperty> (10);
     	_presentationProperties = new ArrayList<NdexProperty> (10);
@@ -178,42 +175,42 @@ public class Network extends NetworkSummary implements PropertiedObject
 */
 
 
-	public List<Long> getBaseTermIds() {
-		return _baseTermIds;
+	public Map<Long,BaseTerm> getBaseTermIds() {
+		return _baseTerms;
 	}
 
 
 
 
-	public void setBaseTermIds(List<Long> _baseTerms) {
-		this._baseTermIds = _baseTerms;
+	public void setBaseTermIds(Map<Long,BaseTerm> _baseTerms) {
+		this._baseTerms = _baseTerms;
 	}
 
 
 
 
-	public List<Long> getFunctionTerms() {
+	public Map<Long,FunctionTerm> getFunctionTerms() {
 		return _functionTerms;
 	}
 
 
 
 
-	public void setFunctionTerms(List<Long> _functionTerms) {
+	public void setFunctionTerms(Map<Long,FunctionTerm> _functionTerms) {
 		this._functionTerms = _functionTerms;
 	}
 
 
 
 
-	public List<Long> getReifiedEdgeTerms() {
+	public Map<Long,ReifiedEdgeTerm> getReifiedEdgeTerms() {
 		return _reifiedEdgeTerms;
 	}
 
 
 
 
-	public void setReifiedEdgeTerms(List<Long> _reifiedEdgeTerms) {
+	public void setReifiedEdgeTerms(Map<Long,ReifiedEdgeTerm> _reifiedEdgeTerms) {
 		this._reifiedEdgeTerms = _reifiedEdgeTerms;
 	}
 }
