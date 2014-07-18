@@ -17,14 +17,14 @@ public class PropertyGraphNetwork {
    private Map<String,String> _namespaces;
    private Map<Long, String>  _citations;
    private Map<Long, String>  _supports;
-   private Collection<PropertyGraphNode> _nodes;
+   private Map<Long,PropertyGraphNode> _nodes;
    private Collection <PropertyGraphEdge> _edges;
    
    public PropertyGraphNetwork() {
 	   setNamespaces(new HashMap<String,String> ());
 	   setCitations(new HashMap<Long,String> ());
 	   setSupports(new HashMap<Long,String> ());
-	   setNodes(new ArrayList<PropertyGraphNode> ());
+	   setNodes(new HashMap<Long,PropertyGraphNode> ());
 	   setEdges(new ArrayList<PropertyGraphEdge>  ());
    }
 
@@ -60,11 +60,11 @@ public void setSupports(Map<Long, String> _supports) {
 	this._supports = _supports;
 }
 
-public Collection<PropertyGraphNode> getNodes() {
+public Map<Long,PropertyGraphNode> getNodes() {
 	return _nodes;
 }
 
-public void setNodes(Collection<PropertyGraphNode> _nodes) {
+public void setNodes(Map<Long,PropertyGraphNode> _nodes) {
 	this._nodes = _nodes;
 }
 

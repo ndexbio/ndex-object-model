@@ -7,27 +7,20 @@ import org.ndexbio.model.helpers.TermDeserializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = TermDeserializer.class)
-@Deprecated
-public abstract class Term extends MetadataObject
-{
-    private String _termType;
 
-    
+public abstract class Term extends NetworkElement
+{
     
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
-    public Term()
+    public Term () {
+    	super();
+    }
+	
+    final public String getTermType()
     {
-    }  
-    
-    public String getTermType()
-    {
-        return _termType;
+        return this.getType();
     }
 
-    public void setTermType(String termType)
-    {
-        _termType = termType;
-    }
 }

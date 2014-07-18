@@ -13,7 +13,7 @@ public class Citation extends NetworkElement implements PropertiedObject
 {
     private List<String> _contributors;
     private String _title;
-    private List<Support> _supports;
+  //  private List<Support> _supports;
 
 
     /**************************************************************************
@@ -24,7 +24,7 @@ public class Citation extends NetworkElement implements PropertiedObject
         super();
         _type = this.getClass().getSimpleName();
         _contributors = new ArrayList<String>();
-        _supports = new ArrayList<Support>();
+ //       _supports = new ArrayList<Support>();
     }
 
     public List<String> getContributors()
@@ -37,7 +37,7 @@ public class Citation extends NetworkElement implements PropertiedObject
         _contributors = contributors;
     }
 
-    
+    /*
     public List<Support> getSupports()
     {
         return _supports;
@@ -47,7 +47,7 @@ public class Citation extends NetworkElement implements PropertiedObject
     {
         _supports = supports;
     }
-
+*/
     public String getTitle()
     {
         return _title;

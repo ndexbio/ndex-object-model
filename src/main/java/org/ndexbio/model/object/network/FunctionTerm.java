@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FunctionTerm extends NetworkElement
 {
-    private BaseTerm _termFunction;
+    private long _functionTermId;
     
     // element id list of other terms
     private List<Long> _parameters;
@@ -37,13 +37,12 @@ public class FunctionTerm extends NetworkElement
         _parameters = parameters;
     }
 
-    public BaseTerm getTermFunction()
-    {
-        return _termFunction;
-    }
 
-    public void setTermFunction(BaseTerm termFunction)
-    {
-        _termFunction = termFunction;
-    }
+	public long getFunctionTermId() {
+		return _functionTermId;
+	}
+
+	public void setFunctionTermId(long _functionTermId) {
+		this._functionTermId = _functionTermId;
+	}
 }

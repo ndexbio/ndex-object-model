@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class PropertyGraphNode {
+public class PropertyGraphNode implements Comparable <PropertyGraphNode> {
    private long _id;
    private String _name;
    private List<String> _represents;
@@ -59,6 +59,20 @@ public List<String> getRelatedTerms() {
 public void setRelatedTerms(List<String> _relatedTerms) {
 	this._relatedTerms = _relatedTerms;
 }
+
+public int compareTo(PropertyGraphNode o) {
+	
+	return (int)(this._id - o.getId());
+}
    
-   
+@Override
+public int hashCode () { return (int) _id; }
+
+ @Override
+public boolean equals(Object anObject) {
+	 if ( anObject instanceof PropertyGraphNode) {
+		return ((PropertyGraphNode)anObject).getId() == _id;
+	 }
+	 return false;
+ }
 }

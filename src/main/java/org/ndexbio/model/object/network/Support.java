@@ -7,7 +7,7 @@ public class Support extends NetworkElement
 {
 
 	private String _text;
-    private Citation _citation;
+    private long _citationId;
 
 
 
@@ -32,12 +32,12 @@ public class Support extends NetworkElement
         _text = text;
     }
 
-	public Citation getCitation() {
-		return _citation;
+	public long getCitation() {
+		return _citationId;
 	}
 
-	public void setCitation(Citation _citation) {
-		this._citation = _citation;
+	public void setCitation(long citationId) {
+		this._citationId = citationId;
 	}
     
     
