@@ -4,7 +4,7 @@ package org.ndexbio.model.object.network;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BaseTerm extends NetworkElement implements Comparable<BaseTerm> 
+public class BaseTerm extends Term implements Comparable<BaseTerm> 
 {
     private String _name;
     private long _namespace;

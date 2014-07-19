@@ -3,7 +3,7 @@ package org.ndexbio.model.object.network;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ReifiedEdgeTerm extends NetworkElement
+public class ReifiedEdgeTerm extends Term
 {
     private  long _edgeId;
 
