@@ -12,9 +12,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonSubTypes(value = { @Type(value = Group.class, name = "Group"), @Type(value = User.class, name = "User") })
 public abstract class Account extends NdexExternalObject implements PropertiedObject
 {
-    private String _backgroundImage;
+    private String _imageURL;
     private String _description;
-    private String _foregroundImage;
     private String _website;
     private String _accountName;
     private String _password;
@@ -30,14 +29,14 @@ public abstract class Account extends NdexExternalObject implements PropertiedOb
     }
     
     
-    public String getBackgroundImage()
+    public String getImage()
     {
-        return _backgroundImage;
+        return _imageURL;
     }
     
-    public void setBackgroundImage(String backgroundImage)
+    public void setImage(String imageURL)
     {
-        _backgroundImage = backgroundImage;
+        _imageURL = imageURL;
     }
     
     public String getDescription()
@@ -48,16 +47,6 @@ public abstract class Account extends NdexExternalObject implements PropertiedOb
     public void setDescription(String description)
     {
         _description = description;
-    }
-    
-    public String getForegroundImage()
-    {
-        return _foregroundImage;
-    }
-    
-    public void setForegroundImage(String foregroundImage)
-    {
-        _foregroundImage = foregroundImage;
     }
     
     public String getWebsite()
