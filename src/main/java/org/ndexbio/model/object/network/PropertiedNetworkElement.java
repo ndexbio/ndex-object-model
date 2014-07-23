@@ -1,5 +1,6 @@
 package org.ndexbio.model.object.network;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.ndexbio.model.object.NdexProperty;
@@ -17,6 +18,8 @@ public abstract class PropertiedNetworkElement extends NetworkElement implements
 	 {
 	        super();
 	        _type = this.getClass().getSimpleName();
+	        _properties = new ArrayList<NdexProperty>();
+	        _presentationProperties = new ArrayList<NdexProperty>();
 //	        this.initializeCollections();
 	 }
 	
