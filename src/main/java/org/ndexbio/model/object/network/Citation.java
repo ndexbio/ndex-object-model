@@ -25,6 +25,9 @@ public class Citation extends NetworkElement implements PropertiedObject
         _type = this.getClass().getSimpleName();
         _contributors = new ArrayList<String>();
  //       _supports = new ArrayList<Support>();
+        _properties = new ArrayList<NdexProperty>();
+        _presentationProperties = new ArrayList<NdexProperty>() ;
+        
     }
 
     public List<String> getContributors()

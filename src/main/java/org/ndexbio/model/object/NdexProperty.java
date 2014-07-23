@@ -19,6 +19,13 @@ public class NdexProperty extends NdexObject {
 
 	}
 	
+	public NdexProperty (String key, String value) {
+		_predicateString = key;
+		_value = value;
+		_dataType = STRING;
+        _type = this.getClass().getSimpleName();
+	}
+	
 	public long getPredicateId() {
 		return _predicateId;
 	}

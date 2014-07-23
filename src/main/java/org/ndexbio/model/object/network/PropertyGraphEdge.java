@@ -7,34 +7,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class PropertyGraphEdge {
-	private long _id;
+public class PropertyGraphEdge extends PropertiedNetworkElement{
+
+	public static final String citations = "NDEX:citations";
+	public static final String supports  = "NDEX:supports";
+	
 	private long _subjectId;
 	private long _objectId;
 	private String _predicate;
-	private List<Long> _citations;
-	private List<Long> _supports;
 	
 	public PropertyGraphEdge () {
-		setCitations(new ArrayList<Long>());
-		_supports = new ArrayList<Long>();
+		super();
 	}
 
-	public List<Long> getSupports() {
-		return _supports;
-	}
-
-	public void set_supports(List<Long> _supports) {
-		this._supports = _supports;
-	}
-
-	public List<Long> getCitations() {
-		return _citations;
-	}
-
-	public void setCitations(List<Long> _citations) {
-		this._citations = _citations;
-	}
 
 	public String getPredicate() {
 		return _predicate;
@@ -58,14 +43,6 @@ public class PropertyGraphEdge {
 
 	public void setSubjectId(long _subjectId) {
 		this._subjectId = _subjectId;
-	}
-
-	public long getId() {
-		return _id;
-	}
-
-	public void setId(long _id) {
-		this._id = _id;
 	}
 
 	

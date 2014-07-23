@@ -1,78 +1,40 @@
 package org.ndexbio.model.object.network;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class PropertyGraphNode implements Comparable <PropertyGraphNode> {
-   private long _id;
-   private String _name;
-   private List<String> _represents;
-   private List<String> _aliases;
-   private List<String> _relatedTerms;
-   
+public class PropertyGraphNode extends PropertiedNetworkElement implements Comparable <PropertyGraphNode> {
+
+   public static final String represents = "NDEX:represents";
+   public static final String aliases    = "NDEX:aliases";
+   public static final String relatedTerms   = "NDEX:relatedTerms";
+   public static final String name       = "NDEX:nodeName";
+	
    public PropertyGraphNode () {
-	   setRepresents(new ArrayList<String>());
-	   setAliases(new ArrayList <String> ());
-	   setRelatedTerms(new ArrayList<String>());
+      super();
    }
 
-public long getId() {
-	return _id;
-}
-
-public void setId(long _id) {
-	this._id = _id;
-}
-
-public String getName() {
-	return _name;
-}
-
-public void setName(String _name) {
-	this._name = _name;
-}
-
-public List<String> getRepresents() {
-	return _represents;
-}
-
-public void setRepresents(List<String> _represents) {
-	this._represents = _represents;
-}
-
-public List<String> getAliases() {
-	return _aliases;
-}
-
-public void setAliases(List<String> _aliases) {
-	this._aliases = _aliases;
-}
-
-public List<String> getRelatedTerms() {
-	return _relatedTerms;
-}
-
-public void setRelatedTerms(List<String> _relatedTerms) {
-	this._relatedTerms = _relatedTerms;
-}
 
 public int compareTo(PropertyGraphNode o) {
+	long c = this.getId() - o.getId();
 	
-	return (int)(this._id - o.getId());
+	if ( c > 0) return 1;
+	if ( c < 0) return -1;
+	return 0;
+	
 }
    
 @Override
-public int hashCode () { return (int) _id; }
+public int hashCode () { return (int) getId(); }
 
  @Override
 public boolean equals(Object anObject) {
 	 if ( anObject instanceof PropertyGraphNode) {
-		return ((PropertyGraphNode)anObject).getId() == _id;
+		return ((PropertyGraphNode)anObject).getId() == getId();
 	 }
 	 return false;
  }
+
 }
