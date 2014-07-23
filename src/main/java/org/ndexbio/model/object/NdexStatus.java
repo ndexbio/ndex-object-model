@@ -1,7 +1,6 @@
 package org.ndexbio.model.object;
 
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,10 @@ public class NdexStatus extends NdexObject
     private Integer _groupCount;
 
     private Map<String,String> _properties;
+    
+    private String _message;
 
+    private final static String online= "Online";
 
     /**************************************************************************
     * Default constructor.
@@ -24,6 +26,7 @@ public class NdexStatus extends NdexObject
     {
         super();
         _properties = new HashMap<String,String>();
+        _message = online;
     }
 
 
@@ -71,6 +74,18 @@ public class NdexStatus extends NdexObject
 
 	public void setProperties(Map<String,String> _properties) {
 		this._properties = _properties;
+	}
+
+
+
+	public String getMessage() {
+		return _message;
+	}
+
+
+
+	public void setMessage(String _message) {
+		this._message = _message;
 	}
 
 

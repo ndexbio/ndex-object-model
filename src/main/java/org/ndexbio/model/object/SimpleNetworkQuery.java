@@ -1,14 +1,19 @@
 package org.ndexbio.model.object;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+
 public class SimpleNetworkQuery extends SimpleQuery {
 
-private int _accountName;
+private String _accountName;
 	
-	public void setAccountName(int accountName) {
+	public void setAccountName(String accountName) {
 		_accountName = accountName;
 	}
 	
-	public int getAccountName() {
+	public String getAccountName() {
 		return _accountName;
 	}
 	

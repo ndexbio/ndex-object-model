@@ -22,10 +22,13 @@ public class PropertyGraphNetwork implements PropertiedObject{
    private List<NdexProperty> _properties;
    private List<NdexProperty> _presentationProperties;
 
-   public static final String uuid = "UUID";
+   public static final String uuid      = "NDEX:UUID";
    public static final String namspaces = "NDEX:namespaces";
    public static final String citations = "NDEX:citations";
-   public static final String supports = "NDEX:supports";
+   public static final String supports  = "NDEX:supports";
+   public static final String name      = "NDEX:name";
+   public static final String version   = "NDEX:version";
+   public static final String description = "NDEX:description";
    
    public PropertyGraphNetwork() {
 	   setNodes(new HashMap<Long,PropertyGraphNode> ());

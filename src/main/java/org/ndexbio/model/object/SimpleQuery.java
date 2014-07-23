@@ -1,5 +1,6 @@
 package org.ndexbio.model.object;
 
+
 public abstract class SimpleQuery {
 	
 	private String _searchString;
