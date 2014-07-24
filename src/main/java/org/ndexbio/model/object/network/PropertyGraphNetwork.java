@@ -72,5 +72,13 @@ public void setPresentationProperties(List<NdexProperty> properties) {
 	
 }
    
+
+  public String getName () {
+	  for ( NdexProperty p : _properties) {
+		  if ( p.getPredicateString().equals(name))
+			  return p.getValue();
+	  }
+	  return null;
+  }
 	
 }
