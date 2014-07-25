@@ -73,12 +73,31 @@ public void setPresentationProperties(List<NdexProperty> properties) {
 }
    
 
+  /**
+   *  Get the network title.
+   * @return
+   */
   public String getName () {
 	  for ( NdexProperty p : _properties) {
 		  if ( p.getPredicateString().equals(name))
 			  return p.getValue();
 	  }
 	  return null;
+  }
+  
+  /**
+   * Set the network title.
+   * @param networkName the new network title.
+   */
+  public void setName(String networkName) {
+	  for ( NdexProperty p : _properties) {
+		  if ( p.getPredicateString().equals(name)) {
+			  p.setValue(networkName);
+			  return;
+		  }   
+	  }
+	  NdexProperty p = new NdexProperty(name, networkName);
+	  _properties.add(p);
   }
 	
 }
