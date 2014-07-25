@@ -16,7 +16,7 @@ public abstract class Account extends NdexExternalObject implements PropertiedOb
     private String _description;
     private String _website;
     private String _accountName;
-    private String _password;
+    //private String _password;
 
     
     
@@ -90,13 +90,13 @@ public abstract class Account extends NdexExternalObject implements PropertiedOb
 	}
 
 
-	public String getPassword() {
+	/*public String getPassword() {
 		return _password;
 	}
 
 
 	public void setPassword(String _password) {
 		this._password = _password;
-	}
+	}*/
 
 }

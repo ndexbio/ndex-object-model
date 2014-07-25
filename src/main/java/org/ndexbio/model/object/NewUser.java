@@ -7,10 +7,13 @@ public class NewUser
 {
     private String _emailAddress;
     private String _password;
-    private String _username;
+    private String _accountName;
     private String _firstname;
     private String _lastname;
-
+    private String _description;
+    private String _websiteURL;
+    private String _imageURL;
+    
     
     
     public String getEmailAddress()
@@ -20,7 +23,7 @@ public class NewUser
     
     public void setEmailAddress(String emailAddress)
     {
-        _emailAddress = emailAddress;
+        this._emailAddress = emailAddress;
     }
     
     public String getPassword()
@@ -30,32 +33,56 @@ public class NewUser
     
     public void setPassword(String password)
     {
-        _password = password;
+        this._password = password;
     }
     
-    public String getUsername()
+    public String getAccountName()
     {
-        return _username;
+        return _accountName;
     }
     
-    public void setUsername(String username)
+    public void setAccountName(String accountName)
     {
-        _username = username;
+        this._accountName = accountName;
     }
 
-	public String getFirstname() {
+	public String getFirstName() {
 		return _firstname;
 	}
 
-	public void setFirstname(String _firstname) {
-		this._firstname = _firstname;
+	public void setFirstName(String firstname) {
+		this._firstname = firstname;
 	}
 
-	public String getLastname() {
+	public String getLastName() {
 		return _lastname;
 	}
 
-	public void setLastname(String _lastname) {
-		this._lastname = _lastname;
+	public void setLastName(String lastname) {
+		this._lastname = lastname;
+	}
+
+	public String getImage() {
+		return _imageURL;
+	}
+
+	public void setImage(String imageURL) {
+		this._imageURL = imageURL;
+	}
+
+	public String getWebsite() {
+		return _websiteURL;
+	}
+
+	public void setWebsite(String websiteURL) {
+		this._websiteURL = websiteURL;
+	}
+
+	public String getDescription() {
+		return _description;
+	}
+
+	public void setDescription(String description) {
+		this._description = description;
 	}
 }
