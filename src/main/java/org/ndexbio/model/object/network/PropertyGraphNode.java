@@ -54,5 +54,14 @@ public boolean equals(Object anObject) {
 	  this.getProperties().add(p);
 
  	}
- 
+
+ 	
+ 	  public String getName () {
+ 		  for ( NdexProperty p : this.getProperties()) {
+ 			  if ( p.getPredicateString().equals(name))
+ 				  return p.getValue();
+ 		  }
+ 		  return null;
+ 	  }
+
 }
