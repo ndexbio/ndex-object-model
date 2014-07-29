@@ -9,8 +9,7 @@ import org.ndexbio.model.object.PropertiedObject;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Citation extends NetworkElement implements PropertiedObject
-{
+public class Citation extends PropertiedNetworkElement {
     private List<String> _contributors;
     private String _title;
   //  private List<Support> _supports;
@@ -25,8 +24,6 @@ public class Citation extends NetworkElement implements PropertiedObject
         _type = this.getClass().getSimpleName();
         _contributors = new ArrayList<String>();
  //       _supports = new ArrayList<Support>();
-        _properties = new ArrayList<NdexProperty>();
-        _presentationProperties = new ArrayList<NdexProperty>() ;
         
     }
 
@@ -60,28 +57,6 @@ public class Citation extends NetworkElement implements PropertiedObject
     {
         _title = title;
     }
-
-    
-    private List<NdexProperty> _properties;
-	private List<NdexProperty> _presentationProperties;
-
-
-	public List<NdexProperty> getProperties() {
-		return _properties;
-	}
-
-	public List<NdexProperty> getPresentationProperties() {
-		return _presentationProperties;
-	}
-
-	public void setProperties(List<NdexProperty> properties) {
-		_properties = properties;
-	}
-
-	public void setPresentationProperties(List<NdexProperty> properties) {
-		_presentationProperties = properties;
-	}
-
 
     
 }

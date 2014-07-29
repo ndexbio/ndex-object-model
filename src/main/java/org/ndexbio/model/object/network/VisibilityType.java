@@ -1,5 +1,5 @@
 package org.ndexbio.model.object.network;
 
 public enum VisibilityType {
-   PUBLIC, PRIVATE, DISCOVERABL;
+   PUBLIC, PRIVATE, DISCOVERABLE;
 }

@@ -12,7 +12,7 @@ public class PropertyGraphNode extends PropertiedNetworkElement implements Compa
    public static final String represents = "NDEX:represents";
    public static final String aliases    = "NDEX:aliases";
    public static final String relatedTerms   = "NDEX:relatedTerms";
-   public static final String name       = "NDEX:nodeName";
+   public static final String name       = "dc:title";
 	
    public PropertyGraphNode () {
       super();

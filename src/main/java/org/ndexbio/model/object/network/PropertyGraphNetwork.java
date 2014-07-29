@@ -26,9 +26,9 @@ public class PropertyGraphNetwork implements PropertiedObject{
    public static final String namspaces = "NDEX:namespaces";
    public static final String citations = "NDEX:citations";
    public static final String supports  = "NDEX:supports";
-   public static final String name      = "NDEX:name";
+   public static final String name      = "dc:title";
    public static final String version   = "NDEX:version";
-   public static final String description = "NDEX:description";
+   public static final String description = "dc:description";
    
    public PropertyGraphNetwork() {
 	   setNodes(new HashMap<Long,PropertyGraphNode> ());
