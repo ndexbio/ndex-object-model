@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Node extends PropertiedNetworkElement
 {
     private String _name;
-    private long _representsId;
+    private Long _representsId;
+    private String _representsTermType;
     private List<Long> _aliasIds;
     private List<Long> _relatedTermIds;
     private List<Long> _citationIds;
@@ -109,6 +110,20 @@ public class Node extends PropertiedNetworkElement
 
 	public void setSupports(List<Long> _supports) {
 		this._supportIds = _supports;
+	}
+
+
+
+
+	public String getRepresentsTermType() {
+		return _representsTermType;
+	}
+
+
+
+
+	public void setRepresentsTermType(String _representsTermType) {
+		this._representsTermType = _representsTermType;
 	}
 
     
