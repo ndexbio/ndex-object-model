@@ -44,9 +44,20 @@ public class Network extends NetworkSummary implements PropertiedObject
         super();
         _type = this.getClass().getSimpleName();
 
+        _edges = new HashMap<Long, Edge>(50);
+
         initCollections();
     }
 
+    public Network(int edgeCount)
+    {
+        super();
+        _type = this.getClass().getSimpleName();
+
+        _edges = new HashMap<Long, Edge>(edgeCount);
+        
+        initCollections();
+    }
 
     
 
@@ -130,7 +141,6 @@ public class Network extends NetworkSummary implements PropertiedObject
     private void initCollections()
     {
         _citations = new HashMap<Long,Citation>();
-        _edges = new TreeMap<Long, Edge>();
         _members = new HashMap<Long,Membership>();
         _namespaces = new HashMap<Long,Namespace>();
         _nodes = new TreeMap<Long,Node>();

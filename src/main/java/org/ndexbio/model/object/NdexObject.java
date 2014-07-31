@@ -40,7 +40,7 @@ public abstract class NdexObject
         _id = id;
     }  */
     
- //   public abstract void setType (String type);
+    public void setType (String type) { _type = type;};
     public String getType () { return _type;}
 
 }

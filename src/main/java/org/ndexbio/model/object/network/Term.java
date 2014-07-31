@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.ndexbio.model.helpers.TermDeserializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonDeserialize(using = TermDeserializer.class)
+//@JsonDeserialize(using = TermDeserializer.class)
 
 public abstract class Term extends NetworkElement
 {
@@ -21,6 +21,6 @@ public abstract class Term extends NetworkElement
     final public String getTermType()
     {
         return this.getType();
-    }
+    } 
 
 }
