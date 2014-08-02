@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-//TODO: nodeIds and edgeIds are not defined yet.
 public class Subnetwork extends PropertiedNetworkElement {
 
 	
 	private SubnetworkType _subnetworktype; 
 	private String _name; 
+	private long[] _nodeIds;  //sorted if we need to do lookups?
+	private long[] _edgeIds;
 
 	public Subnetwork () {
 		super();
@@ -32,6 +33,22 @@ public class Subnetwork extends PropertiedNetworkElement {
 
 	public void setName(String name) {
 		this._name = name;
+	}
+
+	public long[] getNodeIds() {
+		return _nodeIds;
+	}
+
+	public void setNodeIds(long[] _nodeIds) {
+		this._nodeIds = _nodeIds;
+	}
+
+	public long[] getEdgeIds() {
+		return _edgeIds;
+	}
+
+	public void setEdgeIds(long[] _edgeIds) {
+		this._edgeIds = _edgeIds;
 	}
 
 }
