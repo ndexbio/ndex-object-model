@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Citation extends PropertiedNetworkElement {
     private List<String> _contributors;
     private String _title;
+    private String _identifier;
+    private String _idType;
   //  private List<Support> _supports;
 
 
@@ -57,6 +59,22 @@ public class Citation extends PropertiedNetworkElement {
     {
         _title = title;
     }
+
+	public String getIdentifier() {
+		return _identifier;
+	}
+
+	public void setIdentifier(String _identifier) {
+		this._identifier = _identifier;
+	}
+
+	public String getIdType() {
+		return _idType;
+	}
+
+	public void setIdType(String _idType) {
+		this._idType = _idType;
+	}
 
     
 }
