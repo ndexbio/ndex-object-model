@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class PropertyGraphNetwork implements PropertiedObject{
 
    private Map<Long,PropertyGraphNode> _nodes;
-   private Collection <PropertyGraphEdge> _edges;
+   private Map <Long, PropertyGraphEdge> _edges;
    private List<NdexProperty> _properties;
    private List<NdexProperty> _presentationProperties;
 
@@ -30,9 +30,12 @@ public class PropertyGraphNetwork implements PropertiedObject{
    public static final String version   = "NDEX:version";
    public static final String description = "dc:description";
    
+   public static final String function = "FUNCTION";
+   public static final String reifiedEdgeTerm = "NDEX:ReifedEdgeTerm";
+   
    public PropertyGraphNetwork() {
 	   setNodes(new HashMap<Long,PropertyGraphNode> ());
-	   setEdges(new ArrayList<PropertyGraphEdge>  ());
+	   setEdges(new HashMap<Long, PropertyGraphEdge>  ());
 	   _properties = new ArrayList<NdexProperty>();
 	   _presentationProperties = new ArrayList <NdexProperty>();
    }
@@ -46,11 +49,11 @@ public void setNodes(Map<Long,PropertyGraphNode> _nodes) {
 	this._nodes = _nodes;
 }
 
-public Collection <PropertyGraphEdge> getEdges() {
+public Map <Long, PropertyGraphEdge> getEdges() {
 	return _edges;
 }
 
-public void setEdges(Collection <PropertyGraphEdge> _edges) {
+public void setEdges(Map <Long,PropertyGraphEdge> _edges) {
 	this._edges = _edges;
 }
 

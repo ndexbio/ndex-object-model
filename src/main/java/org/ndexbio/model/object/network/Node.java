@@ -27,6 +27,7 @@ public class Node extends PropertiedNetworkElement
     public Node()
     {
         super();
+        _representsId = null;
         _type = this.getClass().getSimpleName();
         this.initializeCollections();
     }
