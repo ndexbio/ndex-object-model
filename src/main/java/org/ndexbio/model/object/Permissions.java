@@ -4,5 +4,7 @@ public enum Permissions
 {
     READ,
     WRITE,
-    ADMIN
+    ADMIN,
+    MEMBER,
+    GROUPADMIN
 }
