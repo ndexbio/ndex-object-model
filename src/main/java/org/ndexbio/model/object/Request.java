@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Request extends NdexExternalObject
 {
-    private UUID _sourceUUIDd;
+    private UUID _sourceUUID;
     private String _sourceName;
     private UUID _destinationUUID;
     private String _destinationName;
@@ -53,12 +53,12 @@ public class Request extends NdexExternalObject
         _responseMessage = responseMessage;
     }
 
-	public UUID getSourceUUIDd() {
-		return _sourceUUIDd;
+	public UUID getSourceUUID() {
+		return _sourceUUID;
 	}
 
-	public void setSourceUUIDd(UUID _sourceUUIDd) {
-		this._sourceUUIDd = _sourceUUIDd;
+	public void setSourceUUID(UUID _sourceUUID) {
+		this._sourceUUID = _sourceUUID;
 	}
 
 	public UUID getDestinationUUID() {
