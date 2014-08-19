@@ -1,5 +1,7 @@
 package org.ndexbio.model.object;
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -12,7 +14,8 @@ public class Task extends NdexExternalObject
     private String _resource;
     private Status _status;
     private TaskType _taskType;
-
+   
+    private UUID _taskOwnerId;
     
     
     /**************************************************************************
@@ -84,4 +87,16 @@ public class Task extends NdexExternalObject
     {
         _taskType = type;
     }
+
+
+
+	public UUID getTaskOwnerId() {
+		return _taskOwnerId;
+	}
+
+
+
+	public void setTaskOwnerId(UUID _taskOwnerId) {
+		this._taskOwnerId = _taskOwnerId;
+	}
 }

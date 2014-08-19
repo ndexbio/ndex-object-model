@@ -2,5 +2,7 @@ package org.ndexbio.model.object;
 
 public enum TaskType
 {
-    PROCESS_UPLOADED_NETWORK
+    PROCESS_UPLOADED_NETWORK,
+    EXPORT_NETWORK_TO_FILE
+
 }
