@@ -9,9 +9,10 @@ public class SimpleNetworkQuery extends SimpleQuery {
 
 private String _accountName;
 private Permissions _permission;
+private boolean _includeGroups;
 
 	public void setAccountName(String accountName) {
-		_accountName = accountName;
+		this._accountName = accountName;
 	}
 	
 	public String getAccountName() {
@@ -19,11 +20,19 @@ private Permissions _permission;
 	}
 	
 	public void setPermission(Permissions permission) {
-		_permission = permission;
+		this._permission = permission;
 	}
 	
 	public Permissions getPermission() {
 		return _permission;
+	}
+
+	public boolean getIncludeGroups() {
+		return _includeGroups;
+	}
+
+	public void setIncludeGroups(boolean _includeGroups) {
+		this._includeGroups = _includeGroups;
 	}
 	
 }

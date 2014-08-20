@@ -12,7 +12,7 @@ public class Request extends NdexExternalObject
     private UUID _destinationUUID;
     private String _destinationName;
     private String _message;
-    private RequestType _requestType;
+    private Permissions _permission;
     private String _responder;
     private ResponseType _response;
     private String _responseMessage;
@@ -85,12 +85,12 @@ public class Request extends NdexExternalObject
 		this._destinationName = _destinationName;
 	}
 
-	public RequestType getRequestType() {
-		return _requestType;
+	public Permissions getPermission() {
+		return _permission;
 	}
 
-	public void setRequestType(RequestType _requestType) {
-		this._requestType = _requestType;
+	public void setPermission(Permissions _permission) {
+		this._permission =_permission;
 	}
 
 	public String getResponder() {
