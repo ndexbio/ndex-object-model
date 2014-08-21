@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "accountType")
 @JsonSubTypes(value = { @Type(value = Group.class, name = "Group"), @Type(value = User.class, name = "User") })
-public abstract class Account extends NdexExternalObject implements PropertiedObject
+public abstract class Account extends NdexExternalObject 
 {
     private String _imageURL;
     private String _description;
@@ -59,27 +59,6 @@ public abstract class Account extends NdexExternalObject implements PropertiedOb
         _website = website;
     }
     
-	private List<NdexProperty> _properties;
-	private List<NdexProperty> _presentationProperties;
-
-
-	public List<NdexProperty> getProperties() {
-		return _properties;
-	}
-
-	public List<NdexProperty> getPresentationProperties() {
-		return _presentationProperties;
-	}
-
-	public void setProperties(List<NdexProperty> properties) {
-		_properties = properties;
-	}
-
-	public void setPresentationProperties(List<NdexProperty> properties) {
-		_presentationProperties = properties;
-	}
-
-
 	public String getAccountName() {
 		return _accountName;
 	}
