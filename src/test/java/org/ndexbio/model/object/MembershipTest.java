@@ -46,8 +46,8 @@ public class MembershipTest {
 		
 		//set values 
 	
-		UUID eId = UUID.randomUUID();
-		original.setExternalId( eId);
+//		UUID eId = UUID.randomUUID();
+//		original.setExternalId( eId);
 		original.setMemberAccountName("foo");
 		
         original.setMembershipType(MembershipType.GROUP); 		
@@ -65,7 +65,7 @@ public class MembershipTest {
         Membership m = mapper.readValue(s, Membership.class);
         
 
-        assertEquals(m.getExternalId(), eId);
+ //       assertEquals(m.getExternalId(), eId);
 		
         assertEquals(m.getMemberAccountName(), original.getMemberAccountName());
         
@@ -79,9 +79,9 @@ public class MembershipTest {
 
         assertEquals(m.getResourceUUID(), original.getResourceUUID());
         
-        assertEquals(m.getCreationDate(), original.getCreationDate());
+//        assertEquals(m.getCreationDate(), original.getCreationDate());
 
-        assertEquals(m.getModificationDate(), original.getModificationDate());
+//        assertEquals(m.getModificationDate(), original.getModificationDate());
         
         assertEquals(m.getType(), "Membership");
 	}

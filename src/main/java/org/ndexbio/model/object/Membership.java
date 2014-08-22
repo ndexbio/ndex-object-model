@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Membership extends NdexExternalObject
+public class Membership extends NdexObject //NdexExternalObject
 {
     private Permissions _memberPermissions;
     private MembershipType _membershipType;
