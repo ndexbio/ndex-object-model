@@ -3,7 +3,7 @@ package org.ndexbio.model.object.network;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Namespace extends NetworkElement
+public class Namespace extends PropertiedNetworkElement
 {
     private String _prefix;
     private String _uri;
