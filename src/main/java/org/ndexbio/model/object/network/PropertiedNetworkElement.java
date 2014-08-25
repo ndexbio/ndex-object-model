@@ -40,5 +40,12 @@ public abstract class PropertiedNetworkElement extends NetworkElement implements
 		_presentationProperties = properties;
 	}
 
+	public String getPropertyAsString (String propertyName) {
+		for (NdexProperty p : this.getProperties()) {
+			if ( p.getPredicateString().equals(propertyName))
+				return p.getValue();
+		}
+		return null;
+	}
 
 }

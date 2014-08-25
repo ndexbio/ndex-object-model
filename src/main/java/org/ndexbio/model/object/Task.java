@@ -24,18 +24,19 @@ public class Task extends NdexExternalObject
     public Task()
     {
         super();
+        this._type = this.getClass().getSimpleName();
     }
 
 
     
     public String getDescription()
     {
-        return _description;
+        return this._description;
     }
     
     public void setDescription(String description)
     {
-        _description = description;
+        this._description = description;
     }
     
     public Priority getPriority()

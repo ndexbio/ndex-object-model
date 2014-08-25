@@ -25,6 +25,7 @@ public class Request extends NdexExternalObject
     public Request()
     {
         super();
+        this._type = this.getClass().getSimpleName();
     }
     
     public String getMessage()
