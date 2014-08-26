@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Citation extends PropertiedNetworkElement {
+public class Citation extends PropertiedNetworkElement implements Comparable<Citation> {
     private List<String> _contributors;
     private String _title;
     private String _identifier;
@@ -71,6 +71,13 @@ public class Citation extends PropertiedNetworkElement {
 
 	public void setIdType(String _idType) {
 		this._idType = _idType;
+	}
+
+	public int compareTo(Citation o) {
+		long i = this.getId() - o.getId();
+		if ( i > 0) return 1;
+		if ( i < 0 ) return -1;
+		return 0;
 	}
 
     
