@@ -29,7 +29,7 @@ public class ProvenanceEntity extends NdexObject {
 		return _creationEvent;
 	}
 
-	public void set_createdFromEvent(ProvenanceEvent _creationEvent) {
+	public void setCreationEvent(ProvenanceEvent _creationEvent) {
 		this._creationEvent = _creationEvent;
 	}
 
