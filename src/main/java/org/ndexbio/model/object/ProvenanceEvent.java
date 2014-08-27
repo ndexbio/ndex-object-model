@@ -13,6 +13,7 @@ public class ProvenanceEvent extends NdexObject{
 	private List<ProvenanceEntity> _inputs;
 	private Date _startDate;
 	private Date _endDate;
+	private String _eventType;
 
 	public ProvenanceEvent () {
 		super();
@@ -55,5 +56,14 @@ public class ProvenanceEvent extends NdexObject{
 	public void setEndDate(Date _endDate) {
 		this._endDate = _endDate;
 	}
+
+	public String getEventType() {
+		return _eventType;
+	}
+
+	public void setEventType(String _eventType) {
+		this._eventType = _eventType;
+	}
+	
 
 }

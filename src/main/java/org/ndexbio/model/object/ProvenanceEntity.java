@@ -9,6 +9,7 @@ public class ProvenanceEntity extends NdexObject {
 
 	private List<NdexProperty> _properties;
 	private ProvenanceEvent _creationEvent;
+	private String _uri;
 
 	public ProvenanceEntity () {
 		super();
@@ -31,7 +32,13 @@ public class ProvenanceEntity extends NdexObject {
 	public void set_createdFromEvent(ProvenanceEvent _creationEvent) {
 		this._creationEvent = _creationEvent;
 	}
-	
 
+	public String getUri() {
+		return _uri;
+	}
+
+	public void setUri(String _uri) {
+		this._uri = _uri;
+	}
 	
 }
