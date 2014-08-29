@@ -2,6 +2,8 @@ package org.ndexbio.model.object;
 
 import java.util.UUID;
 
+import org.ndexbio.model.object.network.FileFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -14,6 +16,7 @@ public class Task extends NdexExternalObject
     private String _resource;
     private Status _status;
     private TaskType _taskType;
+    private FileFormat _format;
    
     private UUID _taskOwnerId;
     
@@ -99,5 +102,17 @@ public class Task extends NdexExternalObject
 
 	public void setTaskOwnerId(UUID _taskOwnerId) {
 		this._taskOwnerId = _taskOwnerId;
+	}
+
+
+
+	public FileFormat getFormat() {
+		return _format;
+	}
+
+
+
+	public void setFormat(FileFormat _format) {
+		this._format = _format;
 	}
 }
