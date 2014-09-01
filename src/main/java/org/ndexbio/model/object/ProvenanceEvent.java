@@ -20,6 +20,13 @@ public class ProvenanceEvent extends NdexObject{
         _type = this.getClass().getSimpleName();
 	}
 
+	public ProvenanceEvent(String eventType, Date eventDate) {
+		super();
+        _type = this.getClass().getSimpleName();
+        _endDate = eventDate;
+        _eventType = eventType;
+	}
+
 	public List<NdexProperty> getProperties() {
 		return _properties;
 	}
