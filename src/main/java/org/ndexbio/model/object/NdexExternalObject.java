@@ -10,29 +10,29 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public abstract class NdexExternalObject extends NdexObject {
 	
 	private UUID _externalId; 
-	private Date _creationDate;
+	private Date _creationTime;
 	
-	private Date _modificationDate;
+	private Date _modificationTime;
 	
 	public NdexExternalObject () {
-		setCreationDate(new Date());
-		setModificationDate(new Date());
+		setCreationTime(new Date());
+		setModificationTime(new Date());
 	}
 
-	public Date getModificationDate() {
-		return _modificationDate;
+	public Date getModificationTime() {
+		return _modificationTime;
 	}
 
-	public void setModificationDate(Date _modificationDate) {
-		this._modificationDate = _modificationDate;
+	public void setModificationTime(Date _modificationDate) {
+		this._modificationTime = _modificationDate;
 	}
 
-	public Date getCreationDate() {
-		return _creationDate;
+	public Date getCreationTime() {
+		return _creationTime;
 	}
 
-	public void setCreationDate(Date _creationDate) {
-		this._creationDate = _creationDate;
+	public void setCreationTime(Date _creationDate) {
+		this._creationTime = _creationDate;
 	}
 
 	public UUID getExternalId() {
