@@ -1,24 +1,17 @@
 package org.ndexbio.model.object.network;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import org.ndexbio.model.object.Membership;
-import org.ndexbio.model.object.NdexExternalObject;
-import org.ndexbio.model.object.NdexProperty;
-import org.ndexbio.model.object.PropertiedObject;
 import org.ndexbio.model.object.Request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class Network extends NetworkSummary implements PropertiedObject
+public class Network extends NetworkSummary 
 {
     private Map<Long,Citation> _citations;
     private Map<Long, Edge> _edges;
@@ -33,8 +26,6 @@ public class Network extends NetworkSummary implements PropertiedObject
     private Map<Long, ReifiedEdgeTerm> _reifiedEdgeTerms;
 
 
-	private List<NdexProperty> _properties;
-	private List<NdexProperty> _presentationProperties;
 
     /**************************************************************************
     * Default constructor.
@@ -151,26 +142,8 @@ public class Network extends NetworkSummary implements PropertiedObject
         _functionTerms = new HashMap<Long,FunctionTerm>(10);
         _reifiedEdgeTerms = new HashMap<Long,ReifiedEdgeTerm> (10);
         
-        _properties = new ArrayList<NdexProperty> (10);
-    	_presentationProperties = new ArrayList<NdexProperty> (10);
     }
 
-
-	public List<NdexProperty> getProperties() {
-		return _properties;
-	}
-
-	public List<NdexProperty> getPresentationProperties() {
-		return _presentationProperties;
-	}
-
-	public void setProperties(List<NdexProperty> properties) {
-		_properties = properties;
-	}
-
-	public void setPresentationProperties(List<NdexProperty> properties) {
-		_presentationProperties = properties;
-	}
 
 /*
 	public long getHighestElementId() {

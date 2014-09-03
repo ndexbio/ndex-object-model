@@ -1,14 +1,19 @@
 package org.ndexbio.model.object.network;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.ndexbio.model.object.NdexExternalObject;
+import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.PropertiedObject;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 
-public class NetworkSummary extends NdexExternalObject {
+public class NetworkSummary extends NdexExternalObject implements PropertiedObject {
 
     private String _description;
     private int _edgeCount;
@@ -21,6 +26,10 @@ public class NetworkSummary extends NdexExternalObject {
 //	private long _highestElementId;
 	private String _version;
 	
+	private List<NdexProperty> _properties;
+	private List<NdexProperty> _presentationProperties;
+
+	
 	public NetworkSummary () {
 		super();
         _type = this.getClass().getSimpleName();
@@ -30,6 +39,9 @@ public class NetworkSummary extends NdexExternalObject {
         setVisibility(VisibilityType.PRIVATE);
         _edgeCount = 0;
         _nodeCount = 0;
+        
+        _properties = new ArrayList<NdexProperty> (10);
+    	_presentationProperties = new ArrayList<NdexProperty> (10);
 
 	}
 
@@ -112,6 +124,22 @@ public class NetworkSummary extends NdexExternalObject {
     {
         _nodeCount = nodeCount;
     }
+
+	public List<NdexProperty> getProperties() {
+		return _properties;
+	}
+
+	public List<NdexProperty> getPresentationProperties() {
+		return _presentationProperties;
+	}
+
+	public void setProperties(List<NdexProperty> properties) {
+		_properties = properties;
+	}
+
+	public void setPresentationProperties(List<NdexProperty> properties) {
+		_presentationProperties = properties;
+	}
 
 
     

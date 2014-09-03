@@ -25,6 +25,7 @@ public class ProvenanceEvent extends NdexObject{
         _type = this.getClass().getSimpleName();
         _endDate = eventDate;
         _eventType = eventType;
+        _properties = new ArrayList<NdexProperty> ();
 	}
 
 	public List<NdexProperty> getProperties() {

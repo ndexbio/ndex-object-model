@@ -1,5 +1,6 @@
 package org.ndexbio.model.object;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.ndexbio.model.object.network.NetworkSummary;
@@ -16,7 +17,8 @@ public class ProvenanceEntity extends NdexObject {
 	public ProvenanceEntity () {
 		super();
         _type = this.getClass().getSimpleName();
-
+        
+        _properties = new ArrayList<NdexProperty>();
 	}
 
 	public ProvenanceEntity(NetworkSummary networkSummary, String hostURI) {
