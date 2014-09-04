@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface PropertiedObject {
 
-	public List<NdexProperty>  getProperties();
+	public List<NdexPropertyValuePair>  getProperties();
 	
-	public List<NdexProperty>  getPresentationProperties();
+	public List<SimplePropertyValuePair>  getPresentationProperties();
 	
-	public void setProperties(List<NdexProperty> properties);
+	public void setProperties(List<NdexPropertyValuePair> properties);
 
-	public void setPresentationProperties(List<NdexProperty> properties);
+	public void setPresentationProperties(List<SimplePropertyValuePair> properties);
 }

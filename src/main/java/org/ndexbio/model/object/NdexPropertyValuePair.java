@@ -3,7 +3,7 @@ package org.ndexbio.model.object;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NdexProperty extends NdexObject {
+public class NdexPropertyValuePair extends NdexObject {
 
 	public static final String STRING = "String"; 
 	
@@ -13,13 +13,13 @@ public class NdexProperty extends NdexObject {
 	private String _value;
 	private String _dataType;
 	
-	public NdexProperty () {
+	public NdexPropertyValuePair () {
 		_dataType = STRING;
         _type = this.getClass().getSimpleName();
 
 	}
 	
-	public NdexProperty (String key, String value) {
+	public NdexPropertyValuePair (String key, String value) {
 		_predicateString = key;
 		_value = value;
 		_dataType = STRING;

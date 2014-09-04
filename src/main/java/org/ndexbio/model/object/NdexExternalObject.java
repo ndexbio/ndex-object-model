@@ -1,5 +1,7 @@
 package org.ndexbio.model.object;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,28 +12,28 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public abstract class NdexExternalObject extends NdexObject {
 	
 	private UUID _externalId; 
-	private Date _creationTime;
+	private Timestamp _creationTime;
 	
-	private Date _modificationTime;
+	private Timestamp _modificationTime;
 	
 	public NdexExternalObject () {
-		setCreationTime(new Date());
-		setModificationTime(new Date());
+		setCreationTime(new Timestamp(Calendar.getInstance().getTimeInMillis()));
+		this._modificationTime = this._creationTime;
 	}
 
-	public Date getModificationTime() {
+	public Timestamp getModificationTime() {
 		return _modificationTime;
 	}
 
-	public void setModificationTime(Date _modificationDate) {
+	public void setModificationTime(Timestamp _modificationDate) {
 		this._modificationTime = _modificationDate;
 	}
 
-	public Date getCreationTime() {
+	public Timestamp getCreationTime() {
 		return _creationTime;
 	}
 
-	public void setCreationTime(Date _creationDate) {
+	public void setCreationTime(Timestamp _creationDate) {
 		this._creationTime = _creationDate;
 	}
 

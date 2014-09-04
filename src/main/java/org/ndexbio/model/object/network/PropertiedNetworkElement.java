@@ -3,45 +3,46 @@ package org.ndexbio.model.object.network;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.PropertiedObject;
+import org.ndexbio.model.object.SimplePropertyValuePair;
 
 public abstract class PropertiedNetworkElement extends NetworkElement implements
 		PropertiedObject {
 
 	
-	private List<NdexProperty> _properties;
-	private List<NdexProperty> _presentationProperties;
+	private List<NdexPropertyValuePair> _properties;
+	private List<SimplePropertyValuePair> _presentationProperties;
 
     
 	 public PropertiedNetworkElement()
 	 {
 	        super();
 	        _type = this.getClass().getSimpleName();
-	        _properties = new ArrayList<NdexProperty>();
-	        _presentationProperties = new ArrayList<NdexProperty>();
+	        _properties = new ArrayList<NdexPropertyValuePair>();
+	        _presentationProperties = new ArrayList<SimplePropertyValuePair>();
 //	        this.initializeCollections();
 	 }
 	
 	
-	public List<NdexProperty> getProperties() {
+	public List<NdexPropertyValuePair> getProperties() {
 		return _properties;
 	}
 
-	public List<NdexProperty> getPresentationProperties() {
+	public List<SimplePropertyValuePair> getPresentationProperties() {
 		return _presentationProperties;
 	}
 
-	public void setProperties(List<NdexProperty> properties) {
+	public void setProperties(List<NdexPropertyValuePair> properties) {
 		_properties = properties;
 	}
 
-	public void setPresentationProperties(List<NdexProperty> properties) {
+	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 		_presentationProperties = properties;
 	}
 
 	public String getPropertyAsString (String propertyName) {
-		for (NdexProperty p : this.getProperties()) {
+		for (NdexPropertyValuePair p : this.getProperties()) {
 			if ( p.getPredicateString().equals(propertyName))
 				return p.getValue();
 		}

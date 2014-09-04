@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ndexbio.model.object.NdexExternalObject;
-import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.PropertiedObject;
+import org.ndexbio.model.object.SimplePropertyValuePair;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -26,8 +27,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 //	private long _highestElementId;
 	private String _version;
 	
-	private List<NdexProperty> _properties;
-	private List<NdexProperty> _presentationProperties;
+	private List<NdexPropertyValuePair> _properties;
+	private List<SimplePropertyValuePair> _presentationProperties;
 
 	
 	public NetworkSummary () {
@@ -40,8 +41,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         _edgeCount = 0;
         _nodeCount = 0;
         
-        _properties = new ArrayList<NdexProperty> (10);
-    	_presentationProperties = new ArrayList<NdexProperty> (10);
+        _properties = new ArrayList<NdexPropertyValuePair> (10);
+    	_presentationProperties = new ArrayList<SimplePropertyValuePair> (10);
 
 	}
 
@@ -125,19 +126,19 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         _nodeCount = nodeCount;
     }
 
-	public List<NdexProperty> getProperties() {
+	public List<NdexPropertyValuePair> getProperties() {
 		return _properties;
 	}
 
-	public List<NdexProperty> getPresentationProperties() {
+	public List<SimplePropertyValuePair> getPresentationProperties() {
 		return _presentationProperties;
 	}
 
-	public void setProperties(List<NdexProperty> properties) {
+	public void setProperties(List<NdexPropertyValuePair> properties) {
 		_properties = properties;
 	}
 
-	public void setPresentationProperties(List<NdexProperty> properties) {
+	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 		_presentationProperties = properties;
 	}
 

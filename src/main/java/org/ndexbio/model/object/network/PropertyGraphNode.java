@@ -1,7 +1,7 @@
 package org.ndexbio.model.object.network;
 
 
-import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.NdexPropertyValuePair;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -44,20 +44,20 @@ public boolean equals(Object anObject) {
  	 * @param name
  	 */
  	public void setName (String nodeName) {
-	  for ( NdexProperty p : this.getProperties()) {
+	  for ( NdexPropertyValuePair p : this.getProperties()) {
 		  if ( p.getPredicateString().equals(name)) {
 			  p.setValue(nodeName);
 			  return;
 		  }   
 	  }
-	  NdexProperty p = new NdexProperty(name, nodeName);
+	  NdexPropertyValuePair p = new NdexPropertyValuePair(name, nodeName);
 	  this.getProperties().add(p);
 
  	}
 
  	
  	  public String getName () {
- 		  for ( NdexProperty p : this.getProperties()) {
+ 		  for ( NdexPropertyValuePair p : this.getProperties()) {
  			  if ( p.getPredicateString().equals(name))
  				  return p.getValue();
  		  }

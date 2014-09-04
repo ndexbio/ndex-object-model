@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.PropertiedObject;
+import org.ndexbio.model.object.SimplePropertyValuePair;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,8 +20,8 @@ public class PropertyGraphNetwork implements PropertiedObject{
 
    private Map<Long,PropertyGraphNode> _nodes;
    private Map <Long, PropertyGraphEdge> _edges;
-   private List<NdexProperty> _properties;
-   private List<NdexProperty> _presentationProperties;
+   private List<NdexPropertyValuePair> _properties;
+   private List<SimplePropertyValuePair> _presentationProperties;
 
    public static final String uuid      = "NDEX:UUID";
    public static final String namspaces = "NDEX:namespaces";
@@ -36,8 +37,8 @@ public class PropertyGraphNetwork implements PropertiedObject{
    public PropertyGraphNetwork() {
 	   setNodes(new HashMap<Long,PropertyGraphNode> ());
 	   setEdges(new HashMap<Long, PropertyGraphEdge>  ());
-	   _properties = new ArrayList<NdexProperty>();
-	   _presentationProperties = new ArrayList <NdexProperty>();
+	   _properties = new ArrayList<NdexPropertyValuePair>();
+	   _presentationProperties = new ArrayList <SimplePropertyValuePair>();
    }
 
 
@@ -57,20 +58,20 @@ public void setEdges(Map <Long,PropertyGraphEdge> _edges) {
 	this._edges = _edges;
 }
 
-public List<NdexProperty> getProperties() {
+public List<NdexPropertyValuePair> getProperties() {
 	return this._properties;
 }
 
-public List<NdexProperty> getPresentationProperties() {
+public List<SimplePropertyValuePair> getPresentationProperties() {
 	return this._presentationProperties;
 }
 
-public void setProperties(List<NdexProperty> properties) {
+public void setProperties(List<NdexPropertyValuePair> properties) {
 	this._properties = properties;
 	
 }
 
-public void setPresentationProperties(List<NdexProperty> properties) {
+public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 	this._presentationProperties = properties;
 	
 }
@@ -81,7 +82,7 @@ public void setPresentationProperties(List<NdexProperty> properties) {
    * @return
    */
   public String getName () {
-	  for ( NdexProperty p : _properties) {
+	  for ( NdexPropertyValuePair p : _properties) {
 		  if ( p.getPredicateString().equals(name))
 			  return p.getValue();
 	  }
@@ -93,13 +94,13 @@ public void setPresentationProperties(List<NdexProperty> properties) {
    * @param networkName the new network title.
    */
   public void setName(String networkName) {
-	  for ( NdexProperty p : _properties) {
+	  for ( NdexPropertyValuePair p : _properties) {
 		  if ( p.getPredicateString().equals(name)) {
 			  p.setValue(networkName);
 			  return;
 		  }   
 	  }
-	  NdexProperty p = new NdexProperty(name, networkName);
+	  NdexPropertyValuePair p = new NdexPropertyValuePair(name, networkName);
 	  _properties.add(p);
   }
 	

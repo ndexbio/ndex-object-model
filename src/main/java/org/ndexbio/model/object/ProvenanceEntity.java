@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProvenanceEntity extends NdexObject {
 
-	private List<NdexProperty> _properties;
+	private List<SimplePropertyValuePair> _properties;
 	private ProvenanceEvent _creationEvent;
 	private String _uri;
 
@@ -18,7 +18,7 @@ public class ProvenanceEntity extends NdexObject {
 		super();
         _type = this.getClass().getSimpleName();
         
-        _properties = new ArrayList<NdexProperty>();
+        _properties = new ArrayList<SimplePropertyValuePair>();
 	}
 
 	public ProvenanceEntity(NetworkSummary networkSummary, String hostURI) {
@@ -27,11 +27,11 @@ public class ProvenanceEntity extends NdexObject {
 		_uri = hostURI + "/network/" + networkSummary.getExternalId();
 	}
 
-	public List<NdexProperty> getProperties() {
+	public List<SimplePropertyValuePair> getProperties() {
 		return _properties;
 	}
 
-	public void setProperties(List<NdexProperty> _properties) {
+	public void setProperties(List<SimplePropertyValuePair> _properties) {
 		this._properties = _properties;
 	}
 

@@ -3,13 +3,13 @@ package org.ndexbio.model.tools;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ndexbio.model.object.NdexProperty;
+import org.ndexbio.model.object.SimplePropertyValuePair;
 
 public class PropertyHelpers {
 
-	public static List<NdexProperty> copyProperties(List<NdexProperty> properties) {
-		List<NdexProperty> copiedProperties = new ArrayList<NdexProperty>();
-		for (NdexProperty prop : properties){
+	public static List<SimplePropertyValuePair> copyProperties(List<SimplePropertyValuePair> properties) {
+		List<SimplePropertyValuePair> copiedProperties = new ArrayList<SimplePropertyValuePair>();
+		for (SimplePropertyValuePair prop : properties){
 			if (null != prop){
 				copiedProperties.add(copyProperty(prop));
 			}
@@ -17,29 +17,19 @@ public class PropertyHelpers {
 		return copiedProperties;
 	}
 	
-	public static NdexProperty copyProperty(NdexProperty property){
+	public static SimplePropertyValuePair copyProperty(SimplePropertyValuePair property){
 		if (null == property) return null;
-		NdexProperty copiedProperty = new NdexProperty();
+		SimplePropertyValuePair copiedProperty = new SimplePropertyValuePair();
 		
-		//private long   _predicateId;
-		copiedProperty.setPredicateId(property.getPredicateId());
 		
 		//private String _predicateString;
-		if (null != property.getPredicateString()){
-			copiedProperty.setPredicateString(new String(property.getPredicateString()));
+		if (null != property.getName()){
+			copiedProperty.setName(new String(property.getName()));
 		}
-		
-		//private long _valueId;
-		copiedProperty.setValueId(property.getValueId());
 		
 		//private String _value;
 		if (null != property.getValue()){
 			copiedProperty.setValue(new String(property.getValue()));
-		}
-		
-		//private String _dataType;
-		if (null != property.getDataType()){
-			copiedProperty.setDataType(new String(property.getDataType()));
 		}
 		
 		return copiedProperty;

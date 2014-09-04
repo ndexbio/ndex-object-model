@@ -1,5 +1,6 @@
 package org.ndexbio.model.tools;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class ProvenanceHelpers {
 			NetworkSummary newNetwork,
 			String hostURI,
 			String eventType, 
-			Date eventDate,
+			Timestamp eventDate,
 			ProvenanceEntity input
 			){
 		ProvenanceEntity prov = createRootProvenanceEntity(newNetwork, hostURI, eventType, eventDate);
@@ -33,7 +34,7 @@ public class ProvenanceHelpers {
 			NetworkSummary newNetwork,
 			String hostURI,
 			String eventType, 
-			Date eventDate,
+			Timestamp eventDate,
 			List<ProvenanceEntity> inputs
 			){
 		ProvenanceEntity prov = createRootProvenanceEntity(newNetwork, hostURI, eventType, eventDate);
@@ -49,7 +50,7 @@ public class ProvenanceHelpers {
 	}
 	
 	private static ProvenanceEntity createRootProvenanceEntity(
-			NetworkSummary networkSummary, String hostURI, String eventType, Date eventDate) {
+			NetworkSummary networkSummary, String hostURI, String eventType, Timestamp eventDate) {
 		ProvenanceEntity prov = new ProvenanceEntity(networkSummary, hostURI);
 		ProvenanceEvent event = new ProvenanceEvent(eventType, eventDate);
 		prov.setCreationEvent(event);
@@ -81,12 +82,12 @@ public class ProvenanceHelpers {
 			copiedEvent.setProperties(PropertyHelpers.copyProperties(event.getProperties()));
 		}
 
-		if (null != event.getEndDate()) {
-			copiedEvent.setEndDate((Date)event.getEndDate().clone());
+		if (null != event.getEndedAtTime()) {
+			copiedEvent.setEndedAtTime((Timestamp)event.getEndedAtTime().clone());
 		}
 		
-		if (null != event.getStartDate()) {
-			copiedEvent.setStartDate((Date)event.getStartDate().clone());
+		if (null != event.getStartedAtTime()) {
+			copiedEvent.setStartedAtTime((Timestamp)event.getStartedAtTime().clone());
 		}
 		
 		if (null != event.getInputs()){

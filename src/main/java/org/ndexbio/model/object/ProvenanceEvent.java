@@ -1,5 +1,6 @@
 package org.ndexbio.model.object;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,10 +10,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProvenanceEvent extends NdexObject{
 	
-	private List<NdexProperty> _properties;
+	private List<SimplePropertyValuePair> _properties;
 	private List<ProvenanceEntity> _inputs;
-	private Date _startDate;
-	private Date _endDate;
+	private Timestamp _startedAtTime;
+	private Timestamp _endedAtTime;
 	private String _eventType;
 
 	public ProvenanceEvent () {
@@ -20,19 +21,19 @@ public class ProvenanceEvent extends NdexObject{
         _type = this.getClass().getSimpleName();
 	}
 
-	public ProvenanceEvent(String eventType, Date eventDate) {
+	public ProvenanceEvent(String eventType, Timestamp eventDate) {
 		super();
         _type = this.getClass().getSimpleName();
-        _endDate = eventDate;
+        _endedAtTime = eventDate;
         _eventType = eventType;
-        _properties = new ArrayList<NdexProperty> ();
+        _properties = new ArrayList<SimplePropertyValuePair> ();
 	}
 
-	public List<NdexProperty> getProperties() {
+	public List<SimplePropertyValuePair> getProperties() {
 		return _properties;
 	}
 
-	public void setProperties(List<NdexProperty> _properties) {
+	public void setProperties(List<SimplePropertyValuePair> _properties) {
 		this._properties = _properties;
 	}
 
@@ -49,20 +50,20 @@ public class ProvenanceEvent extends NdexObject{
 		this._inputs.add(_input);
 	}
 
-	public Date getStartDate() {
-		return _startDate;
+	public Date getStartedAtTime() {
+		return _startedAtTime;
 	}
 
-	public void setStartDate(Date _startDate) {
-		this._startDate = _startDate;
+	public void setStartedAtTime(Timestamp _startDate) {
+		this._startedAtTime = _startDate;
 	}
 
-	public Date getEndDate() {
-		return _endDate;
+	public Date getEndedAtTime() {
+		return _endedAtTime;
 	}
 
-	public void setEndDate(Date _endDate) {
-		this._endDate = _endDate;
+	public void setEndedAtTime(Timestamp _endDate) {
+		this._endedAtTime = _endDate;
 	}
 
 	public String getEventType() {
