@@ -24,6 +24,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
     private String _name;
     private int _nodeCount;
     
+    private String _URI;
+    
 //	private long _highestElementId;
 	private String _version;
 	
@@ -140,6 +142,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 		_presentationProperties = properties;
+	}
+
+	public String getURI() {
+		return _URI;
+	}
+
+	public void setURI(String _URI) {
+		this._URI = _URI;
 	}
 
 
