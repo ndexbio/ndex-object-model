@@ -35,5 +35,30 @@ public class PropertyHelpers {
 		return copiedProperty;
 		
 	}
+	
+	public static void setProperty(
+			String propertyString, 
+			String valueString, 
+			List<SimplePropertyValuePair> properties){
+		
+		// if the property is found in a pair in the list, set the value
+		for (SimplePropertyValuePair pair : properties){
+			if (propertyString.equals(pair.getName())){
+				pair.setValue(valueString);
+				return;
+			}
+		}
+		
+		// if the property is not found, add it
+		addProperty(propertyString, valueString, properties);	
+	}
+	
+	public static void addProperty(
+			String propertyString, 
+			String valueString, 
+			List<SimplePropertyValuePair> properties){
+		
+		properties.add(new SimplePropertyValuePair(propertyString, valueString));		
+	}
 
 }
