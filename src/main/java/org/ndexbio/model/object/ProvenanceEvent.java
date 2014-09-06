@@ -21,10 +21,11 @@ public class ProvenanceEvent extends NdexObject{
         _type = this.getClass().getSimpleName();
 	}
 
-	public ProvenanceEvent(String eventType, Timestamp eventDate) {
+	public ProvenanceEvent(String eventType, Timestamp eventTime) {
 		super();
         _type = this.getClass().getSimpleName();
-        _endedAtTime = eventDate;
+        _endedAtTime = eventTime;
+        _startedAtTime = eventTime;
         _eventType = eventType;
         _properties = new ArrayList<SimplePropertyValuePair> ();
 	}

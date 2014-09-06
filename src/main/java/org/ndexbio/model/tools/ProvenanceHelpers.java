@@ -50,9 +50,9 @@ public class ProvenanceHelpers {
 	}
 	
 	private static ProvenanceEntity createRootProvenanceEntity(
-			NetworkSummary networkSummary, String hostURI, String eventType, Timestamp eventDate) {
+			NetworkSummary networkSummary, String hostURI, String eventType, Timestamp eventTime) {
 		ProvenanceEntity prov = new ProvenanceEntity(networkSummary, hostURI);
-		ProvenanceEvent event = new ProvenanceEvent(eventType, eventDate);
+		ProvenanceEvent event = new ProvenanceEvent(eventType, eventTime);
 		prov.setCreationEvent(event);
 		return prov;
 	}
