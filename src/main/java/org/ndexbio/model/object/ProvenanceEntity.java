@@ -25,6 +25,7 @@ public class ProvenanceEntity extends NdexObject {
 		super();
 		_type = this.getClass().getSimpleName();
 		_uri = hostURI + "/network/" + networkSummary.getExternalId();
+		_properties = new ArrayList<SimplePropertyValuePair>();
 	}
 
 	public List<SimplePropertyValuePair> getProperties() {
