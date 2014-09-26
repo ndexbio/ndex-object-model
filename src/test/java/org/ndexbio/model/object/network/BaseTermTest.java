@@ -1,13 +1,11 @@
 package org.ndexbio.model.object.network;
 
-import static org.junit.Assert.*;
 
 import java.io.IOException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.ndexbio.model.object.Membership;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -38,12 +36,12 @@ public class BaseTermTest {
         System.out.println (s);
 
         
-        BaseTerm m = objectMapper.readValue(s, BaseTerm.class);
+         objectMapper.readValue(s, BaseTerm.class);
         
 		
 		String foo = 
 			"{\"name\":\"NM_004379\",\"namespace\":756,\"termType\":\"BaseTerm\",\"id\":1153,\"type\":\"BaseTerm\"}";
-		BaseTerm b = objectMapper.readValue(foo, BaseTerm.class);
+		 objectMapper.readValue(foo, BaseTerm.class);
 	}
 
 }

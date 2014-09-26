@@ -3,9 +3,6 @@ package org.ndexbio.model.object.network;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ndexbio.model.object.NdexPropertyValuePair;
-import org.ndexbio.model.object.PropertiedObject;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

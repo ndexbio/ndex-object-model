@@ -1,7 +1,6 @@
 package org.ndexbio.model.tools;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 import org.ndexbio.model.object.ProvenanceEntity;

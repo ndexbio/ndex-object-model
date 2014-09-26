@@ -2,12 +2,9 @@ package org.ndexbio.model.object;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.UUID;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,7 +23,7 @@ public class ProvenanceEventTest {
 	 }
 
 		@Test
-		public void test() throws JsonParseException, JsonMappingException, IOException, URISyntaxException {
+		public void test() throws JsonParseException, JsonMappingException, IOException {
 			
 			Timestamp now = new Timestamp(Calendar.getInstance().getTimeInMillis());
 			ProvenanceEvent original = new ProvenanceEvent ("COPY", now);
