@@ -30,7 +30,7 @@ public class PropertyGraphNetwork implements PropertiedObject{
    public static final String description = "dc:description";
    
    public static final String function = "FUNCTION";
-   public static final String reifiedEdgeTerm = "NDEX:ReifedEdgeTerm";
+   public static final String reifiedEdgeTerm = "NDEX:ReifiedEdgeTerm";
    
    public PropertyGraphNetwork() {
 	   setNodes(new HashMap<Long,PropertyGraphNode> ());
