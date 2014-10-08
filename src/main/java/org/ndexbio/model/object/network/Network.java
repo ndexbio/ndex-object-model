@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.ndexbio.model.object.Membership;
-import org.ndexbio.model.object.Request;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -15,11 +12,9 @@ public class Network extends NetworkSummary
 {
     private Map<Long,Citation> _citations;
     private Map<Long, Edge> _edges;
-//    private Map<Long,Membership> _members;
     private Map<Long,Namespace> _namespaces;
     
     private Map<Long, Node> _nodes;
-//    private Map<Long, Request> _requests;
     private Map<Long, Support> _supports;
     private Map<Long, BaseTerm> _baseTerms;
     private Map<Long, FunctionTerm> _functionTerms;
@@ -72,18 +67,6 @@ public class Network extends NetworkSummary
         _edges = edges;
     }
 
-/*   
-    public Map<Long,Membership> getMembers()
-    {
-        return _members;
-    }
-    
-    public void setMembers(Map<Long,Membership> members)
-    {
-        _members = members;
-    }
- */   
-
     public Map<Long,Namespace> getNamespaces()
     {
         return _namespaces;
@@ -104,17 +87,6 @@ public class Network extends NetworkSummary
         _nodes = nodes;
     }
    
-/*    
-    public Map<Long,Request> getRequests()
-    {
-        return _requests;
-    }
-    
-    public void setRequests(Map<Long,Request> requests)
-    {
-        _requests = requests;
-    }
-*/
     public Map<Long, Support> getSupports()
     {
         return _supports;
@@ -146,24 +118,9 @@ public class Network extends NetworkSummary
     }
 
 
-/*
-	public long getHighestElementId() {
-		return _highestElementId;
-	}
-
-
-
-	public void setHighestElementId(long _highestElementId) {
-		this._highestElementId = _highestElementId;
-	}
-*/
-
-
 	public Map<Long,BaseTerm> getBaseTerms() {
 		return _baseTerms;
 	}
-
-
 
 
 	public void setBaseTerms(Map<Long,BaseTerm> _baseTerms) {
@@ -171,13 +128,9 @@ public class Network extends NetworkSummary
 	}
 
 
-
-
 	public Map<Long,FunctionTerm> getFunctionTerms() {
 		return _functionTerms;
 	}
-
-
 
 
 	public void setFunctionTerms(Map<Long,FunctionTerm> _functionTerms) {
@@ -185,13 +138,9 @@ public class Network extends NetworkSummary
 	}
 
 
-
-
 	public Map<Long,ReifiedEdgeTerm> getReifiedEdgeTerms() {
 		return _reifiedEdgeTerms;
 	}
-
-
 
 
 	public void setReifiedEdgeTerms(Map<Long,ReifiedEdgeTerm> _reifiedEdgeTerms) {
