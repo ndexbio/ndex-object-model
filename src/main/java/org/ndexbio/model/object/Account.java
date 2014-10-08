@@ -14,7 +14,6 @@ public abstract class Account extends NdexExternalObject
     private String _description;
     private String _website;
     private String _accountName;
-    //private String _password;
 
     
     
@@ -65,15 +64,5 @@ public abstract class Account extends NdexExternalObject
 	public void setAccountName(String _accountName) {
 		this._accountName = _accountName;
 	}
-
-
-	/*public String getPassword() {
-		return _password;
-	}
-
-
-	public void setPassword(String _password) {
-		this._password = _password;
-	}*/
 
 }
