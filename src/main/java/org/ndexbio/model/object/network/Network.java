@@ -15,11 +15,11 @@ public class Network extends NetworkSummary
 {
     private Map<Long,Citation> _citations;
     private Map<Long, Edge> _edges;
-    private Map<Long,Membership> _members;
+//    private Map<Long,Membership> _members;
     private Map<Long,Namespace> _namespaces;
     
     private Map<Long, Node> _nodes;
-    private Map<Long, Request> _requests;
+//    private Map<Long, Request> _requests;
     private Map<Long, Support> _supports;
     private Map<Long, BaseTerm> _baseTerms;
     private Map<Long, FunctionTerm> _functionTerms;
@@ -72,7 +72,7 @@ public class Network extends NetworkSummary
         _edges = edges;
     }
 
-   
+/*   
     public Map<Long,Membership> getMembers()
     {
         return _members;
@@ -82,7 +82,7 @@ public class Network extends NetworkSummary
     {
         _members = members;
     }
-    
+ */   
 
     public Map<Long,Namespace> getNamespaces()
     {
@@ -103,7 +103,8 @@ public class Network extends NetworkSummary
     {
         _nodes = nodes;
     }
-    
+   
+/*    
     public Map<Long,Request> getRequests()
     {
         return _requests;
@@ -113,7 +114,7 @@ public class Network extends NetworkSummary
     {
         _requests = requests;
     }
-
+*/
     public Map<Long, Support> getSupports()
     {
         return _supports;
@@ -132,10 +133,10 @@ public class Network extends NetworkSummary
     private void initCollections()
     {
         _citations = new HashMap<Long,Citation>();
-        _members = new HashMap<Long,Membership>();
+//        _members = new HashMap<Long,Membership>();
         _namespaces = new HashMap<Long,Namespace>();
         _nodes = new TreeMap<Long,Node>();
-        _requests = new HashMap<Long,Request>();
+//        _requests = new HashMap<Long,Request>();
         _supports = new HashMap<Long, Support>();
         _baseTerms = new HashMap<Long,BaseTerm>(10);
         
