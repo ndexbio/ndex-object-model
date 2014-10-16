@@ -34,16 +34,16 @@ public class ProvenanceEvent extends NdexObject{
 		return _properties;
 	}
 
-	public void setProperties(List<SimplePropertyValuePair> _properties) {
-		this._properties = _properties;
+	public void setProperties(List<SimplePropertyValuePair> properties) {
+		this._properties = properties;
 	}
 
 	public List<ProvenanceEntity> getInputs() {
 		return _inputs;
 	}
 
-	public void setInputs(List<ProvenanceEntity> _inputs) {
-		this._inputs = _inputs;
+	public void setInputs(List<ProvenanceEntity> inputs) {
+		this._inputs = inputs;
 	}
 	
 	public void addInput(ProvenanceEntity _input) {
@@ -71,8 +71,8 @@ public class ProvenanceEvent extends NdexObject{
 		return _eventType;
 	}
 
-	public void setEventType(String _eventType) {
-		this._eventType = _eventType;
+	public void setEventType(String eventType) {
+		this._eventType = eventType;
 	}
 	
 

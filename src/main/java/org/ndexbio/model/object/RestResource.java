@@ -31,8 +31,8 @@ public class RestResource extends NdexObject
 		return _methodName;
 	}
 
-	public void setMethodName(String _methodName) {
-		this._methodName = _methodName;
+	public void setMethodName(String methodName) {
+		this._methodName = methodName;
 	}
 
 	public List<String> getParameterTypes() {
@@ -43,16 +43,16 @@ public class RestResource extends NdexObject
 		this._parameterTypes.add(_parameterType);
 	}
 
-	public void setParameterTypes(List<String> _parameterTypes) {
-		this._parameterTypes = _parameterTypes;
+	public void setParameterTypes(List<String> parameterTypes) {
+		this._parameterTypes = parameterTypes;
 	}
 
 	public String getRequestType() {
 		return _requestType;
 	}
 
-	public void setRequestType(String _requestType) {
-		this._requestType = _requestType;
+	public void setRequestType(String requestType) {
+		this._requestType = requestType;
 	}
 
 	public String getPath() {
@@ -83,8 +83,8 @@ public class RestResource extends NdexObject
 		return _apiDoc;
 	}
 
-	public void setApiDoc(String _apiDoc) {
-		this._apiDoc = _apiDoc;
+	public void setApiDoc(String apiDoc) {
+		this._apiDoc = apiDoc;
 	}
 
 	public boolean getAuthentication() {

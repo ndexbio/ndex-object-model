@@ -22,24 +22,24 @@ public class PropertyGraphEdge extends PropertiedNetworkElement{
 		return _predicate;
 	}
 
-	public void setPredicate(String _predicate) {
-		this._predicate = _predicate;
+	public void setPredicate(String predicate) {
+		this._predicate = predicate;
 	}
 
 	public long getObjectId() {
 		return _objectId;
 	}
 
-	public void setObjectId(long _objectId) {
-		this._objectId = _objectId;
+	public void setObjectId(long objectId) {
+		this._objectId = objectId;
 	}
 
 	public long getSubjectId() {
 		return _subjectId;
 	}
 
-	public void setSubjectId(long _subjectId) {
-		this._subjectId = _subjectId;
+	public void setSubjectId(long subjectId) {
+		this._subjectId = subjectId;
 	}
 
 	

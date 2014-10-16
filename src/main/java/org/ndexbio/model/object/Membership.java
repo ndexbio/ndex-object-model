@@ -59,24 +59,24 @@ public class Membership extends NdexObject //NdexExternalObject
 		return _memberUUID;
 	}
 
-	public void setMemberUUID(UUID _memberUUID) {
-		this._memberUUID = _memberUUID;
+	public void setMemberUUID(UUID memberUUID) {
+		this._memberUUID = memberUUID;
 	}
 
 	public UUID getResourceUUID() {
 		return _resourceUUID;
 	}
 
-	public void setResourceUUID(UUID _resourceUUID) {
-		this._resourceUUID = _resourceUUID;
+	public void setResourceUUID(UUID resourceUUID) {
+		this._resourceUUID = resourceUUID;
 	}
 
 	public String getMemberAccountName() {
 		return _memberAccountName;
 	}
 
-	public void setMemberAccountName(String _memberAccountName) {
-		this._memberAccountName = _memberAccountName;
+	public void setMemberAccountName(String memberAccountName) {
+		this._memberAccountName = memberAccountName;
 	}
 
 }

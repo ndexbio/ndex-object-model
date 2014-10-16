@@ -28,7 +28,7 @@ public class BaseTermTest {
 		BaseTerm a = new BaseTerm();
 		a.setId(22);
 		a.setName("bar");
-		a.setNamespace(232);
+		a.setNamespaceId(232);
 		//a.setType("baseTerm");
 
 		String s = objectMapper.writeValueAsString( a );

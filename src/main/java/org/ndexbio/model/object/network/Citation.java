@@ -61,16 +61,16 @@ public class Citation extends PropertiedNetworkElement implements Comparable<Cit
 		return _identifier;
 	}
 
-	public void setIdentifier(String _identifier) {
-		this._identifier = _identifier;
+	public void setIdentifier(String identifier) {
+		this._identifier = identifier;
 	}
 
 	public String getIdType() {
 		return _idType;
 	}
 
-	public void setIdType(String _idType) {
-		this._idType = _idType;
+	public void setIdType(String idType) {
+		this._idType = idType;
 	}
 
 	public int compareTo(Citation o) {

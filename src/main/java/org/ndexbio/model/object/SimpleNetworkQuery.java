@@ -31,8 +31,8 @@ private boolean _includeGroups;
 		return _includeGroups;
 	}
 
-	public void setIncludeGroups(boolean _includeGroups) {
-		this._includeGroups = _includeGroups;
+	public void setIncludeGroups(boolean includeGroups) {
+		this._includeGroups = includeGroups;
 	}
 	
 }

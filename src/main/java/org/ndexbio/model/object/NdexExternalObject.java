@@ -24,16 +24,16 @@ public abstract class NdexExternalObject extends NdexObject {
 		return _modificationTime;
 	}
 
-	public void setModificationTime(Timestamp _modificationTime) {
-		this._modificationTime = _modificationTime;
+	public void setModificationTime(Timestamp modificationTime) {
+		this._modificationTime = modificationTime;
 	}
 
 	public Timestamp getCreationTime() {
 		return _creationTime;
 	}
 
-	public void setCreationTime(Timestamp _creationTime) {
-		this._creationTime = _creationTime;
+	public void setCreationTime(Timestamp creationTime) {
+		this._creationTime = creationTime;
 	}
 
 	public UUID getExternalId() {

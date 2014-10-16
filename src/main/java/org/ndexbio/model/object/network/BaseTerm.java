@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class BaseTerm extends Term implements Comparable<BaseTerm> 
 {
     private String _name;
-    private long _namespace;
+    private long _namespaceId;
     
     
     
@@ -31,14 +31,14 @@ public class BaseTerm extends Term implements Comparable<BaseTerm>
         _name = termName;
     }
 
-    public long getNamespace()
+    public long getNamespaceId()
     {
-        return _namespace;
+        return _namespaceId;
     }
 
-    public void setNamespace(long namespace)
+    public void setNamespaceId(long namespace)
     {
-        _namespace = namespace;
+        _namespaceId = namespace;
     }
 
 

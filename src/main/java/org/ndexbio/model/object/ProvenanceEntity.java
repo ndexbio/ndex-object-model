@@ -32,24 +32,24 @@ public class ProvenanceEntity extends NdexObject {
 		return _properties;
 	}
 
-	public void setProperties(List<SimplePropertyValuePair> _properties) {
-		this._properties = _properties;
+	public void setProperties(List<SimplePropertyValuePair> properties) {
+		this._properties = properties;
 	}
 
 	public ProvenanceEvent getCreationEvent() {
 		return _creationEvent;
 	}
 
-	public void setCreationEvent(ProvenanceEvent _creationEvent) {
-		this._creationEvent = _creationEvent;
+	public void setCreationEvent(ProvenanceEvent creationEvent) {
+		this._creationEvent = creationEvent;
 	}
 
 	public String getUri() {
 		return _uri;
 	}
 
-	public void setUri(String _uri) {
-		this._uri = _uri;
+	public void setUri(String uri) {
+		this._uri = uri;
 	}
 	
 }

@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NdexStatus extends NdexObject
 {
-    private Integer _networkCount;
-    private Integer _userCount;
-    private Integer _groupCount;
+    private int _networkCount;
+    private int _userCount;
+    private int _groupCount;
 
     private Map<String,String> _properties;
     
@@ -31,38 +31,38 @@ public class NdexStatus extends NdexObject
 
 
 
-	public Integer getNetworkCount() {
+	public int getNetworkCount() {
 		return _networkCount;
 	}
 
 
 
-	public void setNetworkCount(Integer _networkCount) {
-		this._networkCount = _networkCount;
+	public void setNetworkCount(int networkCount) {
+		this._networkCount = networkCount;
 	}
 
 
 
-	public Integer getUserCount() {
+	public int getUserCount() {
 		return _userCount;
 	}
 
 
 
-	public void setUserCount(Integer _userCount) {
-		this._userCount = _userCount;
+	public void setUserCount(int userCount) {
+		this._userCount = userCount;
 	}
 
 
 
-	public Integer getGroupCount() {
+	public int getGroupCount() {
 		return _groupCount;
 	}
 
 
 
-	public void setGroupCount(Integer _groupCount) {
-		this._groupCount = _groupCount;
+	public void setGroupCount(int groupCount) {
+		this._groupCount = groupCount;
 	}
 
 
@@ -72,8 +72,8 @@ public class NdexStatus extends NdexObject
 
 
 
-	public void setProperties(Map<String,String> _properties) {
-		this._properties = _properties;
+	public void setProperties(Map<String,String> properties) {
+		this._properties = properties;
 	}
 
 
@@ -84,8 +84,8 @@ public class NdexStatus extends NdexObject
 
 
 
-	public void setMessage(String _message) {
-		this._message = _message;
+	public void setMessage(String message) {
+		this._message = message;
 	}
 
 

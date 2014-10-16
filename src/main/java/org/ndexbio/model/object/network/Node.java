@@ -120,8 +120,8 @@ public class Node extends PropertiedNetworkElement
 
 
 
-	public void setRepresentsTermType(String _representsTermType) {
-		this._representsTermType = _representsTermType;
+	public void setRepresentsTermType(String representsTermType) {
+		this._representsTermType = representsTermType;
 	}
 
     

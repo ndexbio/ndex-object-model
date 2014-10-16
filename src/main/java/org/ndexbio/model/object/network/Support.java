@@ -32,11 +32,11 @@ public class Support extends NetworkElement
         _text = text;
     }
 
-	public long getCitation() {
+	public long getCitationId() {
 		return _citationId;
 	}
 
-	public void setCitation(long citationId) {
+	public void setCitationId(long citationId) {
 		this._citationId = citationId;
 	}
     

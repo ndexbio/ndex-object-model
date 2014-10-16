@@ -74,8 +74,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	}
 
 
-	public void setVersion(String _version) {
-		this._version = _version;
+	public void setVersion(String version) {
+		this._version = version;
 	}
 
 
@@ -84,8 +84,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	}
 
 
-	public void setVisibility(VisibilityType _visibility) {
-		this._visibility = _visibility;
+	public void setVisibility(VisibilityType visibility) {
+		this._visibility = visibility;
 	}
 
     public boolean getIsComplete()
@@ -148,8 +148,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		return _URI;
 	}
 
-	public void setURI(String _URI) {
-		this._URI = _URI;
+	public void setURI(String URI) {
+		this._URI = URI;
 	}
 
 

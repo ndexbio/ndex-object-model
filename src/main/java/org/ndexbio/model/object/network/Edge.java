@@ -11,8 +11,8 @@ public class Edge extends PropertiedNetworkElement
     private long _objectId;
     private long _predicateId;
     private long _subjectId;
-    private List<Long> _citations;
-    private List<Long> _supports;
+    private List<Long> _citationIds;
+    private List<Long> _supportIds;
 
 
 
@@ -30,19 +30,19 @@ public class Edge extends PropertiedNetworkElement
      * initialize class Collection fields
      */
     private void initCollections() {
-    	this._citations = new ArrayList<Long>();
-    	this._supports = new ArrayList<Long>();
+    	this._citationIds = new ArrayList<Long>();
+    	this._supportIds = new ArrayList<Long>();
     }
 
 
-    public List<Long> getCitations()
+    public List<Long> getCitationIds()
     {
-        return _citations;
+        return _citationIds;
     }
 
-    public void setCitations(List<Long> citations)
+    public void setCitationIds(List<Long> citations)
     {
-        _citations = citations;
+        _citationIds = citations;
     }
 
     public long getObjectId()
@@ -75,14 +75,14 @@ public class Edge extends PropertiedNetworkElement
         _subjectId = subjectId;
     }
     
-    public List<Long> getSupports()
+    public List<Long> getSupportIds()
     {
-        return _supports;
+        return _supportIds;
     }
 
-    public void setSupports(List<Long> supports)
+    public void setSupportIds(List<Long> supports)
     {
-        _supports = supports;
+        _supportIds = supports;
     }
 
 }

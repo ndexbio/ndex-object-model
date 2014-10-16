@@ -29,34 +29,34 @@ public class NdexPropertyValuePair extends NdexObject {
 	public long getPredicateId() {
 		return _predicateId;
 	}
-	public void setPredicateId(long _predicateId) {
-		this._predicateId = _predicateId;
+	public void setPredicateId(long predicateId) {
+		this._predicateId = predicateId;
 	}
 	public long getValueId() {
 		return _valueId;
 	}
-	public void setValueId(long _valueId) {
-		this._valueId = _valueId;
+	public void setValueId(long valueId) {
+		this._valueId = valueId;
 	}
 	public String getValue() {
 		return _value;
 	}
-	public void setValue(String _value) {
-		this._value = _value;
+	public void setValue(String value) {
+		this._value = value;
 	}
 	public String getDataType() {
 		return _dataType;
 	}
-	public void setDataType(String _dataType) {
-		this._dataType = _dataType;
+	public void setDataType(String dataType) {
+		this._dataType = dataType;
 	}
 
 	public String getPredicateString() {
 		return _predicateString;
 	}
 
-	public void setPredicateString(String _predicateString) {
-		this._predicateString = _predicateString;
+	public void setPredicateString(String predicateString) {
+		this._predicateString = predicateString;
 	}
 	
 

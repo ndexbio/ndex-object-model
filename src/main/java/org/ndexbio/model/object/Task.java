@@ -100,8 +100,8 @@ public class Task extends NdexExternalObject
 
 
 
-	public void setTaskOwnerId(UUID _taskOwnerId) {
-		this._taskOwnerId = _taskOwnerId;
+	public void setTaskOwnerId(UUID taskOwnerId) {
+		this._taskOwnerId = taskOwnerId;
 	}
 
 
@@ -112,7 +112,7 @@ public class Task extends NdexExternalObject
 
 
 
-	public void setFormat(FileFormat _format) {
-		this._format = _format;
+	public void setFormat(FileFormat format) {
+		this._format = format;
 	}
 }

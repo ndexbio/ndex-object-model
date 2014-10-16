@@ -44,16 +44,16 @@ public Map<Long,PropertyGraphNode> getNodes() {
 	return _nodes;
 }
 
-public void setNodes(Map<Long,PropertyGraphNode> _nodes) {
-	this._nodes = _nodes;
+public void setNodes(Map<Long,PropertyGraphNode> nodes) {
+	this._nodes = nodes;
 }
 
 public Map <Long, PropertyGraphEdge> getEdges() {
 	return _edges;
 }
 
-public void setEdges(Map <Long,PropertyGraphEdge> _edges) {
-	this._edges = _edges;
+public void setEdges(Map <Long,PropertyGraphEdge> edges) {
+	this._edges = edges;
 }
 
 public List<NdexPropertyValuePair> getProperties() {

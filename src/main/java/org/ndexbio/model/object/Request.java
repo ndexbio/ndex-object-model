@@ -58,40 +58,40 @@ public class Request extends NdexExternalObject
 		return _sourceUUID;
 	}
 
-	public void setSourceUUID(UUID _sourceUUID) {
-		this._sourceUUID = _sourceUUID;
+	public void setSourceUUID(UUID sourceUUID) {
+		this._sourceUUID = sourceUUID;
 	}
 
 	public UUID getDestinationUUID() {
 		return _destinationUUID;
 	}
 
-	public void setDestinationUUID(UUID _destinationUUID) {
-		this._destinationUUID = _destinationUUID;
+	public void setDestinationUUID(UUID destinationUUID) {
+		this._destinationUUID = destinationUUID;
 	}
 
 	public String getSourceName() {
 		return _sourceName;
 	}
 
-	public void setSourceName(String _sourceName) {
-		this._sourceName = _sourceName;
+	public void setSourceName(String sourceName) {
+		this._sourceName = sourceName;
 	}
 
 	public String getDestinationName() {
 		return _destinationName;
 	}
 
-	public void setDestinationName(String _destinationName) {
-		this._destinationName = _destinationName;
+	public void setDestinationName(String destinationName) {
+		this._destinationName = destinationName;
 	}
 
 	public Permissions getPermission() {
 		return _permission;
 	}
 
-	public void setPermission(Permissions _permission) {
-		this._permission =_permission;
+	public void setPermission(Permissions permission) {
+		this._permission = permission;
 	}
 
 	public String getResponder() {
@@ -102,8 +102,8 @@ public class Request extends NdexExternalObject
 		return _response;
 	}
 
-	public void setResponse(ResponseType _response) {
-		this._response = _response;
+	public void setResponse(ResponseType response) {
+		this._response = response;
 	}
     
     

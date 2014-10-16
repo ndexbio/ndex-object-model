@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchResult<T> extends NdexObject
 {
-    private Integer _skip;
-    private Integer _pageSize;
+    private int _skip;
+    private int _pageSize;
     private Collection<T> _results;
 
 

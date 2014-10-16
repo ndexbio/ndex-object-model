@@ -14,8 +14,8 @@ public abstract class NetworkElement extends NdexObject {
 		return _id;
 	}
 
-	public void setId(long _id) {
-		this._id = _id;
+	public void setId(long id) {
+		this._id = id;
 	}
 	
 

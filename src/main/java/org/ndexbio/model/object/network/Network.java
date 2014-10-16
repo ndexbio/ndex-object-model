@@ -123,8 +123,8 @@ public class Network extends NetworkSummary
 	}
 
 
-	public void setBaseTerms(Map<Long,BaseTerm> _baseTerms) {
-		this._baseTerms = _baseTerms;
+	public void setBaseTerms(Map<Long,BaseTerm> baseTerms) {
+		this._baseTerms = baseTerms;
 	}
 
 
@@ -133,8 +133,8 @@ public class Network extends NetworkSummary
 	}
 
 
-	public void setFunctionTerms(Map<Long,FunctionTerm> _functionTerms) {
-		this._functionTerms = _functionTerms;
+	public void setFunctionTerms(Map<Long,FunctionTerm> functionTerms) {
+		this._functionTerms = functionTerms;
 	}
 
 
@@ -143,7 +143,7 @@ public class Network extends NetworkSummary
 	}
 
 
-	public void setReifiedEdgeTerms(Map<Long,ReifiedEdgeTerm> _reifiedEdgeTerms) {
-		this._reifiedEdgeTerms = _reifiedEdgeTerms;
+	public void setReifiedEdgeTerms(Map<Long,ReifiedEdgeTerm> reifiedEdgeTerms) {
+		this._reifiedEdgeTerms = reifiedEdgeTerms;
 	}
 }

@@ -61,8 +61,8 @@ public abstract class Account extends NdexExternalObject
 	}
 
 
-	public void setAccountName(String _accountName) {
-		this._accountName = _accountName;
+	public void setAccountName(String accountName) {
+		this._accountName = accountName;
 	}
 
 }

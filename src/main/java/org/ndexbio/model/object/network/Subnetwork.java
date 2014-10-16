@@ -39,16 +39,16 @@ public class Subnetwork extends PropertiedNetworkElement {
 		return _nodeIds;
 	}
 
-	public void setNodeIds(long[] _nodeIds) {
-		this._nodeIds = _nodeIds;
+	public void setNodeIds(long[] nodeIds) {
+		this._nodeIds = nodeIds;
 	}
 
 	public long[] getEdgeIds() {
 		return _edgeIds;
 	}
 
-	public void setEdgeIds(long[] _edgeIds) {
-		this._edgeIds = _edgeIds;
+	public void setEdgeIds(long[] edgeIds) {
+		this._edgeIds = edgeIds;
 	}
 
 }

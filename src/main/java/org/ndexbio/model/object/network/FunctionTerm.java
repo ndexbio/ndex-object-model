@@ -11,7 +11,7 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
     private long _functionTermId;
     
     // element id list of other terms
-    private List<Long> _parameters;
+    private List<Long> _parameterIds;
 
     
     
@@ -22,17 +22,17 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
     {
         super();
         _type = this.getClass().getSimpleName();
-        this._parameters = new ArrayList<Long>(10);
+        this._parameterIds = new ArrayList<Long>(10);
     }
 
-    public List<Long> getParameters()
+    public List<Long> getParameterIds()
     {
-        return _parameters;
+        return _parameterIds;
     }
 
-    public void setParameters(List<Long> parameters)
+    public void setParameterIds(List<Long> parameters)
     {
-        _parameters = parameters;
+        _parameterIds = parameters;
     }
 
 
@@ -40,8 +40,8 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
 		return _functionTermId;
 	}
 
-	public void setFunctionTermId(long _functionTermId) {
-		this._functionTermId = _functionTermId;
+	public void setFunctionTermId(long functionTermId) {
+		this._functionTermId = functionTermId;
 	}
 
 	public int compareTo(FunctionTerm o) {
@@ -58,13 +58,13 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
         if ( c != 0 )
         	return c>0 ? 1 : -1;
         
-        List<Long> p2 = o.getParameters();
-        int ci = _parameters.size() - p2.size();
+        List<Long> p2 = o.getParameterIds();
+        int ci = _parameterIds.size() - p2.size();
         
         if (ci != 0) return ci;
         
-        for ( int i = 0 ; i < _parameters.size(); i++ ) {
-        	c = _parameters.get(i) - p2.get(i);
+        for ( int i = 0 ; i < _parameterIds.size(); i++ ) {
+        	c = _parameterIds.get(i).longValue() - p2.get(i).longValue();
         	if ( c !=0) return c>0? 1 : -1; 
         }     
         
