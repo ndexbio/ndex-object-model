@@ -85,28 +85,28 @@ public class Node extends PropertiedNetworkElement
 
 
 
-	public List<Long> getCitations() {
+	public List<Long> getCitationIds() {
 		return _citationIds;
 	}
 
 
 
 
-	public void setCitations(List<Long> _citations) {
+	public void setCitationIds(List<Long> _citations) {
 		this._citationIds = _citations;
 	}
 
 
 
 
-	public List<Long> getSupports() {
+	public List<Long> getSupportIds() {
 		return _supportIds;
 	}
 
 
 
 
-	public void setSupports(List<Long> _supports) {
+	public void setSupportIds(List<Long> _supports) {
 		this._supportIds = _supports;
 	}
 
