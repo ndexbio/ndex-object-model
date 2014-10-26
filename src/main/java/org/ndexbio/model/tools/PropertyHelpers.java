@@ -103,8 +103,16 @@ public class PropertyHelpers {
 		return getPropertyValueStrings(network, node.getProperties(), propertyName);
 	}
 	
+	public static String getNodePropertyValueString(Network network, Node node, String propertyName) {
+		return getFirst(getNodePropertyValueStrings(network, node, propertyName));
+	}
+	
 	public static List<String> getEdgePropertyValueStrings(Network network, Edge edge, String propertyName){
 		return getPropertyValueStrings(network, edge.getProperties(), propertyName);
+	}
+	
+	public static String getEdgePropertyValueString(Network network, Edge edge, String propertyName) {
+		return getFirst(getEdgePropertyValueStrings(network, edge, propertyName));
 	}
 	
 	public static List<String> getPropertyValueStrings(Network network, List<NdexPropertyValuePair> properties, String propertyName) {
