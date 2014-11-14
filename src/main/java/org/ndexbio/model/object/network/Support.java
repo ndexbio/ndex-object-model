@@ -17,6 +17,7 @@ public class Support extends NetworkElement
     public Support()
     {
         super();
+        _citationId = -1;
         _type = this.getClass().getSimpleName();
     }
 
