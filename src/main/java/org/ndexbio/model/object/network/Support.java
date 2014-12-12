@@ -3,7 +3,7 @@ package org.ndexbio.model.object.network;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Support extends NetworkElement
+public class Support extends PropertiedNetworkElement
 {
 
 	private String _text;
