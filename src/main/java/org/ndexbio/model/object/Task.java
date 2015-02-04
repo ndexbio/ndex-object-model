@@ -1,5 +1,7 @@
 package org.ndexbio.model.object;
 
+
+import java.sql.Timestamp;
 import java.util.UUID;
 
 import org.ndexbio.model.object.network.FileFormat;
@@ -19,7 +21,10 @@ public class Task extends NdexExternalObject
     private FileFormat _format;
    
     private UUID _taskOwnerId;
-    
+    private boolean isDeleted;
+    private Timestamp startTime;
+    private Timestamp finishTime;
+    private String _message; 
     
     /**************************************************************************
     * Default constructor.
@@ -28,6 +33,7 @@ public class Task extends NdexExternalObject
     {
         super();
         this._type = this.getClass().getSimpleName();
+        setIsDeleted(false);
     }
 
 
@@ -114,5 +120,53 @@ public class Task extends NdexExternalObject
 
 	public void setFormat(FileFormat format) {
 		this._format = format;
+	}
+
+
+
+	public boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+
+
+	public void setIsDeleted(boolean is_Deleted) {
+		this.isDeleted = is_Deleted;
+	}
+
+
+
+	public Timestamp getStartTime() {
+		return startTime;
+	}
+
+
+
+	public void setStartTime(Timestamp start_time) {
+		this.startTime = start_time;
+	}
+
+
+
+	public Timestamp getFinishTime() {
+		return finishTime;
+	}
+
+
+
+	public void setFinishTime(Timestamp finish_time) {
+		this.finishTime = finish_time;
+	}
+
+
+
+	public String getMessage() {
+		return _message;
+	}
+
+
+
+	public void setMessage(String message) {
+		this._message = message;
 	}
 }

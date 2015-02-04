@@ -14,7 +14,7 @@ public abstract class Account extends NdexExternalObject
     private String _description;
     private String _website;
     private String _accountName;
-
+    private boolean _isDeleted;
     
     
     /**************************************************************************
@@ -23,6 +23,7 @@ public abstract class Account extends NdexExternalObject
     public Account()
     {
         super();
+        setDeleted(false);
     }
     
     
@@ -63,6 +64,16 @@ public abstract class Account extends NdexExternalObject
 
 	public void setAccountName(String accountName) {
 		this._accountName = accountName;
+	}
+
+
+	public boolean isDeleted() {
+		return _isDeleted;
+	}
+
+
+	public void setDeleted(boolean isDeleted) {
+		this._isDeleted = isDeleted;
 	}
 
 }
