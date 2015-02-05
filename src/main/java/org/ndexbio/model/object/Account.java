@@ -23,7 +23,7 @@ public abstract class Account extends NdexExternalObject
     public Account()
     {
         super();
-        setDeleted(false);
+        setIsDeleted(false);
     }
     
     
@@ -67,12 +67,12 @@ public abstract class Account extends NdexExternalObject
 	}
 
 
-	public boolean isDeleted() {
+	public boolean getIsDeleted() {
 		return _isDeleted;
 	}
 
 
-	public void setDeleted(boolean isDeleted) {
+	public void setIsDeleted(boolean isDeleted) {
 		this._isDeleted = isDeleted;
 	}
 
