@@ -12,12 +12,14 @@ public abstract class NdexExternalObject extends NdexObject {
 	
 	private UUID _externalId; 
 	private Timestamp _creationTime;
-	
 	private Timestamp _modificationTime;
+    private boolean _isDeleted;
+	
 	
 	public NdexExternalObject () {
 		setCreationTime(new Timestamp(Calendar.getInstance().getTimeInMillis()));
 		this._modificationTime = this._creationTime;
+		_isDeleted = false;
 	}
 
 	public Timestamp getModificationTime() {
@@ -43,5 +45,15 @@ public abstract class NdexExternalObject extends NdexObject {
 	public void setExternalId(UUID externalId) {
 		this._externalId = externalId;
 	}
+	
+	public boolean getIsDeleted() {
+		return _isDeleted;
+	}
+
+
+	public void setIsDeleted(boolean isDeleted) {
+		this._isDeleted = isDeleted;
+	}
+
 
 }

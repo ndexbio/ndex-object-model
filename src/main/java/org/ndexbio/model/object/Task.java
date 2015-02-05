@@ -21,7 +21,6 @@ public class Task extends NdexExternalObject
     private FileFormat _format;
    
     private UUID _taskOwnerId;
-    private boolean isDeleted;
     private Timestamp startTime;
     private Timestamp finishTime;
     private String _message; 
@@ -121,19 +120,6 @@ public class Task extends NdexExternalObject
 	public void setFormat(FileFormat format) {
 		this._format = format;
 	}
-
-
-
-	public boolean getIsDeleted() {
-		return isDeleted;
-	}
-
-
-
-	public void setIsDeleted(boolean is_Deleted) {
-		this.isDeleted = is_Deleted;
-	}
-
 
 
 	public Timestamp getStartTime() {
