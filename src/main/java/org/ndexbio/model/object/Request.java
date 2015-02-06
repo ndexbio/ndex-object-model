@@ -1,5 +1,6 @@
 package org.ndexbio.model.object;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,6 +17,7 @@ public class Request extends NdexExternalObject
     private String _responder;
     private ResponseType _response;
     private String _responseMessage;
+    private Timestamp _responseTime;
 
     
 
@@ -104,6 +106,14 @@ public class Request extends NdexExternalObject
 
 	public void setResponse(ResponseType response) {
 		this._response = response;
+	}
+
+	public Timestamp getResponseTime() {
+		return _responseTime;
+	}
+
+	public void setResponseTime(Timestamp _responseTime) {
+		this._responseTime = _responseTime;
 	}
     
     
