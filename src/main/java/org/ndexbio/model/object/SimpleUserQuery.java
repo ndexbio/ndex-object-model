@@ -1,5 +1,8 @@
 package org.ndexbio.model.object;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SimpleUserQuery extends SimpleQuery{
 	
 	private String _accountName;
