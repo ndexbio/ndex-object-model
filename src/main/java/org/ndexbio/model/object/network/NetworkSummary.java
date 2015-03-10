@@ -39,7 +39,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
         _isComplete = false;
         _isLocked = false;
-        setVisibility(VisibilityType.PRIVATE);
+    //    setVisibility(VisibilityType.PRIVATE);
         _edgeCount = 0;
         _nodeCount = 0;
         
