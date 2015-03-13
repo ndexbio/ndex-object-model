@@ -9,6 +9,9 @@ public class User extends Account
     private String _emailAddress;
     private String _firstName;
     private String _lastName;
+    private long    _diskQuota;  //in byte
+    private long    _diskUsed;   //in byte
+    
     
     /**************************************************************************
     * Default constructor.
@@ -49,5 +52,21 @@ public class User extends Account
     {
         _lastName = lastName;
     }
+
+	public long getDiskQuota() {
+		return _diskQuota;
+	}
+
+	public void setDiskQuota(long diskQuota) {
+		this._diskQuota = diskQuota;
+	}
+
+	public long getDiskUsed() {
+		return _diskUsed;
+	}
+
+	public void setDiskUsed(long diskUsed) {
+		this._diskUsed = diskUsed;
+	}
     
 }
