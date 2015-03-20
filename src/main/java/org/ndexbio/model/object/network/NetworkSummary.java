@@ -21,8 +21,10 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
     private boolean _isComplete;
     private boolean _isLocked;
     private VisibilityType _visibility;
+    private boolean _isReadOnly;
     private String _name;
     private int _nodeCount;
+    private String _owner;
     
     private String _URI;
     
@@ -150,6 +152,22 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setURI(String URI) {
 		this._URI = URI;
+	}
+
+	public boolean getIsReadOnly() {
+		return _isReadOnly;
+	}
+
+	public void setIsReadOnly(boolean isReadOnly) {
+		this._isReadOnly = isReadOnly;
+	}
+
+	public String getOwner() {
+		return _owner;
+	}
+
+	public void setOwner(String owner) {
+		this._owner = owner;
 	}
 
 
