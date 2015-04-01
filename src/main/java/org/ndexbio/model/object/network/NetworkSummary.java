@@ -21,7 +21,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
     private boolean _isComplete;
     private boolean _isLocked;
     private VisibilityType _visibility;
-    private boolean _isReadOnly;
+    private long _readOnlyCommitId;
+    private long _readOnlyCacheId;
     private String _name;
     private int _nodeCount;
     private String _owner;
@@ -41,7 +42,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
         _isComplete = false;
         _isLocked = false;
-        _isReadOnly = false;
+        _readOnlyCommitId = -1;
+        _readOnlyCacheId  = -1;
     //    setVisibility(VisibilityType.PRIVATE);
         _edgeCount = 0;
         _nodeCount = 0;
@@ -155,20 +157,28 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		this._URI = URI;
 	}
 
-	public boolean getIsReadOnly() {
-		return _isReadOnly;
-	}
-
-	public void setIsReadOnly(boolean isReadOnly) {
-		this._isReadOnly = isReadOnly;
-	}
-
 	public String getOwner() {
 		return _owner;
 	}
 
 	public void setOwner(String owner) {
 		this._owner = owner;
+	}
+
+	public long getReadOnlyCommitId() {
+		return _readOnlyCommitId;
+	}
+
+	public void setReadOnlyCommitId(long readOnlyCommitId) {
+		this._readOnlyCommitId = readOnlyCommitId;
+	}
+
+	public long getReadOnlyCacheId() {
+		return _readOnlyCacheId;
+	}
+
+	public void setReadOnlyCacheId(long cacheId) {
+		this._readOnlyCacheId = cacheId;
 	}
 
 

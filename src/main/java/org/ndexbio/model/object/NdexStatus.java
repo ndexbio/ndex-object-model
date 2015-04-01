@@ -18,7 +18,7 @@ public class NdexStatus extends NdexObject
     private String _message;
 
     private final static String online= "Online";
-
+    
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
@@ -87,7 +87,6 @@ public class NdexStatus extends NdexObject
 	public void setMessage(String message) {
 		this._message = message;
 	}
-
 
 
 }

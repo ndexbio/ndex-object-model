@@ -2,6 +2,8 @@ package org.ndexbio.model.object;
 
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.ndexbio.model.object.network.FileFormat;
@@ -24,6 +26,7 @@ public class Task extends NdexExternalObject
     private Timestamp startTime;
     private Timestamp finishTime;
     private String _message; 
+    private Map<String, Object> _attributes;
     
     /**************************************************************************
     * Default constructor.
@@ -33,6 +36,8 @@ public class Task extends NdexExternalObject
         super();
         this._type = this.getClass().getSimpleName();
         setIsDeleted(false);
+        setAttributes(new HashMap<String, Object> ());
+        _priority = Priority.LOW;
     }
 
 
@@ -154,5 +159,26 @@ public class Task extends NdexExternalObject
 
 	public void setMessage(String message) {
 		this._message = message;
+	}
+
+
+
+	public Map<String, Object> getAttributes() {
+		return _attributes;
+	}
+
+
+
+	public void setAttributes(Map<String, Object> attributes) {
+		this._attributes = attributes;
+	}
+	
+	public void setAttribute(String attrName, Object value) {
+	  _attributes.put(attrName, value);
+	  
+	}
+	
+	public Object getAttribute(String attrName) {
+		return _attributes.get(attrName);
 	}
 }
