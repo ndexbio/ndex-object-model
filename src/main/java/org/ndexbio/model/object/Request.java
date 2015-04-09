@@ -112,8 +112,8 @@ public class Request extends NdexExternalObject
 		return _responseTime;
 	}
 
-	public void setResponseTime(Timestamp _responseTime) {
-		this._responseTime = _responseTime;
+	public void setResponseTime(Timestamp responseTime) {
+		this._responseTime = responseTime;
 	}
     
     
