@@ -24,7 +24,8 @@ public class RestResource extends NdexObject
     public RestResource()
     {
         super();
-        this._parameterTypes = new ArrayList<String>();
+        this._parameterTypes = new ArrayList<>();
+        this._authentication = true;
     }
 
 	public String getMethodName() {
