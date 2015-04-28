@@ -9,6 +9,14 @@ public class PropertySpecification {
 	private String _property;
 	private String _value;
 	
+	public PropertySpecification(String propName, String value) {
+		_property = propName;
+		_value = value;
+		
+	}
+	
+	public PropertySpecification() {}
+	
 	public String getProperty() {
 		return _property;
 	}
