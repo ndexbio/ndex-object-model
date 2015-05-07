@@ -6,22 +6,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 public class PropertySpecification {
-	private String _property;
+	private String _name;
 	private String _value;
 	
 	public PropertySpecification(String propName, String value) {
-		_property = propName;
+		_name = propName;
 		_value = value;
 		
 	}
 	
 	public PropertySpecification() {}
 	
-	public String getProperty() {
-		return _property;
+	public String getName() {
+		return _name;
 	}
-	public void setProperty(String property) {
-		this._property = property;
+	public void setName(String property) {
+		this._name = property;
 	}
 	public String getValue() {
 		return _value;
