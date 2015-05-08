@@ -7,6 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class EdgeByEdgePropertyFilter extends PropertyFilter {
 
-	
+	// we haven't implement anything here yet. Maybe we don't need this class after all.
 
 }

@@ -19,24 +19,28 @@ public abstract class PropertiedNetworkElement extends NetworkElement implements
 	 {
 	        super();
 	        _type = this.getClass().getSimpleName();
-	        _properties = new ArrayList<NdexPropertyValuePair>();
-	        _presentationProperties = new ArrayList<SimplePropertyValuePair>();
+	        _properties = new ArrayList<>();
+	        _presentationProperties = new ArrayList<>();
 //	        this.initializeCollections();
 	 }
 	
 	
+	@Override
 	public List<NdexPropertyValuePair> getProperties() {
 		return _properties;
 	}
 
+	@Override
 	public List<SimplePropertyValuePair> getPresentationProperties() {
 		return _presentationProperties;
 	}
 
+	@Override
 	public void setProperties(List<NdexPropertyValuePair> properties) {
 		_properties = properties;
 	}
 
+	@Override
 	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 		_presentationProperties = properties;
 	}

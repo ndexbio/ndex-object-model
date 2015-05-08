@@ -22,7 +22,7 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
     {
         super();
         _type = this.getClass().getSimpleName();
-        this._parameterIds = new ArrayList<Long>(10);
+        this._parameterIds = new ArrayList<>(10);
     }
 
     public List<Long> getParameterIds()
@@ -44,6 +44,7 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
 		this._functionTermId = functionTermId;
 	}
 
+	@Override
 	public int compareTo(FunctionTerm o) {
         if ( getId() > 0 ) {
         	long c = getId() - o.getId();

@@ -19,6 +19,7 @@ public class PropertyGraphNode extends PropertiedNetworkElement implements Compa
    }
 
 
+@Override
 public int compareTo(PropertyGraphNode o) {
 	long c = this.getId() - o.getId();
 	

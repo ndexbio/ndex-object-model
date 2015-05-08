@@ -30,8 +30,8 @@ public class Edge extends PropertiedNetworkElement
      * initialize class Collection fields
      */
     private void initCollections() {
-    	this._citationIds = new ArrayList<Long>();
-    	this._supportIds = new ArrayList<Long>();
+    	this._citationIds = new ArrayList<>();
+    	this._supportIds = new ArrayList<>();
     }
 
 

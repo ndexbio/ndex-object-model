@@ -15,7 +15,7 @@ import org.ndexbio.model.object.network.Node;
 public class PropertyHelpers {
 
 	public static List<SimplePropertyValuePair> copyProperties(List<SimplePropertyValuePair> properties) {
-		List<SimplePropertyValuePair> copiedProperties = new ArrayList<SimplePropertyValuePair>();
+		List<SimplePropertyValuePair> copiedProperties = new ArrayList<>();
 		for (SimplePropertyValuePair prop : properties){
 			if (null != prop){
 				copiedProperties.add(copyProperty(prop));
@@ -116,7 +116,7 @@ public class PropertyHelpers {
 	}
 	
 	public static List<String> getPropertyValueStrings(Network network, List<NdexPropertyValuePair> properties, String propertyName) {
-		List<String> valueStrings = new ArrayList<String>();
+		List<String> valueStrings = new ArrayList<>();
 		for (NdexPropertyValuePair pvp : properties){
 			String propertyString = getPropertyString(pvp, network);
 			if (propertyString.equals(propertyName)){

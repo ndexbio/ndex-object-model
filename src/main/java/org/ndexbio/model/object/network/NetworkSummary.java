@@ -48,8 +48,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         _edgeCount = 0;
         _nodeCount = 0;
         
-        _properties = new ArrayList<NdexPropertyValuePair> (10);
-    	_presentationProperties = new ArrayList<SimplePropertyValuePair> (10);
+        _properties = new ArrayList<> (10);
+    	_presentationProperties = new ArrayList<> (10);
 
 	}
 
@@ -133,18 +133,22 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         _nodeCount = nodeCount;
     }
 
+	@Override
 	public List<NdexPropertyValuePair> getProperties() {
 		return _properties;
 	}
 
+	@Override
 	public List<SimplePropertyValuePair> getPresentationProperties() {
 		return _presentationProperties;
 	}
 
+	@Override
 	public void setProperties(List<NdexPropertyValuePair> properties) {
 		_properties = properties;
 	}
 
+	@Override
 	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 		_presentationProperties = properties;
 	}

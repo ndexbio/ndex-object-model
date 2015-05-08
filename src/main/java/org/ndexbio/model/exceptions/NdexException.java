@@ -36,27 +36,27 @@ public class NdexException extends Exception
     public NdexException(String message, String description, Throwable cause)
     {
         super(message, cause);
-        ndexError = new NDExError(errorCode, message, description);
+        this.ndexError = new NDExError(errorCode, message, description);
         ndexExceptionInJason = ndexExceptionToJason();
     }  
     public NdexException(String message, ErrorCode errorCode) {
 		super(message);
-        ndexError = new NDExError(errorCode, message, null);
+        this.ndexError = new NDExError(errorCode, message, null);
         ndexExceptionInJason = ndexExceptionToJason();
     }
 	public NdexException(String message, Throwable cause, ErrorCode errorCode) {
         super(message, cause);
-        ndexError = new NDExError(errorCode, message, null);
+        this.ndexError = new NDExError(errorCode, message, null);
         ndexExceptionInJason = ndexExceptionToJason();
 	}
 	public NdexException(String message, String description, ErrorCode errorCode) {
 		super(message);
-		ndexError = new NDExError(errorCode, message, description);
+		this.ndexError = new NDExError(errorCode, message, description);
 		ndexExceptionInJason = ndexExceptionToJason();
 	}
 	public NdexException(String message, String description, ErrorCode errorCode, Throwable cause) {
 		super(message, cause);
-		ndexError = new NDExError(errorCode, message, description);
+		this.ndexError = new NDExError(errorCode, message, description);
 		ndexExceptionInJason = ndexExceptionToJason();
 	}
 	

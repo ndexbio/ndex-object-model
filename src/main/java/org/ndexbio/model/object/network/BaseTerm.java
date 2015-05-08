@@ -42,6 +42,7 @@ public class BaseTerm extends Term implements Comparable<BaseTerm>
     }
 
 
+	@Override
 	public int compareTo(BaseTerm o) {
 		long c = this.getId() - o.getId();
 		if ( c==0)

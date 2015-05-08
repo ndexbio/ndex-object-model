@@ -36,10 +36,10 @@ public class Node extends PropertiedNetworkElement
      * initialize class Collection fields
      */
     private void initializeCollections() {
-    	this._aliasIds = new ArrayList<Long>();
-    	this._relatedTermIds = new ArrayList<Long>();
-    	this._supportIds = new ArrayList<Long>();
-    	this._citationIds = new ArrayList<Long>();
+    	this._aliasIds = new ArrayList<>();
+    	this._relatedTermIds = new ArrayList<>();
+    	this._supportIds = new ArrayList<>();
+    	this._citationIds = new ArrayList<>();
     }
     
     public List<Long> getAliases()

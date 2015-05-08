@@ -35,8 +35,8 @@ public class PropertyGraphNetwork implements PropertiedObject{
    public PropertyGraphNetwork() {
 	   setNodes(new HashMap<Long,PropertyGraphNode> ());
 	   setEdges(new HashMap<Long, PropertyGraphEdge>  ());
-	   _properties = new ArrayList<NdexPropertyValuePair>();
-	   _presentationProperties = new ArrayList <SimplePropertyValuePair>();
+	   _properties = new ArrayList<>();
+	   _presentationProperties = new ArrayList <>();
    }
 
 
@@ -56,19 +56,23 @@ public void setEdges(Map <Long,PropertyGraphEdge> edges) {
 	this._edges = edges;
 }
 
+@Override
 public List<NdexPropertyValuePair> getProperties() {
 	return this._properties;
 }
 
+@Override
 public List<SimplePropertyValuePair> getPresentationProperties() {
 	return this._presentationProperties;
 }
 
+@Override
 public void setProperties(List<NdexPropertyValuePair> properties) {
 	this._properties = properties;
 	
 }
 
+@Override
 public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 	this._presentationProperties = properties;
 	

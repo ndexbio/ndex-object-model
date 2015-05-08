@@ -76,10 +76,10 @@ public class NDExError {
 	    }
 	    return sbStackTrace.toString();
     } 
-    private String threadId() {
+    private static String threadId() {
     	return String.valueOf(Thread.currentThread().getId());
     }
-    private String timeStamp() {
+    private static String timeStamp() {
     	return new java.text.SimpleDateFormat(timeStampFormat).format(new Date());
 	}    
 }

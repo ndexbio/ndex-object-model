@@ -21,7 +21,7 @@ public class Citation extends PropertiedNetworkElement implements Comparable<Cit
     {
         super();
         _type = this.getClass().getSimpleName();
-        _contributors = new ArrayList<String>();
+        _contributors = new ArrayList<>();
  //       _supports = new ArrayList<Support>();
         
     }
@@ -73,6 +73,7 @@ public class Citation extends PropertiedNetworkElement implements Comparable<Cit
 		this._idType = idType;
 	}
 
+	@Override
 	public int compareTo(Citation o) {
 		long i = this.getId() - o.getId();
 		if ( i > 0) return 1;

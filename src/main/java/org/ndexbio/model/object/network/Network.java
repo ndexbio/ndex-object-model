@@ -30,7 +30,7 @@ public class Network extends NetworkSummary
         super();
         _type = this.getClass().getSimpleName();
 
-        _edges = new HashMap<Long, Edge>(50);
+        _edges = new HashMap<>(50);
 
         initCollections();
     }
@@ -40,7 +40,7 @@ public class Network extends NetworkSummary
         super();
         _type = this.getClass().getSimpleName();
 
-        _edges = new HashMap<Long, Edge>(edgeCount);
+        _edges = new HashMap<>(edgeCount);
         
         initCollections();
     }
@@ -104,16 +104,16 @@ public class Network extends NetworkSummary
     **************************************************************************/
     private void initCollections()
     {
-        _citations = new HashMap<Long,Citation>();
+        _citations = new HashMap<>();
 //        _members = new HashMap<Long,Membership>();
-        _namespaces = new HashMap<Long,Namespace>();
-        _nodes = new TreeMap<Long,Node>();
+        _namespaces = new HashMap<>();
+        _nodes = new TreeMap<>();
 //        _requests = new HashMap<Long,Request>();
-        _supports = new HashMap<Long, Support>();
-        _baseTerms = new HashMap<Long,BaseTerm>(10);
+        _supports = new HashMap<>();
+        _baseTerms = new HashMap<>(10);
         
-        _functionTerms = new HashMap<Long,FunctionTerm>(10);
-        _reifiedEdgeTerms = new HashMap<Long,ReifiedEdgeTerm> (10);
+        _functionTerms = new HashMap<>(10);
+        _reifiedEdgeTerms = new HashMap<> (10);
         
     }
 
