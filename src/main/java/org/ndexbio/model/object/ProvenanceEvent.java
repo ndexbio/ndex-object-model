@@ -27,7 +27,7 @@ public class ProvenanceEvent extends NdexObject{
         _endedAtTime = eventTime;
         _startedAtTime = eventTime;
         _eventType = eventType;
-        _properties = new ArrayList<SimplePropertyValuePair> ();
+        _properties = new ArrayList<> ();
 	}
 
 	public List<SimplePropertyValuePair> getProperties() {
@@ -47,7 +47,7 @@ public class ProvenanceEvent extends NdexObject{
 	}
 	
 	public void addInput(ProvenanceEntity _input) {
-		if (null == this._inputs) this._inputs = new ArrayList<ProvenanceEntity>();
+		if (null == this._inputs) this._inputs = new ArrayList<>();
 		this._inputs.add(_input);
 	}
 
