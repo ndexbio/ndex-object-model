@@ -12,7 +12,7 @@ public class NdexException extends Exception
     private static final long serialVersionUID = 1L;
     
     private NDExError ndexError;
-    private static ErrorCode errorCode = ErrorCode.NDEx_Ndex_Exception;
+    private static ErrorCode errorCode = ErrorCode.NDEx_Exception;
     private String ndexExceptionInJason;
     
     public NdexException(String message)

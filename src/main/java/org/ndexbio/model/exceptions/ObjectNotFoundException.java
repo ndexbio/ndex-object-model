@@ -8,19 +8,19 @@ public class ObjectNotFoundException extends NdexException
 
     public ObjectNotFoundException(String message)
     {
-        super(message, ErrorCode.NDEx_Ndex_Object_Not_Found_Exception);
+        super(message, ErrorCode.NDEx_Object_Not_Found_Exception);
     }
     public ObjectNotFoundException(String message, Throwable cause)
     {
-        super(message, cause, ErrorCode.NDEx_Ndex_Object_Not_Found_Exception);
+        super(message, cause, ErrorCode.NDEx_Object_Not_Found_Exception);
     }
     public ObjectNotFoundException(String message, String description)
     {
-        super(message, description, ErrorCode.NDEx_Ndex_Object_Not_Found_Exception);
+        super(message, description, ErrorCode.NDEx_Object_Not_Found_Exception);
     }
     public ObjectNotFoundException(String message, String description, Throwable cause)
     {
-        super(message, description, ErrorCode.NDEx_Ndex_Object_Not_Found_Exception, cause);
+        super(message, description, ErrorCode.NDEx_Object_Not_Found_Exception, cause);
     }
 }
 
