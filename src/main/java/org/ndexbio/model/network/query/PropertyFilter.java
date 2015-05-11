@@ -9,17 +9,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class PropertyFilter {
 
-	private List<PropertySpecification> _propertySpecList;
+	private List<PropertySpecification> _propertySpecifications;
 	
 	PropertyFilter () {
-		_propertySpecList = new ArrayList<>(10);
+		_propertySpecifications = new ArrayList<>(10);
 	}
 	
-	public List<PropertySpecification> getPropertySpecList() {
-		return _propertySpecList;
+	public List<PropertySpecification> getPropertySpecifications() {
+		return _propertySpecifications;
 	}
-	public void setPropertySpecList(List<PropertySpecification> propertySpecList) {
-		this._propertySpecList = propertySpecList;
+	public void setPropertySpecifications(List<PropertySpecification> propertySpecList) {
+		this._propertySpecifications = propertySpecList;
 	}
 
 }
