@@ -9,15 +9,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class NetworkPropertyFilter {
 
-	   private Collection<PropertyFilter> _properties;
+	   private Collection<PropertySpecification> _properties;
 	   private String _admin;
 	   private int   _limit;
 	   
 	   
-	public Collection<PropertyFilter> getProperties() {
+	public Collection<PropertySpecification> getProperties() {
 		return _properties;
 	}
-	public void setProperties(Collection<PropertyFilter> _properties) {
+	public void setProperties(Collection<PropertySpecification> _properties) {
 		this._properties = _properties;
 	}
 	public String getAdmin() {
