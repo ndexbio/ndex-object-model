@@ -16,6 +16,8 @@ public class NDExError {
 	// the same format is used by our logger for entries in ndex.log 
 	private static String timeStampFormat = "yyyy-MM-dd H:mm:ss,SSS";
 	
+	public NDExError() {}
+	
 	public NDExError(ErrorCode errorCode, String message, String description) {
 		this.errorCode   = errorCode;
 		this.message     = message;
