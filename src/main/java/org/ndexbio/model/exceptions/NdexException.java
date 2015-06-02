@@ -13,54 +13,52 @@ public class NdexException extends Exception
     
     private NDExError ndexError;
     private static ErrorCode errorCode = ErrorCode.NDEx_Exception;
-    private String ndexExceptionInJason;
     
+    public NdexException(NDExError ndexError)
+    {
+        super();
+        this.ndexError = ndexError;
+    }    
     public NdexException(String message)
     {
         super(message);
         ndexError = new NDExError(errorCode, message, null);
-        ndexExceptionInJason = ndexExceptionToJason();
     }
     public NdexException(String message, Throwable cause)
     {
         super(message, cause);
         ndexError = new NDExError(errorCode, message, null);
-        ndexExceptionInJason = ndexExceptionToJason();
     }
     public NdexException(String message, String description)
     {
         super(message);
         ndexError = new NDExError(errorCode, message, description);
-        ndexExceptionInJason = ndexExceptionToJason();
     }
     public NdexException(String message, String description, Throwable cause)
     {
         super(message, cause);
         this.ndexError = new NDExError(errorCode, message, description);
-        ndexExceptionInJason = ndexExceptionToJason();
     }  
     public NdexException(String message, ErrorCode errorCode) {
 		super(message);
         this.ndexError = new NDExError(errorCode, message, null);
-        ndexExceptionInJason = ndexExceptionToJason();
     }
 	public NdexException(String message, Throwable cause, ErrorCode errorCode) {
         super(message, cause);
         this.ndexError = new NDExError(errorCode, message, null);
-        ndexExceptionInJason = ndexExceptionToJason();
 	}
 	public NdexException(String message, String description, ErrorCode errorCode) {
 		super(message);
 		this.ndexError = new NDExError(errorCode, message, description);
-		ndexExceptionInJason = ndexExceptionToJason();
 	}
 	public NdexException(String message, String description, ErrorCode errorCode, Throwable cause) {
 		super(message, cause);
 		this.ndexError = new NDExError(errorCode, message, description);
-		ndexExceptionInJason = ndexExceptionToJason();
 	}
+
+	public NDExError getNDExError() { return this.ndexError; }
 	
-	public String getNdexExceptionInJason() { return this.ndexExceptionInJason; }
+	public String getNdexExceptionInJason() { return ndexExceptionToJason(); }
 	
 	private String ndexExceptionToJason() {
 	    ObjectMapper objectMapper = new ObjectMapper();

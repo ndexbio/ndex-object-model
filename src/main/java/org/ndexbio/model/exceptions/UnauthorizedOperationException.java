@@ -1,11 +1,16 @@
 package org.ndexbio.model.exceptions;
 
 import org.ndexbio.model.errorcodes.ErrorCode;
+import org.ndexbio.model.errorcodes.NDExError;
 
 public class UnauthorizedOperationException extends NdexException {
 
 	private static final long serialVersionUID = 1002L;
 	
+    public UnauthorizedOperationException(NDExError ndexError)
+    {
+        super(ndexError);
+    }	
     public UnauthorizedOperationException(String message)
     {
         super(message, ErrorCode.NDEx_Unauthorized_Operation_Exception);
