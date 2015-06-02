@@ -55,6 +55,8 @@ public class NdexException extends Exception
 		super(message, cause);
 		this.ndexError = new NDExError(errorCode, message, description);
 	}
+
+	public NDExError getNDExError() { return this.ndexError; }
 	
 	public String getNdexExceptionInJason() { return ndexExceptionToJason(); }
 	
