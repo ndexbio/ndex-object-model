@@ -5,6 +5,7 @@
   <version>1.0.0</version>
   <name>NDEx Java Object Model</name>
   <description>Java object model for applications that access NDEx</description>
+  <inceptionYear>2013</inceptionYear>
   <dependencies>
   		<!-- 3rd party libraries -->
   		
@@ -29,6 +30,7 @@
 -->
 
   <build>
+    <pluginManagement>
     <plugins>
       <plugin>
         <version>3.3</version>
@@ -47,6 +49,7 @@
       <header>${basedir}/misc/license_header.txt</header>
       <properties>
          <inceptionYear>${project.inceptionYear}</inceptionYear>
+         <year>${year}</year>
       </properties>
       <includes>
          <include>src/**/*.java</include>
@@ -59,7 +62,47 @@
       </excludes>
    </configuration>
 </plugin>
+ <plugin>
+        <groupId>com.keyboardsamurais.maven</groupId>
+        <artifactId>maven-timestamp-plugin</artifactId>
+        <version>1.0</version>
+        <executions>
+          <execution>
+            <id>date</id>
+            <goals>
+              <goal>create</goal>
+            </goals>
+            <configuration>
+              <propertyName>date</propertyName>
+              <timestampPattern>yyyy-MM-dd</timestampPattern>
+            </configuration>
+          </execution>
+          <execution>
+            <id>year</id>
+            <goals>
+              <goal>create</goal>
+            </goals>
+            <configuration>
+              <propertyName>year</propertyName>
+              <timestampPattern>yyyy</timestampPattern>
+            </configuration>
+          </execution>
+          <execution>
+            <id>year-site</id>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+            <configuration>
+              <propertyName>year</propertyName>
+              <timestampPattern>yyyy</timestampPattern>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
+    </pluginManagement>
   </build>
 
 
