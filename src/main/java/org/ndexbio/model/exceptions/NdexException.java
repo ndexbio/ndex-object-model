@@ -16,7 +16,7 @@ public class NdexException extends Exception
     
     public NdexException(NDExError ndexError)
     {
-        super();
+        super(ndexError.getMessage());
         this.ndexError = ndexError;
     }    
     public NdexException(String message)
