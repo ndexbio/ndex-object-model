@@ -36,9 +36,9 @@ public interface PropertiedObject {
 
 	public List<NdexPropertyValuePair>  getProperties();
 	
-	public List<SimplePropertyValuePair>  getPresentationProperties();
+//	public List<SimplePropertyValuePair>  getPresentationProperties();
 	
 	public void setProperties(List<NdexPropertyValuePair> properties);
 
-	public void setPresentationProperties(List<SimplePropertyValuePair> properties);
+//	public void setPresentationProperties(List<SimplePropertyValuePair> properties);
 }

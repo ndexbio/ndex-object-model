@@ -44,12 +44,12 @@ public class BaseTerm extends Term implements Comparable<BaseTerm>
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
-    public BaseTerm()
+/*    public BaseTerm()
     {
         super();
         _type = this.getClass().getSimpleName();
     }
-    
+*/    
     
     public String getName()
     {
@@ -91,5 +91,10 @@ public class BaseTerm extends Term implements Comparable<BaseTerm>
 		if (b2 instanceof BaseTerm)
 			return compareTo((BaseTerm)b2)==0;
 		return false;
+	}
+
+	@Override
+	public String getTermType() {
+		return Term.baseTerm;
 	}
 }

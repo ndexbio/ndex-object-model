@@ -46,12 +46,12 @@ public class User extends Account
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
-    public User()
+/*    public User()
     {
         super();
         _type = this.getClass().getSimpleName();
     //    initCollections();
-    }
+    } */
     
     public String getEmailAddress()
     {

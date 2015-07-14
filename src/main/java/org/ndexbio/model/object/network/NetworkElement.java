@@ -30,9 +30,8 @@
  */
 package org.ndexbio.model.object.network;
 
-import org.ndexbio.model.object.NdexObject;
-
-public abstract class NetworkElement extends NdexObject {
+public abstract class NetworkElement //extends NdexObject 
+{
 	
 	private long _id;
 	

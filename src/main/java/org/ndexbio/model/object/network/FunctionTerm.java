@@ -51,7 +51,7 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
     public FunctionTerm()
     {
         super();
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
         this._parameterIds = new ArrayList<>(10);
     }
 
@@ -100,5 +100,10 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
         }     
         
         return 0;
+	}
+
+	@Override
+	public String getTermType() {
+		return Term.functionTerm;
 	}
 }

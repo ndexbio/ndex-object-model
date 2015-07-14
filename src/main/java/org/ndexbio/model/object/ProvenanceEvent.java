@@ -38,7 +38,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProvenanceEvent extends NdexObject{
+public class ProvenanceEvent //extends NdexObject
+{
 	
 	private List<SimplePropertyValuePair> _properties;
 	private List<ProvenanceEntity> _inputs;
@@ -47,13 +48,13 @@ public class ProvenanceEvent extends NdexObject{
 	private String _eventType;
 
 	public ProvenanceEvent () {
-		super();
-        _type = this.getClass().getSimpleName();
-	}
+		//super();
+        //_type = this.getClass().getSimpleName();
+	} 
 
 	public ProvenanceEvent(String eventType, Timestamp eventTime) {
-		super();
-        _type = this.getClass().getSimpleName();
+//		super();
+//        _type = this.getClass().getSimpleName();
         _endedAtTime = eventTime;
         _startedAtTime = eventTime;
         _eventType = eventType;

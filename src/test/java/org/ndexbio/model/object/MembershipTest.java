@@ -111,7 +111,7 @@ public class MembershipTest {
 
 //        assertEquals(m.getModificationDate(), original.getModificationDate());
         
-        assertEquals(m.getType(), "Membership");
+       // assertEquals(m.getType(), "Membership");
 	}
 	
 	

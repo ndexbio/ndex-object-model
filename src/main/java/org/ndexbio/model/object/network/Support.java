@@ -48,7 +48,7 @@ public class Support extends PropertiedNetworkElement
     {
         super();
         _citationId = -1;
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
     }
 
 

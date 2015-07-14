@@ -54,11 +54,11 @@ public class Request extends NdexExternalObject
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
-    public Request()
+ /*   public Request()
     {
         super();
         this._type = this.getClass().getSimpleName();
-    }
+    } */
     
     public String getMessage()
     {

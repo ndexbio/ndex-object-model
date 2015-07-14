@@ -35,22 +35,21 @@ import java.util.List;
 
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.PropertiedObject;
-import org.ndexbio.model.object.SimplePropertyValuePair;
 
 public abstract class PropertiedNetworkElement extends NetworkElement implements
 		PropertiedObject {
 
 	
 	private List<NdexPropertyValuePair> _properties;
-	private List<SimplePropertyValuePair> _presentationProperties;
+//	private List<SimplePropertyValuePair> _presentationProperties;
 
     
 	 public PropertiedNetworkElement()
 	 {
 	        super();
-	        _type = this.getClass().getSimpleName();
+//	        _type = this.getClass().getSimpleName();
 	        _properties = new ArrayList<>();
-	        _presentationProperties = new ArrayList<>();
+	 //       _presentationProperties = new ArrayList<>();
 //	        this.initializeCollections();
 	 }
 	
@@ -60,20 +59,20 @@ public abstract class PropertiedNetworkElement extends NetworkElement implements
 		return _properties;
 	}
 
-	@Override
+/*	@Override
 	public List<SimplePropertyValuePair> getPresentationProperties() {
 		return _presentationProperties;
-	}
+	} */
 
 	@Override
 	public void setProperties(List<NdexPropertyValuePair> properties) {
 		_properties = properties;
 	}
 
-	@Override
+/*	@Override
 	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 		_presentationProperties = properties;
-	}
+	} */
 
 	public String getPropertyAsString (String propertyName) {
 		for (NdexPropertyValuePair p : this.getProperties()) {

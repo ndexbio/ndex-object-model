@@ -33,6 +33,7 @@ package org.ndexbio.model.object;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Deprecated
 public abstract class NdexObject
 {
     protected String _type;

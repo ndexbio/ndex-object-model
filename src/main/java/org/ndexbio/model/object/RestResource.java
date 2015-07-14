@@ -36,7 +36,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RestResource extends NdexObject
+public class RestResource //extends NdexObject
 {
     private String _methodName;
     private List<String> _parameterTypes;
@@ -53,7 +53,7 @@ public class RestResource extends NdexObject
     **************************************************************************/
     public RestResource()
     {
-        super();
+      //  super();
         this._parameterTypes = new ArrayList<>();
         this._authentication = true;
     }

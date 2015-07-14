@@ -36,7 +36,7 @@ import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Membership extends NdexObject //NdexExternalObject
+public class Membership //extends NdexObject //NdexExternalObject
 {
     private Permissions _memberPermissions;
     private MembershipType _membershipType;
@@ -53,7 +53,7 @@ public class Membership extends NdexObject //NdexExternalObject
     public Membership()
     {
     	super();
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
     }
       
     public Permissions getPermissions()

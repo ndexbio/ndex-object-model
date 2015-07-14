@@ -38,6 +38,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public abstract class Term extends NetworkElement
 {
+	public static final String baseTerm = "BaseTerm";
+	public static final String reifiedEdgeTerm = "ReifiedEdgeTerm";
+	public static final String functionTerm = "FunctionTerm"; 
     
     /**************************************************************************
     * Default constructor.
@@ -46,9 +49,6 @@ public abstract class Term extends NetworkElement
     	super();
     }
 	
-    final public String getTermType()
-    {
-        return this.getType();
-    } 
+    abstract public String getTermType();
 
 }

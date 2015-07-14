@@ -64,7 +64,7 @@ public class Task extends NdexExternalObject
     public Task()
     {
         super();
-        this._type = this.getClass().getSimpleName();
+//        this._type = this.getClass().getSimpleName();
         setIsDeleted(false);
         setAttributes(new HashMap<String, Object> ());
         _priority = Priority.LOW;

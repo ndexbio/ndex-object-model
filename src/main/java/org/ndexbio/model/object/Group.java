@@ -47,7 +47,7 @@ public class Group extends Account
     {
         super();
 
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
 
     } 
     

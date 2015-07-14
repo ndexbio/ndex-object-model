@@ -30,10 +30,17 @@
  */
 package org.ndexbio.model.object;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NdexPropertyValuePair extends NdexObject {
+public class NdexPropertyValuePair implements Serializable /*extends NdexObject */ {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public static final String STRING = "String"; 
 	
@@ -45,7 +52,7 @@ public class NdexPropertyValuePair extends NdexObject {
 	
 	public NdexPropertyValuePair () {
 		_dataType = STRING;
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
 
 	}
 	
@@ -53,7 +60,7 @@ public class NdexPropertyValuePair extends NdexObject {
 		_predicateString = key;
 		_value = value;
 		_dataType = STRING;
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
 	}
 	
 	public long getPredicateId() {

@@ -49,7 +49,7 @@ public class PropertyGraphNetwork implements PropertiedObject{
    private Map<Long,PropertyGraphNode> _nodes;
    private Map <Long, PropertyGraphEdge> _edges;
    private List<NdexPropertyValuePair> _properties;
-   private List<SimplePropertyValuePair> _presentationProperties;
+//   private List<SimplePropertyValuePair> _presentationProperties;
 
    public static final String uuid      = "NDEX:UUID";
    public static final String namspaces = "NDEX:namespaces";
@@ -66,7 +66,7 @@ public class PropertyGraphNetwork implements PropertiedObject{
 	   setNodes(new HashMap<Long,PropertyGraphNode> ());
 	   setEdges(new HashMap<Long, PropertyGraphEdge>  ());
 	   _properties = new ArrayList<>();
-	   _presentationProperties = new ArrayList <>();
+//	   _presentationProperties = new ArrayList <>();
    }
 
 
@@ -90,11 +90,11 @@ public void setEdges(Map <Long,PropertyGraphEdge> edges) {
 public List<NdexPropertyValuePair> getProperties() {
 	return this._properties;
 }
-
+/*
 @Override
 public List<SimplePropertyValuePair> getPresentationProperties() {
 	return this._presentationProperties;
-}
+} */
 
 @Override
 public void setProperties(List<NdexPropertyValuePair> properties) {
@@ -102,11 +102,12 @@ public void setProperties(List<NdexPropertyValuePair> properties) {
 	
 }
 
+/*
 @Override
 public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 	this._presentationProperties = properties;
 	
-}
+} */
    
 
   /**

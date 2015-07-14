@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class NdexExternalObject extends NdexObject {
+public abstract class NdexExternalObject /* extends NdexObject */{
 	
 	private UUID _externalId; 
 	private Timestamp _creationTime;

@@ -37,7 +37,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NdexStatus extends NdexObject
+public class NdexStatus //extends NdexObject
 {
     private int _networkCount;
     private int _userCount;
@@ -55,7 +55,7 @@ public class NdexStatus extends NdexObject
     public NdexStatus()
     {
         super();
-        _properties = new HashMap<String,String>();
+        _properties = new HashMap<>();
         _message = online;
     }
 

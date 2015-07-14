@@ -43,11 +43,11 @@ public class Namespace extends PropertiedNetworkElement
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
-    public Namespace()
+/*    public Namespace()
     {
         super();
         _type = this.getClass().getSimpleName();
-    }
+    } */
       
     
     public String getPrefix()

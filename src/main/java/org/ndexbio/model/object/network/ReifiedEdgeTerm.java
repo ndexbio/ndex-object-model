@@ -42,11 +42,11 @@ public class ReifiedEdgeTerm extends Term
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
-    public ReifiedEdgeTerm()
+ /*   public ReifiedEdgeTerm()
     {
         super();
         _type = this.getClass().getSimpleName();
-    }
+    }  */
 
 	public long getEdgeId() {
 		return _edgeId;
@@ -54,6 +54,12 @@ public class ReifiedEdgeTerm extends Term
 
 	public void setEdgeId(long termEdge) {
 		this._edgeId = termEdge;
+	}
+
+	@Override
+	public String getTermType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

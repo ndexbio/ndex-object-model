@@ -52,7 +52,7 @@ public class Edge extends PropertiedNetworkElement
     public Edge()
     {
         super();
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
         this.initCollections();
     }
 

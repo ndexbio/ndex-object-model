@@ -63,12 +63,12 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private String _version;
 	
 	private List<NdexPropertyValuePair> _properties;
-	private List<SimplePropertyValuePair> _presentationProperties;
+//	private List<SimplePropertyValuePair> _presentationProperties;
 
 	
 	public NetworkSummary () {
 		super();
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
 
         _isComplete = false;
         _isLocked = false;
@@ -79,7 +79,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         _nodeCount = 0;
         
         _properties = new ArrayList<> (10);
-    	_presentationProperties = new ArrayList<> (10);
+//    	_presentationProperties = new ArrayList<> (10);
 
 	}
 
@@ -168,20 +168,20 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		return _properties;
 	}
 
-	@Override
+/*	@Override
 	public List<SimplePropertyValuePair> getPresentationProperties() {
 		return _presentationProperties;
-	}
+	} */
 
 	@Override
 	public void setProperties(List<NdexPropertyValuePair> properties) {
 		_properties = properties;
 	}
 
-	@Override
+/*	@Override
 	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
 		_presentationProperties = properties;
-	}
+	} */
 
 	public String getURI() {
 		return _URI;

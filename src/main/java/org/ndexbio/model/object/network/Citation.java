@@ -50,7 +50,7 @@ public class Citation extends PropertiedNetworkElement implements Comparable<Cit
     public Citation()
     {
         super();
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
         _contributors = new ArrayList<>();
  //       _supports = new ArrayList<Support>();
         

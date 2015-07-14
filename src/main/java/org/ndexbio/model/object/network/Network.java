@@ -58,7 +58,7 @@ public class Network extends NetworkSummary
     public Network()
     {
         super();
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
 
         _edges = new HashMap<>(50);
 
@@ -68,7 +68,7 @@ public class Network extends NetworkSummary
     public Network(int edgeCount)
     {
         super();
-        _type = this.getClass().getSimpleName();
+//        _type = this.getClass().getSimpleName();
 
         _edges = new HashMap<>(edgeCount);
         

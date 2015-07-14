@@ -43,12 +43,12 @@ public class Subnetwork extends PropertiedNetworkElement {
 	private long[] _nodeIds;  //sorted if we need to do lookups?
 	private long[] _edgeIds;
 
-	public Subnetwork () {
+/*	public Subnetwork () {
 		super();
         _type = this.getClass().getSimpleName();
 
 	}
- 
+ */
 	public SubnetworkType getSubnetworktype() {
 		return _subnetworktype;
 	}
