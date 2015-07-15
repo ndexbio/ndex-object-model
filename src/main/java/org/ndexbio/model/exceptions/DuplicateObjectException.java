@@ -1,7 +1,6 @@
 package org.ndexbio.model.exceptions;
 
 import org.ndexbio.model.errorcodes.ErrorCode;
-//import org.ndexbio.model.exceptions.NdexException;
 import org.ndexbio.model.errorcodes.NDExError;
 
 public class DuplicateObjectException extends NdexException
