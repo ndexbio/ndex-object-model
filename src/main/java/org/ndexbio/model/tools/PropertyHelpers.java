@@ -157,25 +157,26 @@ public class PropertyHelpers {
 		return valueStrings;
 	}
 
+	// TODO: remove the following 2 functions
 	private static String getPropertyValueString(NdexPropertyValuePair pvp, Network network) {
 		String propertyValueString = pvp.getValue();
-		if (null == propertyValueString){
+/*		if (null == propertyValueString){
 			Long valueId = pvp.getValueId();
 			BaseTerm valueTerm = network.getBaseTerms().get(valueId);
 			if (null != valueTerm){
 				propertyValueString = getBaseTermString(valueTerm, network);
 			}
-		}
+		} */
 		return propertyValueString;
 	}
 
 	private static String getPropertyString(NdexPropertyValuePair pvp, Network network) {
 		String propertyString = pvp.getPredicateString();
-		if (null == propertyString){
+/*		if (null == propertyString){
 			Long propertyId = pvp.getPredicateId();
 			BaseTerm predicateTerm = network.getBaseTerms().get(propertyId);
 			propertyString = getBaseTermString(predicateTerm, network);		
-		}
+		} */
 		return propertyString;
 	}
 	

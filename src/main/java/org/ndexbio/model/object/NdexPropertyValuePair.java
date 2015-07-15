@@ -44,9 +44,9 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 
 	public static final String STRING = "String"; 
 	
-	private long   _predicateId;
+//	private long   _predicateId;
 	private String _predicateString;
-	private long _valueId;
+//	private long _valueId;
 	private String _value;
 	private String _dataType;
 	
@@ -63,6 +63,7 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 //        _type = this.getClass().getSimpleName();
 	}
 	
+/*	
 	public long getPredicateId() {
 		return _predicateId;
 	}
@@ -74,7 +75,7 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	}
 	public void setValueId(long valueId) {
 		this._valueId = valueId;
-	}
+	} */
 	public String getValue() {
 		return _value;
 	}
