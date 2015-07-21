@@ -35,12 +35,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ndexbio.model.exceptions.NdexException;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.PropertiedObject;
 import org.ndexbio.model.object.SimplePropertyValuePair;
+import org.ndexbio.model.tools.PropertyHelpers;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
@@ -70,6 +71,81 @@ public class PropertyGraphNetwork implements PropertiedObject{
    }
 
 
+   public PropertyGraphNetwork (Network network) throws NdexException {
+	   //copy network profiles and properties
+
+	   _properties = new ArrayList<>(network.getProperties().size() + 15);
+
+       _properties.add(new NdexPropertyValuePair(PropertyGraphNetwork.uuid,
+    		                    network.getExternalId().toString()));
+       
+       _properties.add(new NdexPropertyValuePair(
+       		PropertyGraphNetwork.name, network.getName()));
+       
+       String desc = network.getDescription();
+       if ( desc != null && !desc.equals("")) 
+       	 _properties.add(new NdexPropertyValuePair(PropertyGraphNetwork.description, desc));
+       
+       String v =network.getVersion();
+       if ( v != null) 
+       	 _properties.add(new NdexPropertyValuePair(PropertyGraphNetwork.version, v));
+       
+       for ( NdexPropertyValuePair p : network.getProperties()) {
+			_properties.add( p);	
+       }
+
+       // copy nodes
+       for ( Node n : network.getNodes().values()) {
+    	   PropertyGraphNode gn = new PropertyGraphNode();
+    	   gn.setId(n.getId());
+    	   
+    	   if ( n.getName() != null)
+    		   gn.setName(n.getName());
+    	   
+    	   Long repId = n.getRepresents();
+    	   if ( repId !=null) {
+    		   String termStr = PropertyHelpers.getTermStringInNetwork(repId, network);
+    		   gn.getProperties().add(new NdexPropertyValuePair(PropertyGraphNode.represents, termStr)); 
+    		  
+    	   }
+    	   
+    	   for ( Long alias : n.getAliases()) {
+    		  BaseTerm bt = network.getBaseTerms().get(alias) ;
+     		  String aStr = PropertyHelpers.getBaseTermString(bt, network);
+     		  gn.getProperties().add(new NdexPropertyValuePair(PropertyGraphNode.represents, aStr));   
+    	   }
+    	   
+    	   for ( Long relatedT : n.getRelatedTerms()) {
+     		  BaseTerm bt = network.getBaseTerms().get(relatedT) ;
+      		  String rStr = PropertyHelpers.getBaseTermString(bt, network);
+      		  gn.getProperties().add(new NdexPropertyValuePair(PropertyGraphNode.represents, rStr));   
+     	   }
+    	       	   
+    	   for ( NdexPropertyValuePair p: n.getProperties()) {
+    		   gn.getProperties().add(p);
+    	   }
+    	   
+    	   _nodes.put(gn.getId(), gn);
+       }
+       
+      // copy edges
+       for ( Edge e : network.getEdges().values()) {
+   		  PropertyGraphEdge ge = new PropertyGraphEdge();
+   		  ge.setId(e.getId());
+
+   		  ge.setPredicate(PropertyHelpers.getBaseTermString(network.getBaseTerms().get(e.getPredicateId()), network));
+
+   		  ge.setSubjectId(e.getSubjectId());
+          ge.setObjectId(e.getObjectId());
+
+          for ( NdexPropertyValuePair p: e.getProperties()) {
+ 		     ge.getProperties().add(p);
+ 	      }
+          
+          _edges.put(ge.getId(), ge);
+       }
+   }
+   
 public Map<Long,PropertyGraphNode> getNodes() {
 	return _nodes;
 }
