@@ -33,14 +33,18 @@ package org.ndexbio.model.tools;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ndexbio.model.exceptions.NdexException;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.SimplePropertyValuePair;
 import org.ndexbio.model.object.network.BaseTerm;
 import org.ndexbio.model.object.network.Citation;
 import org.ndexbio.model.object.network.Edge;
+import org.ndexbio.model.object.network.FunctionTerm;
 import org.ndexbio.model.object.network.Namespace;
 import org.ndexbio.model.object.network.Network;
 import org.ndexbio.model.object.network.Node;
+import org.ndexbio.model.object.network.PropertyGraphNetwork;
+import org.ndexbio.model.object.network.ReifiedEdgeTerm;
 
 public class PropertyHelpers {
 
@@ -180,12 +184,13 @@ public class PropertyHelpers {
 		return propertyString;
 	}
 	
-	private static String getBaseTermString(BaseTerm bt, Network network) {
-		Long namespaceId = bt.getNamespaceId();
-		if (null == namespaceId){
+	public static String getBaseTermString(BaseTerm bt, Network network) {
+	
+		if (bt.getNamespaceId() <= 0){
 			return bt.getName();
 		}
-		Namespace ns = network.getNamespaces().get(namespaceId);
+		
+		Namespace ns = network.getNamespaces().get(bt.getNamespaceId());
 		if (null != ns){
 			if (null != ns.getPrefix()){
 				return ns.getPrefix() + ":" + bt.getName();
@@ -197,6 +202,42 @@ public class PropertyHelpers {
 		return null;
 	}
 
+   
+    public static String getTermStringInNetwork(Long termId, Network network) throws NdexException {
+	
+		  BaseTerm bt = network.getBaseTerms().get(termId) ;
+		  if ( bt != null) {
+		    return PropertyHelpers.getBaseTermString(bt, network);
+		  } 
+		  
+	      FunctionTerm ft = network.getFunctionTerms().get(termId);
+	      if ( ft != null) {
+	    	  String baseTermStr = getBaseTermString(network.getBaseTerms().get(ft.getFunctionTermId()),network);
+	    	  
+	          String finalStr = baseTermStr + "(";
+			  boolean isFirstArg = true;
+              for ( Long paraId : ft.getParameterIds()) {
+        			String argStr = getTermStringInNetwork(paraId, network);
+        	
+        			if ( isFirstArg) {
+        				isFirstArg = false;
+        			} else {
+        				finalStr += ",";
+        			}
+        			finalStr += argStr;
+        	  }
+      		  finalStr += ")";
+              return finalStr;
+          }
+	    	  
+		  ReifiedEdgeTerm rt = network.getReifiedEdgeTerms().get(termId);
+		  if ( rt != null) {
+			  return  PropertyGraphNetwork.reifiedEdgeTerm + "("+rt.getEdgeId()+")";
+		  }
+		  
+		  throw new NdexException ("Unsupported term type found for term Id:" + termId);
+    
+    }
 
 
 }
