@@ -77,7 +77,6 @@ public class PropertyGraphNetwork implements PropertiedObject{
 	   _properties = new ArrayList<>(network.getProperties().size() + 50);
 	   setNodes(new HashMap<Long,PropertyGraphNode> (network.getNodeCount()));
 	   setEdges(new HashMap<Long, PropertyGraphEdge>  (network.getEdgeCount()));
-	   _presentationProperties = new ArrayList <>();
 
 	   if ( network.getExternalId() != null)
            _properties.add(new NdexPropertyValuePair(PropertyGraphNetwork.uuid,
