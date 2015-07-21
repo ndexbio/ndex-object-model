@@ -74,9 +74,13 @@ public class PropertyGraphNetwork implements PropertiedObject{
    public PropertyGraphNetwork (Network network) throws NdexException {
 	   //copy network profiles and properties
 
-	   _properties = new ArrayList<>(network.getProperties().size() + 15);
+	   _properties = new ArrayList<>(network.getProperties().size() + 50);
+	   setNodes(new HashMap<Long,PropertyGraphNode> (network.getNodeCount()));
+	   setEdges(new HashMap<Long, PropertyGraphEdge>  (network.getEdgeCount()));
+	   _presentationProperties = new ArrayList <>();
 
-       _properties.add(new NdexPropertyValuePair(PropertyGraphNetwork.uuid,
+	   if ( network.getExternalId() != null)
+           _properties.add(new NdexPropertyValuePair(PropertyGraphNetwork.uuid,
     		                    network.getExternalId().toString()));
        
        _properties.add(new NdexPropertyValuePair(
@@ -97,7 +101,8 @@ public class PropertyGraphNetwork implements PropertiedObject{
        // copy nodes
        for ( Node n : network.getNodes().values()) {
     	   PropertyGraphNode gn = new PropertyGraphNode();
-    	   gn.setId(n.getId());
+    	   long id = n.getId();
+    	   gn.setId(id);
     	   
     	   if ( n.getName() != null)
     		   gn.setName(n.getName());
