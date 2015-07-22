@@ -33,6 +33,7 @@ package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.ndexbio.model.object.NdexExternalObject;
 import org.ndexbio.model.object.NdexPropertyValuePair;
@@ -65,7 +66,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private List<NdexPropertyValuePair> _properties;
 //	private List<SimplePropertyValuePair> _presentationProperties;
 
-	
+    private Map<String, Long> _aspectDictionary;
+
 	public NetworkSummary () {
 		super();
 //        _type = this.getClass().getSimpleName();
