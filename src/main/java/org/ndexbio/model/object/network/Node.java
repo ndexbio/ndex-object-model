@@ -47,7 +47,6 @@ public class Node extends PropertiedNetworkElement
     private List<Long> _supportIds;
     
     
-    
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
@@ -55,13 +54,9 @@ public class Node extends PropertiedNetworkElement
     {
         super();
         _representsId = null;
-//        _type = this.getClass().getSimpleName();
         this.initializeCollections();
     }
     
-
-    
-  
     /*
      * initialize class Collection fields
      */
