@@ -34,7 +34,7 @@ public abstract class NetworkElement //extends NdexObject
 {
 	
 	private long _id;
-	private String _eid;
+//	private String _eid;
 	
 	public NetworkElement () {
 		_id = -1;
@@ -48,14 +48,6 @@ public abstract class NetworkElement //extends NdexObject
 		this._id = id;
 	}
 
-	public String getEid() {
-		return _eid;
-	}
-
-	public void setEid(String _eid) {
-		this._eid = _eid;
-	}
-	
 
 
 }

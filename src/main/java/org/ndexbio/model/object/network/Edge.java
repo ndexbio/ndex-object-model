@@ -36,7 +36,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Edge extends PropertiedNetworkElement 
+public class Edge extends NetworkCoreAspectElement 
 {
     private long _objectId;
     private long _predicateId;

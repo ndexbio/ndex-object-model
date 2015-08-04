@@ -36,7 +36,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Node extends PropertiedNetworkElement
+public class Node extends NetworkCoreAspectElement
 {
     private String _name;
     private Long _representsId;
