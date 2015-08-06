@@ -98,4 +98,9 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	}
 	
 
+	@Override
+	public String toString() {
+		return "{\""+ _predicateString + "\":\"" + _value+"\"("+ _dataType+")}" ;
+	}
+
 }
