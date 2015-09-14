@@ -9,11 +9,17 @@
   <dependencies>
   		<!-- 3rd party libraries -->
   		
-        <dependency>
+  		<dependency>
+           	<groupId>org.cxio</groupId>
+  			<artifactId>cxio</artifactId>
+  			<version>0.0.1</version>
+		</dependency>
+  		
+     <!--    <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.5.2</version>
-        </dependency>
+        </dependency> -->
 
 		<dependency>
 			<groupId>junit</groupId>

@@ -41,6 +41,12 @@ public class ObjectNotFoundException extends NdexException
     {
         super(ndexError);
     }
+    
+    public ObjectNotFoundException(String className, long id) {
+    	
+    	this ( "Element " + id + " not found in " + className );
+    }
+    
     public ObjectNotFoundException(String message)
     {
         super(message, ErrorCode.NDEx_Object_Not_Found_Exception);
