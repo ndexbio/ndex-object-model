@@ -39,7 +39,7 @@ import java.util.UUID;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.ndexbio.model.cx.CXSupport;
+import org.ndexbio.model.cx.SupportElement;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -72,7 +72,7 @@ public class MembershipTest {
 	public void testMembership() throws JsonParseException, JsonMappingException, IOException {
 		
 		
-		CXSupport cxs = new CXSupport ();
+		SupportElement cxs = new SupportElement ();
 		cxs.setText("_:foobar");
 		
 		String s0 = mapper.writeValueAsString( cxs);

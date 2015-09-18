@@ -31,7 +31,7 @@
 package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -41,10 +41,10 @@ public class Node extends NetworkCoreAspectElement
     private String _name;
     private Long _representsId;
     private String _representsTermType;
-    private List<Long> _aliasIds;
-    private List<Long> _relatedTermIds;
-    private List<Long> _citationIds;
-    private List<Long> _supportIds;
+    private Collection<Long> _aliasIds;
+    private Collection<Long> _relatedTermIds;
+    private Collection<Long> _citationIds;
+    private Collection<Long> _supportIds;
     
     
     /**************************************************************************
@@ -67,12 +67,12 @@ public class Node extends NetworkCoreAspectElement
     	this._citationIds = new ArrayList<>();
     }
     
-    public List<Long> getAliases()
+    public Collection<Long> getAliases()
     {
         return _aliasIds;
     }
 
-    public void setAliases(List<Long> aliases)
+    public void setAliases(Collection<Long> aliases)
     {
         _aliasIds = aliases;
     }
@@ -87,12 +87,12 @@ public class Node extends NetworkCoreAspectElement
         _name = name;
     }
 
-    public List<Long> getRelatedTerms()
+    public Collection<Long> getRelatedTerms()
     {
         return _relatedTermIds;
     }
 
-    public void setRelatedTerms(List<Long> relatedTerms)
+    public void setRelatedTerms(Collection<Long> relatedTerms)
     {
         _relatedTermIds = relatedTerms;
     }
@@ -110,28 +110,28 @@ public class Node extends NetworkCoreAspectElement
 
 
 
-	public List<Long> getCitationIds() {
+	public Collection<Long> getCitationIds() {
 		return _citationIds;
 	}
 
 
 
 
-	public void setCitationIds(List<Long> _citations) {
+	public void setCitationIds(Collection<Long> _citations) {
 		this._citationIds = _citations;
 	}
 
 
 
 
-	public List<Long> getSupportIds() {
+	public Collection<Long> getSupportIds() {
 		return _supportIds;
 	}
 
 
 
 
-	public void setSupportIds(List<Long> _supports) {
+	public void setSupportIds(Collection<Long> _supports) {
 		this._supportIds = _supports;
 	}
 

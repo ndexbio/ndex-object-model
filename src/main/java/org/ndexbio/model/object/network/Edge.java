@@ -31,6 +31,7 @@
 package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -41,8 +42,8 @@ public class Edge extends NetworkCoreAspectElement
     private long _objectId;
     private long _predicateId;
     private long _subjectId;
-    private List<Long> _citationIds;
-    private List<Long> _supportIds;
+    private Collection<Long> _citationIds;
+    private Collection<Long> _supportIds;
 
 
 
@@ -65,12 +66,12 @@ public class Edge extends NetworkCoreAspectElement
     }
 
 
-    public List<Long> getCitationIds()
+    public Collection<Long> getCitationIds()
     {
         return _citationIds;
     }
 
-    public void setCitationIds(List<Long> citations)
+    public void setCitationIds(Collection<Long> citations)
     {
         _citationIds = citations;
     }
@@ -105,12 +106,12 @@ public class Edge extends NetworkCoreAspectElement
         _subjectId = subjectId;
     }
     
-    public List<Long> getSupportIds()
+    public Collection<Long> getSupportIds()
     {
         return _supportIds;
     }
 
-    public void setSupportIds(List<Long> supports)
+    public void setSupportIds(Collection<Long> supports)
     {
         _supportIds = supports;
     }

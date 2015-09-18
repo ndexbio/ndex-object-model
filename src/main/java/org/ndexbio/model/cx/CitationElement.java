@@ -3,9 +3,11 @@ package org.ndexbio.model.cx;
 import java.util.Collection;
 
 import org.cxio.core.interfaces.AspectElement;
+import org.cxio.util.CxConstants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
@@ -14,15 +16,18 @@ public class CitationElement implements AspectElement {
     
 	final public static String NAME           = "Citations";
 	
+	@JsonProperty(CxConstants.ID)
+	private String id ;
+	
 	private String title;
 	private Collection<String> contributor;
 	private String identifier;
 	private String citationType;
 	
 	private String description;
-	private Collection<String> edges;
-	private Collection<String> nodes;
-	private Collection<CXSupport> supports;
+//	private Collection<String> edges;
+//	private Collection<String> nodes;
+//	private Collection<CXSupport> supports;
 	
 	
 	public CitationElement() {
@@ -73,7 +78,7 @@ public class CitationElement implements AspectElement {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+/*
 	public Collection<String> getEdges() {
 		return edges;
 	}
@@ -88,20 +93,28 @@ public class CitationElement implements AspectElement {
 
 	public void setNodes(Collection<String> nodes) {
 		this.nodes = nodes;
-	}
-
+	}  */
+/*
 	public Collection<CXSupport> getSupports() {
 		return supports;
 	}
 
 	public void setSupports(Collection<CXSupport> supports) {
 		this.supports = supports;
-	}
+	} */
 
 	@Override
 	public long getSum() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
