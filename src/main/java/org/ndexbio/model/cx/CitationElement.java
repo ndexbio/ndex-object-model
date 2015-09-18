@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.cxio.core.interfaces.AspectElement;
 import org.cxio.util.CxConstants;
+import org.ndexbio.model.object.NdexPropertyValuePair;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,6 +26,8 @@ public class CitationElement implements AspectElement {
 	private String citationType;
 	
 	private String description;
+	
+	private Collection<NdexPropertyValuePair> props;
 //	private Collection<String> edges;
 //	private Collection<String> nodes;
 //	private Collection<CXSupport> supports;
@@ -104,6 +107,7 @@ public class CitationElement implements AspectElement {
 	} */
 
 	@Override
+	@JsonIgnore
 	public long getSum() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -115,6 +119,14 @@ public class CitationElement implements AspectElement {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Collection<NdexPropertyValuePair> getProps() {
+		return props;
+	}
+
+	public void setProps(Collection<NdexPropertyValuePair> props) {
+		this.props = props;
 	}
 
 }

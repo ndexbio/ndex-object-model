@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.cxio.core.interfaces.AspectElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class functionTermsElement implements AspectElement {
+public class FunctionTermsElement implements AspectElement {
+
+	final public static String NAME           = "FunctionTerms";
 
 	@JsonProperty( "po")
 	private String nodeID;
@@ -22,6 +25,16 @@ public class functionTermsElement implements AspectElement {
 		this.nodeID = nodeID;
 	}
 
+	public FunctionTermsElement() {
+	}
+	
+	public FunctionTermsElement(String nodeId, String functionName, List<Object> args) {
+		this.nodeID = nodeId;
+		this.functionName = functionName;
+		this.args=args;
+		
+	}
+	
 	@JsonProperty( "f")
     private String functionName;
 	
@@ -45,15 +58,16 @@ public class functionTermsElement implements AspectElement {
 		this.args = args;
 	}
 
-	public functionTermsElement() {
-	}
+
 
 	@Override
+	@JsonIgnore
 	public String getAspectName() {
-		return null;
+		return NAME;
 	}
 
 	@Override
+	@JsonIgnore
 	public long getSum() {
 		return 0;
 	}

@@ -1,9 +1,12 @@
 package org.ndexbio.model.cx;
 
+
 import java.util.Collection;
 
 import org.cxio.core.interfaces.AspectElement;
+import org.ndexbio.model.object.NdexPropertyValuePair;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,11 +18,6 @@ public class SupportElement implements AspectElement{
 	
 	private static final String tField = "t";
 
-	/*
-	@JsonProperty("n")
-	private Collection<String> nodes;
-	@JsonProperty("e")
-	private Collection<String> edges; */
 	
 	@JsonProperty ( tField )
 	private String text;
@@ -27,31 +25,15 @@ public class SupportElement implements AspectElement{
 	@JsonProperty( "citation")
 	private String citationId;
 	
+	@JsonProperty( "@id")
+	private String id;
+	
+	private Collection<NdexPropertyValuePair> props;
 	
 	public SupportElement() {
 	}
 
-/*
-	public Collection<String> getNodes() {
-		return nodes;
-	}
 
-
-	public void setNodes(Collection<String> nodes) {
-		this.nodes = nodes;
-	}
-
-
-	public Collection<String> getEdges() {
-		return edges;
-	}
-
-
-	public void setEdges(Collection<String> edges) {
-		this.edges = edges;
-	}
-
-*/
 	public String getText() {
 		return text;
 	}
@@ -73,15 +55,37 @@ public class SupportElement implements AspectElement{
 
 
 	@Override
+	@JsonIgnore
 	public String getAspectName() {
 		return NAME;
 	}
 
 
 	@Override
+	@JsonIgnore
 	public long getSum() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public Collection<NdexPropertyValuePair> getProps() {
+		return props;
+	}
+
+
+	public void setProps(Collection<NdexPropertyValuePair> props) {
+		this.props = props;
 	}
 
 }
