@@ -1,23 +1,25 @@
 package org.ndexbio.model.cx;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class NamespacesElement implements AspectElement {
+public class NamespacesElement extends HashMap<String,String> implements AspectElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public static final String NAME = "@context";
-	
-	private Map<String,String> prefixMap;
-	
+		
 	public NamespacesElement() {
+		super();
 	}
 
-	public NamespacesElement(Map<String,String> prefixTable){
-		this.prefixMap = prefixTable;
-	}
 	
 	@Override
 	@JsonIgnore
@@ -30,14 +32,6 @@ public class NamespacesElement implements AspectElement {
 	public long getSum() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	public Map<String,String> getPrefixMap() {
-		return prefixMap;
-	}
-
-	public void setPrefixMap(Map<String,String> prefixMap) {
-		this.prefixMap = prefixMap;
 	}
 
 }
