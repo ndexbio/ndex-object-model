@@ -61,14 +61,6 @@ public class SupportElement implements AspectElement{
 	}
 
 
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
 	public String getId() {
 		return id;
 	}

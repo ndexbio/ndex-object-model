@@ -106,12 +106,6 @@ public class CitationElement implements AspectElement {
 		this.supports = supports;
 	} */
 
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public String getId() {
 		return id;

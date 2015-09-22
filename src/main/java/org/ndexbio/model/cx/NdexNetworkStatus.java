@@ -34,12 +34,6 @@ public class NdexNetworkStatus implements AspectElement {
 		return NAME;
 	}
 
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		return 0;
-	}
-
 	public String getExternalId() {
 		return externalId;
 	}

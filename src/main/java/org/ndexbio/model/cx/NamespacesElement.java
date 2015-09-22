@@ -27,11 +27,5 @@ public class NamespacesElement extends HashMap<String,String> implements AspectE
 		return NAME;
 	}
 
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

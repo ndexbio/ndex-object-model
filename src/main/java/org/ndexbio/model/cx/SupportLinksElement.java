@@ -19,13 +19,6 @@ public abstract class SupportLinksElement implements AspectElement {
 		this.sourceId = sourceId;
 		this.supportId = supportIds;
 	}
-	
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 	public String getSourceId() {

@@ -66,10 +66,5 @@ public class FunctionTermsElement implements AspectElement {
 		return NAME;
 	}
 
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		return 0;
-	}
 
 }

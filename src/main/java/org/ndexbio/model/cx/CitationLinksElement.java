@@ -20,12 +20,6 @@ public abstract class CitationLinksElement implements AspectElement {
 		citationId = citationIds;
 	}
 
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public String getSourceId() {
 		return sourceId;

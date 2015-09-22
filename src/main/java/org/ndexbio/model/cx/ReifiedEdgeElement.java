@@ -25,12 +25,6 @@ public class ReifiedEdgeElement implements AspectElement {
 		return NAME;
 	}
 
-	@Override
-	@JsonIgnore
-	public long getSum() {
-		return 0;
-	}
-
 	public String getEdge() {
 		return edge;
 	}

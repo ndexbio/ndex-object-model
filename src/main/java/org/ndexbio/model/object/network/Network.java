@@ -34,6 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.cxio.metadata.MetaDataElement;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -49,8 +51,6 @@ public class Network extends NetworkSummary
     private Map<Long, BaseTerm> _baseTerms;
     private Map<Long, FunctionTerm> _functionTerms;
     private Map<Long, ReifiedEdgeTerm> _reifiedEdgeTerms;
-
-
 
     /**************************************************************************
     * Default constructor.
@@ -176,4 +176,6 @@ public class Network extends NetworkSummary
 	public void setReifiedEdgeTerms(Map<Long,ReifiedEdgeTerm> reifiedEdgeTerms) {
 		this._reifiedEdgeTerms = reifiedEdgeTerms;
 	}
+
+	
 }

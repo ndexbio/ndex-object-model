@@ -35,10 +35,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.cxio.metadata.MetaDataElement;
 import org.ndexbio.model.object.NdexExternalObject;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.PropertiedObject;
-import org.ndexbio.model.object.SimplePropertyValuePair;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -65,8 +65,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	
 	private List<NdexPropertyValuePair> _properties;
 //	private List<SimplePropertyValuePair> _presentationProperties;
-
-    private Map<String, Long> _aspectDictionary;
+//    private Map<String, MetaDataElement> _aspectDictionary;
 
 	public NetworkSummary () {
 		super();
@@ -217,6 +216,15 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		this._readOnlyCacheId = cacheId;
 	}
 
+/*	
+	public Map<String, MetaDataElement> get_aspectDictionary() {
+		return _aspectDictionary;
+	}
 
+	public void set_aspectDictionary(Map<String, MetaDataElement> _aspectDictionary) {
+		this._aspectDictionary = _aspectDictionary;
+	}
+
+*/
     
 }
