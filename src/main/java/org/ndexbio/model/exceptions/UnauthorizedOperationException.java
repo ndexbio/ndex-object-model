@@ -49,10 +49,12 @@ public class UnauthorizedOperationException extends NdexException {
     {
         super(message, cause, ErrorCode.NDEx_Unauthorized_Operation_Exception);
     }
-    public UnauthorizedOperationException(String message, String description)
+    
+/*    public UnauthorizedOperationException(String message, String description)
     {
         super(message, description, ErrorCode.NDEx_Unauthorized_Operation_Exception);
-    }
+    } */
+    
     public UnauthorizedOperationException(String message, String description, Throwable cause)
     {
         super(message, description, ErrorCode.NDEx_Unauthorized_Operation_Exception, cause);

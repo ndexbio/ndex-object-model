@@ -30,6 +30,7 @@
  */
 package org.ndexbio.model.exceptions;
 
+import org.cxio.core.interfaces.AspectElement;
 import org.ndexbio.model.errorcodes.ErrorCode;
 import org.ndexbio.model.errorcodes.NDExError;
 
@@ -49,12 +50,24 @@ public class DuplicateObjectException extends NdexException
     {
         super(message, cause, ErrorCode.NDEx_Duplicate_Object_Exception);
     }
-    public DuplicateObjectException(String message, String description)
+    
+    
+ /*   public DuplicateObjectException(String message, String description)
     {
         super(message, description, ErrorCode.NDEx_Duplicate_Object_Exception);
+    } */
+    
+    public DuplicateObjectException(String aspectName, String id)
+    {
+        this("Duplicate ID '"+ id + "' found in aspect " + aspectName);
     }
+    
     public DuplicateObjectException(String message, String description, Throwable cause)
     {
         super(message, description, ErrorCode.NDEx_Duplicate_Object_Exception, cause);
+    }
+    
+    public DuplicateObjectException(AspectElement asp, String id) {
+    	this("Duplicate ID: "+ id + " found in aspect " + asp.getAspectName());
     }
 }

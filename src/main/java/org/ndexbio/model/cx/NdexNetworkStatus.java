@@ -26,6 +26,8 @@ public class NdexNetworkStatus implements AspectElement {
 	private String ndexServerURI;
 	
 	public NdexNetworkStatus() {
+		nodeCount = -1;
+		edgeCount = -1;
 	}
 
 	@Override
