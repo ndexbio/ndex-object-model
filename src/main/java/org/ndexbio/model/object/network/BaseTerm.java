@@ -31,6 +31,7 @@
 package org.ndexbio.model.object.network;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -94,6 +95,7 @@ public class BaseTerm extends Term implements Comparable<BaseTerm>
 	}
 
 	@Override
+	@JsonIgnore
 	public String getTermType() {
 		return Term.baseTerm;
 	}
