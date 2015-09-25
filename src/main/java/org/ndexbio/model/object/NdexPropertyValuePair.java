@@ -42,18 +42,15 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final String STRING = "String"; 
+	public static final String STRING = "string"; 
 	
-//	private long   _predicateId;
 	private String _predicateString;
-//	private long _valueId;
 	private String _value;
 	private String _dataType;
 	private String subNetworkId;
 	
 	public NdexPropertyValuePair () {
 		_dataType = STRING;
-//        _type = this.getClass().getSimpleName();
 
 	}
 	
@@ -61,7 +58,6 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 		_predicateString = key;
 		_value = value;
 		_dataType = STRING;
-//        _type = this.getClass().getSimpleName();
 	}
 	
 /*	

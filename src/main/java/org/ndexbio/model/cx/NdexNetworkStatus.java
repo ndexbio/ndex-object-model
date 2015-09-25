@@ -3,6 +3,7 @@ package org.ndexbio.model.cx;
 import java.sql.Timestamp;
 
 import org.cxio.core.interfaces.AspectElement;
+import org.ndexbio.model.object.network.FileFormat;
 import org.ndexbio.model.object.network.VisibilityType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,6 +25,7 @@ public class NdexNetworkStatus implements AspectElement {
 	private int edgeCount;
 	private String owner;
 	private String ndexServerURI;
+	private String sourceFormat;
 	
 	public NdexNetworkStatus() {
 		nodeCount = -1;
@@ -114,6 +116,14 @@ public class NdexNetworkStatus implements AspectElement {
 
 	public void setNdexServerURI(String ndexServerURI) {
 		this.ndexServerURI = ndexServerURI;
+	}
+
+	public String getSourceFormat() {
+		return sourceFormat;
+	}
+
+	public void setSourceFormat(String sourceFormat) {
+		this.sourceFormat = sourceFormat;
 	}
 
 }
