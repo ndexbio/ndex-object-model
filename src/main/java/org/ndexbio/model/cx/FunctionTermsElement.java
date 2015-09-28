@@ -1,8 +1,11 @@
 package org.ndexbio.model.cx;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.cxio.core.interfaces.AspectElement;
+import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,8 +16,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class FunctionTermsElement implements AspectElement {
 
 	final public static String NAME           = "FunctionTerms";
+	
+	final private static String nodeId_prop = "po";
+	final private static String funcName_prop = "f";
+	final private static String args_prop = "args";
 
-	@JsonProperty( "po")
+	@JsonProperty( nodeId_prop)
 	private String nodeID;
 	
 	public String getNodeID() {
@@ -35,7 +42,7 @@ public class FunctionTermsElement implements AspectElement {
 		
 	}
 	
-	@JsonProperty( "f")
+	@JsonProperty(funcName_prop)
     private String functionName;
 	
 	
@@ -47,15 +54,30 @@ public class FunctionTermsElement implements AspectElement {
 		this.functionName = functionName;
 	}
 
-	@JsonProperty( "args")
+	@JsonProperty( args_prop)
     private List<Object> args;
 	
 	public List<Object> getArgs() {
 		return args;
 	}
 
-	public void setArgs(List<Object> args) {
-		this.args = args;
+	public void setArgs(List<Object> arguments) throws NdexException {
+		this.args = new ArrayList<> (arguments.size());
+		for (Object arg : arguments) {
+			if (arg instanceof String ) {
+				args.add(arg);
+			} else if ( arg instanceof Map<?,?>){
+				Map<String, Object> arg2 = (Map<String, Object>)arg;
+				Map<String,Object> m = arg2;
+				FunctionTermsElement f = new FunctionTermsElement();
+				f.setNodeID((String)m.get(nodeId_prop));
+				f.setFunctionName((String)m.get(funcName_prop));
+				f.setArgs((List<Object>)m.get(args_prop));
+				args.add(f);
+			} else 
+				throw new NdexException("wrong type of argument in the function term.");
+		}
+
 	}
 
 

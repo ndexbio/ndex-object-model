@@ -32,6 +32,8 @@ package org.ndexbio.model.object;
 
 import java.io.Serializable;
 
+import org.cxio.aspects.datamodels.AbstractAttributesAspectElement;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -52,6 +54,14 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	public NdexPropertyValuePair () {
 		_dataType = STRING;
 
+	}
+	
+	public NdexPropertyValuePair (String subNetwork,
+			String propertyName, String value, String dataType) {
+		this._predicateString = propertyName;
+		this._value = value;
+		this.subNetworkId = subNetwork;
+		this._dataType = dataType;
 	}
 	
 	public NdexPropertyValuePair (String key, String value) {
