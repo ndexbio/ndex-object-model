@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SupportElement implements AspectElement{
 	
-	public static final String NAME = "Support";
+	public static final String NAME = "supports";
 	
 	private static final String tField = "t";
 

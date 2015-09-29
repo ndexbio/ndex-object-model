@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class NodeSupportLinksElement extends SupportLinksElement {
 
-	public static final String NAME = "NodeSupports";
+	public static final String NAME = "nodeSupports";
 	public NodeSupportLinksElement() {
 	}
 	

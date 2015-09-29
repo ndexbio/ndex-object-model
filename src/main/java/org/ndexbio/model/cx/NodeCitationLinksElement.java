@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class NodeCitationLinksElement extends CitationLinksElement {
 
-	public static final String NAME = "NodeCitations";
+	public static final String NAME = "nodeCitations";
 	public NodeCitationLinksElement() {
 	}
 

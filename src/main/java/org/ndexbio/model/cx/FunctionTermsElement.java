@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FunctionTermsElement implements AspectElement {
 
-	final public static String NAME           = "FunctionTerms";
+	final public static String NAME           = "functionTerms";
 	
 	final private static String nodeId_prop = "po";
 	final private static String funcName_prop = "f";

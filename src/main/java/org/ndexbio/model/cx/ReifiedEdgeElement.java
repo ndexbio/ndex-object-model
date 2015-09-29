@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ReifiedEdgeElement implements AspectElement {
 
-	final public static String NAME  = "ReifiedEdges";
+	final public static String NAME  = "reifiedEdges";
 	
 	private String edge;
 	private String node;

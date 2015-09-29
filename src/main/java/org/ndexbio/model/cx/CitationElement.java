@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CitationElement implements AspectElement {
     
-	final public static String NAME           = "Citations";
+	final public static String NAME           = "citations";
 	
 	@JsonProperty(CxConstants.ID)
 	private String id ;
