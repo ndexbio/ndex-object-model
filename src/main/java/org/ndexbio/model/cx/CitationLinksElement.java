@@ -23,11 +23,11 @@ public abstract class CitationLinksElement implements AspectElement {
 	}
 
 
-	public Collection<String> getSourceId() {
+	public Collection<String> getSourceIds() {
 		return sourceIds;
 	}
 
-	public void setSourceId(Collection<String> sourceId) {
+	public void setSourceIds(Collection<String> sourceId) {
 		this.sourceIds = sourceId;
 	}
 

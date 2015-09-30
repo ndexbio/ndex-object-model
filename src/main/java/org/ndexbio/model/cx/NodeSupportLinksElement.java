@@ -14,6 +14,9 @@ public class NodeSupportLinksElement extends SupportLinksElement {
 		super(sourceId,supportIds);
 	}
 	
+	public NodeSupportLinksElement(String sourceId, Collection<String> supportIds ) {
+		super(sourceId,supportIds);
+	}
 
 	@Override
 	@JsonIgnore

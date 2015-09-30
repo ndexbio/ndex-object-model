@@ -1,5 +1,6 @@
 package org.ndexbio.model.cx;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.cxio.core.interfaces.AspectElement;
@@ -17,11 +18,16 @@ public abstract class SupportLinksElement implements AspectElement {
 	public SupportLinksElement() {
 	}
 
-	public SupportLinksElement(Collection<String> sourceId, Collection<String> supportIds ) {
+	protected SupportLinksElement(Collection<String> sourceId, Collection<String> supportIds ) {
 		this.sourceIds = sourceId;
 		this.supportIds = supportIds;
 	}
 
+	protected SupportLinksElement(String sourceId, Collection<String> supportIds ) {	
+		this.sourceIds = new ArrayList<> (1);
+		this.sourceIds.add(sourceId);
+		this.supportIds = supportIds;
+	}
 
 	public Collection<String> getSourceIds() {
 		return sourceIds;

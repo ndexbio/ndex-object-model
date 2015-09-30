@@ -14,6 +14,9 @@ public class EdgeSupportLinksElement extends SupportLinksElement {
 		super(sourceId,supportIds);
 	}
 	
+	public EdgeSupportLinksElement(String sourceId, Collection<String> supportIds ) {
+		super(sourceId,supportIds);
+	}
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
