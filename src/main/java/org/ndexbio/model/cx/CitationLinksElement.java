@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.cxio.core.interfaces.AspectElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class CitationLinksElement implements AspectElement {
@@ -12,14 +13,14 @@ public abstract class CitationLinksElement implements AspectElement {
 	private Collection<String> sourceIds ;
 	
 	@JsonProperty("citations")	
-	private Collection<String> citationId; 
+	private Collection<String> citationIds; 
 
 	public CitationLinksElement() {
 	}
 
 	public CitationLinksElement(Collection<String> sourceIds, Collection<String> citationIds) {
 		this.sourceIds = sourceIds;
-		citationId = citationIds;
+		this.citationIds = citationIds;
 	}
 
 
@@ -31,12 +32,14 @@ public abstract class CitationLinksElement implements AspectElement {
 		this.sourceIds = sourceId;
 	}
 
+	@JsonIgnore
 	public Collection<String> getCitationIds() {
-		return citationId;
+		return citationIds;
 	}
 
+	@JsonIgnore
 	public void setCitationIds(Collection<String> citationId) {
-		this.citationId = citationId;
+		this.citationIds = citationId;
 	}
 
 }
