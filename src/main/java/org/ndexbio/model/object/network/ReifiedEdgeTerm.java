@@ -30,6 +30,7 @@
  */
 package org.ndexbio.model.object.network;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -57,6 +58,7 @@ public class ReifiedEdgeTerm extends Term
 	}
 
 	@Override
+	@JsonIgnore
 	public String getTermType() {
 		// TODO Auto-generated method stub
 		return null;

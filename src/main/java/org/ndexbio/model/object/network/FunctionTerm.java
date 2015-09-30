@@ -33,6 +33,7 @@ package org.ndexbio.model.object.network;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -103,6 +104,7 @@ public class FunctionTerm extends Term implements Comparable <FunctionTerm>
 	}
 
 	@Override
+	@JsonIgnore
 	public String getTermType() {
 		return Term.functionTerm;
 	}
