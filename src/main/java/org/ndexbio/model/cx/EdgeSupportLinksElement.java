@@ -10,7 +10,7 @@ public class EdgeSupportLinksElement extends SupportLinksElement {
 	public EdgeSupportLinksElement() {
 	}
 
-	public EdgeSupportLinksElement(String sourceId, Collection<String> supportIds ) {
+	public EdgeSupportLinksElement(Collection<String> sourceId, Collection<String> supportIds ) {
 		super(sourceId,supportIds);
 	}
 	

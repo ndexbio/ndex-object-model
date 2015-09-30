@@ -16,7 +16,7 @@ public class SupportElement implements AspectElement{
 	
 	public static final String NAME = "supports";
 	
-	private static final String tField = "t";
+	private static final String tField = "text";
 
 	
 	@JsonProperty ( tField )
@@ -28,7 +28,8 @@ public class SupportElement implements AspectElement{
 	@JsonProperty( "@id")
 	private String id;
 	
-	private Collection<NdexPropertyValuePair> props;
+	@JsonProperty( "attributes")
+	private Collection<CXSimpleAttribute> props;
 	
 	public SupportElement() {
 	}
@@ -71,12 +72,12 @@ public class SupportElement implements AspectElement{
 	}
 
 
-	public Collection<NdexPropertyValuePair> getProps() {
+	public Collection<CXSimpleAttribute> getProps() {
 		return props;
 	}
 
 
-	public void setProps(Collection<NdexPropertyValuePair> props) {
+	public void setProps(Collection<CXSimpleAttribute> props) {
 		this.props = props;
 	}
 

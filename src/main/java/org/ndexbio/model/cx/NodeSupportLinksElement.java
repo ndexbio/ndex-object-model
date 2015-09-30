@@ -10,7 +10,7 @@ public class NodeSupportLinksElement extends SupportLinksElement {
 	public NodeSupportLinksElement() {
 	}
 	
-	public NodeSupportLinksElement(String sourceId, Collection<String> supportIds ) {
+	public NodeSupportLinksElement(Collection<String> sourceId, Collection<String> supportIds ) {
 		super(sourceId,supportIds);
 	}
 	

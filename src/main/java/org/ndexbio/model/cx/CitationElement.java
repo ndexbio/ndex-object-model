@@ -20,18 +20,26 @@ public class CitationElement implements AspectElement {
 	@JsonProperty(CxConstants.ID)
 	private String id ;
 	
+	@JsonProperty("dc:title")	
 	private String title;
-	private Collection<String> contributor;
-	private String identifier;
-	private String citationType;
 	
+	@JsonProperty("dc:contributor")	
+	private Collection<String> contributor;
+
+	@JsonProperty("dc:identifier")	
+
+	private String identifier;
+	
+	@JsonProperty("dc:type")	
+	private String citationType;
+
+	@JsonProperty("dc:description")	
+
 	private String description;
 	
-	private Collection<NdexPropertyValuePair> props;
-//	private Collection<String> edges;
-//	private Collection<String> nodes;
-//	private Collection<CXSupport> supports;
-	
+	@JsonProperty("attributes")	
+
+	private Collection<CXSimpleAttribute> props;
 	
 	public CitationElement() {
 	}
@@ -115,11 +123,11 @@ public class CitationElement implements AspectElement {
 		this.id = id;
 	}
 
-	public Collection<NdexPropertyValuePair> getProps() {
+	public Collection<CXSimpleAttribute> getProps() {
 		return props;
 	}
 
-	public void setProps(Collection<NdexPropertyValuePair> props) {
+	public void setProps(Collection<CXSimpleAttribute> props) {
 		this.props = props;
 	}
 

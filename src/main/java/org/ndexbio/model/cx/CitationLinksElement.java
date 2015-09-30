@@ -4,29 +4,31 @@ import java.util.Collection;
 
 import org.cxio.core.interfaces.AspectElement;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class CitationLinksElement implements AspectElement {
 	
-	private String sourceId ;
+	@JsonProperty("po")	
+	private Collection<String> sourceIds ;
 	
+	@JsonProperty("citations")	
 	private Collection<String> citationId; 
 
 	public CitationLinksElement() {
 	}
 
-	public CitationLinksElement(String sourceId, Collection<String> citationIds) {
-		this.sourceId = sourceId;
+	public CitationLinksElement(Collection<String> sourceIds, Collection<String> citationIds) {
+		this.sourceIds = sourceIds;
 		citationId = citationIds;
 	}
 
 
-	public String getSourceId() {
-		return sourceId;
+	public Collection<String> getSourceId() {
+		return sourceIds;
 	}
 
-	public void setSourceId(String sourceId) {
-		this.sourceId = sourceId;
+	public void setSourceId(Collection<String> sourceId) {
+		this.sourceIds = sourceId;
 	}
 
 	public Collection<String> getCitationIds() {

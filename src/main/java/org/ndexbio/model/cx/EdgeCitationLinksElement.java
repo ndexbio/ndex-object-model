@@ -10,7 +10,7 @@ public class EdgeCitationLinksElement extends CitationLinksElement {
 	public EdgeCitationLinksElement() {
 	}
 
-	public EdgeCitationLinksElement(String sourceId, Collection<String> citationIds ) {
+	public EdgeCitationLinksElement(Collection<String> sourceId, Collection<String> citationIds ) {
 		super(sourceId,citationIds);
 	}
 	

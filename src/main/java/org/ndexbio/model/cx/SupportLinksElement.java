@@ -4,40 +4,42 @@ import java.util.Collection;
 
 import org.cxio.core.interfaces.AspectElement;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class SupportLinksElement implements AspectElement {
 
-	private String sourceId;
+	@JsonProperty("po")	
+	private Collection<String> sourceIds;
 	
-	private Collection<String> supportId;
+	@JsonProperty("supports")	
+	private Collection<String> supportIds;
 	
 	public SupportLinksElement() {
 	}
 
-	public SupportLinksElement(String sourceId, Collection<String> supportIds ) {
-		this.sourceId = sourceId;
-		this.supportId = supportIds;
+	public SupportLinksElement(Collection<String> sourceId, Collection<String> supportIds ) {
+		this.sourceIds = sourceId;
+		this.supportIds = supportIds;
 	}
 
 
-	public String getSourceId() {
-		return sourceId;
+	public Collection<String> getSourceIds() {
+		return sourceIds;
 	}
 
 
-	public void setSourceId(String sourceId) {
-		this.sourceId = sourceId;
+	public void setSourceIds(Collection<String> sourceId) {
+		this.sourceIds = sourceId;
 	}
 
 
 	public Collection<String> getSupportIds() {
-		return supportId;
+		return supportIds;
 	}
 
 
 	public void setSupportIds(Collection<String> supportIds) {
-		this.supportId = supportIds;
+		this.supportIds = supportIds;
 	}
 
 }

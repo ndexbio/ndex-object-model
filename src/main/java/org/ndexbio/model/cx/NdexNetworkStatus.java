@@ -3,7 +3,6 @@ package org.ndexbio.model.cx;
 import java.sql.Timestamp;
 
 import org.cxio.core.interfaces.AspectElement;
-import org.ndexbio.model.object.network.FileFormat;
 import org.ndexbio.model.object.network.VisibilityType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,13 +18,15 @@ public class NdexNetworkStatus implements AspectElement {
 	private Timestamp creationTime;
 	private Timestamp modificationTime;
 	private VisibilityType visibility;
-	private boolean isPublished;
-	private String version;
+	private boolean published;
+//	private String version;
 	private int nodeCount;
 	private int edgeCount;
 	private String owner;
 	private String ndexServerURI;
-	private String sourceFormat;
+	private boolean readOnly;
+	
+//	private String sourceFormat; move to network property
 	
 	public NdexNetworkStatus() {
 		nodeCount = -1;
@@ -70,21 +71,6 @@ public class NdexNetworkStatus implements AspectElement {
 		this.visibility = visibility;
 	}
 
-	public boolean isPublished() {
-		return isPublished;
-	}
-
-	public void setPublished(boolean isPublished) {
-		this.isPublished = isPublished;
-	}
-
-	public String getVersion() {
-		return version;
-	}
-
-	public void setVersion(String version) {
-		this.version = version;
-	}
 
 	public int getNodeCount() {
 		return nodeCount;
@@ -118,12 +104,21 @@ public class NdexNetworkStatus implements AspectElement {
 		this.ndexServerURI = ndexServerURI;
 	}
 
-	public String getSourceFormat() {
-		return sourceFormat;
+
+	public boolean isPublished() {
+		return published;
 	}
 
-	public void setSourceFormat(String sourceFormat) {
-		this.sourceFormat = sourceFormat;
+	public void setPublished(boolean published) {
+		this.published = published;
+	}
+
+	public boolean isReadOnly() {
+		return readOnly;
+	}
+
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
 	}
 
 }

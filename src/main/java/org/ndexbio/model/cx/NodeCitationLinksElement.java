@@ -10,7 +10,7 @@ public class NodeCitationLinksElement extends CitationLinksElement {
 	public NodeCitationLinksElement() {
 	}
 
-	public NodeCitationLinksElement(String sourceId, Collection<String> citationIds ) {
+	public NodeCitationLinksElement(Collection<String> sourceId, Collection<String> citationIds ) {
 		super(sourceId,citationIds);
 	}
 	
