@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.cxio.core.interfaces.AspectElement;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -13,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class FunctionTermsElement implements AspectElement {
+public class FunctionTermsElement extends AbstractAspectElement {
 
 	final public static String NAME           = "functionTerms";
 	

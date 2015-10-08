@@ -3,6 +3,7 @@ package org.ndexbio.model.cx;
 
 import java.util.Collection;
 
+import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.cxio.core.interfaces.AspectElement;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class SupportElement implements AspectElement{
+public class SupportElement extends AbstractAspectElement{
 	
 	public static final String NAME = "supports";
 	

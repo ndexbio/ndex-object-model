@@ -7,7 +7,7 @@ import org.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class NamespacesElement extends HashMap<String,String> implements AspectElement {
+public class NamespacesElement extends HashMap<String,String> implements AspectElement{
 
 	/**
 	 * 
@@ -27,5 +27,13 @@ public class NamespacesElement extends HashMap<String,String> implements AspectE
 		return NAME;
 	}
 
+
+	@Override
+	public int compareTo(AspectElement o) {
+	       if ((o != null) && (o.getAspectName() != null) && (getAspectName() != null)) {
+	            return getAspectName().compareTo(o.getAspectName());
+	        }
+	        return 0;
+	}
 
 }

@@ -2,12 +2,13 @@ package org.ndexbio.model.cx;
 
 import java.util.Collection;
 
+import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public abstract class CitationLinksElement implements AspectElement {
+public abstract class CitationLinksElement extends AbstractAspectElement {
 	
 	@JsonProperty("po")	
 	private Collection<String> sourceIds ;

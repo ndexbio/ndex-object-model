@@ -1,10 +1,11 @@
 package org.ndexbio.model.cx;
 
+import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class ReifiedEdgeElement implements AspectElement {
+public class ReifiedEdgeElement extends AbstractAspectElement {
 
 	final public static String NAME  = "reifiedEdges";
 	
