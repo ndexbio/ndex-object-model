@@ -1,8 +1,6 @@
 package org.ndexbio.model.cx;
 
 import java.util.HashMap;
-import java.util.Map;
-
 import org.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

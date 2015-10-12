@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.cxio.aspects.datamodels.AbstractAspectElement;
-import org.cxio.core.interfaces.AspectElement;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class SupportLinksElement extends AbstractAspectElement {

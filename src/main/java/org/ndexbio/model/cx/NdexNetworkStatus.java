@@ -3,7 +3,6 @@ package org.ndexbio.model.cx;
 import java.sql.Timestamp;
 
 import org.cxio.aspects.datamodels.AbstractAspectElement;
-import org.cxio.core.interfaces.AspectElement;
 import org.ndexbio.model.object.network.VisibilityType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

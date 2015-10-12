@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.cxio.aspects.datamodels.AbstractAspectElement;
-import org.cxio.core.interfaces.AspectElement;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class FunctionTermsElement extends AbstractAspectElement {
+public class FunctionTermElement extends AbstractAspectElement {
 
 	final public static String NAME           = "functionTerms";
 	
@@ -33,10 +32,10 @@ public class FunctionTermsElement extends AbstractAspectElement {
 		this.nodeID = nodeID;
 	}
 
-	public FunctionTermsElement() {
+	public FunctionTermElement() {
 	}
 	
-	public FunctionTermsElement(String nodeId, String functionName, List<Object> args) {
+	public FunctionTermElement(String nodeId, String functionName, List<Object> args) {
 		this.nodeID = nodeId;
 		this.functionName = functionName;
 		this.args=args;
@@ -70,7 +69,7 @@ public class FunctionTermsElement extends AbstractAspectElement {
 			} else if ( arg instanceof Map<?,?>){
 				Map<String, Object> arg2 = (Map<String, Object>)arg;
 				Map<String,Object> m = arg2;
-				FunctionTermsElement f = new FunctionTermsElement();
+				FunctionTermElement f = new FunctionTermElement();
 				f.setNodeID((String)m.get(nodeId_prop));
 				f.setFunctionName((String)m.get(funcName_prop));
 				f.setArgs((List<Object>)m.get(args_prop));
