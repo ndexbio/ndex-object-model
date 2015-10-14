@@ -33,9 +33,7 @@ package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.cxio.metadata.MetaDataElement;
 import org.ndexbio.model.object.NdexExternalObject;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.PropertiedObject;
