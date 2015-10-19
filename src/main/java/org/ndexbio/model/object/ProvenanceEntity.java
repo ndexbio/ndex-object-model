@@ -38,7 +38,7 @@ import org.ndexbio.model.object.network.NetworkSummary;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProvenanceEntity //extends NdexObject 
+public class ProvenanceEntity 
 {
 
 	private List<SimplePropertyValuePair> _properties;
@@ -46,15 +46,10 @@ public class ProvenanceEntity //extends NdexObject
 	private String _uri;
 
 	public ProvenanceEntity () {
-//		super();
-//        _type = this.getClass().getSimpleName();
-        
         _properties = new ArrayList<>();
 	} 
 
 	public ProvenanceEntity(NetworkSummary networkSummary, String hostURI) {
-		super();
-//		_type = this.getClass().getSimpleName();
 		_uri = hostURI + "/network/" + networkSummary.getExternalId();
 		_properties = new ArrayList<>();
 	}

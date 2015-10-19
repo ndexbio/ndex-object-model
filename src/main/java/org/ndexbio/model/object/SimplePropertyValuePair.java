@@ -35,20 +35,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class SimplePropertyValuePair extends NdexObject{
+public class SimplePropertyValuePair {
 
 
 	private String _name;
 	private String _value;
 	
 	public SimplePropertyValuePair() {
-        super();
-        this._type = this.getClass().getSimpleName();
-	}
+ 	}
 	
 	public SimplePropertyValuePair(String key, String value) {
-        super();
-        this._type = this.getClass().getSimpleName();
         this.setName(key);
         this.setValue(value);
 	}

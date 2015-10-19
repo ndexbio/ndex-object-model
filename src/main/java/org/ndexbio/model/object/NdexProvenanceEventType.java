@@ -39,5 +39,7 @@ public interface NdexProvenanceEventType {
 	public static final String PROGRAM_UPLOAD = "Program Upload";
     public static final String SET_PRESENTATION_PROPERTIES ="Set Network Presentation Properties";
     public static final String SET_NETWORK_PROPERTIES = "Set Network Properties";
+    public static final String CX_CREATE_NETWORK = "Program Upload in CX";
+    public static final String CX_NETWORK_UPDATE = "CX network update";
 
 }
