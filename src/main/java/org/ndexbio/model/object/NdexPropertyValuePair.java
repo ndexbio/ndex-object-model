@@ -32,7 +32,6 @@ package org.ndexbio.model.object;
 
 import java.io.Serializable;
 
-import org.cxio.aspects.datamodels.AbstractAttributesAspectElement;
 import org.ndexbio.model.cx.CXSimpleAttribute;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

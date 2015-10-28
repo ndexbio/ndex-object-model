@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Group extends Account
 {
-    private String _organizationName;
+    private String _groupName;
  
     
     
@@ -51,14 +51,14 @@ public class Group extends Account
 
     } 
     
-    public String getOrganizationName()
+    public String getGroupName()
     {
-        return _organizationName;
+        return _groupName;
     }
     
-    public void setOrganizationName(String organizationName)
+    public void setGroupName(String groupName)
     {
-        _organizationName = organizationName;
+        _groupName = groupName;
     }
     
 }
