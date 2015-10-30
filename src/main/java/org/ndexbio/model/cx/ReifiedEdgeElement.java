@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ReifiedEdgeElement extends AbstractAspectElement {
 
-	final public static String NAME  = "reifiedEdges";
+	final public static String ASPECT_NAME  = "reifiedEdges";
 	
 	private String edge;
 	private String node;
@@ -22,7 +22,7 @@ public class ReifiedEdgeElement extends AbstractAspectElement {
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 	public String getEdge() {

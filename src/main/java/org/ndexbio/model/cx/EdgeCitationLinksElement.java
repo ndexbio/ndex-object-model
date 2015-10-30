@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class EdgeCitationLinksElement extends CitationLinksElement {
 
-	public final static String NAME = "edgeCitations";
+	public final static String ASPECT_NAME = "edgeCitations";
 	public EdgeCitationLinksElement() {
 	}
 
@@ -25,7 +25,7 @@ public class EdgeCitationLinksElement extends CitationLinksElement {
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 }

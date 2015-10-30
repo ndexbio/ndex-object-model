@@ -12,7 +12,7 @@ public class NamespacesElement extends HashMap<String,String> implements AspectE
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public static final String NAME = "@context";
+	public static final String ASPECT_NAME = "@context";
 		
 	public NamespacesElement() {
 		super();
@@ -22,7 +22,7 @@ public class NamespacesElement extends HashMap<String,String> implements AspectE
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 

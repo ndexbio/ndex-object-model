@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CitationElement extends AbstractAspectElement {
     
-	final public static String NAME           = "citations";
+	final public static String ASPECT_NAME           = "citations";
 	
 	@JsonProperty(CxConstants.ID)
 	private String id ;
@@ -46,7 +46,7 @@ public class CitationElement extends AbstractAspectElement {
 	@Override
 	@JsonIgnore
 	public  String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 	public String getTitle() {

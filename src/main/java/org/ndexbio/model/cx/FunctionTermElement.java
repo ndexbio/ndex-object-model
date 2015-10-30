@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FunctionTermElement extends AbstractAspectElement {
 
-	final public static String NAME           = "functionTerms";
+	final public static String ASPECT_NAME           = "functionTerms";
 	
 	final private static String nodeId_prop = "po";
 	final private static String funcName_prop = "f";
@@ -85,7 +85,7 @@ public class FunctionTermElement extends AbstractAspectElement {
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SupportElement extends AbstractAspectElement{
 	
-	public static final String NAME = "supports";
+	public static final String ASPECT_NAME = "supports";
 	
 	private static final String tField = "text";
 
@@ -57,7 +57,7 @@ public class SupportElement extends AbstractAspectElement{
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class NdexNetworkStatus extends AbstractAspectElement {
 
-	public final static String NAME = "ndexStatus";
+	public final static String ASPECT_NAME = "ndexStatus";
 	
 	private String externalId;
 	private Timestamp creationTime;
@@ -36,7 +36,7 @@ public class NdexNetworkStatus extends AbstractAspectElement {
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 	public String getExternalId() {

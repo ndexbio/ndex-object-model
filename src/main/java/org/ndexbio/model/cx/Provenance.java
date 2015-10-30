@@ -10,14 +10,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Provenance extends AbstractAspectElement {
 
-	public static final String NAME="provenanceHistory";
+	public static final String ASPECT_NAME="provenanceHistory";
 	
 	private ProvenanceEntity entity;
 	
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-				return NAME;
+				return ASPECT_NAME;
 	}
 
 	public ProvenanceEntity getEntity() {

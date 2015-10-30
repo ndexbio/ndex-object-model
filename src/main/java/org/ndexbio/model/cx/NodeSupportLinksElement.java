@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class NodeSupportLinksElement extends SupportLinksElement {
 
-	public static final String NAME = "nodeSupports";
+	public static final String ASPECT_NAME = "nodeSupports";
 	public NodeSupportLinksElement() {
 	}
 	
@@ -21,7 +21,7 @@ public class NodeSupportLinksElement extends SupportLinksElement {
 	@Override
 	@JsonIgnore
 	public String getAspectName() {
-		return NAME;
+		return ASPECT_NAME;
 	}
 
 }
