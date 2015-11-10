@@ -1,6 +1,7 @@
 package org.ndexbio.model.cx;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,35 +16,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FunctionTermElement extends AbstractAspectElement {
 
-	final public static String ASPECT_NAME           = "functionTerms";
+	final public static String ASPECT_NAME    = "functionTerms";
 	
 	final private static String nodeId_prop = "po";
 	final private static String funcName_prop = "f";
 	final private static String args_prop = "args";
 
 	@JsonProperty( nodeId_prop)
-	private String nodeID;
+	private Long nodeID;
 	
-	public String getNodeID() {
+	@JsonProperty(funcName_prop)
+    private String functionName;
+	
+	@JsonProperty( args_prop)
+    private List<Object> args;
+	
+	
+	public Long getNodeID() {
 		return nodeID;
 	}
 
-	public void setNodeID(String nodeID) {
+	public void setNodeID(Long nodeID) {
 		this.nodeID = nodeID;
 	}
 
 	public FunctionTermElement() {
+		args = new LinkedList<> ();
 	}
 	
-	public FunctionTermElement(String nodeId, String functionName, List<Object> args) {
+	public FunctionTermElement(Long nodeId, String functionName, List<Object> args) {
 		this.nodeID = nodeId;
 		this.functionName = functionName;
 		this.args=args;
 		
 	}
-	
-	@JsonProperty(funcName_prop)
-    private String functionName;
 	
 	
 	public String getFunctionName() {
@@ -54,9 +60,6 @@ public class FunctionTermElement extends AbstractAspectElement {
 		this.functionName = functionName;
 	}
 
-	@JsonProperty( args_prop)
-    private List<Object> args;
-	
 	public List<Object> getArgs() {
 		return args;
 	}
@@ -70,7 +73,7 @@ public class FunctionTermElement extends AbstractAspectElement {
 				Map<String, Object> arg2 = (Map<String, Object>)arg;
 				Map<String,Object> m = arg2;
 				FunctionTermElement f = new FunctionTermElement();
-				f.setNodeID((String)m.get(nodeId_prop));
+				f.setNodeID((Long)m.get(nodeId_prop));
 				f.setFunctionName((String)m.get(funcName_prop));
 				f.setArgs((List<Object>)m.get(args_prop));
 				args.add(f);

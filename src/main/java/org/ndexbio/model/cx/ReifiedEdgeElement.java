@@ -8,13 +8,13 @@ public class ReifiedEdgeElement extends AbstractAspectElement {
 
 	final public static String ASPECT_NAME  = "reifiedEdges";
 	
-	private String edge;
-	private String node;
+	private long edge;
+	private long node;
 	
 	public ReifiedEdgeElement() {
 	}
 
-	public ReifiedEdgeElement(String nodeId, String edgeId) {
+	public ReifiedEdgeElement(long nodeId, long edgeId) {
 		this.edge=edgeId;
 		this.node=nodeId;
 	}
@@ -25,19 +25,19 @@ public class ReifiedEdgeElement extends AbstractAspectElement {
 		return ASPECT_NAME;
 	}
 
-	public String getEdge() {
+	public long getEdge() {
 		return edge;
 	}
 
-	public void setEdge(String edge) {
+	public void setEdge(long edge) {
 		this.edge = edge;
 	}
 
-	public String getNode() {
+	public long getNode() {
 		return node;
 	}
 
-	public void setNode(String node) {
+	public void setNode(long node) {
 		this.node = node;
 	}
 

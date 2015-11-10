@@ -1,6 +1,7 @@
 package org.ndexbio.model.cx;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.cxio.util.CxConstants;
@@ -17,7 +18,7 @@ public class CitationElement extends AbstractAspectElement {
 	final public static String ASPECT_NAME           = "citations";
 	
 	@JsonProperty(CxConstants.ID)
-	private String id ;
+	private long id ;
 	
 	@JsonProperty("dc:title")	
 	private String title;
@@ -41,6 +42,7 @@ public class CitationElement extends AbstractAspectElement {
 	private Collection<CXSimpleAttribute> props;
 	
 	public CitationElement() {
+		props = new LinkedList<>();
 	}
 
 	@Override
@@ -114,11 +116,11 @@ public class CitationElement extends AbstractAspectElement {
 	} */
 
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

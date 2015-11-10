@@ -11,12 +11,12 @@ public class EdgeCitationLinksElement extends CitationLinksElement {
 	public EdgeCitationLinksElement() {
 	}
 
-	public EdgeCitationLinksElement(Collection<String> sourceId, Collection<String> citationIds ) {
+	public EdgeCitationLinksElement(Collection<Long> sourceId, Collection<Long> citationIds ) {
 		super(sourceId,citationIds);
 	}
 	
-	public EdgeCitationLinksElement(String sourceId, Collection<String> citationIds ) {
-		Collection<String> srcIds = new ArrayList<>(1);
+	public EdgeCitationLinksElement(Long sourceId, Collection<Long> citationIds ) {
+		Collection<Long> srcIds = new ArrayList<>(1);
 		srcIds.add(sourceId);
 		setSourceIds(srcIds);
 		setCitationIds(citationIds);

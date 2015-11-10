@@ -10,11 +10,11 @@ public class EdgeSupportLinksElement extends SupportLinksElement {
 	public EdgeSupportLinksElement() {
 	}
 
-	public EdgeSupportLinksElement(Collection<String> sourceId, Collection<String> supportIds ) {
+	public EdgeSupportLinksElement(Collection<Long> sourceId, Collection<Long> supportIds ) {
 		super(sourceId,supportIds);
 	}
 	
-	public EdgeSupportLinksElement(String sourceId, Collection<String> supportIds ) {
+	public EdgeSupportLinksElement(long sourceId, Collection<Long> supportIds ) {
 		super(sourceId,supportIds);
 	}
 	@Override

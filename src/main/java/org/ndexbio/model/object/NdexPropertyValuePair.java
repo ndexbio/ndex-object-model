@@ -49,14 +49,14 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	private String _predicateString;
 	private String _value;
 	private String _dataType;
-	private String subNetworkId;
+	private Long subNetworkId;
 	
 	public NdexPropertyValuePair () {
 		_dataType = STRING;
 
 	}
 	
-	public NdexPropertyValuePair (String subNetwork,
+	public NdexPropertyValuePair (Long subNetwork,
 			String propertyName, String value, String dataType) {
 		this._predicateString = propertyName;
 		this._value = value;
@@ -116,11 +116,11 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 		return "{\""+ _predicateString + "\":\"" + _value+"\"("+ _dataType+")}" ;
 	}
 
-	public String getSubNetworkId() {
+	public Long getSubNetworkId() {
 		return subNetworkId;
 	}
 
-	public void setSubNetworkId(String subNetworkId) {
+	public void setSubNetworkId(Long subNetworkId) {
 		this.subNetworkId = subNetworkId;
 	}
 

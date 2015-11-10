@@ -2,13 +2,13 @@ package org.ndexbio.model.object.network;
 
 public class NetworkCoreAspectElement extends PropertiedNetworkElement {
 	
-	private String _sid;
+	private Long _sid;
 	
-	public String getSid() {
+	public Long getSid() {
 		return _sid;
 	}
 
-	public void setSid(String sid) {
+	public void setSid(Long sid) {
 		this._sid = sid;
 	}
 	

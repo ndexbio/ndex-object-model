@@ -11,12 +11,12 @@ public class NodeCitationLinksElement extends CitationLinksElement {
 	public NodeCitationLinksElement() {
 	}
 
-	public NodeCitationLinksElement(Collection<String> sourceId, Collection<String> citationIds ) {
+	public NodeCitationLinksElement(Collection<Long> sourceId, Collection<Long> citationIds ) {
 		super(sourceId,citationIds);
 	}
 	
-	public NodeCitationLinksElement(String sourceId, Collection<String> citationIds ) {
-		Collection<String> srcIds = new ArrayList<>(1);
+	public NodeCitationLinksElement(Long sourceId, Collection<Long> citationIds ) {
+		Collection<Long> srcIds = new ArrayList<>(1);
 		srcIds.add(sourceId);
 		setSourceIds(srcIds);
 		setCitationIds(citationIds);
