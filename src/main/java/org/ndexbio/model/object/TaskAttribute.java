@@ -30,7 +30,15 @@
  */
 package org.ndexbio.model.object;
 
+
+/**
+ * This interface holds all the ndex reserved attribute names in Task objects.
+ * 
+ * @author chenjing
+ *
+ */
 public interface TaskAttribute {
 	public static final String readOnlyCommitId = "ROCommitId"; 
+	public static final String NdexServerStackTrace = "NdexServerStackTrace";
 
 }
