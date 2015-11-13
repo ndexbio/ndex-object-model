@@ -17,6 +17,10 @@ public class BELNamespaceElement extends AbstractAspectElement {
 	public BELNamespaceElement() {
 	}
 	
+	public BELNamespaceElement(String prefix, String fileContent) {
+		this.prefix = prefix;
+		this.content = fileContent;
+	}
 	
 
 	@Override
