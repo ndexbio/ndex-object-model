@@ -12,7 +12,7 @@
   		<dependency>
            	<groupId>org.cxio</groupId>
   			<artifactId>cxio</artifactId>
-  			<version>0.9.05</version>
+  			<version>0.9.07</version>
 		</dependency>
   		
      <!--    <dependency>
