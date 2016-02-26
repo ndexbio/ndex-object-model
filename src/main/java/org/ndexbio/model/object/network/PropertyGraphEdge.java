@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
+@Deprecated
 public class PropertyGraphEdge extends PropertiedNetworkElement{
 
 	public static final String citations = "NDEX:citations";

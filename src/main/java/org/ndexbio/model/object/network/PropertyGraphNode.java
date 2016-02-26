@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
+@Deprecated
 public class PropertyGraphNode extends PropertiedNetworkElement implements Comparable <PropertyGraphNode> {
 
    public static final String represents = "NDEX:represents";

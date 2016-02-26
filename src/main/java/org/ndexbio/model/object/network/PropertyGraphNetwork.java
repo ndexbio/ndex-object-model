@@ -45,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
+@Deprecated
 public class PropertyGraphNetwork implements PropertiedObject{
 
    private Map<Long,PropertyGraphNode> _nodes;
