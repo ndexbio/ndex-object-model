@@ -44,7 +44,7 @@
       <plugin>
    <groupId>com.mycila</groupId>
    <artifactId>license-maven-plugin</artifactId>
-   <version>2.6</version>
+   <version>2.11</version>
    <configuration>
       <header>${basedir}/misc/license_header.txt</header>
       <properties>
@@ -60,6 +60,13 @@
          <exclude>**/logback-test.xml</exclude>
          <exclude>**/src/test/resources/**</exclude>
       </excludes>
+        <executions>
+        <execution>
+            <goals>
+                <goal>check</goal>
+            </goals>
+        </execution>
+    </executions>
    </configuration>
 </plugin>
  <plugin>
