@@ -46,6 +46,7 @@ public class RestResource //extends NdexObject
     private String _returns;
     private String _apiDoc;
     private boolean _authentication;
+    private boolean _isOpenFunction;
     
 
     /**************************************************************************
@@ -56,6 +57,7 @@ public class RestResource //extends NdexObject
       //  super();
         this._parameterTypes = new ArrayList<>();
         this._authentication = true;
+        this._isOpenFunction = false;
     }
 
 	public String getMethodName() {
@@ -124,6 +126,14 @@ public class RestResource //extends NdexObject
 
 	public void setAuthentication(boolean authentication) {
 		this._authentication = authentication;
+	}
+
+	public boolean getIsOpenFunction() {
+		return _isOpenFunction;
+	}
+
+	public void setIsOpenFunction(boolean _isOpenFunction) {
+		this._isOpenFunction = _isOpenFunction;
 	}
 	
 	
