@@ -33,7 +33,7 @@ package org.ndexbio.model.object;
 public enum Status
 {
     QUEUED,
-    STAGED,
+ //   STAGED,
     PROCESSING,
     COMPLETED,
     COMPLETED_WITH_WARNINGS,

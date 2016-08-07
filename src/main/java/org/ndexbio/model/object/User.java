@@ -30,7 +30,6 @@
  */
 package org.ndexbio.model.object;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -41,17 +40,20 @@ public class User extends Account
     private String _lastName;
     private long    _diskQuota;  //in byte
     private long    _diskUsed;   //in byte
-    
+    private String displayName;
+    private boolean isIndividual;
+    private String userName;
+    private String password;
+    private boolean isVerified;
+      
     
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
-/*    public User()
+    public User()
     {
         super();
-        _type = this.getClass().getSimpleName();
-    //    initCollections();
-    } */
+    } 
     
     public String getEmailAddress()
     {
@@ -98,5 +100,45 @@ public class User extends Account
 	public void setDiskUsed(long diskUsed) {
 		this._diskUsed = diskUsed;
 	}
-    
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public boolean getIsIndividual() {
+		return isIndividual;
+	}
+
+	public void setIsIndividual(boolean isIndividual) {
+		this.isIndividual = isIndividual;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean getIsVerified() {
+		return isVerified;
+	}
+
+	public void setIsVerified(boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+
 }

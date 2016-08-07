@@ -47,38 +47,27 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
     private String _description;
     private int _edgeCount;
-    private boolean _isComplete;
-    private boolean _isLocked;
     private VisibilityType _visibility;
-    private long _readOnlyCommitId;
-    private long _readOnlyCacheId;
     private String _name;
     private int _nodeCount;
     private String _owner;
     
-    private String _URI;
+    private boolean isReadOnly;
     
-//	private long _highestElementId;
 	private String _version;
-	
+
+	private String _URI;
+
 	private List<NdexPropertyValuePair> _properties;
-//	private List<SimplePropertyValuePair> _presentationProperties;
-//    private Map<String, MetaDataElement> _aspectDictionary;
 
 	public NetworkSummary () {
 		super();
-//        _type = this.getClass().getSimpleName();
 
-        _isComplete = false;
-        _isLocked = false;
-        _readOnlyCommitId = -1;
-        _readOnlyCacheId  = -1;
-    //    setVisibility(VisibilityType.PRIVATE);
         _edgeCount = 0;
         _nodeCount = 0;
         
         _properties = new ArrayList<> (10);
-//    	_presentationProperties = new ArrayList<> (10);
+        isReadOnly = false;
 
 	}
 
@@ -122,25 +111,16 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		this._visibility = visibility;
 	}
 
-    public boolean getIsComplete()
+    public boolean getIsReadOnly()
     {
-        return _isComplete;
+        return isReadOnly;
     }
     
-    public void setIsComplete(boolean isComplete)
+    public void setIsReadOnly(boolean isReadOnly)
     {
-        _isComplete = isComplete;
+        this.isReadOnly = isReadOnly;
     }
 
-    public boolean getIsLocked()
-    {
-        return _isLocked;
-    }
-    
-    public void setIsLocked(boolean isLocked)
-    {
-        _isLocked = isLocked;
-    }
     
     public String getName()
     {
@@ -167,28 +147,12 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		return _properties;
 	}
 
-/*	@Override
-	public List<SimplePropertyValuePair> getPresentationProperties() {
-		return _presentationProperties;
-	} */
 
 	@Override
 	public void setProperties(List<NdexPropertyValuePair> properties) {
 		_properties = properties;
 	}
 
-/*	@Override
-	public void setPresentationProperties(List<SimplePropertyValuePair> properties) {
-		_presentationProperties = properties;
-	} */
-
-	public String getURI() {
-		return _URI;
-	}
-
-	public void setURI(String URI) {
-		this._URI = URI;
-	}
 
 	public String getOwner() {
 		return _owner;
@@ -198,31 +162,12 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		this._owner = owner;
 	}
 
-	public long getReadOnlyCommitId() {
-		return _readOnlyCommitId;
+	public String getURI() {
+		return _URI;
 	}
 
-	public void setReadOnlyCommitId(long readOnlyCommitId) {
-		this._readOnlyCommitId = readOnlyCommitId;
+	public void setURI(String URI) {
+		this._URI = URI;
 	}
 
-	public long getReadOnlyCacheId() {
-		return _readOnlyCacheId;
-	}
-
-	public void setReadOnlyCacheId(long cacheId) {
-		this._readOnlyCacheId = cacheId;
-	}
-
-/*	
-	public Map<String, MetaDataElement> get_aspectDictionary() {
-		return _aspectDictionary;
-	}
-
-	public void set_aspectDictionary(Map<String, MetaDataElement> _aspectDictionary) {
-		this._aspectDictionary = _aspectDictionary;
-	}
-
-*/
-    
 }

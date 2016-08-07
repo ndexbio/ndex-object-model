@@ -30,6 +30,9 @@
  */
 package org.ndexbio.model.object;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -38,13 +41,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "accountType")
 @JsonSubTypes(value = { @Type(value = Group.class, name = "Group"), @Type(value = User.class, name = "User") })
+
 public abstract class Account extends NdexExternalObject 
 {
     private String _imageURL;
     private String _description;
     private String _website;
-    private String _accountName;
-  //  private boolean _isDeleted;
+    
+    private Map<String, Object> properties;
     
     
     /**************************************************************************
@@ -54,6 +58,7 @@ public abstract class Account extends NdexExternalObject
     {
         super();
         setIsDeleted(false);
+        this.properties = new HashMap<>();
     }
     
     
@@ -86,15 +91,17 @@ public abstract class Account extends NdexExternalObject
     {
         _website = website;
     }
+
+
+	public Map<String, Object> getProperties() {
+		return properties;
+	}
+
+
+	public void setProperties(Map<String, Object> properties) {
+		this.properties = properties;
+	}
     
-	public String getAccountName() {
-		return _accountName;
-	}
-
-
-	public void setAccountName(String accountName) {
-		this._accountName = accountName;
-	}
 
 
 
