@@ -32,7 +32,10 @@ package org.ndexbio.model.object.network;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.ndexbio.model.object.NdexExternalObject;
 import org.ndexbio.model.object.NdexPropertyValuePair;
@@ -58,6 +61,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	private String _URI;
 
+	private Set<String> subnetworkIds;
+	
 	private List<NdexPropertyValuePair> _properties;
 
 	public NetworkSummary () {
@@ -67,6 +72,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         _nodeCount = 0;
         
         _properties = new ArrayList<> (10);
+        this.subnetworkIds = new HashSet<>();
         isReadOnly = false;
 
 	}
@@ -168,6 +174,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setURI(String URI) {
 		this._URI = URI;
+	}
+
+	public Set<String> getSubnetworkIds() {
+		return subnetworkIds;
+	}
+
+	public void setSubnetworkIds(Set<String> subnetworkIds) {
+		this.subnetworkIds = subnetworkIds;
 	}
 
 }

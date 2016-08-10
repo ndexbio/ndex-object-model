@@ -36,12 +36,12 @@ import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Membership //extends NdexObject //NdexExternalObject
+public class Membership 
 {
     private Permissions _memberPermissions;
     private MembershipType _membershipType;
-    private UUID _memberUUID;
-    private UUID _resourceUUID;
+    private UUID _memberUUID;   // a user uuid for user group membership or user-network permission, uuid of group for group-network permission.
+    private UUID _resourceUUID;   // can be group or network uuid.
     private String _resourceName;
     private String _memberAccountName;
     
