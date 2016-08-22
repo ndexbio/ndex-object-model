@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 
-public class CitationElement extends AbstractAspectElement {
+public class CitationElement extends NdexAspectElement {
     
 	final public static String ASPECT_NAME           = "citations";
 	

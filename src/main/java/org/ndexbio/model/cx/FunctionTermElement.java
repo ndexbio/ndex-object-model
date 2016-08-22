@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class FunctionTermElement extends AbstractAspectElement {
+public class FunctionTermElement extends NdexAspectElement {
 
 	final public static String ASPECT_NAME    = "functionTerms";
 	

@@ -53,6 +53,8 @@ public class User extends Account
     public User()
     {
         super();
+        isIndividual = true;
+        
     } 
     
     public String getEmailAddress()

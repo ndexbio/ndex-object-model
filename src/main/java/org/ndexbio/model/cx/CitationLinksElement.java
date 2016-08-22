@@ -38,7 +38,7 @@ import org.cxio.aspects.datamodels.AbstractAspectElement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public abstract class CitationLinksElement extends AbstractAspectElement {
+public abstract class CitationLinksElement extends NdexAspectElement {
 	
 	@JsonProperty("po")	
 	private Collection<Long> sourceIds ;

@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class Provenance extends AbstractAspectElement {
+public class Provenance extends NdexAspectElement {
 
 	public static final String ASPECT_NAME="provenanceHistory";
 	

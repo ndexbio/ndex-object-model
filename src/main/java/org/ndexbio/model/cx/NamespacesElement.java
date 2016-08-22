@@ -30,8 +30,10 @@
  */
 package org.ndexbio.model.cx;
 
+import java.io.IOException;
 import java.util.HashMap;
 import org.cxio.core.interfaces.AspectElement;
+import org.cxio.util.JsonWriter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -62,6 +64,12 @@ public class NamespacesElement extends HashMap<String,String> implements AspectE
 	            return getAspectName().compareTo(o.getAspectName());
 	        }
 	        return 0;
+	}
+
+
+	@Override
+	public void write(JsonWriter out) throws IOException {
+		out.writeObject(this);
 	}
 
 }

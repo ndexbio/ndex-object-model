@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class NdexNetworkStatus extends AbstractAspectElement {
+public class NdexNetworkStatus extends NdexAspectElement {
 
 	public final static String ASPECT_NAME = "ndexStatus";
 	

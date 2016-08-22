@@ -34,7 +34,7 @@ import org.cxio.aspects.datamodels.AbstractAspectElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class ReifiedEdgeElement extends AbstractAspectElement {
+public class ReifiedEdgeElement extends NdexAspectElement {
 
 	final public static String ASPECT_NAME  = "reifiedEdges";
 	

@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class BELNamespaceElement extends AbstractAspectElement {
+public class BELNamespaceElement extends NdexAspectElement {
 
 	final public static String ASPECT_NAME           = "BELNamespaceFiles";
 	

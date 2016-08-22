@@ -31,10 +31,12 @@
 package org.ndexbio.model.cx;
 
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
 
 import org.cxio.aspects.datamodels.AbstractAspectElement;
+import org.cxio.util.JsonWriter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -110,6 +112,13 @@ public class SupportElement extends AbstractAspectElement{
 
 	public void setProps(Collection<CXSimpleAttribute> props) {
 		this.props = props;
+	}
+
+
+	@Override
+	public void write(JsonWriter out) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
