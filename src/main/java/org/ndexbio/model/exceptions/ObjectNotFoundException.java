@@ -30,6 +30,8 @@
  */
 package org.ndexbio.model.exceptions;
 
+import java.util.UUID;
+
 import org.ndexbio.model.errorcodes.ErrorCode;
 import org.ndexbio.model.errorcodes.NDExError;
 
@@ -47,10 +49,18 @@ public class ObjectNotFoundException extends NdexException
     	this ( "Element " + id + " not found in " + className );
     }
     
+    
+   public ObjectNotFoundException(String className, UUID id) {
+    	
+    	this ( className + " " + id + " not found in NDEx.");
+   }
+    
     public ObjectNotFoundException(String message)
     {
         super(message, ErrorCode.NDEx_Object_Not_Found_Exception);
     }
+    
+    
     public ObjectNotFoundException(String message, Throwable cause)
     {
         super(message, cause, ErrorCode.NDEx_Object_Not_Found_Exception);

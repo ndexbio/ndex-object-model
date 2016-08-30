@@ -36,6 +36,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import org.ndexbio.model.object.NdexExternalObject;
 import org.ndexbio.model.object.NdexPropertyValuePair;
@@ -54,6 +55,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
     private String _name;
     private int _nodeCount;
     private String _owner;
+    
+    private UUID ownerUUID;
     
     private boolean isReadOnly;
     
@@ -182,6 +185,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setSubnetworkIds(Set<String> subnetworkIds) {
 		this.subnetworkIds = subnetworkIds;
+	}
+
+	public UUID getOwnerUUID() {
+		return ownerUUID;
+	}
+
+	public void setOwnerUUID(UUID ownerUUID) {
+		this.ownerUUID = ownerUUID;
 	}
 
 }
