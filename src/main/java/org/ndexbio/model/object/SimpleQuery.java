@@ -30,8 +30,11 @@
  */
 package org.ndexbio.model.object;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public abstract class SimpleQuery {
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public class SimpleQuery {
 	
 	private String _searchString;
 	
