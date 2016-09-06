@@ -33,7 +33,6 @@ package org.ndexbio.model.cx;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.cxio.util.CxConstants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

@@ -42,6 +42,7 @@ public class Membership
     private MembershipType _membershipType;
     private UUID _memberUUID;   // a user uuid for user group membership or user-network permission, uuid of group for group-network permission.
     private UUID _resourceUUID;   // can be group or network uuid.
+  //  private String _memberType;	   //Should be either "GROUP" or "USER". This field is currently only used for network permission updating.
     private String _resourceName;
     private String _memberAccountName;
     
@@ -108,5 +109,13 @@ public class Membership
 	public void setMemberAccountName(String memberAccountName) {
 		this._memberAccountName = memberAccountName;
 	}
+
+/*	public String getMemberType() {
+		return _memberType;
+	}
+
+	public void setMemberType(String _memberType) {
+		this._memberType = _memberType;
+	} */
 
 }

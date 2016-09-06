@@ -10,7 +10,7 @@
   		<!-- 3rd party libraries -->
   		
   		<dependency>
-           	<groupId>org.cxio</groupId>
+           	<groupId>org.ndexbio.cxio</groupId>
   			<artifactId>cxio</artifactId>
   			<version>1.0.0</version>
 		</dependency>
