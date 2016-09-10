@@ -38,9 +38,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Request extends NdexExternalObject
 {
-    private UUID _sourceUUID;
+    private UUID _sourceUUID;     // can be a user or a group for network permissions, will be a user for group membership.
     private String _sourceName;
-    private UUID _destinationUUID;
+    private UUID _destinationUUID;  // can be a group or network depend on permission type.
     private String _destinationName;
     private String _message;
     private Permissions _permission;
