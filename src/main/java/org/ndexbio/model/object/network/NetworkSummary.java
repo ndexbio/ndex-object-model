@@ -67,6 +67,9 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private Set<String> subnetworkIds;
 	
 	private List<NdexPropertyValuePair> _properties;
+	
+	private String errorMessage;
+	private boolean isValid;
 
 	public NetworkSummary () {
 		super();
@@ -193,6 +196,22 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setOwnerUUID(UUID ownerUUID) {
 		this.ownerUUID = ownerUUID;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	public boolean getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(boolean isValid) {
+		this.isValid = isValid;
 	}
 
 }
