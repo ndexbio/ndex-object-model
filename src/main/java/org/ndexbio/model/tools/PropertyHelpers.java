@@ -43,7 +43,6 @@ import org.ndexbio.model.object.network.FunctionTerm;
 import org.ndexbio.model.object.network.Namespace;
 import org.ndexbio.model.object.network.Network;
 import org.ndexbio.model.object.network.Node;
-import org.ndexbio.model.object.network.PropertyGraphNetwork;
 import org.ndexbio.model.object.network.ReifiedEdgeTerm;
 
 public class PropertyHelpers {
@@ -202,7 +201,7 @@ public class PropertyHelpers {
 		return null;
 	}
 
-   
+   /*
     public static String getTermStringInNetwork(Long termId, Network network) throws NdexException {
 	
 		  BaseTerm bt = network.getBaseTerms().get(termId) ;
@@ -237,7 +236,7 @@ public class PropertyHelpers {
 		  
 		  throw new NdexException ("Unsupported term type found for term Id:" + termId);
     
-    }
+    } */
 
 
 }
