@@ -59,7 +59,7 @@ public class FunctionTermElement extends NdexAspectElement {
     private String functionName;
 	
 	@JsonProperty( args_prop)
-    private List<Object> args;
+    private List<Object> args; // argument is either a String or a FunctionTermElement.
 	
 	
 	public Long getNodeID() {
