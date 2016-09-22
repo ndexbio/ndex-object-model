@@ -33,6 +33,7 @@ package org.ndexbio.model.object.network;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -69,6 +70,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	
 	private String errorMessage;
 	private boolean isValid;
+	private List<String> warnings;
 
 	public NetworkSummary () {
 		super();
@@ -79,6 +81,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         _properties = new ArrayList<> (10);
         this.subnetworkIds = new HashSet<>();
         isReadOnly = false;
+        warnings = new LinkedList<>();
 
 	}
 
@@ -211,6 +214,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setIsValid(boolean isValid) {
 		this.isValid = isValid;
+	}
+
+	public List<String> getWarnings() {
+		return warnings;
+	}
+
+	public void setWarnings(List<String> warnings) {
+		this.warnings = warnings;
 	}
 
 }
