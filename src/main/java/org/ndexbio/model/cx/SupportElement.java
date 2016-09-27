@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class SupportElement extends AbstractAspectElement{
+public class SupportElement extends NdexAspectElement{
 	
 	public static final String ASPECT_NAME = "supports";
 	
@@ -112,13 +112,6 @@ public class SupportElement extends AbstractAspectElement{
 
 	public void setProps(Collection<CXSimpleAttribute> props) {
 		this.props = props;
-	}
-
-
-	@Override
-	public void write(JsonWriter out) throws IOException {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
