@@ -31,5 +31,8 @@
 package org.ndexbio.model.object;
 
 public enum RequestType {
-	JoinGroup, NetworkAccess;
+	JoinGroup,  //JoinGroup, 
+	UserNetworkAccess,      //UserNetworkAccess
+	GroupNetworkAccess;    //GroupNetworkAccess;
+
 }

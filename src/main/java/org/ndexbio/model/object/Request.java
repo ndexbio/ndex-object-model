@@ -44,6 +44,7 @@ public class Request extends NdexExternalObject
     private String _destinationName;
     private String _message;
     private Permissions _permission;
+    private RequestType _requestType;
     private String _responder;
     private ResponseType _response;
     private String _responseMessage;
@@ -54,11 +55,32 @@ public class Request extends NdexExternalObject
     /**************************************************************************
     * Default constructor.
     **************************************************************************/
- /*   public Request()
+    public Request()
     {
         super();
-        this._type = this.getClass().getSimpleName();
-    } */
+    } 
+    
+    public Request(RequestType type, PermissionRequest r)
+    {
+        super();
+        this._destinationUUID = r.getNetworkid();
+        this._permission = r.getPermission();
+        this._requestType = type;
+        this._message = r.getMessage();
+        this._response = ResponseType.PENDING;
+    } 
+    
+    public Request(MembershipRequest r)
+    {
+        super();
+        this._destinationUUID = r.getGroupid();
+        this._permission = r.getType();
+        this._requestType = RequestType.JoinGroup;
+        this._message = r.getMessage();
+        this._response = ResponseType.PENDING;
+    } 
+    
+    
     
     public String getMessage()
     {
@@ -144,6 +166,14 @@ public class Request extends NdexExternalObject
 
 	public void setResponseTime(Timestamp responseTime) {
 		this._responseTime = responseTime;
+	}
+
+	public RequestType getRequestType() {
+		return _requestType;
+	}
+
+	public void setRequestType(RequestType _requestType) {
+		this._requestType = _requestType;
 	}
     
     
