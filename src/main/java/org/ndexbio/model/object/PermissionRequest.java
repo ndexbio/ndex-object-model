@@ -15,7 +15,7 @@ public class PermissionRequest {
     
     public PermissionRequest() throws NdexException {
     	setNetworkid(null);   	
-    	setPermission(Permissions.READ);
+    	permission = Permissions.READ;
     }
 
 	public Permissions getPermission() {
@@ -23,7 +23,7 @@ public class PermissionRequest {
 	}
 
 	public void setPermission(Permissions permission) throws NdexException {
-		if ( permission != Permissions.READ || permission != Permissions.WRITE)
+		if ( permission != Permissions.READ && permission != Permissions.WRITE)
 			throw new NdexException("Permission type for request can only be READ or WRITE.");
 		this.permission = permission;
 	}

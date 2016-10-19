@@ -24,7 +24,7 @@ public class MembershipRequest {
 
 	public void setType(Permissions permission) throws NdexException {
 		if ( permission != Permissions.GROUPADMIN || permission != Permissions.MEMBER)
-			throw new NdexException("Permission type for request can only be READ or WRITE.");
+			throw new NdexException("Permission type for request can only be GROUPADMIN or MEMBER.");
 		this.type = permission;
 	}
 
