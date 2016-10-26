@@ -30,7 +30,6 @@
  */
 package org.ndexbio.model.cx;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.ndexbio.model.object.ProvenanceEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,6 +42,14 @@ public class Provenance extends NdexAspectElement {
 	public static final String ASPECT_NAME="provenanceHistory";
 	
 	private ProvenanceEntity entity;
+	
+	public Provenance() {
+		super();
+	}
+	
+	public Provenance(ProvenanceEntity e) {
+		this.entity  = e;
+	}
 	
 	@Override
 	@JsonIgnore
