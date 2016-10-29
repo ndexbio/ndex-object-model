@@ -49,6 +49,7 @@ public class Request extends NdexExternalObject
     private ResponseType _response;
     private String _responseMessage;
     private Timestamp _responseTime;
+    private UUID _requesterId;
 
     
 
@@ -174,6 +175,14 @@ public class Request extends NdexExternalObject
 
 	public void setRequestType(RequestType _requestType) {
 		this._requestType = _requestType;
+	}
+
+	public UUID getRequesterId() {
+		return _requesterId;
+	}
+
+	public void setRequesterId(UUID _requesterId) {
+		this._requesterId = _requesterId;
 	}
     
     
