@@ -38,11 +38,9 @@ public class SimpleNetworkQuery extends SimpleQuery {
 	private String _accountName;
 	private Permissions _permission;
 	private boolean _includeGroups;
-	private boolean _canRead;
 
 	
 	public SimpleNetworkQuery() {
-		_canRead = false;
 	}
 	
 	public void setAccountName(String accountName) {
@@ -69,9 +67,9 @@ public class SimpleNetworkQuery extends SimpleQuery {
 		this._includeGroups = includeGroups;
 	}
 
-	public boolean getCanRead() {
+	/*public boolean getCanRead() {
 		return _canRead;
-	}
+	}*/
 
 	/**
 	 * Set this parameter to true if you want to find all the network that you have permission 
@@ -79,8 +77,8 @@ public class SimpleNetworkQuery extends SimpleQuery {
 	 *  
 	 * @param canRead
 	 */
-	public void setCanRead(boolean canRead) {
+	/*public void setCanRead(boolean canRead) {
 		this._canRead = canRead;
-	}
+	}*/
 	
 }

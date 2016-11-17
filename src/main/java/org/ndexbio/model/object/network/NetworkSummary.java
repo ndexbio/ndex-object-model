@@ -71,6 +71,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private String errorMessage;
 	private boolean isValid;
 	private List<String> warnings;
+	
+	private boolean isShowcase;
 
 	public NetworkSummary () {
 		super();
@@ -222,6 +224,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setWarnings(List<String> warnings) {
 		this.warnings = warnings;
+	}
+
+	public boolean getIsShowcase() {
+		return isShowcase;
+	}
+
+	public void setIsShowcase(boolean displayInHomePage) {
+		this.isShowcase = displayInHomePage;
 	}
 
 }
