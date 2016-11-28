@@ -64,7 +64,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	private String _URI;
 
-	private Set<String> subnetworkIds;
+	private Set<Long> subnetworkIds;
 	
 	private List<NdexPropertyValuePair> _properties;
 	
@@ -186,11 +186,11 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		this._URI = URI;
 	}
 
-	public Set<String> getSubnetworkIds() {
+	public Set<Long> getSubnetworkIds() {
 		return subnetworkIds;
 	}
 
-	public void setSubnetworkIds(Set<String> subnetworkIds) {
+	public void setSubnetworkIds(Set<Long> subnetworkIds) {
 		this.subnetworkIds = subnetworkIds;
 	}
 
