@@ -33,15 +33,15 @@ package org.ndexbio.model.exceptions;
 import org.ndexbio.model.errorcodes.ErrorCode;
 import org.ndexbio.model.errorcodes.NDExError;
 
-public class ConcurrentModificationException extends NdexException
+public class NetworkConcurrentModificationException extends NdexException
 {
     private static final long serialVersionUID = 1L;
     
-    public ConcurrentModificationException(NDExError ndexError)
+    public NetworkConcurrentModificationException(NDExError ndexError)
     {
         super(ndexError);
     }
-    public ConcurrentModificationException()
+    public NetworkConcurrentModificationException()
     {
         super("Network is currently locked by another updating process.", ErrorCode.NDEx_Concurrent_Modification_Exception);
     }
