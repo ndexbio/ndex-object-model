@@ -43,7 +43,7 @@ public class NetworkConcurrentModificationException extends NdexException
     }
     public NetworkConcurrentModificationException()
     {
-        super("Network is currently locked by another updating process.", ErrorCode.NDEx_Concurrent_Modification_Exception);
+        super("This network is currently locked by another updating process. Please try again.", ErrorCode.NDEx_Concurrent_Modification_Exception);
     }
    
     

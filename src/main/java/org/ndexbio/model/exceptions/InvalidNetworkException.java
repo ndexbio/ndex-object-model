@@ -43,7 +43,7 @@ public class InvalidNetworkException extends NdexException
     }
     public InvalidNetworkException()
     {
-        super("This operation is not allowed on an Invalid network.", ErrorCode.NDEx_Modify_Invalid_Network_Exception);
+        super("This operation is not allowed on an invalid network.", ErrorCode.NDEx_Modify_Invalid_Network_Exception);
     }
    
     
