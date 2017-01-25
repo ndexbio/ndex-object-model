@@ -41,14 +41,11 @@ public class InvalidNetworkException extends NdexException
     {
         super(ndexError);
     }
-    public InvalidNetworkException(String message)
+    public InvalidNetworkException()
     {
-        super(message, ErrorCode.NDEx_Modify_Invalid_Network_Exception);
+        super("This operation is not allowed on an Invalid network.", ErrorCode.NDEx_Modify_Invalid_Network_Exception);
     }
-    public InvalidNetworkException(String message, Throwable cause)
-    {
-        super(message, cause, ErrorCode.NDEx_Modify_Invalid_Network_Exception);
-    }
+   
     
 
         
