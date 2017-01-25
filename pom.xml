@@ -11,7 +11,7 @@
   		
   		<dependency>
            	<groupId>org.ndexbio.cxio</groupId>
-  			<artifactId>cxio</artifactId>
+  			<artifactId>ndex-cxio</artifactId>
   			<version>1.0.0</version>
 		</dependency>
   		

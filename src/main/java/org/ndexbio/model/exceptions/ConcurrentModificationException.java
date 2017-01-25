@@ -28,18 +28,28 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ndexbio.model.errorcodes;
+package org.ndexbio.model.exceptions;
 
-public enum ErrorCode {
+import org.ndexbio.model.errorcodes.ErrorCode;
+import org.ndexbio.model.errorcodes.NDExError;
 
-	NDEx_Exception,
-	NDEx_Unauthorized_Operation_Exception,
-	NDEx_Duplicate_Object_Exception,
-	NDEx_Object_Not_Found_Exception,
-	NDEx_Forbidden_Operation_Exception,
-	NDEx_Validation_Exception,
-	NDEx_Concurrent_Modification_Exception,
-	NDEx_Modify_Invalid_Network_Exception,
+public class ConcurrentModificationException extends NdexException
+{
+    private static final long serialVersionUID = 1L;
+    
+    public ConcurrentModificationException(NDExError ndexError)
+    {
+        super(ndexError);
+    }
+    public ConcurrentModificationException()
+    {
+        super("Network is currently locked by another updating process.", ErrorCode.NDEx_Concurrent_Modification_Exception);
+    }
+    public ConcurrentModificationException(String message, Throwable cause)
+    {
+        super(message, cause, ErrorCode.NDEx_Concurrent_Modification_Exception);
+    }
+    
 
-}	
-
+        
+}
