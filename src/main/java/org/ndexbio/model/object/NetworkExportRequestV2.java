@@ -27,7 +27,7 @@ public class NetworkExportRequestV2 {
 
 	
 	public void setExportFormat(String exportFormat) {
-		this.exportFormat = exportFormat.toLowerCase();
+		this.exportFormat = exportFormat;
 	}
 
 	public Set<UUID> getNetworkIds() {
