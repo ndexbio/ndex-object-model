@@ -165,4 +165,41 @@ public class NiceCXNetwork {
 	public Map<Long, EdgesElement> getEdges () {
 		return this.edges;
 	}
+	
+	public Map<Long,NodesElement> getNodes() {
+		return this.nodes;
+	}
+	
+	public Map<String,Collection<AspectElement>> getOpaqueAspectTable() {
+		return this.opaqueAspects;
+	}
+	
+	public Collection <NetworkAttributesElement> getNetworkAttributes() {
+		return this.networkAttributes;
+	}
+	
+	public Map<Long, Collection<NodeAttributesElement>> getNodeAttributes() {
+		return this.nodeAttributes;
+	}
+	
+	public Map<Long, Collection<EdgeAttributesElement>> getEdgeAttributes() {
+		return this.edgeAttributes;
+	}
+	
+	public Map<String,Map<Long,Collection<AspectElement>>> getNodeAssociatedAspects() {
+		return this.nodeAssociatedAspects;
+	}
+	
+	public Map<String,Map<Long,Collection<AspectElement>>> getEdgeAssociatedAspects() {
+		return this.edgeAssociatedAspects;
+	}
+	
+	public Map<Long,Collection<AspectElement>> getNodeAssociatedAspect(String aspectName) {
+		return this.nodeAssociatedAspects.get(aspectName);
+	}
+	
+	public Map<Long,Collection<AspectElement>> getEdgeAssociatedAspect(String aspectName) {
+		return this.edgeAssociatedAspects.get(aspectName);
+	}
+	
 }
