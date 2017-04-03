@@ -43,6 +43,8 @@ public class NiceCXNetwork {
 	
 	private Map<String, Collection<AspectElement>> opaqueAspects;
 	
+	private Provenance provenance;
+	
 	public NiceCXNetwork() {
 		setMetadata(new MetaDataCollection());
 		namespaces = new NamespacesElement();
@@ -200,6 +202,14 @@ public class NiceCXNetwork {
 	
 	public Map<Long,Collection<AspectElement>> getEdgeAssociatedAspect(String aspectName) {
 		return this.edgeAssociatedAspects.get(aspectName);
+	}
+
+	public Provenance getProvenance() {
+		return provenance;
+	}
+
+	public void setProvenance(Provenance provenance) {
+		this.provenance = provenance;
 	}
 	
 }

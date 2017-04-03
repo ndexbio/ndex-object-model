@@ -45,6 +45,7 @@ public class Provenance extends NdexAspectElement {
 	
 	public Provenance() {
 		super();
+		entity = new ProvenanceEntity();
 	}
 	
 	public Provenance(ProvenanceEntity e) {
