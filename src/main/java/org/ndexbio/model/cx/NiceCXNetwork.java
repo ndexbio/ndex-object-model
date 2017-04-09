@@ -164,6 +164,10 @@ public class NiceCXNetwork {
 		this.namespaces = ns;
 	}
 	
+	public NamespacesElement getNamespaces() {
+		return this.namespaces;
+	}
+	
 	public Map<Long, EdgesElement> getEdges () {
 		return this.edges;
 	}
