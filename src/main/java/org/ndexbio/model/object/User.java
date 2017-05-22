@@ -38,8 +38,8 @@ public class User extends Account
     private String _emailAddress;
     private String _firstName;
     private String _lastName;
-    private long    _diskQuota;  //in byte
-    private long    _diskUsed;   //in byte
+    private Long    _diskQuota;  //in byte
+    private Long    _diskUsed;   //in byte
     private String displayName;
     private boolean isIndividual;
     private String userName;
@@ -87,19 +87,19 @@ public class User extends Account
         _lastName = lastName;
     }
 
-	public long getDiskQuota() {
+	public Long getDiskQuota() {
 		return _diskQuota;
 	}
 
-	public void setDiskQuota(long diskQuota) {
+	public void setDiskQuota(Long diskQuota) {
 		this._diskQuota = diskQuota;
 	}
 
-	public long getDiskUsed() {
+	public Long getDiskUsed() {
 		return _diskUsed;
 	}
 
-	public void setDiskUsed(long diskUsed) {
+	public void setDiskUsed(Long diskUsed) {
 		this._diskUsed = diskUsed;
 	}
 
