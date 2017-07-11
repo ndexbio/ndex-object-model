@@ -41,6 +41,21 @@ public class ProvenanceHelpers {
 	
 	// Create a new provenance history in the case where the
 	// latest event has only one input. (such as a copy operation)
+	public static ProvenanceEntity createProvenanceHistoryWhithoutClone(
+			NetworkSummary newNetwork,
+			String hostURI,
+			String eventType, 
+			Timestamp eventDate,
+			ProvenanceEntity input
+			){
+		ProvenanceEntity prov = createRootProvenanceEntity(newNetwork, hostURI, eventType, eventDate);
+		if (input != null){
+			ProvenanceEvent event = prov.getCreationEvent();
+			event.addInput(input);			
+		}
+		return prov;
+	}
+	
 	public static ProvenanceEntity createProvenanceHistory(
 			NetworkSummary newNetwork,
 			String hostURI,
