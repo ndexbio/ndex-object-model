@@ -31,7 +31,7 @@
 package org.ndexbio.model.object.network;
 
 public enum VisibilityType {
-   PUBLIC, PRIVATE
+   PUBLIC, PRIVATE, PUBLIC_NOINDEX, PRIVATE_NOINDEX
    //, DISCOVERABLE
    ;
 }
