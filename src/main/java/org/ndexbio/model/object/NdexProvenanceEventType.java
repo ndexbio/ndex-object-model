@@ -42,5 +42,6 @@ public interface NdexProvenanceEventType {
     public static final String CX_CREATE_NETWORK = "Program Upload in CX";
     public static final String CX_NETWORK_CLONE = "Clone on Server";
     public static final String CX_NETWORK_UPDATE = "CX network update";
+    public static final String CX_ASPECTS_UPDATE = "Network aspects update";
 
 }

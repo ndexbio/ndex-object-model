@@ -31,6 +31,8 @@
 package org.ndexbio.model.object;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -51,6 +53,7 @@ public class Request extends NdexExternalObject
     private Timestamp _responseTime;
     private UUID _requesterId;
 
+    private Map<String, Object> properties;
     
 
     /**************************************************************************
@@ -69,6 +72,7 @@ public class Request extends NdexExternalObject
         this._requestType = type;
         this._message = r.getMessage();
         this._response = ResponseType.PENDING;
+        properties = new HashMap<>(); 
     } 
     
     public Request(MembershipRequest r)
@@ -79,6 +83,8 @@ public class Request extends NdexExternalObject
         this._requestType = RequestType.JoinGroup;
         this._message = r.getMessage();
         this._response = ResponseType.PENDING;
+        this.properties = new HashMap<>();
+        
     } 
     
     
@@ -183,6 +189,14 @@ public class Request extends NdexExternalObject
 
 	public void setRequesterId(UUID _requesterId) {
 		this._requesterId = _requesterId;
+	}
+
+	public Map<String, Object> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Map<String, Object> properties) {
+		this.properties = properties;
 	}
     
     

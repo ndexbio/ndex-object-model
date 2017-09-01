@@ -57,6 +57,7 @@ public class Task extends NdexExternalObject
     private Timestamp finishTime;
     private String _message; 
     private Map<String, Object> _attributes;
+    private Map<String, Object> ownerProperties;
     
     /**************************************************************************
     * Default constructor.
@@ -68,6 +69,7 @@ public class Task extends NdexExternalObject
         setIsDeleted(false);
         setAttributes(new HashMap<String, Object> ());
         _priority = Priority.LOW;
+        this.ownerProperties = new HashMap<>();
     }
 
 
@@ -210,5 +212,17 @@ public class Task extends NdexExternalObject
 	
 	public Object getAttribute(String attrName) {
 		return _attributes.get(attrName);
+	}
+
+
+
+	public Map<String, Object> getOwnerProperties() {
+		return ownerProperties;
+	}
+
+
+
+	public void setOwnerProperties(Map<String, Object> ownerProperties) {
+		this.ownerProperties = ownerProperties;
 	}
 }
