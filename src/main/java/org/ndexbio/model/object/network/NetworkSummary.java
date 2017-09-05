@@ -74,6 +74,9 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	
 	private boolean isShowcase;
 
+	private boolean isIndexed;
+	private boolean isCompleted;
+	
 	public NetworkSummary () {
 		super();
 
@@ -232,6 +235,22 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setIsShowcase(boolean displayInHomePage) {
 		this.isShowcase = displayInHomePage;
+	}
+
+	public boolean isIndexed() {
+		return isIndexed;
+	}
+
+	public void setIndexed(boolean isIndexed) {
+		this.isIndexed = isIndexed;
+	}
+
+	public boolean isCompleted() {
+		return isCompleted;
+	}
+
+	public void setCompleted(boolean isCompleted) {
+		this.isCompleted = isCompleted;
 	}
 
 }
