@@ -76,6 +76,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	private boolean isIndexed;
 	private boolean isCompleted;
+//	private boolean cxFileSize;
 	
 	public NetworkSummary () {
 		super();
