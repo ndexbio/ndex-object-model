@@ -17,6 +17,7 @@ public class NetworkSet extends NdexExternalObject {
 	private UUID ownerId;
 	private List<UUID> networks;
 	private boolean showcased;
+	private String doi;
 	
     private Map<String, Object> properties;
 
@@ -66,6 +67,14 @@ public class NetworkSet extends NdexExternalObject {
 
 	public void setShowcased(boolean showcased) {
 		this.showcased = showcased;
+	}
+
+	public String getDoi() {
+		return doi;
+	}
+
+	public void setDoi(String doi) {
+		this.doi = doi;
 	}
 	
 }
