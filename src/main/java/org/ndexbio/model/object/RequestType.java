@@ -34,5 +34,9 @@ public enum RequestType {
 	JoinGroup,  //JoinGroup, 
 	UserNetworkAccess,      //UserNetworkAccess
 	GroupNetworkAccess,    //GroupNetworkAccess;
-    AllNetworkAccess;      //A flag for both User and Group network access. 
+    AllNetworkAccess,      //A flag for both User and Group network access. 
+	
+	//these are ADMIN requests
+	DOI;
+	
 }
