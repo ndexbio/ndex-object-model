@@ -40,6 +40,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
+@Deprecated
+/**
+ * Use org.ndexbio.model.cx.NiceCXNetwork instead.
+ * @author chenjing
+ *
+ */
 public class Network extends NetworkSummary 
 {
     private Map<Long,Citation> _citations;
