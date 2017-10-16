@@ -36,14 +36,7 @@ import java.util.List;
 import org.ndexbio.model.exceptions.NdexException;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.SimplePropertyValuePair;
-import org.ndexbio.model.object.network.BaseTerm;
-import org.ndexbio.model.object.network.Citation;
-import org.ndexbio.model.object.network.Edge;
-import org.ndexbio.model.object.network.FunctionTerm;
-import org.ndexbio.model.object.network.Namespace;
-import org.ndexbio.model.object.network.Network;
-import org.ndexbio.model.object.network.Node;
-import org.ndexbio.model.object.network.ReifiedEdgeTerm;
+
 
 public class PropertyHelpers {
 
@@ -107,13 +100,13 @@ public class PropertyHelpers {
 		
 	}
 
-	public static List<String> getNetworkPropertyValueStrings(Network network, String propertyName) {
+/*	public static List<String> getNetworkPropertyValueStrings(Network network, String propertyName) {
 		return getPropertyValueStrings(network, network.getProperties(), propertyName);
 	}
 	
 	public static String getNetworkPropertyValueString(Network network, String propertyName) {
 		return getFirst(getNetworkPropertyValueStrings(network, propertyName));
-	}
+	} */
 	
 	// TODO: make this error if there is more than one, call it getOnly ??
 	private static String getFirst(
@@ -123,7 +116,7 @@ public class PropertyHelpers {
 		}
 		return null;
 	}
-
+/*
 	public static List<String> getCitationPropertyValueStrings(Network network, Citation citation, String propertyName){
 		return getPropertyValueStrings(network, citation.getProperties(), propertyName);
 	}
@@ -158,32 +151,12 @@ public class PropertyHelpers {
 			}
 		}
 		return valueStrings;
-	}
+	}*/
 
-	// TODO: remove the following 2 functions
-	private static String getPropertyValueString(NdexPropertyValuePair pvp, Network network) {
-		String propertyValueString = pvp.getValue();
-/*		if (null == propertyValueString){
-			Long valueId = pvp.getValueId();
-			BaseTerm valueTerm = network.getBaseTerms().get(valueId);
-			if (null != valueTerm){
-				propertyValueString = getBaseTermString(valueTerm, network);
-			}
-		} */
-		return propertyValueString;
-	}
 
-	private static String getPropertyString(NdexPropertyValuePair pvp, Network network) {
-		String propertyString = pvp.getPredicateString();
-/*		if (null == propertyString){
-			Long propertyId = pvp.getPredicateId();
-			BaseTerm predicateTerm = network.getBaseTerms().get(propertyId);
-			propertyString = getBaseTermString(predicateTerm, network);		
-		} */
-		return propertyString;
-	}
 	
-	public static String getBaseTermString(BaseTerm bt, Network network) {
+/*	BaseTerm class to be removed.
+ * public static String getBaseTermString(BaseTerm bt, Network network) {
 	
 		if (bt.getNamespaceId() <= 0){
 			return bt.getName();
@@ -199,7 +172,7 @@ public class PropertyHelpers {
 			}
 		}
 		return null;
-	}
+	} */
 
    /*
     public static String getTermStringInNetwork(Long termId, Network network) throws NdexException {
