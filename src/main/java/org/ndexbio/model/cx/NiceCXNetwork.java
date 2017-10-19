@@ -114,6 +114,14 @@ public class NiceCXNetwork {
 		citations.put(e.getId(),e);
 	}
 	
+	public void removeCitation(long i) {
+		citations.remove(i);
+	}
+	
+	public Map<Long, CitationElement> getCitations() {
+		return citations;
+	}
+	
 	public void addOpapqueAspect(AspectElement e) {
 		Collection<AspectElement> aspectElmts = opaqueAspects.get(e.getAspectName());
 		if ( aspectElmts == null) {
