@@ -54,7 +54,8 @@ public class UserV1 extends Account
         
     } 
     
-    public UserV1(User newUser) {
+    @SuppressWarnings("boxing")
+	public UserV1(User newUser) {
     	
     	
     	_emailAddress = newUser.getEmailAddress();

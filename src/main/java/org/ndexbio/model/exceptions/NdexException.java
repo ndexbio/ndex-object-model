@@ -88,9 +88,9 @@ public class NdexException extends Exception
 
 	public NDExError getNDExError() { return this.ndexError; }
 	
-	public String getNdexExceptionInJason() { return ndexExceptionToJason(); }
+	public String getNdexExceptionInJason() { return ndexExceptionToJson(); }
 	
-	private String ndexExceptionToJason() {
+	private String ndexExceptionToJson() {
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    String jasonString = null;
 
