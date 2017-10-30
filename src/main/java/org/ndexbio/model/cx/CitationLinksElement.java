@@ -33,13 +33,16 @@ package org.ndexbio.model.cx;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class CitationLinksElement extends NdexAspectElement {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6019854108353879020L;
+
 	@JsonProperty("po")	
 	private Collection<Long> sourceIds ;
 	

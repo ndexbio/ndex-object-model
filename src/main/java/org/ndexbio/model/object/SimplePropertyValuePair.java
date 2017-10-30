@@ -31,13 +31,19 @@
 package org.ndexbio.model.object;
 
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class SimplePropertyValuePair {
+public class SimplePropertyValuePair implements Serializable {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String _name;
 	private String _value;
 	

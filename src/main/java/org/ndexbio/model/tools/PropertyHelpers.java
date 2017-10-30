@@ -33,7 +33,6 @@ package org.ndexbio.model.tools;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ndexbio.model.exceptions.NdexException;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.SimplePropertyValuePair;
 
@@ -108,14 +107,15 @@ public class PropertyHelpers {
 		return getFirst(getNetworkPropertyValueStrings(network, propertyName));
 	} */
 	
-	// TODO: make this error if there is more than one, call it getOnly ??
+/*	
+ * //  make this error if there is more than one, call it getOnly ??
 	private static String getFirst(
 			List<String> strings) {
 		if (strings != null && strings.size() > 0){
 			return strings.get(0);
 		}
 		return null;
-	}
+	} */
 /*
 	public static List<String> getCitationPropertyValueStrings(Network network, Citation citation, String propertyName){
 		return getPropertyValueStrings(network, citation.getProperties(), propertyName);

@@ -35,7 +35,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -45,6 +44,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class FunctionTermElement extends NdexAspectElement {
+
+	private static final long serialVersionUID = 1731775848803427957L;
 
 	final public static String ASPECT_NAME    = "functionTerms";
 	
@@ -94,6 +95,7 @@ public class FunctionTermElement extends NdexAspectElement {
 		return args;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setArgs(List<Object> arguments) throws NdexException {
 		this.args = new ArrayList<> (arguments.size());
 		for (Object arg : arguments) {

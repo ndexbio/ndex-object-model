@@ -37,6 +37,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class EdgeCitationLinksElement extends CitationLinksElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1175538455090775819L;
 	public final static String ASPECT_NAME = "edgeCitations";
 	public EdgeCitationLinksElement() {
 	}

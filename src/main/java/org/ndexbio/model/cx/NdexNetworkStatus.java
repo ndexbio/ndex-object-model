@@ -32,7 +32,6 @@ package org.ndexbio.model.cx;
 
 import java.sql.Timestamp;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.ndexbio.model.object.network.VisibilityType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,6 +40,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class NdexNetworkStatus extends NdexAspectElement {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1769777133637306296L;
 
 	public final static String ASPECT_NAME = "ndexStatus";
 	

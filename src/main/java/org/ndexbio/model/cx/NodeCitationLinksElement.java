@@ -37,6 +37,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class NodeCitationLinksElement extends CitationLinksElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1464945728736334349L;
 	public static final String ASPECT_NAME = "nodeCitations";
 	public NodeCitationLinksElement() {
 	}

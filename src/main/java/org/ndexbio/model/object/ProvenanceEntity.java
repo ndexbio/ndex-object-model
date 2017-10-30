@@ -30,6 +30,7 @@
  */
 package org.ndexbio.model.object;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,9 +39,13 @@ import org.ndexbio.model.object.network.NetworkSummary;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProvenanceEntity 
+public class ProvenanceEntity implements Serializable
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<SimplePropertyValuePair> _properties;
 	private ProvenanceEvent _creationEvent;
 	private String _uri;

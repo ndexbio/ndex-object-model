@@ -44,6 +44,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CitationElement extends NdexAspectElement {
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5794827391191607917L;
+
 	final public static String ASPECT_NAME           = "citations";
 	
 	@JsonProperty(CxConstants.ID)

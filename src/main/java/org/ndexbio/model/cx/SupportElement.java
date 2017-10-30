@@ -31,12 +31,8 @@
 package org.ndexbio.model.cx;
 
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
-
-import org.cxio.aspects.datamodels.AbstractAspectElement;
-import org.cxio.util.JsonWriter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -46,6 +42,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SupportElement extends NdexAspectElement{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8592298908212829229L;
+
 	public static final String ASPECT_NAME = "supports";
 	
 	private static final String tField = "text";

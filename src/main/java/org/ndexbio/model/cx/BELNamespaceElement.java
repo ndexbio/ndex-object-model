@@ -37,6 +37,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class BELNamespaceElement extends NdexAspectElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3681904992644246152L;
+
 	final public static String ASPECT_NAME           = "BELNamespaceFiles";
 	
 	private String prefix;

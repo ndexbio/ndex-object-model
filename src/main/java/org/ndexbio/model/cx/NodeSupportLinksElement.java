@@ -36,6 +36,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class NodeSupportLinksElement extends SupportLinksElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8661864696159911578L;
 	public static final String ASPECT_NAME = "nodeSupports";
 	public NodeSupportLinksElement() {
 	}

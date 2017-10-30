@@ -30,6 +30,7 @@
  */
 package org.ndexbio.model.object;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,9 +39,13 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProvenanceEvent //extends NdexObject
+public class ProvenanceEvent implements Serializable
 {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<SimplePropertyValuePair> _properties;
 	private List<ProvenanceEntity> _inputs;
 	private Timestamp _startedAtTime;

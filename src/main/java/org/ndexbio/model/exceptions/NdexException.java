@@ -33,7 +33,6 @@ package org.ndexbio.model.exceptions;
 import org.ndexbio.model.errorcodes.ErrorCode;
 import org.ndexbio.model.errorcodes.NDExError;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -97,12 +96,8 @@ public class NdexException extends Exception
 		try {
 			jasonString = objectMapper.writeValueAsString(ndexError);
 
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-		    // e.printStackTrace();
-		} catch (Exception e) {
-		   // TODO Auto-generated catch block
-		   // e.printStackTrace();
+		}  catch (Exception e) {
+			throw new RuntimeException("Failed to convert ndexException to String. Error:" + e.getMessage());
 	    }
     	return jasonString;  	
     }

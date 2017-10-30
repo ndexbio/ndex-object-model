@@ -39,6 +39,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Provenance extends NdexAspectElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4561745449206672025L;
+
 	public static final String ASPECT_NAME="provenanceHistory";
 	
 	private ProvenanceEntity entity;

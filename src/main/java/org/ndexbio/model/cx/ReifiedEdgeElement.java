@@ -30,11 +30,15 @@
  */
 package org.ndexbio.model.cx;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ReifiedEdgeElement extends NdexAspectElement {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5546195999105755920L;
 
 	final public static String ASPECT_NAME  = "reifiedEdges";
 	

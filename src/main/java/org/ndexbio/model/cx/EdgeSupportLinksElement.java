@@ -36,6 +36,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class EdgeSupportLinksElement extends SupportLinksElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4875799599084785157L;
 	public static final String ASPECT_NAME = "edgeSupports";
 	public EdgeSupportLinksElement() {
 	}
@@ -45,7 +49,7 @@ public class EdgeSupportLinksElement extends SupportLinksElement {
 	}
 	
 	public EdgeSupportLinksElement(long sourceId, Collection<Long> supportIds ) {
-		super(sourceId,supportIds);
+		super(Long.valueOf(sourceId),supportIds);
 	}
 	@Override
 	@JsonIgnore

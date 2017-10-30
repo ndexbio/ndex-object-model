@@ -66,11 +66,11 @@ public class NiceCXNetwork {
 	}
 	
 	public void addNode(NodesElement node) {
-		nodes.put(node.getId(), node);
+		nodes.put(Long.valueOf(node.getId()), node);
 	}
 	
 	public void addEdge(EdgesElement edge) {
-		edges.put(edge.getId(), edge);
+		edges.put(Long.valueOf(edge.getId()), edge);
 	}
 	
 	public void addNetworkAttribute ( NetworkAttributesElement networkAttribute) {
@@ -107,15 +107,15 @@ public class NiceCXNetwork {
 	}
 	
 	public void addSupport(SupportElement e) {
-		supports.put(e.getId(), e);
+		supports.put(Long.valueOf(e.getId()), e);
 	}
 	
 	public void addCitation(CitationElement e) {
-		citations.put(e.getId(),e);
+		citations.put(Long.valueOf(e.getId()),e);
 	}
 	
 	public void removeCitation(long i) {
-		citations.remove(i);
+		citations.remove(Long.valueOf(i));
 	}
 	
 	public Map<Long, CitationElement> getCitations() {
