@@ -77,6 +77,8 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private boolean isIndexed;
 	private boolean isCompleted;
 	private String doi;
+	private boolean isCertified;
+	
 //	private boolean cxFileSize;
 	
 	public NetworkSummary () {
@@ -261,6 +263,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setDoi(String doi) {
 		this.doi = doi;
+	}
+
+	public boolean getIsCertified() {
+		return isCertified;
+	}
+
+	public void setIsCertified(boolean certified) {
+		this.isCertified = certified;
 	}
 
 }
