@@ -78,6 +78,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private boolean isCompleted;
 	private String doi;
 	private boolean isCertified;
+	private NetworkIndexLevel indexLevel;
 	
 //	private boolean cxFileSize;
 	
@@ -91,6 +92,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
         this.subnetworkIds = new HashSet<>();
         isReadOnly = false;
         warnings = new LinkedList<>();
+        indexLevel=NetworkIndexLevel.NONE;
 
 	}
 
@@ -271,6 +273,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setIsCertified(boolean certified) {
 		this.isCertified = certified;
+	}
+
+	public NetworkIndexLevel getIndexLevel() {
+		return indexLevel;
+	}
+
+	public void setIndexLevel(NetworkIndexLevel solrIndexLevel) {
+		this.indexLevel = solrIndexLevel;
 	}
 
 }
