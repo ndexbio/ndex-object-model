@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * This class is used to present one attribute of a network edge.
@@ -24,7 +25,7 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
 
     public EdgeAttributesElement() {}
     
-    public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final List<String> values) {
+ /*   public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final List<String> values) {
         _data_type = ATTRIBUTE_DATA_TYPE.LIST_OF_STRING;
      //   _is_single_value = false;
         _subnetwork = subnetwork;
@@ -33,9 +34,10 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
         _values = values;
     }
 
- 
+ */
 
-    public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final List<String> values, final ATTRIBUTE_DATA_TYPE type) {
+    public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, 
+    		final List<String> values, final ATTRIBUTE_DATA_TYPE type) {
         if (!AttributesAspectUtils.isListType(type)) {
             throw new IllegalArgumentException("edge attribute element '" + name + "': list of values provided, but given data type is " + type.toString());
         }
@@ -48,7 +50,7 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
 
     }
 
-    public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final String value) {
+  /*  public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final String value) {
         _data_type = ATTRIBUTE_DATA_TYPE.STRING;
   //      _is_single_value = true;
         _subnetwork = subnetwork;
@@ -56,7 +58,7 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
         _name = name;
         _values =value;
 
-    }
+    } 
 
     public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final Object value) {
         if (value instanceof List) {
@@ -68,9 +70,9 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
         _property_of = property_of;
         _name = name;
         _values = String.valueOf(value);
-    }
+    } */
 
-    public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type) {
+    public EdgeAttributesElement(final Long subnetwork, final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type)  {
         if (AttributesAspectUtils.isListType(type)) {
             throw new IllegalArgumentException("edge attribute element '" + name + "': single value provided, but given data type is " + type.toString());
         }
@@ -92,6 +94,7 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
         _property_of = property_of;
         _name = name;
         _values = values;
+
     }
 
     public EdgeAttributesElement(final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type) {
@@ -105,7 +108,7 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
         _name = name;
         _values =value;
     }
-
+/*
     public EdgeAttributesElement(final Long property_of, final String name, final Object value) {
         if (value instanceof List) {
             throw new IllegalArgumentException("constructor only applicable for singe values");
@@ -117,7 +120,7 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
         _name = name;
         _values = String.valueOf(value);
     }
-
+*/
     @Override
     @JsonIgnore
     public String getAspectName() {
@@ -157,7 +160,7 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
         return sb.toString();
     } */
 
-
+/*
     public final static EdgeAttributesElement createInstanceWithSingleValue(final Long subnetwork, final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type) {
 
         return new EdgeAttributesElement(subnetwork, property_of, name, DatamodelsUtil.removeParenthesis(value, type), type);
@@ -168,5 +171,5 @@ public final class EdgeAttributesElement extends AbstractElementAttributesAspect
 
         return new EdgeAttributesElement(subnetwork, property_of, name, DatamodelsUtil.parseStringToStringList(values), type);
     }
-
+*/
 }

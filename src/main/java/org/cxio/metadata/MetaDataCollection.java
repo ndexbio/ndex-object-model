@@ -52,17 +52,6 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
 	public void setMetaData(List<MetaDataElement> md) { 
 		_data = md;
 	}
-    /*
-     * This is to create a MetaData object from a json formatted InputStream.
-     *
-     * @param is a json formatted stream
-     * @return a MetaData object
-     * @throws IOException
-     */
- /*   public final static MetaDataCollection createInstanceFromJson(final InputStream is) throws IOException {
-        final ObjectMapper m = new ObjectMapper();
-        return m.readValue(is, MetaDataCollection.class);
-    } */
 
     /**
      * This is to create a MetaData object from a JsonParser.
@@ -121,13 +110,13 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
      * @param last_update
      * @param id_counter
      */
-    public final void addMetaDataElement(final List<AspectElement> elements, final int consistency_group, final String version, final int id_counter) {
+    public final void addMetaDataElement(final List<AspectElement> elements, final long consistency_group, final String version, final long id_counter) {
         if ((elements != null) && !elements.isEmpty()) {
             final MetaDataElement e = new MetaDataElement();
             e.setName(elements.get(0).getAspectName());
-            e.setConsistencyGroup((long) consistency_group);
+            e.setConsistencyGroup(consistency_group);
             e.setVersion(version);
-            e.setIdCounter((long) id_counter);
+            e.setIdCounter(id_counter);
             e.setElementCount((long) elements.size());
             add(e);
         }

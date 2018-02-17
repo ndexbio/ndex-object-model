@@ -4,12 +4,18 @@ import java.io.IOException;
 import java.util.List;
 
 import org.cxio.aspects.writers.WriterUtil;
+import org.cxio.core.AttributeValueSerializer;
 import org.cxio.util.JsonWriter;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  *
@@ -20,7 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class AbstractAttributesAspectElement extends AbstractAspectElement {
 
     /**
@@ -47,11 +53,15 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
     Long                       _subnetwork;
 
 	@JsonProperty(ATTR_DATA_TYPE)
+	
     ATTRIBUTE_DATA_TYPE        _data_type;
-
+	
 	@JsonProperty(ATTR_VALUES )
+//	@JsonSerialize(using = AttributeValueSerializer.class)
     Object               _values;
 
+    
+    
 	protected AbstractAttributesAspectElement ( ) { _data_type = ATTRIBUTE_DATA_TYPE.STRING; }
 	
 	
@@ -60,6 +70,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
      *
      * @return the name of the attribute
      */
+	@JsonIgnore
     public final String getName() {
         return _name;
     }
@@ -70,6 +81,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
      *
      * @return the identifier of the subnetwork this attribute belongs to
      */
+	@JsonIgnore
     public final Long getSubnetwork() {
         return _subnetwork;
     }
@@ -80,6 +92,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
      *
      * @return the data type of the attribute
      */
+    @JsonIgnore
     public final ATTRIBUTE_DATA_TYPE getDataType() {
         return _data_type;
     }
@@ -90,6 +103,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
      * @return the list values of the (list) attribute as list of Strings
      */
     @SuppressWarnings("unchecked")
+    @JsonIgnore
 	public final List<String> getValues() {
     	if ( _values == null) return null;
         if (_values instanceof String) {
@@ -99,7 +113,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
         return (List<String>)_values;
     }
 
-    
+    @JsonIgnore
     public String getValueAsJsonString() throws JsonProcessingException {
     	ObjectMapper mapper = new ObjectMapper();
     	return mapper.writeValueAsString(_values);
@@ -110,6 +124,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
      *
      * @return the value of the (single) attribute as String
      */
+    @JsonIgnore
     public final String getValue() {
     	if (_values == null) return null;
     	
@@ -127,6 +142,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
      *
      * @return true if single value, false if list of values
      */
+    @JsonIgnore
    public final boolean isSingleValue() {
 	  return ATTRIBUTE_DATA_TYPE.isSingleValueType(this._data_type) ;
       //  return (_values == null) || (_values instanceof String) ;
@@ -139,6 +155,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
         w.flush();
 	} 
     
+
     
     @Override
     public String toString() {

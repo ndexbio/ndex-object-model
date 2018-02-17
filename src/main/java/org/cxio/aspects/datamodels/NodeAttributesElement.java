@@ -1,10 +1,10 @@
 package org.cxio.aspects.datamodels;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * This class is used to present one attribute of a network node.
@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
 public final class NodeAttributesElement extends AbstractElementAttributesAspectElement {
 
@@ -29,7 +30,7 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
     public NodeAttributesElement() {
     	super();
     }
-    
+  /*  
     public NodeAttributesElement(final Long subnetwork, final Long property_of, final String name, final List<String> values) {
         _data_type = ATTRIBUTE_DATA_TYPE.LIST_OF_STRING;
 //        _is_single_value = false;
@@ -38,9 +39,9 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
         _name = name;
         _values = values;
     }
+*/
 
-
-    public NodeAttributesElement(final Long subnetwork, final Long property_of, final String name, final List<String> values, final ATTRIBUTE_DATA_TYPE type) {
+    public NodeAttributesElement(final Long subnetwork, final Long property_of, final String name, final List<String> values, final ATTRIBUTE_DATA_TYPE type)  {
         if (!AttributesAspectUtils.isListType(type)) {
             throw new IllegalArgumentException("node attribute element '" + name + "': list of values provided, but given data type is " + type.toString());
         }
@@ -50,9 +51,8 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
         _property_of = property_of;
         _name = name;
         _values = values;
-
     }
-
+/*
     public NodeAttributesElement(final Long subnetwork, final Long property_of, final String name, final String value) {
         _data_type = ATTRIBUTE_DATA_TYPE.STRING;
  //       _is_single_value = true;
@@ -73,9 +73,9 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
         _property_of = property_of;
         _name = name;
         _values = String.valueOf(value);
-    }
+    } */
 
-    public NodeAttributesElement(final Long subnetwork, final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type) {
+    public NodeAttributesElement(final Long subnetwork, final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type)  {
         if (AttributesAspectUtils.isListType(type)) {
             throw new IllegalArgumentException("node attribute element '" + name + "': single value provided, but given data type is " + type.toString());
         }
@@ -88,7 +88,7 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
 
     }
 
-    public NodeAttributesElement(final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type) {
+    public NodeAttributesElement(final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type)  {
 
         if (AttributesAspectUtils.isListType(type)) {
             throw new IllegalArgumentException("node attribute element '" + name + "': single value provided, but given data type is " + type.toString());
@@ -99,9 +99,10 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
         _property_of = property_of;
         _name = name;
         _values = value;
+
     }
 
-    public NodeAttributesElement(final Long property_of, final String name, final List<String> values, final ATTRIBUTE_DATA_TYPE type) {
+    public NodeAttributesElement(final Long property_of, final String name, final List<String> values, final ATTRIBUTE_DATA_TYPE type)  {
 
         if (!AttributesAspectUtils.isListType(type)) {
             throw new IllegalArgumentException("node attribute element '" + name + "': list of values provided, but given data type is " + type.toString());
@@ -112,9 +113,10 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
         _property_of = property_of;
         _name = name;
         _values = values;
+
     }
 
-    public NodeAttributesElement(final Long property_of, final String name, final Object value) {
+ /*   public NodeAttributesElement(final Long property_of, final String name, final Object value) {
         if (value instanceof List) {
             throw new IllegalArgumentException("constructor only applicable for singe values");
         }
@@ -124,7 +126,7 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
         _property_of = (property_of);
         _name = name;
         _values = String.valueOf(value);
-    }
+    } */
 
     @Override
 	@JsonIgnore
@@ -160,8 +162,8 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
     } */
 
 
-
-    public final static NodeAttributesElement createInstanceWithSingleValue(final Long subnetwork, final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type) {
+/*
+    public final static NodeAttributesElement createInstanceWithSingleValue(final Long subnetwork, final Long property_of, final String name, final String value, final ATTRIBUTE_DATA_TYPE type) throws JsonProcessingException {
 
         return new NodeAttributesElement(subnetwork, property_of, name, DatamodelsUtil.removeParenthesis(value, type), type);
     }
@@ -172,5 +174,5 @@ public final class NodeAttributesElement extends AbstractElementAttributesAspect
 
         return new NodeAttributesElement(subnetwork, property_of, name, DatamodelsUtil.parseStringToStringList(values), type);
     }
-
+*/
 }

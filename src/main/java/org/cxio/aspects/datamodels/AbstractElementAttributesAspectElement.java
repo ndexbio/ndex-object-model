@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.cxio.aspects.writers.WriterUtil;
 import org.cxio.util.JsonWriter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -39,6 +40,7 @@ public abstract class AbstractElementAttributesAspectElement extends AbstractAtt
      *
      * @return a list of identifiers of the elements this attribute is a property o
      */
+ 	@JsonIgnore
     public Long getPropertyOf() {
         return _property_of;
     }
