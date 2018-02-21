@@ -9,14 +9,16 @@ import java.util.TreeMap;
 import org.cxio.util.JsonWriter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * This class is used to represent a visual property of a
  * network, node(s), or edge(s) in/under a network view.
  *
- * @author cmzmasek
- *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public final class CyVisualPropertiesElement extends AbstractAspectElement {
 
     /**

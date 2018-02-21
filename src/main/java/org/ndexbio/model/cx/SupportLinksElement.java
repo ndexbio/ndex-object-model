@@ -51,6 +51,7 @@ public abstract class SupportLinksElement extends NdexAspectElement {
 	
 	public SupportLinksElement() {
 		supportIds = new LinkedList<>();
+		sourceIds = new ArrayList<>();
 	}
 
 	protected SupportLinksElement(Collection<Long> sourceId, Collection<Long> supportIds ) {

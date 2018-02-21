@@ -22,7 +22,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public final class SubNetworkElement extends AbstractAspectElement {
 
-    public final static String    ASPECT_NAME  = "cySubNetworks"; //"subNetworks" is the old aspect name before the 1.1 fix.;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public final static String    ASPECT_NAME  = "cySubNetworks"; //"subNetworks" is the old aspect name before the 1.1 fix.;
     public final static String    SUBNET_EDGES = "edges";
     public final static String    SUBNET_ID    = "@id";
     public final static String    SUBNET_NODES = "nodes";

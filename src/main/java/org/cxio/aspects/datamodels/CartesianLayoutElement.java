@@ -4,12 +4,15 @@ import java.io.IOException;
 
 import org.cxio.util.JsonWriter;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * This class is used to represent the position of a network node in x, y, z coordinates.
  *
- * @author cmzmasek
- *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public final class CartesianLayoutElement extends AbstractAspectElement {
 
     /**

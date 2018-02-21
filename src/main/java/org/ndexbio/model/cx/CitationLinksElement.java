@@ -30,6 +30,7 @@
  */
 package org.ndexbio.model.cx;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -51,6 +52,7 @@ public abstract class CitationLinksElement extends NdexAspectElement {
 
 	public CitationLinksElement() {
 		citationIds = new LinkedList<>();
+		sourceIds = new ArrayList<>();
 	}
 
 	public CitationLinksElement(Collection<Long> sourceIds, Collection<Long> citationIds) {

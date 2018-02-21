@@ -44,29 +44,29 @@ public final class NodesElement extends AbstractAspectElement {
 		_id = -1;
 	}
 	
-    public NodesElement(final long id) {
+ /*   public NodesElement(final long id) {
         _id = id;
         _node_name = null;
         _node_represents = null;
-    }
+    } 
 
     public NodesElement(final String id) {
         _id = Long.parseLong(id);
         _node_name = null;
         _node_represents = null;
-    }
+    } 
 
     public NodesElement(final long id, final String node_name) {
         _id = id;
         _node_name = node_name;
         _node_represents = null;
-    }
+    } 
 
     public NodesElement(final String id, final String node_name) {
         _id = Long.parseLong(id);
         _node_name = node_name;
         _node_represents = null;
-    }
+    } */
 
     public NodesElement(final long id, final String node_name, final String node_represents) {
         _id = id;
@@ -74,11 +74,11 @@ public final class NodesElement extends AbstractAspectElement {
         _node_represents = node_represents;
     }
 
-    public NodesElement(final String id, final String node_name, final String node_represents) {
+ /*   public NodesElement(final String id, final String node_name, final String node_represents) {
         _id = Long.parseLong(id);
         _node_name = node_name;
         _node_represents = node_represents;
-    }
+    } */
 
     @Override
     public boolean equals(final Object o) {
