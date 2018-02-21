@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public final class ParserUtils {
 
-    public final static List<String> parseSimpleStringList(final JsonParser jp, JsonToken t) throws IOException, JsonParseException {
+/*    public final static List<String> parseSimpleStringList(final JsonParser jp, JsonToken t) throws IOException, JsonParseException {
         final List<String> elements = new ArrayList<String>();
         while (t != JsonToken.END_ARRAY) {
             if (t == JsonToken.VALUE_STRING) {
@@ -70,7 +70,7 @@ public final class ParserUtils {
         }
         return l;
     }
-
+*/
     public final static List<Long> getAsLongListRequired(final ObjectNode o, final String label) throws IOException {
         final List<Long> l = ParserUtils.getAsLongList(o, label);
         if (l.isEmpty()) {
@@ -147,7 +147,7 @@ public final class ParserUtils {
                 return Long.valueOf(s);
             }
             catch (final NumberFormatException e) {
-                throw new IOException("malformed CX json: element '" + label + "' has mal-formed long integer: " + s);
+                throw new IOException("malformed CX json: element '" + label + "' has mal-formed long integer: " + s + ". Error: " + e.getMessage());
             }
 
         }
@@ -165,7 +165,7 @@ public final class ParserUtils {
         return s;
     }
 
-    public final static long getTextValueRequiredAsLong(final ObjectNode o, final String label) throws IOException {
+    public final static Long getTextValueRequiredAsLong(final ObjectNode o, final String label) throws IOException {
         String s = null;
         if (o.has(label)) {
             s = o.get(label).asText();
@@ -178,7 +178,8 @@ public final class ParserUtils {
             return Long.valueOf(s);
         }
         catch (final NumberFormatException e) {
-            throw new IOException("malformed CX json: element '" + label + "' has mal-formed long integer: " + s);
+            throw new IOException("malformed CX json: element '" + label + "' has mal-formed long integer: " 
+        + s + ". Error: " + e.getMessage());
 
         }
     }

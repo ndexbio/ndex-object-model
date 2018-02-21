@@ -76,4 +76,9 @@ public abstract class AbstractFragmentReader implements AspectFragmentReader {
      */
     @Override
     public abstract AspectElement readElement(final ObjectNode o) throws IOException;
+
+	@Override
+	public int hashCode() {
+		return getAspectName().hashCode();
+	}
 }
