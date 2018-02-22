@@ -36,11 +36,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class SimplePathQuery extends SimpleQuery {
 
 	private int _searchDepth;
-	private int _edgeLimit;  // this is a temporary attribute, might be removed in future releases. 
+	private int _edgeLimit;
+	private boolean errorWhenLimitIsOver;
 	
 	
 	public void setSearchDepth(int searchDepth) {
 		_searchDepth = searchDepth;
+		errorWhenLimitIsOver = true;
 	}
 	
 	public int getSearchDepth() {
@@ -51,8 +53,21 @@ public class SimplePathQuery extends SimpleQuery {
 		return _edgeLimit;
 	}
 
+	/**
+	 * 
+	 * @param edgeLimit  value less than 1 means no limit.
+	 */
 	public void setEdgeLimit(int edgeLimit) {
 		this._edgeLimit = edgeLimit;
 	}
-	
+
+	public boolean isErrorWhenLimitIsOver() {
+		return errorWhenLimitIsOver;
+	}
+
+	public void setErrorWhenLimitIsOver(boolean errorWhenLimitIsOver) {
+		this.errorWhenLimitIsOver = errorWhenLimitIsOver;
+	}
+
+
 }

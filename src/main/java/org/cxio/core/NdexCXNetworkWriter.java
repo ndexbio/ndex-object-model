@@ -123,4 +123,12 @@ public class NdexCXNetworkWriter {
 		writer.flush();
 		g.close();
 	}
+	
+	public void end (boolean isSuccess, String message) throws JsonProcessingException, IOException {
+		Status s = new Status (isSuccess, message);
+		writeObject(s);
+		writer.write("]");
+		writer.flush();
+		g.close();
+	}
 }

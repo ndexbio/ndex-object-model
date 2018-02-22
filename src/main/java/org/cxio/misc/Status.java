@@ -42,10 +42,10 @@ public final class Status implements Serializable {
         return m.readValue(str, Status.class);
     } */
 
-    public Status() {
+  /*  public Status() {
         _data = new ArrayList<>();
 
-    }
+    } */
 
     public Status(final boolean success) {
         _data = new ArrayList<>();
