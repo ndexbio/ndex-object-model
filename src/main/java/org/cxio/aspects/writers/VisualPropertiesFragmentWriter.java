@@ -55,7 +55,7 @@ public class VisualPropertiesFragmentWriter extends AbstractFragmentWriter {
                     w.writeObjectFieldStart(entry.getKey());
                     final Mapping m = entry.getValue();
                     w.writeStringField(Mapping.TYPE, m.getType());
-                    w.writeStringField(Mapping.DEFINITION, m.getDefintion());
+                    w.writeStringField(Mapping.DEFINITION, m.getDefinition());
                     w.writeEndObject();
                 }
             }

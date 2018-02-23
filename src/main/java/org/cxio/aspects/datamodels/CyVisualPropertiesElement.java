@@ -18,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  *
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public final class CyVisualPropertiesElement extends AbstractAspectElement {
 
     /**
@@ -232,7 +233,7 @@ public final class CyVisualPropertiesElement extends AbstractAspectElement {
                     w.writeObjectFieldStart(entry.getKey());
                     final Mapping m = entry.getValue();
                     w.writeStringField(Mapping.TYPE, m.getType());
-                    w.writeStringField(Mapping.DEFINITION, m.getDefintion());
+                    w.writeStringField(Mapping.DEFINITION, m.getDefinition());
                     w.writeEndObject();
                 }
             }

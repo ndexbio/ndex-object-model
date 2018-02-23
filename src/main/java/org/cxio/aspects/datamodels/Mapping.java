@@ -29,7 +29,7 @@ public final class Mapping {
     
     public void setType (String type) { _type = type;}
 
-    public final String getDefintion() {
+    public final String getDefinition() {
         return _definition;
     }
     
