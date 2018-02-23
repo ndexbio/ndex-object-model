@@ -150,7 +150,10 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
         w.flush();
 	} 
     
-
+    @JsonIgnore
+   public void setSingleStringValue(String str) {
+    		_values = str;
+    }
     
     @Override
     public String toString() {

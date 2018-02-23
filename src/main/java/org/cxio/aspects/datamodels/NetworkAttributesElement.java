@@ -83,7 +83,6 @@ public final class NetworkAttributesElement extends AbstractAttributesAspectElem
     public String getAspectName() {
         return ASPECT_NAME;
     }
-
   
     @Override
     public String toString() {
