@@ -42,7 +42,6 @@ public class SimplePathQuery extends SimpleQuery {
 	
 	public void setSearchDepth(int searchDepth) {
 		_searchDepth = searchDepth;
-		errorWhenLimitIsOver = true;
 	}
 	
 	public int getSearchDepth() {
@@ -61,11 +60,11 @@ public class SimplePathQuery extends SimpleQuery {
 		this._edgeLimit = edgeLimit;
 	}
 
-	public boolean isErrorWhenLimitIsOver() {
+	public boolean getErrorWhenLimitIsOver() {
 		return errorWhenLimitIsOver;
 	}
 
-	public void setErrorWhenLimitIsOver(boolean errorWhenLimitIsOver) {
+	public void    setErrorWhenLimitIsOver(boolean errorWhenLimitIsOver) {
 		this.errorWhenLimitIsOver = errorWhenLimitIsOver;
 	}
 
