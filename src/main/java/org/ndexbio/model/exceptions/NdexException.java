@@ -33,15 +33,17 @@ package org.ndexbio.model.exceptions;
 import org.ndexbio.model.errorcodes.ErrorCode;
 import org.ndexbio.model.errorcodes.NDExError;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class NdexException extends Exception
 {
     private static final long serialVersionUID = 1L;
     
     private NDExError ndexError;
-    private static ErrorCode errorCode = ErrorCode.NDEx_Exception;
+    private ErrorCode errorCode = ErrorCode.NDEx_Exception;
     
     public NdexException(NDExError ndexError)
     {
@@ -86,6 +88,7 @@ public class NdexException extends Exception
 	}
 
 	public NDExError getNDExError() { return this.ndexError; }
+//	public void setNDExError(NDExError error) { this.ndexError = error;}
 	
 	public String getNdexExceptionInJason() { return ndexExceptionToJson(); }
 	
