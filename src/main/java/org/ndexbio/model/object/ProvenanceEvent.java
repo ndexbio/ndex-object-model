@@ -55,6 +55,7 @@ public class ProvenanceEvent implements Serializable
 	public ProvenanceEvent () {
 		//super();
         //_type = this.getClass().getSimpleName();
+		_properties = new ArrayList<>();
 	} 
 
 	public ProvenanceEvent(String eventType, Timestamp eventTime) {
@@ -111,5 +112,8 @@ public class ProvenanceEvent implements Serializable
 		this._eventType = eventType;
 	}
 	
-
+    public void addProperty(String name, String value) {
+    		_properties.add( new SimplePropertyValuePair (name,value));
+   
+    }
 }

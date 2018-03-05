@@ -83,4 +83,7 @@ public class ProvenanceEntity implements Serializable
 		this._uri = uri;
 	}
 	
+	public void addProperty ( String name, String value) { 
+		_properties.add(new SimplePropertyValuePair (name,value));
+	}
 }
