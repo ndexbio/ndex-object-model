@@ -74,11 +74,14 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	
 	private boolean isShowcase;
 
-	private boolean isIndexed;
+//	private boolean isIndexed;
 	private boolean isCompleted;
 	private String doi;
 	private boolean isCertified;
 	private NetworkIndexLevel indexLevel;
+	
+	private boolean hasLayout;
+	private boolean hasSample;
 	
 //	private boolean cxFileSize;
 	
@@ -242,7 +245,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	public void setIsShowcase(boolean displayInHomePage) {
 		this.isShowcase = displayInHomePage;
 	}
-
+/*
 	public boolean isIndexed() {
 		return isIndexed;
 	}
@@ -250,7 +253,7 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	public void setIndexed(boolean isIndexed) {
 		this.isIndexed = isIndexed;
 	}
-
+*/
 	public boolean isCompleted() {
 		return isCompleted;
 	}
@@ -281,6 +284,22 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setIndexLevel(NetworkIndexLevel solrIndexLevel) {
 		this.indexLevel = solrIndexLevel;
+	}
+
+	public boolean getHasLayout() {
+		return hasLayout;
+	}
+
+	public void setHasLayout(boolean hasLayout) {
+		this.hasLayout = hasLayout;
+	}
+
+	public boolean getHasSample() {
+		return hasSample;
+	}
+
+	public void setHasSample(boolean hasSample) {
+		this.hasSample = hasSample;
 	}
 
 }
