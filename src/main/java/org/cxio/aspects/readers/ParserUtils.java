@@ -10,9 +10,6 @@ import java.util.TreeMap;
 
 import org.cxio.util.CxioUtil;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -79,7 +76,7 @@ public final class ParserUtils {
         return l;
     }
 
-    public final static List<String> getAsStringList(final ObjectNode o, final String label) throws IOException {
+    public final static List<String> getAsStringList(final ObjectNode o, final String label)  {
         final List<String> l = new ArrayList<String>();
         if (o.has(label)) {
             if (!o.get(label).isArray()) {
@@ -98,7 +95,7 @@ public final class ParserUtils {
         return l;
     }
 
-    public final static List<Long> getAsLongList(final ObjectNode o, final String label) throws IOException {
+    public final static List<Long> getAsLongList(final ObjectNode o, final String label) {
         final List<Long> l = new ArrayList<Long>();
         if (o.has(label)) {
             if (!o.get(label).isArray()) {
@@ -117,7 +114,7 @@ public final class ParserUtils {
         return l;
     }
 
-    public final static boolean isArray(final ObjectNode o, final String label) throws IOException {
+    public final static boolean isArray(final ObjectNode o, final String label) {
     	JsonNode o2 = o.get(label);
     	if ( o2 != null)
     			return o2.isArray();

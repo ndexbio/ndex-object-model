@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.security.DigestInputStream;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -19,7 +17,6 @@ import org.cxio.misc.AspectElementCounts;
 import org.cxio.misc.NumberVerification;
 import org.cxio.misc.Status;
 import org.cxio.util.CxConstants;
-import org.cxio.util.CxioUtil;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;

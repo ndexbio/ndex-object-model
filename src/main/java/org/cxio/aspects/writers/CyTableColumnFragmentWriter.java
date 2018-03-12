@@ -22,7 +22,7 @@ public class CyTableColumnFragmentWriter extends AbstractFragmentWriter {
 
     @Override
     public void writeElement(final AspectElement element, final JsonWriter w) throws IOException {
-        writeAttributesElement(w, (CyTableColumnElement) element, /*_filter,*/ false);
+        writeAttributesElement(w, (CyTableColumnElement) element /*_filter,*/);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class CyTableColumnFragmentWriter extends AbstractFragmentWriter {
         _filter = filter;
     }
 */
-    private static final void writeAttributesElement(final JsonWriter w, final AbstractAttributesAspectElement e /*, final AspectKeyFilter filter*/, final boolean write_property_of) throws IOException {
+    private static final void writeAttributesElement(final JsonWriter w, final AbstractAttributesAspectElement e /*, final AspectKeyFilter filter*/) throws IOException {
  //       if ((filter == null) || filter.isPass(e.getName())) {
             final CyTableColumnElement te = (CyTableColumnElement) e;
             w.writeStartObject();

@@ -212,7 +212,7 @@ public final class CxElementReader2 implements Iterable<AspectElement> {
 						throw new IOException("New aspect fragement found after post metadata at " + getPosition());
 					_reader = _element_readers.get(aspectName);
 					if (_reader == null) {
-						_reader = OpaqueFragmentReader.createInstance(jp, aspectName);
+						_reader = OpaqueFragmentReader.createInstance( aspectName);
 					}
 					_encountered_non_meta_content = true;
 					state = ELEMENT_LIST_START;

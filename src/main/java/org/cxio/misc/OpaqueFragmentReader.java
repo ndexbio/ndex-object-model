@@ -31,8 +31,8 @@ public final class OpaqueFragmentReader extends AbstractFragmentReader {
         return new OpaqueFragmentReader(jp);
     } */
 
-    public final static OpaqueFragmentReader createInstance(final JsonParser jp, final String name) {
-        return new OpaqueFragmentReader(jp, name);
+    public final static OpaqueFragmentReader createInstance( final String name) {
+        return new OpaqueFragmentReader(name);
     }
 
     private OpaqueFragmentReader() {
@@ -48,7 +48,7 @@ public final class OpaqueFragmentReader extends AbstractFragmentReader {
         _is_list = false;
     } */
 
-    private OpaqueFragmentReader(final JsonParser jp, final String name) {
+    private OpaqueFragmentReader( final String name) {
         _name = name;
         _m = new ObjectMapper();
         _is_list = false;
@@ -97,7 +97,7 @@ public final class OpaqueFragmentReader extends AbstractFragmentReader {
     }
 
     @Override
-    public final OpaqueElement readElement(final ObjectNode o) throws IOException {
+    public final OpaqueElement readElement(final ObjectNode o) {
         return new OpaqueElement(_name, o);
     }
 }

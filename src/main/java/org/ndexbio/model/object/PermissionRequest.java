@@ -13,7 +13,7 @@ public class PermissionRequest {
     private Permissions permission;
     private String message;
     
-    public PermissionRequest() throws NdexException {
+    public PermissionRequest()  {
     	setNetworkid(null);   	
     	permission = Permissions.READ;
     }
