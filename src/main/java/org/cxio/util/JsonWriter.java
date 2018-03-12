@@ -145,7 +145,7 @@ public final class JsonWriter {
        if( l == null ) {
     	   _g.writeNullField(field_name);
        } else 
-    	   _g.writeNumberField(field_name, l);
+    	   _g.writeNumberField(field_name, l.longValue());
     }
 
     public final void writeNumberField(final String field_name, final int i) throws IOException {
@@ -181,7 +181,7 @@ public final class JsonWriter {
 
     public final void writeNumberFieldIfNotEmpty(final String field_name, final Long l) throws IOException {
         if (l != null) {
-            _g.writeNumberField(field_name, l);
+            _g.writeNumberField(field_name, l.longValue());
         }
     }
 

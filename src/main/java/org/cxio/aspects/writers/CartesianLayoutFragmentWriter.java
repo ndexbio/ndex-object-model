@@ -23,10 +23,10 @@ public class CartesianLayoutFragmentWriter extends AbstractFragmentWriter {
         if (c.getView() !=null) {
             w.writeNumberField(CartesianLayoutElement.VIEW, c.getView());
         }
-        w.writeNumberField(CartesianLayoutElement.X, Double.valueOf(c.getX()));
-        w.writeNumberField(CartesianLayoutElement.Y, Double.valueOf(c.getY()));
+        w.writeNumberField(CartesianLayoutElement.X, Double.parseDouble(c.getX()));
+        w.writeNumberField(CartesianLayoutElement.Y, Double.parseDouble(c.getY()));
         if (c.isZset()) {
-            w.writeNumberField(CartesianLayoutElement.Z, Double.valueOf(c.getZ()));
+            w.writeNumberField(CartesianLayoutElement.Z, Double.parseDouble(c.getZ()));
         }
         w.writeEndObject();
     }

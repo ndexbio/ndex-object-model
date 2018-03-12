@@ -13,8 +13,6 @@ import org.cxio.util.JsonWriter;
  * interface.
  *
  *
- * @author cmzmasek
- *
  */
 public abstract class AbstractFragmentWriter implements AspectFragmentWriter {
 
@@ -55,5 +53,10 @@ public abstract class AbstractFragmentWriter implements AspectFragmentWriter {
     public int compareTo(final AspectFragmentReader o) {
         return getAspectName().compareTo(o.getAspectName());
     }
+
+	@Override
+	public int hashCode() {
+		return getAspectName().hashCode();
+	}
 
 }
