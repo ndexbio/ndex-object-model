@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.UUID;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -21,14 +21,8 @@ public class AspectIterator<E> implements Iterator<E>, Closeable {
 	private Iterator<E> it;
 	
 	
-	public AspectIterator (UUID networkUUID, String aspectName, Class<E> cls, String pathPrefix) throws JsonProcessingException, IOException {
-		/*networkId = networkUUID;
-		this.aspectName = aspectName; */
-	//	typeReference = cls; 
-		
-	//	String pathPrefix = Configuration.getInstance().getNdexRoot() + "/data/" + networkUUID + "/aspects/"; 
-		
-		String fname = pathPrefix + "aspects/"+ aspectName;
+	public AspectIterator (String networkId, String aspectName, Class<E> cls, String pathPrefix) throws JsonProcessingException, IOException {
+		String fname = pathPrefix + networkId + "/aspects/"+ aspectName;
 		java.nio.file.Path aspectFile = Paths.get(fname);
 		if ( Files.exists(aspectFile)) { 
 			 inputStream = new FileInputStream(fname) ;

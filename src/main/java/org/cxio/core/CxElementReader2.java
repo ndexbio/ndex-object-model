@@ -136,9 +136,8 @@ public final class CxElementReader2 implements Iterable<AspectElement> {
      * next aspect element.
      *
      * @return one aspect element, null if end of stream has been reached
-     * @throws IOException
      */
-    private final AspectElement getNext() throws IOException {
+    private final AspectElement getNext() {
     	if ( _current != null) {
     		AspectElement result = _current;
     		_current = null;
@@ -273,13 +272,7 @@ public final class CxElementReader2 implements Iterable<AspectElement> {
 
             @Override
             public AspectElement next() {
-                try {
-                    return CxElementReader2.this.getNext();
-                }
-                catch (final IOException e) {
-                    e.printStackTrace();
-                    return null;
-                }
+                    return CxElementReader2.this.getNext();  
             }
 
             @Override

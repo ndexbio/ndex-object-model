@@ -1,27 +1,10 @@
 package org.cxio.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.SortedMap;
 
 import org.cxio.aspects.datamodels.AbstractAttributesAspectElement;
-import org.cxio.aspects.datamodels.CartesianLayoutElement;
-import org.cxio.aspects.datamodels.CyGroupsElement;
-import org.cxio.aspects.datamodels.CyViewsElement;
-import org.cxio.aspects.datamodels.CyVisualPropertiesElement;
-import org.cxio.aspects.datamodels.EdgeAttributesElement;
-import org.cxio.aspects.datamodels.EdgesElement;
-import org.cxio.aspects.datamodels.HiddenAttributesElement;
-import org.cxio.aspects.datamodels.NetworkAttributesElement;
-import org.cxio.aspects.datamodels.NetworkRelationsElement;
-import org.cxio.aspects.datamodels.NodeAttributesElement;
-import org.cxio.aspects.datamodels.NodesElement;
-import org.cxio.aspects.datamodels.SubNetworkElement;
 import org.cxio.aspects.readers.CartesianLayoutFragmentReader;
 import org.cxio.aspects.readers.CyGroupsFragmentReader;
 import org.cxio.aspects.readers.CyTableColumnFragmentReader;
@@ -48,12 +31,8 @@ import org.cxio.aspects.writers.NodeAttributesFragmentWriter;
 import org.cxio.aspects.writers.NodesFragmentWriter;
 import org.cxio.aspects.writers.SubNetworkFragmentWriter;
 import org.cxio.aspects.writers.VisualPropertiesFragmentWriter;
-import org.cxio.core.CxReader;
-import org.cxio.core.CxWriter;
-import org.cxio.core.interfaces.AspectElement;
 import org.cxio.core.interfaces.AspectFragmentReader;
 import org.cxio.core.interfaces.AspectFragmentWriter;
-import org.cxio.misc.AspectElementCounts;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -61,7 +40,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public final class CxioUtil {
 
     public final static String LINE_SEPARATOR = System.getProperty("line.separator");
-    public final static String MD5            = "MD5";
+ //   public final static String MD5            = "MD5";
 
     final public static boolean isEmpty(final String s) {
         return (s == null) || (s.length() < 1);
@@ -206,7 +185,7 @@ public final class CxioUtil {
         aspect_writers.add(col_writer);
         return aspect_writers;
     }
-
+/*
     public static boolean validate(final byte[] writer_checksum, final byte[] reader_checksum, final AspectElementCounts writer_counts, final AspectElementCounts reader_counts) {
         if (!AspectElementCounts.isCountsAreEqual(reader_counts, writer_counts)) {
             System.out.println("something went wrong: element counts do not match");
@@ -231,5 +210,5 @@ public final class CxioUtil {
         }
         return true;
     }
-
+*/
 }
