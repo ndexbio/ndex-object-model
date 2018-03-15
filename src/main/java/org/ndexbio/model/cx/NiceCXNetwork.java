@@ -224,4 +224,11 @@ public class NiceCXNetwork {
 		this.provenance = provenance;
 	}
 	
+	public String getNetworkName () {
+		for ( NetworkAttributesElement e  :networkAttributes) {
+			if (e.getName().equals("name"))
+				return e.getValue();
+		}
+		return null;
+	}
 }
