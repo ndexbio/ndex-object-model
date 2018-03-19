@@ -44,7 +44,7 @@ public final class CxWriter {
     private MetaDataCollection                      _post_meta_data;
     private boolean                                 _in_fragment;
 
-    /**
+    /*
      * Returns a CxWriter for reading from OutputStream out.
      * <br>
      * Subsequent calls to method {@link #addAspectFragmentWriter(AspectFragmentWriter writer)} are
@@ -54,9 +54,9 @@ public final class CxWriter {
      * @return a CxWriter writer
      * @throws IOException
      */
-    public final static CxWriter createInstance(final OutputStream out) throws IOException {
+  /*  public final static CxWriter createInstance(final OutputStream out) throws IOException {
         return new CxWriter(out, false);
-    }
+    } */
 
     /**
      * Returns a CxWriter for reading from OutputStream out.
@@ -90,7 +90,7 @@ public final class CxWriter {
         return new CxWriter(out, use_default_pretty_printer);
     } */
 
-    /**
+    /*
      * Returns a CxWriter for reading from OutputStream out.
      * <br>
      *
@@ -100,13 +100,13 @@ public final class CxWriter {
      * @return a CxWriter writer
      * @throws IOException
      */
-    public final static CxWriter createInstance(final OutputStream out, final boolean use_default_pretty_printer, final Set<AspectFragmentWriter> aspect_writers) throws IOException {
+ /*   public final static CxWriter createInstance(final OutputStream out, final boolean use_default_pretty_printer, final Set<AspectFragmentWriter> aspect_writers) throws IOException {
         final CxWriter w = new CxWriter(out, use_default_pretty_printer);
         for (final AspectFragmentWriter aspect_writer : aspect_writers) {
             w.addAspectFragmentWriter(aspect_writer);
         }
         return w;
-    }
+    } */
 
     /**
      * Returns a CxWriter for reading from OutputStream out.
@@ -129,7 +129,7 @@ public final class CxWriter {
         return w;
     } */
 
-    /**
+    /*
      * Returns a CxWriter for reading from OutputStream out with AspectFragmentWriters for nodes, edges, and cartesian layout elements
      * already added.
      *
@@ -138,15 +138,15 @@ public final class CxWriter {
      * @return a CxWriter writer
      * @throws IOException
      */
-    public final static CxWriter createInstanceNEC(final OutputStream out, final boolean use_default_pretty_printer) throws IOException {
+ /*   public final static CxWriter createInstanceNEC(final OutputStream out, final boolean use_default_pretty_printer) throws IOException {
         final CxWriter w = new CxWriter(out, use_default_pretty_printer);
         w.addAspectFragmentWriter(NodesFragmentWriter.createInstance());
         w.addAspectFragmentWriter(EdgesFragmentWriter.createInstance());
         w.addAspectFragmentWriter(CartesianLayoutFragmentWriter.createInstance());
         return w;
-    }
+    } */
 
-    /**
+    /*
      * Returns a CxWriter for reading from OutputStream out with AspectFragmentWriters for nodes, edges, and cartesian layout elements
      * already added.
      *
@@ -157,7 +157,7 @@ public final class CxWriter {
      * @return a CxWriter writer
      * @throws IOException
      */
-    public final static CxWriter createInstanceNEC(final OutputStream out,
+ /*   public final static CxWriter createInstanceNEC(final OutputStream out,
                                                    final boolean use_default_pretty_printer,
                                                    final Set<AspectFragmentWriter> aspect_writers) throws IOException {
         final CxWriter w = new CxWriter(out, use_default_pretty_printer);
@@ -168,9 +168,9 @@ public final class CxWriter {
             w.addAspectFragmentWriter(aspect_writer);
         }
         return w;
-    }
+    } */
 
-    /**
+    /*
      * Returns a CxWriter for reading from OutputStream out with all AspectFragmentWriters implemented in this library already added.
      *
      * @param out the OutputStream to read
@@ -179,14 +179,14 @@ public final class CxWriter {
      * @return a CxWriter writer
      * @throws IOException
      */
-    public final static CxWriter createInstanceWithAllAvailableWriters(final OutputStream out, final boolean use_default_pretty_printer) throws IOException {
+ /*   public final static CxWriter createInstanceWithAllAvailableWriters(final OutputStream out, final boolean use_default_pretty_printer) throws IOException {
         CxWriter w;
             w = new CxWriter(out, use_default_pretty_printer);
         for (final AspectFragmentWriter afw : CxioUtil.getAllAvailableAspectFragmentWriters()) {
             w.addAspectFragmentWriter(afw);
         }
         return w;
-    }
+    } */
 
     /**
      * This method is for adding a {@link org.cxio.core.interfaces.AspectFragmentWriter} to this CxWriter.
