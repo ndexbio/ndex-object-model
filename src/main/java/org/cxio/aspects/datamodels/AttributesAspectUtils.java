@@ -5,9 +5,7 @@ import java.util.List;
 public class AttributesAspectUtils {
 
     public final static boolean isListType(final ATTRIBUTE_DATA_TYPE data_type) {
-        return (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_BOOLEAN) || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_BYTE) || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_CHAR)
-                || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_DOUBLE) || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_FLOAT) || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_INTEGER)
-                || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_LONG) || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_SHORT) || (data_type == ATTRIBUTE_DATA_TYPE.LIST_OF_STRING);
+        return ! data_type.isSingleValueType();
     }
 
     /**
@@ -18,59 +16,41 @@ public class AttributesAspectUtils {
      * @return
      */
     public final static ATTRIBUTE_DATA_TYPE toDataType(final String s) {
-        if (s.equals(ATTRIBUTE_DATA_TYPE.STRING.toString())) {
+        if (s.equals(ATTRIBUTE_DATA_TYPE.STRING.toString()) || 
+        		s.equals("char")) {
             return ATTRIBUTE_DATA_TYPE.STRING;
         }
         else if (s.equals(ATTRIBUTE_DATA_TYPE.BOOLEAN.toString())) {
             return ATTRIBUTE_DATA_TYPE.BOOLEAN;
         }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.DOUBLE.toString())) {
+        else if (s.equals(ATTRIBUTE_DATA_TYPE.DOUBLE.toString()) ||
+        		  s.equals("float")) {
             return ATTRIBUTE_DATA_TYPE.DOUBLE;
         }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.INTEGER.toString())) {
+        else if (s.equals(ATTRIBUTE_DATA_TYPE.INTEGER.toString()) ||
+        		s.equals("byte") || s.equals ("short")) {
             return ATTRIBUTE_DATA_TYPE.INTEGER;
         }
         else if (s.equals(ATTRIBUTE_DATA_TYPE.LONG.toString())) {
             return ATTRIBUTE_DATA_TYPE.LONG;
         }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.FLOAT.toString())) {
-            return ATTRIBUTE_DATA_TYPE.FLOAT;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.SHORT.toString())) {
-            return ATTRIBUTE_DATA_TYPE.SHORT;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.BYTE.toString())) {
-            return ATTRIBUTE_DATA_TYPE.BYTE;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.CHAR.toString())) {
-            return ATTRIBUTE_DATA_TYPE.CHAR;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_STRING.toString())) {
+        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_STRING.toString())||
+        		s.equals ("list_of_string")) {
             return ATTRIBUTE_DATA_TYPE.LIST_OF_STRING;
         }
         else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_BOOLEAN.toString())) {
             return ATTRIBUTE_DATA_TYPE.LIST_OF_BOOLEAN;
         }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_DOUBLE.toString())) {
+        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_DOUBLE.toString())||
+        		s.equals ("list_of_float")) {
             return ATTRIBUTE_DATA_TYPE.LIST_OF_DOUBLE;
         }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_INTEGER.toString())) {
+        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_INTEGER.toString()) ||
+        		s.equals ("list_of_byte") || s.equals("list_of_short")) {
             return ATTRIBUTE_DATA_TYPE.LIST_OF_INTEGER;
         }
         else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_LONG.toString())) {
             return ATTRIBUTE_DATA_TYPE.LIST_OF_LONG;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_FLOAT.toString())) {
-            return ATTRIBUTE_DATA_TYPE.LIST_OF_FLOAT;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_SHORT.toString())) {
-            return ATTRIBUTE_DATA_TYPE.LIST_OF_SHORT;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_BYTE.toString())) {
-            return ATTRIBUTE_DATA_TYPE.LIST_OF_BYTE;
-        }
-        else if (s.equals(ATTRIBUTE_DATA_TYPE.LIST_OF_CHAR.toString())) {
-            return ATTRIBUTE_DATA_TYPE.LIST_OF_CHAR;
         }
         else {
             throw new IllegalArgumentException("type '" + s + "' is not supported");
@@ -94,26 +74,17 @@ public class AttributesAspectUtils {
         else if (o instanceof Boolean) {
             return ATTRIBUTE_DATA_TYPE.BOOLEAN;
         }
-        else if (o instanceof Double) {
+        else if (o instanceof Double || o instanceof Float) {
             return ATTRIBUTE_DATA_TYPE.DOUBLE;
         }
-        else if (o instanceof Integer) {
+        else if (o instanceof Integer || o instanceof Short || o instanceof Byte) {
             return ATTRIBUTE_DATA_TYPE.INTEGER;
         }
-        else if (o instanceof Long) {
+        else if (o instanceof Long ) {
             return ATTRIBUTE_DATA_TYPE.LONG;
         }
-        else if (o instanceof Float) {
-            return ATTRIBUTE_DATA_TYPE.FLOAT;
-        }
-        else if (o instanceof Short) {
-            return ATTRIBUTE_DATA_TYPE.SHORT;
-        }
-        else if (o instanceof Byte) {
-            return ATTRIBUTE_DATA_TYPE.BYTE;
-        }
         else if (o instanceof Character) {
-            return ATTRIBUTE_DATA_TYPE.CHAR;
+            return ATTRIBUTE_DATA_TYPE.STRING;
         }
         else if (o instanceof List) {
             if (((List) o).isEmpty()) {
@@ -136,16 +107,16 @@ public class AttributesAspectUtils {
                 return ATTRIBUTE_DATA_TYPE.LIST_OF_LONG;
             }
             else if (e instanceof Float) {
-                return ATTRIBUTE_DATA_TYPE.LIST_OF_FLOAT;
+                return ATTRIBUTE_DATA_TYPE.LIST_OF_DOUBLE;
             }
             else if (e instanceof Short) {
-                return ATTRIBUTE_DATA_TYPE.LIST_OF_SHORT;
+                return ATTRIBUTE_DATA_TYPE.LIST_OF_LONG;
             }
             else if (e instanceof Byte) {
-                return ATTRIBUTE_DATA_TYPE.LIST_OF_BYTE;
+                return ATTRIBUTE_DATA_TYPE.LIST_OF_LONG;
             }
             else if (e instanceof Character) {
-                return ATTRIBUTE_DATA_TYPE.LIST_OF_CHAR;
+                return ATTRIBUTE_DATA_TYPE.LIST_OF_STRING;
             }
             else {
                 throw new IllegalArgumentException("type '" + o.getClass() + "' is not supported");

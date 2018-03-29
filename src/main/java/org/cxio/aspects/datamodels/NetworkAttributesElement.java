@@ -134,7 +134,7 @@ public final class NetworkAttributesElement extends AbstractAttributesAspectElem
     public final static NetworkAttributesElement createInstanceWithJsonValue(final Long subnetwork, final String name, final String serializedValue, final ATTRIBUTE_DATA_TYPE type) throws IOException {
 
     	ObjectMapper mapper = new ObjectMapper();
-    	if ( ATTRIBUTE_DATA_TYPE.isSingleValueType(type)) {
+    	if ( type.isSingleValueType()) {
     		return new NetworkAttributesElement(subnetwork, name, serializedValue, type);
     	} 
     	

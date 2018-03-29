@@ -139,7 +139,7 @@ public abstract class AbstractAttributesAspectElement extends AbstractAspectElem
      */
     @JsonIgnore
    public final boolean isSingleValue() {
-	  return ATTRIBUTE_DATA_TYPE.isSingleValueType(this._data_type) ;
+	  return this._data_type.isSingleValueType() ;
       //  return (_values == null) || (_values instanceof String) ;
     } 
     

@@ -26,7 +26,7 @@ public final class WriterUtil {
                 w.writeList(AbstractAttributesAspectElement.ATTR_VALUES, e.getValues());
             }
             if (e.getDataType() != ATTRIBUTE_DATA_TYPE.STRING) {
-                w.writeStringField(AbstractAttributesAspectElement.ATTR_DATA_TYPE, ATTRIBUTE_DATA_TYPE.toCxLabel(e.getDataType()));
+                w.writeStringField(AbstractAttributesAspectElement.ATTR_DATA_TYPE, e.getDataType().toString());
             }
             w.writeEndObject();
    //     }
@@ -47,7 +47,7 @@ public final class WriterUtil {
                 w.writeList(AbstractAttributesAspectElement.ATTR_VALUES, e.getValues());
             }
             if (e.getDataType() != ATTRIBUTE_DATA_TYPE.STRING) {
-                w.writeStringField(AbstractAttributesAspectElement.ATTR_DATA_TYPE, ATTRIBUTE_DATA_TYPE.toCxLabel(e.getDataType()));
+                w.writeStringField(AbstractAttributesAspectElement.ATTR_DATA_TYPE, e.getDataType().toString());
             }
             w.writeEndObject();
    //     }

@@ -66,7 +66,7 @@ public class CyTableColumnElement extends AbstractAttributesAspectElement {
 	            w.writeStringField(CyTableColumnElement.APPLIES_TO, te.getAppliesTo());
 	            w.writeStringField(AbstractAttributesAspectElement.ATTR_NAME, te.getName());
 	            if (te.getDataType() != ATTRIBUTE_DATA_TYPE.STRING) {
-	                w.writeStringField(AbstractAttributesAspectElement.ATTR_DATA_TYPE, ATTRIBUTE_DATA_TYPE.toCxLabel(te.getDataType()));
+	                w.writeStringField(AbstractAttributesAspectElement.ATTR_DATA_TYPE, te.getDataType().toString());
 	            }
 	            w.writeEndObject();
 	            w.flush();
