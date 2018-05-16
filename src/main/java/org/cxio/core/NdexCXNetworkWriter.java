@@ -12,7 +12,6 @@ import org.cxio.metadata.MetaDataCollection;
 import org.cxio.misc.NumberVerification;
 import org.cxio.misc.Status;
 import org.cxio.util.CxConstants;
-import org.cxio.util.JsonWriter;
 import org.ndexbio.model.cx.CXAspectFragment;
 
 import com.fasterxml.jackson.core.JsonFactory;

@@ -24,8 +24,9 @@ public final class NodesFragmentReader extends AbstractFragmentReader {
 
     @Override
     public final AspectElement readElement(final ObjectNode o) throws IOException {
-        return new NodesElement(ParserUtils.getTextValueRequiredAsLong(o, NodesElement.ID), ParserUtils.getTextValue(o, NodesElement.NODE_NAME), ParserUtils.getTextValue(o,
-                                                                                                                                                                          NodesElement.NODE_REPRESENTS));
+        return new NodesElement(ParserUtils.getTextValueRequiredAsLong(o, NodesElement.ID),
+        		ParserUtils.getTextValue(o, NodesElement.NODE_NAME),
+        		ParserUtils.getTextValue(o,NodesElement.NODE_REPRESENTS));
     }
 
 }

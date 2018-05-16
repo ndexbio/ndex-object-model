@@ -26,6 +26,7 @@ public final class CyGroupsElement extends AbstractAspectElement {
     public final static String ASPECT_NAME    = "cyGroups";
     public final static String NODES          = "nodes";
     public final static String VIEW           = "view";
+    public final static String IS_COLLAPSED  = "isCollapsed";
 
     private final List<Long>   _external_edges;
     private final Long         _group_id;
@@ -33,9 +34,10 @@ public final class CyGroupsElement extends AbstractAspectElement {
     private final String       _name;
     private final List<Long>   _nodes;
     private final Long         _view;
-    private boolean            _internal_edges_all;
+    private boolean 		  _isCollapsed;
+/*    private boolean            _internal_edges_all;
     private boolean            _external_edges_all;
-    private boolean            _nodes_all;
+    private boolean            _nodes_all; */
 
     public CyGroupsElement(final Long group_id, final Long view, final String name) {
         _name = name;
@@ -44,9 +46,10 @@ public final class CyGroupsElement extends AbstractAspectElement {
         _nodes = new ArrayList<>();
         _internal_edges = new ArrayList<>();
         _external_edges = new ArrayList<>();
+        _isCollapsed = false;
     }
 
-    public void setNodesAll(final boolean nodes_all) {
+ /*   public void setNodesAll(final boolean nodes_all) {
         _nodes_all = nodes_all;
         if (nodes_all) {
             _nodes.clear();
@@ -78,19 +81,19 @@ public final class CyGroupsElement extends AbstractAspectElement {
             _external_edges.clear();
         }
     }
-
+*/
     final public void addExternalEdge(final Long edge_id) {
-        _external_edges_all = false;
+  //      _external_edges_all = false;
         _external_edges.add(edge_id);
     }
 
     final public void addInternalEdge(final Long edge_id) {
-        _internal_edges_all = false;
+   //     _internal_edges_all = false;
         _internal_edges.add(edge_id);
     }
 
     final public void addNode(final Long node_id) {
-        _nodes_all = false;
+  //      _nodes_all = false;
         _nodes.add(node_id);
     }
 
@@ -140,9 +143,9 @@ public final class CyGroupsElement extends AbstractAspectElement {
             sb.append("\n");
         }
         sb.append("nodes:");
-        if (isNodesAll()) {
+  /*      if (isNodesAll()) {
             sb.append(" all");
-        }
+        } */
         for (final Long s : _nodes) {
             sb.append(" ");
             sb.append(s);
@@ -150,9 +153,9 @@ public final class CyGroupsElement extends AbstractAspectElement {
         }
         sb.append("\n");
         sb.append("internal edges:");
-        if (isInternalEdgesAll()) {
+   /*     if (isInternalEdgesAll()) {
             sb.append(" all");
-        }
+        } */
         for (final Long s : _internal_edges) {
             sb.append(" ");
             sb.append(s);
@@ -160,9 +163,9 @@ public final class CyGroupsElement extends AbstractAspectElement {
         }
         sb.append("\n");
         sb.append("external edges:");
-        if (isExternalEdgesAll()) {
+ /*       if (isExternalEdgesAll()) {
             sb.append(" all");
-        }
+        } */
         for (final Long s : _external_edges) {
             sb.append(" ");
             sb.append(s);
@@ -180,27 +183,36 @@ public final class CyGroupsElement extends AbstractAspectElement {
 	        w.writeNumberFieldIfNotEmpty(CyGroupsElement.GROUP_ID, e.getGroupId());
 	        w.writeNumberFieldIfNotEmpty(CyGroupsElement.VIEW, e.getView());
 	        w.writeStringFieldIfNotEmpty(CyGroupsElement.GROUP_NAME, e.getName());
-
-	        if (e.isNodesAll()) {
+	        w.writeBooleanField(CyGroupsElement.IS_COLLAPSED, e._isCollapsed);
+	        
+	/*        if (e.isNodesAll()) {
 	            w.writeStringField(CyGroupsElement.NODES, "all");
 	        }
-	        else {
+	        else { */
 	            w.writeLongList(CyGroupsElement.NODES, e.getNodes());
-	        }
-	        if (e.isExternalEdgesAll()) {
+	//        }
+	/*        if (e.isExternalEdgesAll()) {
 	            w.writeStringField(CyGroupsElement.EXTERNAL_EDGES, "all");
 	        }
-	        else {
+	        else { */
 	            w.writeLongList(CyGroupsElement.EXTERNAL_EDGES, e.getExternalEdges());
-	        }
+	 /*       }
 	        if (e.isInternalEdgesAll()) {
 	            w.writeStringField(CyGroupsElement.INTERNAL_EDGES, "all");
 	        }
-	        else {
+	        else { */
 	            w.writeLongList(CyGroupsElement.INTERNAL_EDGES, e.getInternalEdges());
-	        }
+	     //   }
 	        w.writeEndObject();	
 	        w.flush();
+	}
+
+	public boolean isCollapsed() {
+		return _isCollapsed;
+	}
+
+	public void set_isCollapsed(boolean _isCollapsed) {
+		this._isCollapsed = _isCollapsed;
 	}
 
 }

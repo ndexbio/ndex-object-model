@@ -28,25 +28,26 @@ public class CyGroupsFragmentWriter extends AbstractFragmentWriter {
         w.writeNumberFieldIfNotEmpty(CyGroupsElement.GROUP_ID, e.getGroupId());
         w.writeNumberFieldIfNotEmpty(CyGroupsElement.VIEW, e.getView());
         w.writeStringFieldIfNotEmpty(CyGroupsElement.GROUP_NAME, e.getName());
+        w.writeBooleanField(CyGroupsElement.IS_COLLAPSED, e.isCollapsed());
 
-        if (e.isNodesAll()) {
+  /*      if (e.isNodesAll()) {
             w.writeStringField(CyGroupsElement.NODES, "all");
         }
-        else {
+        else { */
             w.writeLongList(CyGroupsElement.NODES, e.getNodes());
-        }
-        if (e.isExternalEdgesAll()) {
+       // }
+   /*     if (e.isExternalEdgesAll()) {
             w.writeStringField(CyGroupsElement.EXTERNAL_EDGES, "all");
         }
-        else {
+        else { */
             w.writeLongList(CyGroupsElement.EXTERNAL_EDGES, e.getExternalEdges());
-        }
-        if (e.isInternalEdgesAll()) {
+    //    }
+   /*     if (e.isInternalEdgesAll()) {
             w.writeStringField(CyGroupsElement.INTERNAL_EDGES, "all");
         }
-        else {
+        else { */
             w.writeLongList(CyGroupsElement.INTERNAL_EDGES, e.getInternalEdges());
-        }
+       // }
         w.writeEndObject();
 
     }
