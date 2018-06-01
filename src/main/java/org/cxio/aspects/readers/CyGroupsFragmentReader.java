@@ -26,9 +26,9 @@ public final class CyGroupsFragmentReader extends AbstractFragmentReader {
     public final AspectElement readElement(final ObjectNode o) throws IOException {
         final String name = ParserUtils.getTextValueRequired(o, CyGroupsElement.GROUP_NAME);
         final Long group_id = ParserUtils.getTextValueRequiredAsLong(o, CyGroupsElement.GROUP_ID);
-        final Long view = ParserUtils.getTextValueRequiredAsLong(o, CyGroupsElement.VIEW);
+        final Long subnet = ParserUtils.getTextValueRequiredAsLong(o, CyGroupsElement.SUBNET);
 
-        final CyGroupsElement e = new CyGroupsElement(group_id, view, name);
+        final CyGroupsElement e = new CyGroupsElement(group_id, subnet, name);
         Object isCollapsed =  o.get(CyGroupsElement.IS_COLLAPSED);
         if ( isCollapsed != null)
         	e.set_isCollapsed(((Boolean)isCollapsed).booleanValue());

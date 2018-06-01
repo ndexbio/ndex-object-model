@@ -21,27 +21,27 @@ public final class CyGroupsElement extends AbstractAspectElement {
 	private static final long serialVersionUID = 1L;
 	public final static String EXTERNAL_EDGES = "external_edges";
     public final static String GROUP_ID       = "@id";
-    public final static String GROUP_NAME     = "name";
+    public final static String GROUP_NAME     = "n";
     public final static String INTERNAL_EDGES = "internal_edges";
     public final static String ASPECT_NAME    = "cyGroups";
     public final static String NODES          = "nodes";
-    public final static String VIEW           = "view";
-    public final static String IS_COLLAPSED  = "isCollapsed";
+    public final static String SUBNET           = "s";
+    public final static String IS_COLLAPSED  = "collapsed";
 
     private final List<Long>   _external_edges;
     private final Long         _group_id;
     private final List<Long>   _internal_edges;
     private final String       _name;
     private final List<Long>   _nodes;
-    private final Long         _view;
+    private Long         		_subNet;
     private boolean 		  _isCollapsed;
 /*    private boolean            _internal_edges_all;
     private boolean            _external_edges_all;
     private boolean            _nodes_all; */
 
-    public CyGroupsElement(final Long group_id, final Long view, final String name) {
+    public CyGroupsElement(final Long group_id, final Long subNetId, final String name) {
         _name = name;
-        _view = view;
+        _subNet = subNetId;
         _group_id = group_id;
         _nodes = new ArrayList<>();
         _internal_edges = new ArrayList<>();
@@ -122,9 +122,11 @@ public final class CyGroupsElement extends AbstractAspectElement {
         return _nodes;
     }
 
-    final public Long getView() {
-        return _view;
+    final public Long getSubNet() {
+        return _subNet;
     }
+    
+    public void setSubNet(Long subnetId) { _subNet = subnetId; } 
 
     @Override
     public String toString() {
@@ -137,9 +139,9 @@ public final class CyGroupsElement extends AbstractAspectElement {
         sb.append("group id: ");
         sb.append(_group_id);
         sb.append("\n");
-        if (_view != null) {
-            sb.append("view: ");
-            sb.append(_view);
+        if (_subNet != null) {
+            sb.append("subNet: ");
+            sb.append(_subNet);
             sb.append("\n");
         }
         sb.append("nodes:");
@@ -181,7 +183,7 @@ public final class CyGroupsElement extends AbstractAspectElement {
 	        w.writeStartObject();
 
 	        w.writeNumberFieldIfNotEmpty(CyGroupsElement.GROUP_ID, e.getGroupId());
-	        w.writeNumberFieldIfNotEmpty(CyGroupsElement.VIEW, e.getView());
+	        w.writeNumberFieldIfNotEmpty(CyGroupsElement.SUBNET, e.getSubNet());
 	        w.writeStringFieldIfNotEmpty(CyGroupsElement.GROUP_NAME, e.getName());
 	        w.writeBooleanField(CyGroupsElement.IS_COLLAPSED, e._isCollapsed);
 	        

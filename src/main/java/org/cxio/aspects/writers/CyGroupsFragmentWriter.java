@@ -26,7 +26,7 @@ public class CyGroupsFragmentWriter extends AbstractFragmentWriter {
         w.writeStartObject();
 
         w.writeNumberFieldIfNotEmpty(CyGroupsElement.GROUP_ID, e.getGroupId());
-        w.writeNumberFieldIfNotEmpty(CyGroupsElement.VIEW, e.getView());
+        w.writeNumberFieldIfNotEmpty(CyGroupsElement.SUBNET, e.getSubNet());
         w.writeStringFieldIfNotEmpty(CyGroupsElement.GROUP_NAME, e.getName());
         w.writeBooleanField(CyGroupsElement.IS_COLLAPSED, e.isCollapsed());
 
