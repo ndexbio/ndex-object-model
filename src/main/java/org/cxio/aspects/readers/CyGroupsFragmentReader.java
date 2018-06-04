@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.cxio.aspects.datamodels.CyGroupsElement;
 import org.cxio.core.interfaces.AspectElement;
 
+import com.fasterxml.jackson.databind.node.BooleanNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public final class CyGroupsFragmentReader extends AbstractFragmentReader {
@@ -26,12 +27,12 @@ public final class CyGroupsFragmentReader extends AbstractFragmentReader {
     public final AspectElement readElement(final ObjectNode o) throws IOException {
         final String name = ParserUtils.getTextValueRequired(o, CyGroupsElement.GROUP_NAME);
         final Long group_id = ParserUtils.getTextValueRequiredAsLong(o, CyGroupsElement.GROUP_ID);
-        final Long subnet = ParserUtils.getTextValueRequiredAsLong(o, CyGroupsElement.SUBNET);
+        final Long subnet = ParserUtils.getTextValueAsLong(o, CyGroupsElement.SUBNET);
 
         final CyGroupsElement e = new CyGroupsElement(group_id, subnet, name);
         Object isCollapsed =  o.get(CyGroupsElement.IS_COLLAPSED);
         if ( isCollapsed != null)
-        	e.set_isCollapsed(((Boolean)isCollapsed).booleanValue());
+        	e.set_isCollapsed(((BooleanNode)isCollapsed).asBoolean());
         if (o.has(CyGroupsElement.NODES)) {
   /*          if (!o.get(CyGroupsElement.NODES).isArray() && o.get(CyGroupsElement.NODES).asText().equalsIgnoreCase("all")) {
                 e.setNodesAll(true);

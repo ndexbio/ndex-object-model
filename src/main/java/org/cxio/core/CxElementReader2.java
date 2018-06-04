@@ -118,7 +118,8 @@ public final class CxElementReader2 implements Iterable<AspectElement> {
     
     // read number verification
     private void init() throws JsonParseException, IOException {
-    	 if (jp.nextToken() != JsonToken.START_ARRAY) {
+    	  JsonToken token = jp.nextToken();
+    	 if (token != JsonToken.START_ARRAY) {
              throw new IllegalStateException("illegal cx json format: expected to start with an array, but has: " + jp.getCurrentToken().asString());
          }
     	  	 
