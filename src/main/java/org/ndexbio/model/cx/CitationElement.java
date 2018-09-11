@@ -33,7 +33,7 @@ package org.ndexbio.model.cx;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import org.cxio.util.CxConstants;
+import org.ndexbio.cxio.util.CxConstants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

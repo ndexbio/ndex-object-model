@@ -3,6 +3,7 @@ package org.cxio.aspects.datamodels;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 
 public class ATTRIBUTE_DATA_TYPETest {
 

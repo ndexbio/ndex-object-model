@@ -2,7 +2,7 @@ package org.ndexbio.model.cx;
 
 import java.util.Collection;
 
-import org.cxio.core.interfaces.AspectElement;
+import org.ndexbio.cxio.core.interfaces.AspectElement;
 
 public class CXAspectFragment {
 	private String aspectName;

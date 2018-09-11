@@ -32,8 +32,9 @@ package org.ndexbio.model.cx;
 
 import java.io.IOException;
 import java.util.HashMap;
-import org.cxio.core.interfaces.AspectElement;
-import org.cxio.util.JsonWriter;
+
+import org.ndexbio.cxio.core.interfaces.AspectElement;
+import org.ndexbio.cxio.util.JsonWriter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

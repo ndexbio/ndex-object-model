@@ -28,46 +28,37 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ndexbio.model.exceptions;
+package org.ndexbio.cxio.aspects.readers;
+
+import java.io.IOException;
 
 import org.ndexbio.cxio.core.interfaces.AspectElement;
-import org.ndexbio.model.errorcodes.ErrorCode;
-import org.ndexbio.model.errorcodes.NDExError;
 
-public class DuplicateObjectException extends NdexException
-{
-    private static final long serialVersionUID = 1L;
-    
-    public DuplicateObjectException(NDExError ndexError)
-    {
-        super(ndexError);
-    }
-    public DuplicateObjectException(String message)
-    {
-        super(message, ErrorCode.NDEx_Duplicate_Object_Exception);
-    }
-    public DuplicateObjectException(String message, Throwable cause)
-    {
-        super(message, cause, ErrorCode.NDEx_Duplicate_Object_Exception);
-    }
-    
-    
- /*   public DuplicateObjectException(String message, String description)
-    {
-        super(message, description, ErrorCode.NDEx_Duplicate_Object_Exception);
-    } */
-    
-    public DuplicateObjectException(String aspectName, Long id)
-    {
-        this("Duplicate ID '"+ id + "' found in aspect " + aspectName);
-    }
-    
-    public DuplicateObjectException(String message, String description, Throwable cause)
-    {
-        super(message, description, ErrorCode.NDEx_Duplicate_Object_Exception, cause);
-    }
-    
-    public DuplicateObjectException(AspectElement asp, String id) {
-    	this("Duplicate ID: "+ id + " found in aspect " + asp.getAspectName());
-    }
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+public class GeneralAspectFragmentReader<T extends AspectElement> extends AbstractFragmentReader {
+
+	private String aspectName;
+	private Class<T> cls;
+	
+	public GeneralAspectFragmentReader(String aspectName, Class<T> cls) {
+		this.aspectName = aspectName;
+		this.cls = cls;
+	}
+
+	@Override
+	public String getAspectName() {
+		return aspectName;
+	}
+
+	@Override
+	public T readElement(ObjectNode o) throws IOException {
+		ObjectMapper jsonObjectMapper = new ObjectMapper();
+		return jsonObjectMapper.treeToValue(o, cls);
+	//	return o;
+	}
+
+	
+	
 }

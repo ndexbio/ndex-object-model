@@ -2,8 +2,8 @@ package org.ndexbio.model.cx;
 
 import java.io.IOException;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
-import org.cxio.util.JsonWriter;
+import org.ndexbio.cxio.aspects.datamodels.AbstractAspectElement;
+import org.ndexbio.cxio.util.JsonWriter;
 
 public abstract class NdexAspectElement extends AbstractAspectElement {
 
