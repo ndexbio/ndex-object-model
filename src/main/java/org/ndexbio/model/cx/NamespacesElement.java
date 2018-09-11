@@ -37,6 +37,7 @@ import org.cxio.util.JsonWriter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Deprecated
 public class NamespacesElement extends HashMap<String,String> implements AspectElement{
 
 	/**

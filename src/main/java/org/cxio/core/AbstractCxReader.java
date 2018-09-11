@@ -23,10 +23,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
+@Deprecated
 class AbstractCxReader {
 
     boolean             _calculate_element_counts;
-//    boolean             _calculate_md5_checksum;
     AspectElementCounts _element_counts;
     boolean             _meta_data;
     MetaDataCollection  _pre_meta_data;
@@ -123,14 +123,6 @@ class AbstractCxReader {
             throw new IllegalStateException("cx parser does not know how to handle input of type " + input.getClass());
         }
 
-    /*    if (_calculate_md5_checksum) {
-            _md = MessageDigest.getInstance(CxioUtil.MD5);
-            my_is = new DigestInputStream(my_is, _md);
-        }
-        else {
-            _md = null;
-        }
-*/
         jp = f.createParser(my_is);
         return jp;
     }
@@ -178,9 +170,7 @@ class AbstractCxReader {
                 throw new IOException ("CX parser number check is :" + nv.getLongNumber() + " but is expected to be " + CxConstants.LONG_NUMBER_TEST);
             }
         }
-        // else {
-        // throw new IOException(msg);
-        // }
+        
     }
 
 }

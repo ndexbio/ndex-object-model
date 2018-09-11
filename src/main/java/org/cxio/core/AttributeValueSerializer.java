@@ -8,10 +8,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
+
+@Deprecated
 public class AttributeValueSerializer extends JsonSerializer <Object> {
 	
-
-
 	public void serialize(Object v, JsonGenerator jsonGenerator, 
         SerializerProvider serializerProvider) 
     throws IOException, JsonProcessingException {

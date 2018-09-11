@@ -9,9 +9,7 @@ import java.nio.file.Paths;
 
 import org.cxio.core.interfaces.AspectElement;
 import org.cxio.metadata.MetaDataCollection;
-import org.cxio.misc.NumberVerification;
 import org.cxio.misc.Status;
-import org.cxio.util.CxConstants;
 import org.ndexbio.model.cx.CXAspectFragment;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -50,9 +48,9 @@ public class NdexCXNetworkWriter {
 	public void start() throws IOException {
 		writer.write("[");
 		
-		NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
-		writeObject(nv);
-		writer.write(",");
+//		NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
+//		writeObject(nv);
+//		writer.write(",");
 		writer.flush();
 	}
 	

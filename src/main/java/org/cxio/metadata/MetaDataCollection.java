@@ -325,8 +325,6 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
      * @throws IOException
      */
     public final void toJson(final JsonWriter w) throws IOException {
-    	//	Map<String, List<MetaDataElement>> m = new TreeMap<>();
-    	//	m.put(NAME, _data);
         w.writeObject(this);
     }
 

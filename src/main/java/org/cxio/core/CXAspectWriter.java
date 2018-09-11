@@ -29,12 +29,6 @@ public class CXAspectWriter implements AutoCloseable{
 	@SuppressWarnings("resource")
 	public CXAspectWriter(String aspectFileName) throws IOException {
 		this(new FileOutputStream(aspectFileName,false));
-		/*out = new FileOutputStream(aspectFileName,false);
-		jwriter = JsonWriter.createInstance(out,true);
-	    jwriter.configure(JsonGenerator.Feature.AUTO_CLOSE_TARGET, false);
-	    jwriter.configure(JsonGenerator.Feature.FLUSH_PASSED_TO_STREAM, false);
-		count = 0;
-		isClosed=false;*/
 	}
 
 	public CXAspectWriter(OutputStream output) throws IOException {
@@ -62,9 +56,8 @@ public class CXAspectWriter implements AutoCloseable{
 	public void writeCXElement(AspectElement e) throws IOException {
 		if ( count == 0 ) 
 			out.write(start);
-			//owriter.write("[");
 		else 
-			out.write(comma);//owriter.write(","); 
+			out.write(comma);
 		e.write(jwriter);
 		count++;
 	}

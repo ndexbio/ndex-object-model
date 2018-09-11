@@ -6,20 +6,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.SortedMap;
 
-import org.cxio.aspects.writers.CartesianLayoutFragmentWriter;
-import org.cxio.aspects.writers.EdgesFragmentWriter;
-import org.cxio.aspects.writers.NodesFragmentWriter;
 import org.cxio.core.interfaces.AspectElement;
 import org.cxio.core.interfaces.AspectFragmentWriter;
 import org.cxio.metadata.MetaDataCollection;
 import org.cxio.misc.AspectElementCounts;
-import org.cxio.misc.NumberVerification;
 import org.cxio.misc.OpaqueElement;
 import org.cxio.misc.Status;
-import org.cxio.util.CxConstants;
 import org.cxio.util.CxioUtil;
 import org.cxio.util.JsonWriter;
 
@@ -44,19 +38,6 @@ public final class CxWriter {
     private MetaDataCollection                      _post_meta_data;
     private boolean                                 _in_fragment;
 
-    /*
-     * Returns a CxWriter for reading from OutputStream out.
-     * <br>
-     * Subsequent calls to method {@link #addAspectFragmentWriter(AspectFragmentWriter writer)} are
-     * required to add {@link org.cxio.core.interfaces.AspectFragmentWriter} to the newly created CxWriter.
-     *
-     * @param out the OutputStream to read
-     * @return a CxWriter writer
-     * @throws IOException
-     */
-  /*  public final static CxWriter createInstance(final OutputStream out) throws IOException {
-        return new CxWriter(out, false);
-    } */
 
     /**
      * Returns a CxWriter for reading from OutputStream out.
@@ -73,120 +54,7 @@ public final class CxWriter {
         return new CxWriter(out, use_default_pretty_printer);
     }
 
-    /*
-     * Returns a CxWriter for reading from OutputStream out.
-     * <br>
-     * Subsequent calls to method {@link #addAspectFragmentWriter(AspectFragmentWriter writer)} are
-     * required to add {@link org.cxio.core.interfaces.AspectFragmentWriter} to the newly created CxWriter.
-     *
-     * @param out the OutputStream to read
-     * @param use_default_pretty_printer to turn pretty printing on/off
-     * @param calculate_md5_checksum to turn MD5 checksum calculation on/off
-     * @return a CxWriter writer
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-  /*  public final static CxWriter createInstance(final OutputStream out, final boolean use_default_pretty_printer) throws IOException {
-        return new CxWriter(out, use_default_pretty_printer);
-    } */
 
-    /*
-     * Returns a CxWriter for reading from OutputStream out.
-     * <br>
-     *
-     * @param out the OutputStream to read
-     * @param use_default_pretty_printer to turn pretty printing on/off
-     * @param aspect_writers the set of {@link org.cxio.core.interfaces.AspectFragmentWriter} to use
-     * @return a CxWriter writer
-     * @throws IOException
-     */
- /*   public final static CxWriter createInstance(final OutputStream out, final boolean use_default_pretty_printer, final Set<AspectFragmentWriter> aspect_writers) throws IOException {
-        final CxWriter w = new CxWriter(out, use_default_pretty_printer);
-        for (final AspectFragmentWriter aspect_writer : aspect_writers) {
-            w.addAspectFragmentWriter(aspect_writer);
-        }
-        return w;
-    } */
-
-    /**
-     * Returns a CxWriter for reading from OutputStream out.
-     * <br>
-     *
-     * @param out the OutputStream to read
-     * @param use_default_pretty_printer to turn pretty printing on/off
-     * @param aspect_writers the set of {@link org.cxio.core.interfaces.AspectFragmentWriter} to use
-     * @param calculate_md5_checksum to turn MD5 checksum calculation on/off
-     * @return a CxWriter writer
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-/*    public final static CxWriter createInstance(final OutputStream out, final boolean use_default_pretty_printer, final Set<AspectFragmentWriter> aspect_writers)
-            throws IOException {
-        final CxWriter w = new CxWriter(out, use_default_pretty_printer);
-        for (final AspectFragmentWriter aspect_writer : aspect_writers) {
-            w.addAspectFragmentWriter(aspect_writer);
-        }
-        return w;
-    } */
-
-    /*
-     * Returns a CxWriter for reading from OutputStream out with AspectFragmentWriters for nodes, edges, and cartesian layout elements
-     * already added.
-     *
-     * @param out the OutputStream to read
-     * @param use_default_pretty_printer to turn pretty printing on/off
-     * @return a CxWriter writer
-     * @throws IOException
-     */
- /*   public final static CxWriter createInstanceNEC(final OutputStream out, final boolean use_default_pretty_printer) throws IOException {
-        final CxWriter w = new CxWriter(out, use_default_pretty_printer);
-        w.addAspectFragmentWriter(NodesFragmentWriter.createInstance());
-        w.addAspectFragmentWriter(EdgesFragmentWriter.createInstance());
-        w.addAspectFragmentWriter(CartesianLayoutFragmentWriter.createInstance());
-        return w;
-    } */
-
-    /*
-     * Returns a CxWriter for reading from OutputStream out with AspectFragmentWriters for nodes, edges, and cartesian layout elements
-     * already added.
-     *
-     * @param out the OutputStream to read
-     * @param use_default_pretty_printer to turn pretty printing on/off
-     * @param calculate_md5_checksum  to turn MD5 checksum calculation on/off
-     * @param aspect_writers the (additional) set of {@link org.cxio.core.interfaces.AspectFragmentWriter} to use
-     * @return a CxWriter writer
-     * @throws IOException
-     */
- /*   public final static CxWriter createInstanceNEC(final OutputStream out,
-                                                   final boolean use_default_pretty_printer,
-                                                   final Set<AspectFragmentWriter> aspect_writers) throws IOException {
-        final CxWriter w = new CxWriter(out, use_default_pretty_printer);
-        w.addAspectFragmentWriter(NodesFragmentWriter.createInstance());
-        w.addAspectFragmentWriter(EdgesFragmentWriter.createInstance());
-        w.addAspectFragmentWriter(CartesianLayoutFragmentWriter.createInstance());
-        for (final AspectFragmentWriter aspect_writer : aspect_writers) {
-            w.addAspectFragmentWriter(aspect_writer);
-        }
-        return w;
-    } */
-
-    /*
-     * Returns a CxWriter for reading from OutputStream out with all AspectFragmentWriters implemented in this library already added.
-     *
-     * @param out the OutputStream to read
-     * @param use_default_pretty_printer to turn pretty printing on/off
-     * @param calculate_md5_checksum  to turn MD5 checksum calculation on/off
-     * @return a CxWriter writer
-     * @throws IOException
-     */
- /*   public final static CxWriter createInstanceWithAllAvailableWriters(final OutputStream out, final boolean use_default_pretty_printer) throws IOException {
-        CxWriter w;
-            w = new CxWriter(out, use_default_pretty_printer);
-        for (final AspectFragmentWriter afw : CxioUtil.getAllAvailableAspectFragmentWriters()) {
-            w.addAspectFragmentWriter(afw);
-        }
-        return w;
-    } */
 
     /**
      * This method is for adding a {@link org.cxio.core.interfaces.AspectFragmentWriter} to this CxWriter.
@@ -291,8 +159,8 @@ public final class CxWriter {
         _ended = false;
         _jw.start();
 
-        final NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
-        nv.toJson(_jw);
+      //  final NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
+      //  nv.toJson(_jw);
 
         writeMetaData(_pre_meta_data);
     }
@@ -553,32 +421,7 @@ public final class CxWriter {
         cx_writer.end(success, msg);
     }
 
- /*   private CxWriter(final OutputStream os, final boolean use_default_pretty_printer) throws IOException, NoSuchAlgorithmException {
-        if (os == null) {
-            throw new IllegalArgumentException("attempt to use null outputstream");
-        }
-        _writers = new HashMap<>();
-
-      //  OutputStream my_os;
-       if (calculate_md5_checksum) {
-            _md = MessageDigest.getInstance(CxioUtil.MD5);
-            my_os = new DigestOutputStream(os, _md);
-        }
-        else { 
-    //        _md = null;
-    //         my_os = os;
-    //    }
-
-        _jw = JsonWriter.createInstance(os, use_default_pretty_printer);
-        _started = false;
-        _ended = false;
-        _fragment_started = false;
-        _calculate_element_counts = true;
-        _element_counts = AspectElementCounts.createInstance();
-        _pre_meta_data = null;
-        _post_meta_data = null;
-
-    } */
+ 
 
     private CxWriter(final OutputStream os, final boolean use_default_pretty_printer) throws IOException {
         if (os == null) {
