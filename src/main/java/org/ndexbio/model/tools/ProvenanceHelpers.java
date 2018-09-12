@@ -37,6 +37,7 @@ import org.ndexbio.model.object.ProvenanceEntity;
 import org.ndexbio.model.object.ProvenanceEvent;
 import org.ndexbio.model.object.network.NetworkSummary;
 
+@Deprecated
 public class ProvenanceHelpers {
 	
 	// Create a new provenance history in the case where the

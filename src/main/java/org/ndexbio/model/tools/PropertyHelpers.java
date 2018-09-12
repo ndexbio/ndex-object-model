@@ -36,7 +36,7 @@ import java.util.List;
 import org.ndexbio.model.object.NdexPropertyValuePair;
 import org.ndexbio.model.object.SimplePropertyValuePair;
 
-
+@Deprecated
 public class PropertyHelpers {
 
 	public static List<SimplePropertyValuePair> copyProperties(List<SimplePropertyValuePair> properties) {
