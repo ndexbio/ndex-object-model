@@ -39,6 +39,7 @@ import org.ndexbio.model.object.network.NetworkSummary;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Deprecated
 public class ProvenanceEntity implements Serializable
 {
 
