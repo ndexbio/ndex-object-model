@@ -25,7 +25,7 @@ public class NdexCXNetworkWriter {
 	private ObjectMapper objectMapper;
 	private JsonGenerator g;
 
-	private int fragmentLength;
+	private long fragmentLength;
 		
 	public NdexCXNetworkWriter ( OutputStream outputStream) throws IOException {
 	//	networkId = networkUUID;
@@ -104,7 +104,7 @@ public class NdexCXNetworkWriter {
 		Files.copy(p, out);		
 	}
 	
-	public int getFragmentLength() { return fragmentLength;}
+	public long getFragmentLength() { return fragmentLength;}
 	
 	public void endAspectFragment() throws IOException {
 		g.writeEndObject();

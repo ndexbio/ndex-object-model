@@ -66,18 +66,7 @@ public final class NetworkAttributesElement extends AbstractAttributesAspectElem
         _values = value;
 
     }
-/*
-    public NetworkAttributesElement(final Long subnetwork, final String name, final Object value) {
-        if (value instanceof List) {
-            throw new IllegalArgumentException("constructor only applicable for singe values");
-        }
-        _data_type = AttributesAspectUtils.determineDataType(value);
- //       _is_single_value = true;
-        _subnetwork = subnetwork;
-        _name = name;
-        _values = String.valueOf(value);
-    }
-*/
+
     @Override
     @JsonIgnore
     public String getAspectName() {
