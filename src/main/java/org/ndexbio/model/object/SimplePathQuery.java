@@ -38,6 +38,7 @@ public class SimplePathQuery extends SimpleQuery {
 	private int _searchDepth;
 	private int _edgeLimit;
 	private boolean errorWhenLimitIsOver;
+	private boolean directOnly;
 	
 	
 	public void setSearchDepth(int searchDepth) {
@@ -66,6 +67,14 @@ public class SimplePathQuery extends SimpleQuery {
 
 	public void    setErrorWhenLimitIsOver(boolean errorWhenLimitIsOver) {
 		this.errorWhenLimitIsOver = errorWhenLimitIsOver;
+	}
+
+	public boolean getDirectOnly() {
+		return directOnly;
+	}
+
+	public void setDirectOnly(boolean directOnly) {
+		this.directOnly = directOnly;
 	}
 
 

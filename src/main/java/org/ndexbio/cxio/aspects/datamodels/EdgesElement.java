@@ -30,64 +30,39 @@ public final class EdgesElement extends AbstractAspectElement {
     public final static String INTERACTION    = "i";
     
 	@JsonProperty(CxConstants.ID)
-     private long         _id;
+     private Long         _id;
 
 	@JsonProperty(SOURCE_NODE_ID)
      private Long         _source;
 	
 	@JsonProperty(TARGET_NODE_ID)
-     private long         _target;
+     private Long         _target;
 	
 	@JsonProperty(INTERACTION)
      private String       _interaction;
 
- /*   public EdgesElement(final long id, final Long source, final long target) {
-        _id = id;
-        _source = source;
-        _target = target;
-        _interaction = null;
-    } */
     
     public EdgesElement() { 
     	super();
-    	_id = -1; 
+    	_id = null; 
     	_source = null;
-    	_target = -1;
+    	_target = null;
     	_interaction = null;
     }
 
-/*    public EdgesElement(final long id, final String source, final String target) {
-        _id = id;
-        _source = Long.valueOf(source);
-        _target = Long.parseLong(target);
-        _interaction = null;
-    } */
 
- /*   public EdgesElement(final String id, final String source, final String target) {
-        _id = Long.parseLong(id);
-        _source = Long.valueOf(source);
-        _target = Long.parseLong(target);
-        _interaction = null;
-    } */
-
-    public EdgesElement(final long id, final Long source, final long target, final String interaction) {
+    public EdgesElement(final Long id, final Long source, final Long target, final String interaction) {
         _id = id;
         _source = source;
         _target = target;
         _interaction = interaction;
     }
 
-/*    public EdgesElement(final long id, final String source, final String target, final String interaction) {
-        _id = id;
-        _source = Long.valueOf(source);
-        _target = Long.parseLong(target);
-        _interaction = interaction;
-    } */
 
     public EdgesElement(final String id, final String source, final String target, final String interaction) {
-        _id = Long.parseLong(id);
+        _id = Long.valueOf(id);
         _source = Long.valueOf(source);
-        _target = Long.parseLong(target);
+        _target = Long.valueOf(target);
         _interaction = interaction;
     }
 
@@ -96,7 +71,7 @@ public final class EdgesElement extends AbstractAspectElement {
         if (this == o) {
             return true;
         }
-        return (o instanceof EdgesElement) && (_id == (((EdgesElement) o).getId()));
+        return (o instanceof EdgesElement) && (_id.equals((((EdgesElement) o).getId())));
 
     }
 
@@ -107,11 +82,11 @@ public final class EdgesElement extends AbstractAspectElement {
     }
 
     @JsonIgnore
-    public final long getId() {
+    public final Long getId() {
         return _id;
     }
     
-    public void setId(long id) {
+    public void setId(Long id) {
     	_id = id;
     }
 
@@ -125,11 +100,11 @@ public final class EdgesElement extends AbstractAspectElement {
     }
 
     @JsonIgnore
-    public final long getTarget() {
+    public final Long getTarget() {
         return _target;
     }
     
-    public void setTarget(long tgt) {
+    public void setTarget(Long tgt) {
     	_target = tgt;
     }
 
