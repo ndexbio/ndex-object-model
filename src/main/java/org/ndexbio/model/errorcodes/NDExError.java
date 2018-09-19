@@ -33,6 +33,11 @@ package org.ndexbio.model.errorcodes;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+ 
+
+@JsonInclude(Include.NON_NULL) 
 
 public class NDExError {
 	private ErrorCode errorCode   = null;
@@ -44,7 +49,7 @@ public class NDExError {
 	
 	// example of timestamp with Format "yyyy-MM-dd H:mm:ss,SSS" is "2015-04-02 13:51:37,167";
 	// the same format is used by our logger for entries in ndex.log 
-	private static String timeStampFormat = "yyyy-MM-dd H:mm:ss,SSS";
+	private static final String timeStampFormat = "yyyy-MM-dd H:mm:ss,SSS";
 	
 	public NDExError() {}
 	
@@ -52,7 +57,7 @@ public class NDExError {
 		this.errorCode   = errorCode;
 		this.message     = message;
 		this.description = description;
-		this.stackTrace  = stackTrace();
+		this.stackTrace  = (errorCode == ErrorCode.NDEx_Exception ? stackTrace() : null);
 		this.threadId    = threadId();
 		this.timeStamp   = timeStamp();
 	}

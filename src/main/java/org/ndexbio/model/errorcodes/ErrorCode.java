@@ -40,7 +40,8 @@ public enum ErrorCode {
 	NDEx_Validation_Exception,
 	NDEx_Concurrent_Modification_Exception,
 	NDEx_Modify_Invalid_Network_Exception,
-	NDEx_Bad_Request_Exception
+	NDEx_Bad_Request_Exception,
+	NDEx_Unsupported_Media_Type
 
 }	
 
