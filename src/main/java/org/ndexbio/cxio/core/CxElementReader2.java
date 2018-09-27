@@ -189,7 +189,7 @@ public final class CxElementReader2 implements Iterable<AspectElement> {
 				} else if (aspectName.equals(Status.NAME)) {
 					if (_pre_meta_data == null && _post_meta_data == null)
 						throw new IOException(
-								"Status section appears before pre or post metadata found in the document.");
+								"Status section appears before pre or post metadata. It needs to be the last fragment in the CX document.");
 
 					_status = Status.createInstanceFromJson(jp);
 					if (_status == null)

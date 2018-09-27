@@ -122,5 +122,4 @@ public class MembershipTest {
        // assertEquals(m.getType(), "Membership");
 	}
 	
-	
 }
