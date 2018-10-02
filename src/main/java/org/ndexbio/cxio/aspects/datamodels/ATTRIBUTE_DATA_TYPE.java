@@ -96,6 +96,7 @@ public enum ATTRIBUTE_DATA_TYPE {
         case "char":
             return CHAR;*/
         case "double":
+        case "float":	
             return DOUBLE;
       //  case "float":
       //      return FLOAT;
@@ -114,6 +115,7 @@ public enum ATTRIBUTE_DATA_TYPE {
   //      case "list_of_char":
   //          return LIST_OF_CHAR;
         case "list_of_double":
+        case "list_of_float":	
             return LIST_OF_DOUBLE;
   //      case "list_of_float":
   //          return LIST_OF_FLOAT;
