@@ -9,7 +9,9 @@ import java.nio.file.Paths;
 
 import org.ndexbio.cxio.core.interfaces.AspectElement;
 import org.ndexbio.cxio.metadata.MetaDataCollection;
+import org.ndexbio.cxio.misc.NumberVerification;
 import org.ndexbio.cxio.misc.Status;
+import org.ndexbio.cxio.util.CxConstants;
 import org.ndexbio.model.cx.CXAspectFragment;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -26,8 +28,11 @@ public class NdexCXNetworkWriter {
 	private JsonGenerator g;
 
 	private long fragmentLength;
+	
+	//Write the network out according to the old CX spec.
+	private boolean compatible;
 		
-	public NdexCXNetworkWriter ( OutputStream outputStream) throws IOException {
+	public NdexCXNetworkWriter ( OutputStream outputStream, boolean compatibleToOldCXSpec) throws IOException {
 	//	networkId = networkUUID;
 		out = outputStream;
 		writer = new OutputStreamWriter(out);
@@ -36,6 +41,7 @@ public class NdexCXNetworkWriter {
 		g.configure(JsonGenerator.Feature.AUTO_CLOSE_TARGET, false);
 		g.configure(JsonGenerator.Feature.FLUSH_PASSED_TO_STREAM, false);
 		g.setCodec(objectMapper);
+		compatible = compatibleToOldCXSpec;
 	}
 	
 
@@ -48,9 +54,15 @@ public class NdexCXNetworkWriter {
 	public void start() throws IOException {
 		writer.write("[");
 		
-//		NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
-//		writeObject(nv);
-//		writer.write(",");
+		//Adding these 3 deprecated ones for compatibility reason, so that the network can still be read 
+		// by older clients.
+		if (compatible) {
+			@SuppressWarnings("deprecation")
+			NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
+			writeObject(nv);
+			writer.write(",");
+		}
+		
 		writer.flush();
 	}
 	
