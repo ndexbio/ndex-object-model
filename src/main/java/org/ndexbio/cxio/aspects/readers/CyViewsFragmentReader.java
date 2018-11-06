@@ -7,6 +7,7 @@ import org.ndexbio.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+@Deprecated
 public class CyViewsFragmentReader extends AbstractFragmentReader {
 
     public final static CyViewsFragmentReader createInstance() {

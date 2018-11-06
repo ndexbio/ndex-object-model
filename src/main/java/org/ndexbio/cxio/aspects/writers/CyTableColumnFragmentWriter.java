@@ -8,6 +8,7 @@ import org.ndexbio.cxio.aspects.datamodels.CyTableColumnElement;
 import org.ndexbio.cxio.core.interfaces.AspectElement;
 import org.ndexbio.cxio.util.JsonWriter;
 
+@Deprecated
 public class CyTableColumnFragmentWriter extends AbstractFragmentWriter {
 
   //  private AspectKeyFilter _filter;

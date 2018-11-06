@@ -10,6 +10,7 @@ import org.ndexbio.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+@Deprecated
 public final class CyTableColumnFragmentReader extends AbstractFragmentReader {
 
     public static CyTableColumnFragmentReader createInstance() {
