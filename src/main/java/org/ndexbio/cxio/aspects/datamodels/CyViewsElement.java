@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.ndexbio.cxio.util.JsonWriter;
 
+@Deprecated
 public final class CyViewsElement extends AbstractAspectElement {
 
     /**
