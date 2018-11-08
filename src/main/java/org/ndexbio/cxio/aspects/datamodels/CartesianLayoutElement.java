@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import org.ndexbio.cxio.util.JsonWriter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * This class is used to represent the position of a network node in x, y, z coordinates.
@@ -25,42 +27,42 @@ public final class CartesianLayoutElement extends AbstractAspectElement {
     public final static String X           = "x";
     public final static String Y           = "y";
     public final static String Z           = "z";
+    
+    @JsonProperty(NODE)
     private final Long         _node;
+    
+    @JsonProperty(VIEW)
     private final Long         _view;
-    private final String       _x;
-    private final String       _y;
-    private final String       _z;
-    private final boolean      _z_set;
-    //private final boolean      _view_set;
 
+    @JsonProperty(X)
+    private final Double       _x;
+    @JsonProperty(Y)
+    private final Double       _y;
+    @JsonProperty(Z)
+    private final Double       _z;
+    
     public CartesianLayoutElement(final Long node, final Long view, final String x, final String y) {
         _node = node;
         _view = view;
-        _x = x;
-        _y = y;
-        _z = String.valueOf(0);
-        _z_set = false;
-   //     _view_set = true;
+        _x = (x ==null) ? null : Double.valueOf(x);
+        _y = (y ==null)? null : Double.valueOf(y);
+        _z = null;
     }
 
     public CartesianLayoutElement(final Long node, final Long view, final String x, final String y, final String z) {
         _node = node;
         _view = view;
-        _x = x;
-        _y = y;
-        _z = z;
-        _z_set = true;
-  //      _view_set = true;
+        _x = (x ==null) ? null : Double.valueOf(x);
+        _y = (y ==null) ? null : Double.valueOf(y);
+        _z = (z ==null)? null : Double.valueOf(z);
     }
 
     public CartesianLayoutElement(final Long node, final Long view, final double x, final double y, final double z) {
         _node = node;
         _view = view;
-        _x = String.valueOf(x);
-        _y = String.valueOf(y);
-        _z = String.valueOf(z);
-        _z_set = true;
-  //      _view_set = true;
+        _x = Double.valueOf(x);
+        _y = Double.valueOf(y);
+        _z = Double.valueOf(z);
     }
 
 
@@ -68,15 +70,22 @@ public final class CartesianLayoutElement extends AbstractAspectElement {
     public CartesianLayoutElement(final Long node, final String x, final String y) {
         _node = node;
         _view = null;
-        _x = x;
-        _y = y;
-        _z = String.valueOf(0);
-        _z_set = false;
- //       _view_set = false;
+        _x = (x ==null) ? null : Double.valueOf(x);
+        _y = (y ==null) ? null : Double.valueOf(y);
+        _z = null;
+    }
+
+    public CartesianLayoutElement() {
+        _node = null;
+        _view = null;
+        _x = null;
+        _y = null;
+        _z = null;
     }
 
 
     @Override
+	@JsonIgnore
     public String getAspectName() {
         return CartesianLayoutElement.ASPECT_NAME;
     }
@@ -89,25 +98,25 @@ public final class CartesianLayoutElement extends AbstractAspectElement {
         return _node;
     }
     
-    public String getX() {
+    public Double getX() {
         return _x;
     }
 
-    public String getY() {
+    public Double getY() {
         return _y;
     }
 
-    public String getZ() {
+    public Double getZ() {
         return _z;
     }
-
-    public boolean isZset() {
-        return _z_set;
-    }
+    
 
   /*  public boolean isViewSet() {
         return _view_set;
     } */
+    
+    @JsonIgnore
+    public boolean isZset() {return _z != null;}
 
     @Override
     public String toString() {
@@ -124,7 +133,7 @@ public final class CartesianLayoutElement extends AbstractAspectElement {
         sb.append(_x);
         sb.append(", y: ");
         sb.append(_y);
-        if (_z_set) {
+        if (_z != null) {
             sb.append(", z: ");
             sb.append(_z);
         }
@@ -139,10 +148,10 @@ public final class CartesianLayoutElement extends AbstractAspectElement {
         if (this._view != null) {
             w.writeNumberField(CartesianLayoutElement.VIEW, this.getView());
         }
-        w.writeNumberField(CartesianLayoutElement.X, Double.parseDouble(this.getX()));
-        w.writeNumberField(CartesianLayoutElement.Y, Double.parseDouble(this.getY()));
-        if (this.isZset()) {
-            w.writeNumberField(CartesianLayoutElement.Z, Double.parseDouble(this.getZ()));
+        w.writeNumberField(CartesianLayoutElement.X, this.getX().doubleValue());
+        w.writeNumberField(CartesianLayoutElement.Y, this.getY().doubleValue());
+        if (_z != null) {
+            w.writeNumberField(CartesianLayoutElement.Z, this.getZ().doubleValue());
         }
         w.writeEndObject();		
         w.flush();

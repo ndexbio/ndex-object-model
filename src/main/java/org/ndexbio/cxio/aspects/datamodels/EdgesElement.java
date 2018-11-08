@@ -7,16 +7,15 @@ import org.ndexbio.cxio.util.CxioUtil;
 import org.ndexbio.cxio.util.JsonWriter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * This class is used to represent a edge in a network.
  *
  *
- * @author cmzmasek
- *
  */
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public final class EdgesElement extends AbstractAspectElement {
 
     /**
