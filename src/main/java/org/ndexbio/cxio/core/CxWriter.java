@@ -376,6 +376,9 @@ public final class CxWriter {
         	  _jw.writeJsonObject(opaque_element.getData());
          //   writeOpaqueAspectElement(opaque_element);
         }
+        if (_calculate_element_counts) {
+            _element_counts.processAspectElement(name, opque_elements.size());
+        }
         endAspectFragment();
     }
 
