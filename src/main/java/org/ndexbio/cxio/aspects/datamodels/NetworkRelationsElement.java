@@ -19,7 +19,7 @@ public final class NetworkRelationsElement extends AbstractAspectElement {
 	 */
 	private static final long serialVersionUID = 3906606304503606487L;
 
-	private enum RELATIONSHIP_TYPE {
+	public enum RELATIONSHIP_TYPE {
         SUBNETWORK, VIEW;
     }
 
@@ -83,6 +83,10 @@ public final class NetworkRelationsElement extends AbstractAspectElement {
         default:
             throw new IllegalStateException("don't know how to handle relationship '" + _relationship + "'");
         }
+    }
+    
+    public RELATIONSHIP_TYPE getRelationshipType() {
+    	return _relationship;
     }
 
     private final static RELATIONSHIP_TYPE determineRelationship(final String type) throws IOException {
