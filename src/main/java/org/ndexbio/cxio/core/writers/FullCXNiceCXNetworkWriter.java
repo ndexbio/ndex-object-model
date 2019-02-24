@@ -140,7 +140,7 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
         
         Map<String, Collection<AspectElement>> opaques = network.getOpaqueAspectTable();
         for (String aspectName : opaques.keySet()){
-            writeAspect(network, NetworkAttributesElement.ASPECT_NAME,
+            writeAspect(network, aspectName,
                   (Collection<AspectElement>)(Object)opaques.get(aspectName));
         }
     }
