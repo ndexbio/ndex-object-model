@@ -78,10 +78,7 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
     private void writeContextAspect(final NiceCXNetwork network)
 			throws IOException, JsonProcessingException {
         NamespacesElement element = network.getNamespaces();
-        if (element == null){
-            return;
-        }
-        if (element.isEmpty()){
+        if (element == null || element.isEmpty()){
             return;
         }
         writeAspect(network, element.getAspectName(), Arrays.asList(element));
@@ -101,10 +98,7 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
         if (aspectName == null){
             return;
         }
-        if (elements == null){
-            return;
-        }
-        if (elements.isEmpty()){
+        if (elements == null || elements.isEmpty()){
             return;
         }
         _writer.startAspectFragment(aspectName);
@@ -166,10 +160,7 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
     private void writeNodeAttributes(final NiceCXNetwork network)
             throws IOException, JsonProcessingException{
         
-        if (network.getNodeAttributes() == null){
-            return;
-        }
-        if (network.getNodeAttributes().isEmpty()){
+        if (network.getNodeAttributes() == null || network.getNodeAttributes().isEmpty()){
             return;
         }
         _writer.startAspectFragment(NodeAttributesElement.ASPECT_NAME);
@@ -205,10 +196,7 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
      */
     private void writeEdgeAttributes(final NiceCXNetwork network)
             throws IOException, JsonProcessingException{
-        if (network.getEdgeAttributes() == null){
-            return;
-        }
-        if (network.getEdgeAttributes().isEmpty()){
+        if (network.getEdgeAttributes() == null || network.getEdgeAttributes().isEmpty()){
             return;
         }
         _writer.startAspectFragment(EdgeAttributesElement.ASPECT_NAME);
