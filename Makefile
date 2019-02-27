@@ -45,6 +45,3 @@ install: clean ## install the package to local repo
 
 updateversion: ## updates version in pom.xml via maven command
 	mvn versions:set
-
-runwar: ## Builds war file and runs webapp via Jetty
-	mvn jetty:run-war
