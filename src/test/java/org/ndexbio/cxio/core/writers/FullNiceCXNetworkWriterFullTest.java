@@ -23,10 +23,10 @@ import org.ndexbio.model.exceptions.NdexException;
 
 
 /**
- * Tests {@link org.ndexbio.cxio.core.writers.NiceCXNetworkWriterFullTest}
+ * Tests {@link org.ndexbio.cxio.core.writers.FullNiceCXNetworkWriterFullTest}
  * @author churas
  */
-public class NiceCXNetworkWriterFullTest  {
+public class FullNiceCXNetworkWriterFullTest  {
     
     @Rule
     public TemporaryFolder _folder = new TemporaryFolder();
