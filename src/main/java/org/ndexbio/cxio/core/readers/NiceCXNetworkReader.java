@@ -59,7 +59,7 @@ import org.ndexbio.model.exceptions.NdexException;
  *       with small modifications to make it easier to reduce lines of code in methods.
  * @author unknown
  */
-public class FullCXNiceCXNetworkReader implements INiceCXNetworkReader {
+public class NiceCXNetworkReader implements INiceCXNetworkReader {
 
     
     private Set<AspectFragmentReader> _readers;
@@ -68,7 +68,7 @@ public class FullCXNiceCXNetworkReader implements INiceCXNetworkReader {
      * Constructor that creates default set of {@link org.ndexbio.cxio.core.interfaces.AspectFragmentReader} objects used
      * to parse {@link java.io.InputStream} passed in {@link #readNiceCXNetwork(java.io.InputStream)}
      */
-    public FullCXNiceCXNetworkReader(){
+    public NiceCXNetworkReader(){
         this(null);
     }
     
@@ -77,7 +77,7 @@ public class FullCXNiceCXNetworkReader implements INiceCXNetworkReader {
      * to parse {@link java.io.InputStream} passed in {@link #readNiceCXNetwork(java.io.InputStream)}
      * @param readers Custom set of {@link org.ndexbio.cxio.core.interfaces.AspectFragmentReader} objects
      */
-    public FullCXNiceCXNetworkReader(Set<AspectFragmentReader> readers){
+    public NiceCXNetworkReader(Set<AspectFragmentReader> readers){
         if (readers != null){
             _readers = readers;
             return;

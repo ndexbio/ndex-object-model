@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
-import org.ndexbio.cxio.core.readers.FullCXNiceCXNetworkReader;
+import org.ndexbio.cxio.core.readers.NiceCXNetworkReader;
 import org.ndexbio.cxio.metadata.MetaDataCollection;
 import org.ndexbio.model.cx.NiceCXNetwork;
 
@@ -19,14 +19,14 @@ import org.ndexbio.model.cx.NiceCXNetwork;
  *
  * @author churas
  */
-public class FullCXNiceCXNetworkReaderTest {
+public class NiceCXNetworkReaderTest {
     
 
     @Test
     public void testLoadAndSaveOfWntSignalingNetwork() throws Exception {
         File origWntCX = new File(getClass().getClassLoader().getResource("nicecxnetworkwriterfulltest/wntsignaling.cx").toURI());
         assertTrue(origWntCX.isFile());
-        FullCXNiceCXNetworkReader reader = new FullCXNiceCXNetworkReader();
+        NiceCXNetworkReader reader = new NiceCXNetworkReader();
         NiceCXNetwork origNetwork = null;
         try (FileInputStream fis = new FileInputStream(origWntCX)){
             origNetwork = reader.readNiceCXNetwork(fis);
@@ -47,7 +47,7 @@ public class FullCXNiceCXNetworkReaderTest {
         assertEquals(32, metaData.getElementCount(NodesElement.ASPECT_NAME).longValue());
         assertEquals(32, metaData.getIdCounter(NodesElement.ASPECT_NAME).longValue());
         assertEquals(74, metaData.getElementCount(EdgesElement.ASPECT_NAME).longValue());
-        assertEquals(75, metaData.getIdCounter(EdgesElement.ASPECT_NAME).longValue());
+        assertEquals(74, metaData.getIdCounter(EdgesElement.ASPECT_NAME).longValue());
         
         // @TODO it would be good to add more tests to this
     }

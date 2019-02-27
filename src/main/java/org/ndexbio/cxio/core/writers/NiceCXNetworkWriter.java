@@ -24,11 +24,11 @@ import org.ndexbio.model.exceptions.NdexException;
  * {@link org.ndexbio.cxio.core.NdexCXNetworkWriter} passed in via constructor
  * @author churas
  */
-public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
+public class NiceCXNetworkWriter implements INiceCXNetworkWriter {
     
     private NdexCXNetworkWriter _writer;
     
-    public FullCXNiceCXNetworkWriter(OutputStream outputStream, boolean compatibleToOldCXSpec) throws NdexException {
+    public NiceCXNetworkWriter(OutputStream outputStream, boolean compatibleToOldCXSpec) throws NdexException {
         try {
             _writer = new NdexCXNetworkWriter(outputStream, compatibleToOldCXSpec);
         }catch(IOException io){
@@ -40,7 +40,7 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
      * Constructor
      * @param writer Used to write network in {@link #writeNiceCXNetwork(org.ndexbio.model.cx.NiceCXNetwork) }
      */
-    public FullCXNiceCXNetworkWriter(NdexCXNetworkWriter writer){
+    public NiceCXNetworkWriter(NdexCXNetworkWriter writer){
         _writer = writer;
     }
     

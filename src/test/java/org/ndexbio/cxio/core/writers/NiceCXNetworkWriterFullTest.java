@@ -17,23 +17,23 @@ import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.cxio.core.NdexCXNetworkWriter;
-import org.ndexbio.cxio.core.readers.FullCXNiceCXNetworkReader;
+import org.ndexbio.cxio.core.readers.NiceCXNetworkReader;
 import org.ndexbio.model.cx.NiceCXNetwork;
 import org.ndexbio.model.exceptions.NdexException;
 
 
 /**
- * Tests {@link org.ndexbio.cxio.core.writers.FullNiceCXNetworkWriterFullTest}
+ * Tests {@link org.ndexbio.cxio.core.writers.FullNiceCXNetworkWriterFull}
  * @author churas
  */
-public class FullNiceCXNetworkWriterFullTest  {
+public class NiceCXNetworkWriterFullTest  {
     
     @Rule
     public TemporaryFolder _folder = new TemporaryFolder();
     
     @Test
     public void testNullWriterAndNetwork() throws NdexException {
-        FullCXNiceCXNetworkWriter writer = new FullCXNiceCXNetworkWriter(null);
+        NiceCXNetworkWriter writer = new NiceCXNetworkWriter(null);
         // both null
         try {
             writer.writeNiceCXNetwork(null);
@@ -43,7 +43,7 @@ public class FullNiceCXNetworkWriterFullTest  {
         }
         
         //ndex writer is null
-        writer = new FullCXNiceCXNetworkWriter(null);
+        writer = new NiceCXNetworkWriter(null);
         try {
             NiceCXNetwork cxNetwork = new NiceCXNetwork();
             writer.writeNiceCXNetwork(cxNetwork);
@@ -66,7 +66,7 @@ public class FullNiceCXNetworkWriterFullTest  {
             ne.setNodeName("hello");
             ne.setNodeRepresents("whoa");
             cxNetwork.addNode(ne);
-            FullCXNiceCXNetworkWriter writer = new FullCXNiceCXNetworkWriter(ndexwriter);
+            NiceCXNetworkWriter writer = new NiceCXNetworkWriter(ndexwriter);
             writer.writeNiceCXNetwork(cxNetwork);
             assertTrue(out.toString().contains("{\"nodes\":[{\"@id\":1,\"n\":\"hello\",\"r\":\"whoa\"}]},"));
         }catch(IOException io){
@@ -101,7 +101,7 @@ public class FullNiceCXNetworkWriterFullTest  {
             edge.setInteraction("some");
             cxNetwork.addEdge(edge);
          
-            FullCXNiceCXNetworkWriter writer = new FullCXNiceCXNetworkWriter(ndexwriter);
+            NiceCXNetworkWriter writer = new NiceCXNetworkWriter(ndexwriter);
             writer.writeNiceCXNetwork(cxNetwork);
             String res = out.toString();
             assertTrue(res.contains("[{\"numberVerification\":[{\"longNumber\":281474976710655}]},{\"metaData\":[]},"));
@@ -144,7 +144,7 @@ public class FullNiceCXNetworkWriterFullTest  {
             
             NodeAttributesElement nae = new NodeAttributesElement(2L, "querynode", "true", ATTRIBUTE_DATA_TYPE.BOOLEAN);
             cxNetwork.addNodeAttribute(nae);
-            FullCXNiceCXNetworkWriter writer = new FullCXNiceCXNetworkWriter(ndexwriter);
+            NiceCXNetworkWriter writer = new NiceCXNetworkWriter(ndexwriter);
             writer.writeNiceCXNetwork(cxNetwork);
             String res = out.toString();
             assertTrue(res.contains("[{\"numberVerification\":[{\"longNumber\":281474976710655}]},{\"metaData\":[]},"));
@@ -188,7 +188,7 @@ public class FullNiceCXNetworkWriterFullTest  {
             CyVisualPropertiesElement cpe = new CyVisualPropertiesElement();
             cpe.putProperty("hi", "there");
             cxNetwork.addOpapqueAspect(cpe);
-            FullCXNiceCXNetworkWriter writer = new FullCXNiceCXNetworkWriter(ndexwriter);
+            NiceCXNetworkWriter writer = new NiceCXNetworkWriter(ndexwriter);
             writer.writeNiceCXNetwork(cxNetwork);
             String res = out.toString();
             System.out.println("XXXXXX" + res);
@@ -206,7 +206,7 @@ public class FullNiceCXNetworkWriterFullTest  {
     public void testLoadAndSaveOfWntSignalingNetwork() throws Exception {
         File origWntCX = new File(getClass().getClassLoader().getResource("nicecxnetworkwriterfulltest/wntsignaling.cx").toURI());
         assertTrue(origWntCX.isFile());
-        FullCXNiceCXNetworkReader reader = new FullCXNiceCXNetworkReader();
+        NiceCXNetworkReader reader = new NiceCXNetworkReader();
         NiceCXNetwork origNetwork = null;
         try (FileInputStream fis = new FileInputStream(origWntCX)){
             origNetwork = reader.readNiceCXNetwork(fis);
@@ -216,7 +216,7 @@ public class FullNiceCXNetworkWriterFullTest  {
         File tempCXOut = new File(tempFolder + File.separator + "wntOut.cx");
         try {
             try (FileOutputStream fos = new FileOutputStream(tempCXOut)){
-                FullCXNiceCXNetworkWriter writer = new FullCXNiceCXNetworkWriter(fos, false);
+                NiceCXNetworkWriter writer = new NiceCXNetworkWriter(fos, false);
                 writer.writeNiceCXNetwork(origNetwork);
             }
             
