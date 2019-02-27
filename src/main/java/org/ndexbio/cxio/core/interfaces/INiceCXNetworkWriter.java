@@ -15,9 +15,9 @@ import org.ndexbio.model.exceptions.NdexException;
 public interface INiceCXNetworkWriter {
     
     /**
-     * Writes {@code network} with help of {@code writer}
+     * Writes out {@code network} 
      * @param network NiceCXNetwork to write out
-     * @throws NdexException 
+     * @throws NdexException If there is a problem writing out the network
      */
     public void writeNiceCXNetwork(NiceCXNetwork network) throws NdexException;
     

@@ -2,6 +2,7 @@ package org.ndexbio.cxio.core.writers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
@@ -27,6 +28,14 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
     
     private NdexCXNetworkWriter _writer;
     
+    public FullCXNiceCXNetworkWriter(OutputStream outputStream, boolean compatibleToOldCXSpec) throws NdexException {
+        try {
+            _writer = new NdexCXNetworkWriter(outputStream, compatibleToOldCXSpec);
+        }catch(IOException io){
+            throw new NdexException("Caught IO exception trying to construct NdexCXNetworkWriter objec", io);
+        }
+            
+    }
     /**
      * Constructor
      * @param writer Used to write network in {@link #writeNiceCXNetwork(org.ndexbio.model.cx.NiceCXNetwork) }
@@ -105,6 +114,26 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
         _writer.openFragment();
         for(AspectElement element : elements){
             _writer.writeElement(element);
+        }
+        _writer.closeFragment();
+        _writer.endAspectFragment();
+    }
+    
+    private void writeAssociatedAspect(final NiceCXNetwork network, final String aspectName,
+                               Map<Long, Collection<AspectElement>> elementMap)
+          throws IOException, JsonProcessingException {
+         if (aspectName == null){
+            return;
+        }
+        if (elementMap == null || elementMap.isEmpty()){
+            return;
+        }
+        _writer.startAspectFragment(aspectName);
+        _writer.openFragment();
+        for (Long id : elementMap.keySet()){
+            for(AspectElement element : elementMap.get(id)){
+                _writer.writeElement(element);
+            }
         }
         _writer.closeFragment();
         _writer.endAspectFragment();
@@ -212,26 +241,24 @@ public class FullCXNiceCXNetworkWriter implements INiceCXNetworkWriter {
     
     private void writeNodeAssociatedAttributes(final NiceCXNetwork network)
             throws IOException, JsonProcessingException{
-         Map<String, Map<Long, Collection<AspectElement>>> nodeAssoc = network.getNodeAssociatedAspects();
-         if (nodeAssoc == null){
-             return;
-         }          
-         for(String aspectName: nodeAssoc.keySet()){
-            writeAspect(network, aspectName,
-                  (Collection<AspectElement>)(Object)nodeAssoc.get(aspectName).values());
-         }
+        Map<String, Map<Long, Collection<AspectElement>>> nodeAssoc = network.getNodeAssociatedAspects();
+        if (nodeAssoc == null){
+            return;
+        }          
+        for(String aspectName: nodeAssoc.keySet()){
+           writeAssociatedAspect(network, aspectName, nodeAssoc.get(aspectName));
+        }
     }
     
     private void writeEdgeAssociatedAttributes(final NiceCXNetwork network)
             throws IOException, JsonProcessingException{
-         Map<String, Map<Long, Collection<AspectElement>>> edgeAssoc = network.getEdgeAssociatedAspects();
-         if (edgeAssoc == null){
-             return;
-         }
-         for(String aspectName: edgeAssoc.keySet()){
-            writeAspect(network, aspectName,
-                  (Collection<AspectElement>)(Object)edgeAssoc.get(aspectName).values());
-         }
+        Map<String, Map<Long, Collection<AspectElement>>> edgeAssoc = network.getEdgeAssociatedAspects();
+        if (edgeAssoc == null){
+            return;
+        }
+        for(String aspectName: edgeAssoc.keySet()){
+            writeAssociatedAspect(network, aspectName, edgeAssoc.get(aspectName));
+        }
     }
     
 

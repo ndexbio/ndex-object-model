@@ -4,7 +4,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import org.junit.Rule;
+import org.junit.rules.TemporaryFolder;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
@@ -12,6 +17,7 @@ import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.cxio.core.NdexCXNetworkWriter;
+import org.ndexbio.cxio.core.readers.FullCXNiceCXNetworkReader;
 import org.ndexbio.model.cx.NiceCXNetwork;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -21,6 +27,9 @@ import org.ndexbio.model.exceptions.NdexException;
  * @author churas
  */
 public class NiceCXNetworkWriterFullTest  {
+    
+    @Rule
+    public TemporaryFolder _folder = new TemporaryFolder();
     
     @Test
     public void testNullWriterAndNetwork() throws NdexException {
@@ -190,6 +199,73 @@ public class NiceCXNetworkWriterFullTest  {
             assertTrue(res.contains("{\"cyVisualProperties\":[{\"properties\":{\"hi\":\"there\"}}]},"));
         }catch(IOException io){
             fail("Unexpected IOexception " + io.getMessage());
+        }
+    }
+    
+    @Test
+    public void testLoadAndSaveOfWntSignalingNetwork() throws Exception {
+        File origWntCX = new File(getClass().getClassLoader().getResource("nicecxnetworkwriterfulltest/wntsignaling.cx").toURI());
+        assertTrue(origWntCX.isFile());
+        FullCXNiceCXNetworkReader reader = new FullCXNiceCXNetworkReader();
+        NiceCXNetwork origNetwork = null;
+        try (FileInputStream fis = new FileInputStream(origWntCX)){
+            origNetwork = reader.readNiceCXNetwork(fis);
+        }
+        
+        File tempFolder = _folder.newFolder();
+        File tempCXOut = new File(tempFolder + File.separator + "wntOut.cx");
+        try {
+            try (FileOutputStream fos = new FileOutputStream(tempCXOut)){
+                FullCXNiceCXNetworkWriter writer = new FullCXNiceCXNetworkWriter(fos, false);
+                writer.writeNiceCXNetwork(origNetwork);
+            }
+            
+            NiceCXNetwork readNetwork = null;
+            try (FileInputStream fis = new FileInputStream(tempCXOut)){
+                readNetwork = reader.readNiceCXNetwork(fis);
+            }
+            //basic checks
+            assertTrue(origNetwork.getNetworkName().equals(readNetwork.getNetworkName()));
+            assertEquals(origNetwork.getEdges().size(),readNetwork.getEdges().size());
+            assertEquals(origNetwork.getNodes().size(),readNetwork.getNodes().size());
+            assertEquals(origNetwork.getCitations().size(), readNetwork.getCitations().size());
+            assertEquals(origNetwork.getEdgeAssociatedAspects().size(), readNetwork.getEdgeAssociatedAspects().size());
+            assertEquals(origNetwork.getNodeAssociatedAspects().size(), readNetwork.getNodeAssociatedAspects().size());
+            assertEquals(origNetwork.getNodeAttributes().size(), readNetwork.getNodeAttributes().size());
+            assertEquals(origNetwork.getEdgeAttributes().size(), readNetwork.getEdgeAttributes().size());
+            assertEquals(origNetwork.getNetworkAttributes().size(), readNetwork.getNetworkAttributes().size());
+            assertEquals(origNetwork.getOpaqueAspectTable().size(), readNetwork.getOpaqueAspectTable().size());
+            
+            //MetaData checks
+            
+            //node comparison checks
+            for(Long nodeId : origNetwork.getNodes().keySet()){
+                NodesElement origNode = origNetwork.getNodes().get(nodeId);
+                NodesElement readNode = readNetwork.getNodes().get(nodeId);
+                assertTrue(origNode.getAspectName().equals(readNode.getAspectName()));
+                assertTrue(origNode.getNodeName().equals(readNode.getNodeName()));
+                assertTrue(origNode.getNodeRepresents().equals(readNode.getNodeRepresents()));
+                
+                
+            }
+            
+            //edge comparison checks
+            for(Long edgeId : origNetwork.getEdges().keySet()){
+                EdgesElement origEdge = origNetwork.getEdges().get(edgeId);
+                EdgesElement readEdge = readNetwork.getEdges().get(edgeId);
+                assertTrue(origEdge.getInteraction().equals(readEdge.getInteraction()));
+                assertTrue(origEdge.getAspectName().equals(readEdge.getAspectName()));
+                assertTrue(origEdge.getSource().equals(readEdge.getSource()));
+                assertTrue(origEdge.getTarget().equals(readEdge.getTarget()));
+            }
+            
+            
+        } catch(NdexException ne){
+            fail("Unexpected exception: " + ne.getMessage());
+        }
+        finally {
+            tempFolder.delete();
+            tempCXOut.delete();
         }
     }
 }
