@@ -12,8 +12,10 @@ import org.ndexbio.cxio.core.interfaces.AspectElement;
 import org.ndexbio.cxio.core.interfaces.AspectFragmentWriter;
 import org.ndexbio.cxio.metadata.MetaDataCollection;
 import org.ndexbio.cxio.misc.AspectElementCounts;
+import org.ndexbio.cxio.misc.NumberVerification;
 import org.ndexbio.cxio.misc.OpaqueElement;
 import org.ndexbio.cxio.misc.Status;
+import org.ndexbio.cxio.util.CxConstants;
 import org.ndexbio.cxio.util.CxioUtil;
 import org.ndexbio.cxio.util.JsonWriter;
 
@@ -159,8 +161,9 @@ public final class CxWriter {
         _ended = false;
         _jw.start();
 
-      //  final NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
-      //  nv.toJson(_jw);
+        // TODO: Remove eventually. Some services use this to identify CX
+        final NumberVerification nv = new NumberVerification(CxConstants.LONG_NUMBER_TEST);
+        nv.toJson(_jw);
 
         writeMetaData(_pre_meta_data);
     }
