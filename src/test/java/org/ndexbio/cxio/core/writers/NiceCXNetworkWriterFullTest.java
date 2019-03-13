@@ -187,7 +187,7 @@ public class NiceCXNetworkWriterFullTest  {
          
             CyVisualPropertiesElement cpe = new CyVisualPropertiesElement();
             cpe.putProperty("hi", "there");
-            cxNetwork.addOpapqueAspect(cpe);
+            cxNetwork.addOpaqueAspect(cpe);
             NiceCXNetworkWriter writer = new NiceCXNetworkWriter(ndexwriter);
             writer.writeNiceCXNetwork(cxNetwork);
             String res = out.toString();

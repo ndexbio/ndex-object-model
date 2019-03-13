@@ -122,7 +122,7 @@ public class NiceCXNetwork {
 		return citations;
 	}
 	
-	public void addOpapqueAspect(AspectElement e) {
+	public void addOpaqueAspect(AspectElement e) {
 		Collection<AspectElement> aspectElmts = opaqueAspects.get(e.getAspectName());
 		if ( aspectElmts == null) {
 			aspectElmts = new LinkedList<> ();

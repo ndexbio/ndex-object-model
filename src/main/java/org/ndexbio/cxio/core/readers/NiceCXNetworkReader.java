@@ -175,7 +175,7 @@ public class NiceCXNetworkReader implements INiceCXNetworkReader {
                             niceCX.addCitation(ce);
                             break;
                         default:    // opaque aspect
-                            niceCX.addOpapqueAspect(elmt);
+                            niceCX.addOpaqueAspect(elmt);
                 }
             }
             MetaDataCollection mergedMetaData = mergeMetaDataCollections(metadata, r.getPostMetaData());
