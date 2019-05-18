@@ -63,24 +63,6 @@ public final class CyVisualPropertiesElement extends AbstractAspectElement {
         _view = null;
     }
 
- /*   public CyVisualPropertiesElement(final String properties_of, final long view) {
-        _properties_of = properties_of;
-        _applies_to = null;
-        _properties = new TreeMap<String, String>();
-        _dependencies = new TreeMap<String, String>();
-        _mappings = new TreeMap<String, Mapping>();
-        _view = view;
-    }
-
-    public CyVisualPropertiesElement(final String properties_of, final Long applies_to) {
-        _properties_of = properties_of;
-        _applies_to = applies_to;
-        _properties = new TreeMap<String, String>();
-        _dependencies = new TreeMap<String, String>();
-        _mappings = new TreeMap<String, Mapping>();
-        _view = null;
-    }*/ 
-
     public CyVisualPropertiesElement(final String properties_of, final Long applies_to, final Long view) {
         _properties_of = properties_of;
         _applies_to = applies_to;
@@ -89,14 +71,6 @@ public final class CyVisualPropertiesElement extends AbstractAspectElement {
         _mappings = new TreeMap<>();
         _view = view;
     }
-
- /*   public final void addAppliesTo(final String applies_to) {
-        _applies_to.add(Long.valueOf(applies_to));
-    }
-
-    public final void addAppliesTo(final long applies_to) {
-        _applies_to.add(applies_to);
-    } */
 
     public final Long getApplies_to() {
         return _applies_to;
