@@ -14,12 +14,14 @@ import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.cxio.core.interfaces.INiceCXNetworkWriter;
 import org.ndexbio.cxio.core.NdexCXNetworkWriter;
 import org.ndexbio.cxio.core.interfaces.AspectElement;
+import org.ndexbio.cxio.metadata.MetaDataCollection;
 import org.ndexbio.model.cx.NamespacesElement;
 import org.ndexbio.model.cx.NiceCXNetwork;
+import org.ndexbio.model.cx.Provenance;
 import org.ndexbio.model.exceptions.NdexException;
 
 /**
- * Writes complete {@link org.ndexbio.model.cx.NiceCXNetwork} to output
+ * Writes {@link org.ndexbio.model.cx.NiceCXNetwork} (minus provenance) to output
  * stream in CX format leveraging
  * {@link org.ndexbio.cxio.core.NdexCXNetworkWriter} passed in via constructor
  * @author churas
@@ -46,7 +48,7 @@ public class NiceCXNetworkWriter implements INiceCXNetworkWriter {
     
     /**
      * Writes {@code network} network in CX format using {@code writer} passed in 
-     * via constructor
+     * via constructor (provenance is NOT written out)
      * @param network Network to write
      * @throws NdexException If there is a problem writing output
      * @throws NullPointerException If network or writer is null
@@ -61,7 +63,9 @@ public class NiceCXNetworkWriter implements INiceCXNetworkWriter {
         }
         try {
             _writer.start();
-            _writer.writeMetadata(network.getMetadata());
+            MetaDataCollection mdc = network.getMetadata();
+            mdc.remove(Provenance.ASPECT_NAME);
+            _writer.writeMetadata(mdc);
             writeContextAspect(network);
             writeNetworkAttributesAspect(network);
             writeOpaqueAspects(network);
@@ -92,7 +96,7 @@ public class NiceCXNetworkWriter implements INiceCXNetworkWriter {
         }
         writeAspect(network, element.getAspectName(), Arrays.asList(element));
     }
-   
+
     /**
      * Writes
      * @param network
