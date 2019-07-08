@@ -184,6 +184,19 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 		_properties = properties;
 	}
 
+	/**
+	 * Get the property with the given name.
+	 * @param name
+	 * @return The property object with that given name. null if the property is not found. 
+	 */
+	public NdexPropertyValuePair getPropertyByName(String name) {
+		for ( NdexPropertyValuePair p : _properties ) {
+			if ( p.getPredicateString().equals(name)) {
+				return p;
+			}
+		}
+		return null;
+	}
 
 	public String getOwner() {
 		return _owner;
