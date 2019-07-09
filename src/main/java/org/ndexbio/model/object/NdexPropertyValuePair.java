@@ -32,7 +32,7 @@ package org.ndexbio.model.object;
 
 import java.io.Serializable;
 
-import org.ndexbio.model.cx.CXSimpleAttribute;
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -44,7 +44,7 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final String STRING = "string"; 
+	public static final String STRING = ATTRIBUTE_DATA_TYPE.STRING.toString(); //  "string"; 
 	
 	private String _predicateString;
 	private String _value;
@@ -60,16 +60,21 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 			String propertyName, String value, String dataType) {
 		this._predicateString = propertyName;
 		this._value = value;
-		this.subNetworkId = subNetwork;
+		this.subNetworkId = subNetwork;		
 		this._dataType = dataType;
+		validateDataType();
 	}
 	
-	public NdexPropertyValuePair (CXSimpleAttribute e) {
+	private void validateDataType() {
+	 ATTRIBUTE_DATA_TYPE.fromCxLabel(_dataType);	 
+	}
+	
+/*	public NdexPropertyValuePair (CXSimpleAttribute e) {
 		this._predicateString = e.getName();
 		this._value = e.getValue();
 		this.subNetworkId = null;
 		this._dataType = e.getDataType();
-	}
+	} */
 	public NdexPropertyValuePair (String key, String value) {
 		_predicateString = key;
 		_value = value;
@@ -100,6 +105,7 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	}
 	public void setDataType(String dataType) {
 		this._dataType = dataType;
+		validateDataType();
 	}
 
 	public String getPredicateString() {
