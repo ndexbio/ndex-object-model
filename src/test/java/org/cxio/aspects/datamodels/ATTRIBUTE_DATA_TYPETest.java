@@ -14,8 +14,6 @@ public class ATTRIBUTE_DATA_TYPETest {
 		String foo2 = t.toString();
 		assertEquals(foo, "LIST_OF_LONG");
 		assertEquals(foo2, "list_of_long");
-	//	String s = ATTRIBUTE_DATA_TYPE.toCxLabel(t);
-//		assertEquals(s,"list_of_long");
 		
 	}
 
