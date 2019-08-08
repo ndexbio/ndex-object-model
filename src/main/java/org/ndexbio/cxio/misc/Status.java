@@ -58,7 +58,7 @@ public final class Status implements Serializable {
         _data = new ArrayList<>();
         _data.add(new TreeMap<String, Object>());
         _data.get(0).put(ERROR, error == null ? "" : error);
-        _data.get(0).put(SUCCESS, success);
+        _data.get(0).put(SUCCESS, Boolean.valueOf(success));
     }
 
     @JsonIgnore
@@ -72,7 +72,7 @@ public final class Status implements Serializable {
 
     @JsonIgnore
     public final boolean isSuccess() {
-        return Boolean.valueOf((boolean) _data.get(0).get(SUCCESS));
+        return ((Boolean) _data.get(0).get(SUCCESS)).booleanValue();
     }
 
     public final void toJson(final JsonWriter w) throws IOException {

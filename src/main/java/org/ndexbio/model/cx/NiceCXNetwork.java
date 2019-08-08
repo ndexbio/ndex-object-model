@@ -70,7 +70,7 @@ public class NiceCXNetwork {
 	}
 	
 	public void addEdge(EdgesElement edge) {
-		edges.put(Long.valueOf(edge.getId()), edge);
+		edges.put(edge.getId(), edge);
 	}
 	
 	public void addNetworkAttribute ( NetworkAttributesElement networkAttribute) {

@@ -98,18 +98,18 @@ public class NiceCXNetworkReader implements INiceCXNetworkReader {
         _readers.add(NodesFragmentReader.createInstance());
         _readers.add(NodeAttributesFragmentReader.createInstance());
         
-        _readers.add(new GeneralAspectFragmentReader<NdexNetworkStatus> (NdexNetworkStatus.ASPECT_NAME,
+        _readers.add(new GeneralAspectFragmentReader<> (NdexNetworkStatus.ASPECT_NAME,
                       NdexNetworkStatus.class));
-        _readers.add(new GeneralAspectFragmentReader<NamespacesElement> (NamespacesElement.ASPECT_NAME,NamespacesElement.class));
-        _readers.add(new GeneralAspectFragmentReader<FunctionTermElement> (FunctionTermElement.ASPECT_NAME,FunctionTermElement.class));
-        _readers.add(new GeneralAspectFragmentReader<CitationElement> (CitationElement.ASPECT_NAME,CitationElement.class));
-        _readers.add(new GeneralAspectFragmentReader<SupportElement> (SupportElement.ASPECT_NAME,SupportElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (NamespacesElement.ASPECT_NAME,NamespacesElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (FunctionTermElement.ASPECT_NAME,FunctionTermElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (CitationElement.ASPECT_NAME,CitationElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (SupportElement.ASPECT_NAME,SupportElement.class));
 
-        _readers.add(new GeneralAspectFragmentReader<EdgeCitationLinksElement> (EdgeCitationLinksElement.ASPECT_NAME,EdgeCitationLinksElement.class));
-        _readers.add(new GeneralAspectFragmentReader<EdgeSupportLinksElement> (EdgeSupportLinksElement.ASPECT_NAME,EdgeSupportLinksElement.class));
-        _readers.add(new GeneralAspectFragmentReader<NodeCitationLinksElement> (NodeCitationLinksElement.ASPECT_NAME,NodeCitationLinksElement.class));
-        _readers.add(new GeneralAspectFragmentReader<NodeSupportLinksElement> (NodeSupportLinksElement.ASPECT_NAME,NodeSupportLinksElement.class));
-        _readers.add(new GeneralAspectFragmentReader<Provenance> (Provenance.ASPECT_NAME,Provenance.class));
+        _readers.add(new GeneralAspectFragmentReader<> (EdgeCitationLinksElement.ASPECT_NAME,EdgeCitationLinksElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (EdgeSupportLinksElement.ASPECT_NAME,EdgeSupportLinksElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (NodeCitationLinksElement.ASPECT_NAME,NodeCitationLinksElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (NodeSupportLinksElement.ASPECT_NAME,NodeSupportLinksElement.class));
+        _readers.add(new GeneralAspectFragmentReader<> (Provenance.ASPECT_NAME,Provenance.class));
 
         _readers.add( CyVisualPropertiesFragmentReader.createInstance());
         _readers.add( CartesianLayoutFragmentReader.createInstance());
@@ -146,8 +146,8 @@ public class NiceCXNetworkReader implements INiceCXNetworkReader {
                         case EdgesElement.ASPECT_NAME:       // Edge
                             EdgesElement ee = (EdgesElement) elmt;
                             niceCX.addEdge(ee);
-                            if( ee.getId() > edgeIdCounter)
-                                edgeIdCounter = ee.getId();
+                            if( ee.getId().longValue() > edgeIdCounter)
+                                edgeIdCounter = ee.getId().longValue();
                             break;
                         case NodeAttributesElement.ASPECT_NAME:  // node attributes
                             niceCX.addNodeAttribute((NodeAttributesElement) elmt );
@@ -203,7 +203,7 @@ public class NiceCXNetworkReader implements INiceCXNetworkReader {
      * @param postMetaData {@link org.ndexbio.cxio.metadata.MetaDataCollection} after parsing
      * @return {@link org.ndexbio.cxio.metadata.MetaDataCollection} merged
      */
-    protected MetaDataCollection mergeMetaDataCollections(MetaDataCollection preMetaData,
+    protected static MetaDataCollection mergeMetaDataCollections(MetaDataCollection preMetaData,
                    MetaDataCollection postMetaData){
         if (postMetaData == null){
             return preMetaData;
@@ -229,7 +229,7 @@ public class NiceCXNetworkReader implements INiceCXNetworkReader {
      * @param metaData {@link org.ndexbio.cxio.metadata.MetaDataCollection} to update
      * @param nodeIdCounter New node count to set in {@code metaData}
      */
-    protected void updateNodeCounts(MetaDataCollection metaData, long nodeIdCounter){
+    protected static void updateNodeCounts(MetaDataCollection metaData, long nodeIdCounter){
         Long cxNodeIdCounter = metaData.getIdCounter(NodesElement.ASPECT_NAME);
 	if (cxNodeIdCounter == null || cxNodeIdCounter.longValue() < nodeIdCounter)
             metaData.setIdCounter(NodesElement.ASPECT_NAME, Long.valueOf(nodeIdCounter));   
@@ -240,7 +240,7 @@ public class NiceCXNetworkReader implements INiceCXNetworkReader {
      * @param metaData {@link org.ndexbio.cxio.metadata.MetaDataCollection} to update
      * @param edgeIdCounter New edge count to set in {@code metaData}
      */
-    protected void updateEdgeCounts(MetaDataCollection metaData, long edgeIdCounter){
+    protected static void updateEdgeCounts(MetaDataCollection metaData, long edgeIdCounter){
         Long cxEdgeIdCounter = metaData.getIdCounter(EdgesElement.ASPECT_NAME);
         if (cxEdgeIdCounter == null || cxEdgeIdCounter.longValue() < edgeIdCounter)
             metaData.setIdCounter(EdgesElement.ASPECT_NAME, Long.valueOf(edgeIdCounter));

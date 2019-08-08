@@ -75,18 +75,16 @@ public final class OpaqueFragmentReader extends AbstractFragmentReader {
             while (t != JsonToken.END_ARRAY) {
                 if (t == JsonToken.START_OBJECT) {
                     final OpaqueElement e = new OpaqueElement(_name, (ObjectNode) _m.readTree(jp));
-                    if (e != null) {
-                        elements.add(e);
-                    }
+                    elements.add(e);
+                    
                 }
                 t = jp.nextToken();
             }
         }
         else {
             final OpaqueElement e = new OpaqueElement(_name, (ObjectNode) _m.readTree(jp));
-            if (e != null) {
-                elements.add(e);
-            }
+            elements.add(e);
+            
             t = jp.nextToken();
         }
         return elements;

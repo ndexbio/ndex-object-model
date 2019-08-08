@@ -78,7 +78,7 @@ public final class ParserUtils {
     }
 
     public final static List<String> getAsStringList(final ObjectNode o, final String label)  {
-        final List<String> l = new ArrayList<String>();
+        final List<String> l = new ArrayList<>();
         if (o.has(label)) {
             if (!o.get(label).isArray()) {
                 l.add(o.get(label).asText());
@@ -97,10 +97,10 @@ public final class ParserUtils {
     }
 
     public final static List<Long> getAsLongList(final ObjectNode o, final String label) {
-        final List<Long> l = new ArrayList<Long>();
+        final List<Long> l = new ArrayList<>();
         if (o.has(label)) {
             if (!o.get(label).isArray()) {
-                l.add(o.get(label).asLong());
+                l.add(Long.valueOf(o.get(label).asLong()));
             }
             else {
                 final Iterator<JsonNode> it = o.get(label).iterator();
@@ -183,12 +183,12 @@ public final class ParserUtils {
     }
 
     public final static SortedMap<String, List<String>> getMap(final ObjectNode o, final String label) {
-        final SortedMap<String, List<String>> map = new TreeMap<String, List<String>>();
+        final SortedMap<String, List<String>> map = new TreeMap<>();
         if (o.has(label)) {
             final Iterator<Entry<String, JsonNode>> it1 = o.get(label).fields();
             while (it1.hasNext()) {
                 final Entry<String, JsonNode> s = it1.next();
-                final ArrayList<String> l = new ArrayList<String>();
+                final ArrayList<String> l = new ArrayList<>();
                 map.put(s.getKey(), l);
                 final Iterator<JsonNode> it2 = s.getValue().iterator();
                 while (it2.hasNext()) {

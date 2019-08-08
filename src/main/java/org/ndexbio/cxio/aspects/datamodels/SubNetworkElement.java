@@ -48,8 +48,8 @@ public final class SubNetworkElement extends AbstractAspectElement {
     
     public SubNetworkElement(final Long id) {
         _id = id;
-        _nodes = new ArrayList<Long>();
-        _edges = new ArrayList<Long>();
+        _nodes = new ArrayList<>();
+        _edges = new ArrayList<>();
         setNodesAll(false);
         setEdgesAll(false);
     }

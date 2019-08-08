@@ -116,7 +116,7 @@ public final class JsonWriter {
         if (list != null) {
             _g.writeArrayFieldStart(label);
             for (final Long s : list) {
-                _g.writeNumber(s);
+                _g.writeNumber(s.longValue());
             }
             _g.writeEndArray();
         }
