@@ -7,6 +7,10 @@ package org.cxio.core.readers;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
@@ -14,6 +18,7 @@ import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.cxio.core.readers.NiceCXNetworkReader;
 import org.ndexbio.cxio.metadata.MetaDataCollection;
 import org.ndexbio.model.cx.NiceCXNetwork;
+import org.ndexbio.model.exceptions.NdexException;
 
 /**
  *
@@ -50,6 +55,21 @@ public class NiceCXNetworkReaderTest {
         assertEquals(74, metaData.getIdCounter(EdgesElement.ASPECT_NAME).longValue());
         
         // @TODO it would be good to add more tests to this
+    }
+    
+    
+    @Test 
+    public void testLoadingCollection() throws URISyntaxException, FileNotFoundException, IOException, NdexException {
+        File origWntCX = new File(getClass().getClassLoader().getResource("10_networks_new.cx").toURI());
+        assertTrue(origWntCX.isFile());
+        NiceCXNetworkReader reader = new NiceCXNetworkReader();
+        NiceCXNetwork origNetwork = null;
+        try (FileInputStream fis = new FileInputStream(origWntCX)){
+            origNetwork = reader.readNiceCXNetwork(fis);
+        }
+
+        assertEquals("Collection of small", origNetwork.getNetworkName());
+
     }
     
 }
