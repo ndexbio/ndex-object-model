@@ -234,7 +234,7 @@ public class NiceCXNetwork {
 	
 	public String getNetworkDescription () {
 		for (NetworkAttributesElement e : networkAttributes) {
-			if (e.getName().toLowerCase().equals("description")) {
+			if (e.getName().equals("description")) {
 				return e.getValue();
 			}
 		}
