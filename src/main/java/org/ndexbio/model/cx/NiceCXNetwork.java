@@ -231,4 +231,13 @@ public class NiceCXNetwork {
 		}
 		return null;
 	}
+	
+	public String getNetworkDescription () {
+		for (NetworkAttributesElement e : networkAttributes) {
+			if (e.getName().toLowerCase().equals("description")) {
+				return e.getValue();
+			}
+		}
+		return null;
+	}
 }
