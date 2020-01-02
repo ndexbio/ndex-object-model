@@ -1,0 +1,2382 @@
+[
+	{
+		"numberVerification": [
+			{
+				"longNumber": 281474976710655
+			}
+		]
+	},
+	{
+		"metaData": [
+			{
+				"name": "nodeAttributes",
+				"version": "1.0"
+			},
+			{
+				"name": "cyHiddenAttributes",
+				"version": "1.0"
+			},
+			{
+				"name": "nodes",
+				"version": "1.0"
+			},
+			{
+				"name": "cyNetworkRelations",
+				"version": "1.0"
+			},
+			{
+				"name": "cyGroups",
+				"version": "1.0"
+			},
+			{
+				"name": "networkAttributes",
+				"version": "1.0"
+			},
+			{
+				"name": "cyTableColumn",
+				"version": "1.0"
+			},
+			{
+				"name": "cartesianLayout",
+				"version": "1.0"
+			},
+			{
+				"name": "edgeAttributes",
+				"version": "1.0"
+			},
+			{
+				"name": "edges",
+				"version": "1.0"
+			},
+			{
+				"name": "cyVisualProperties",
+				"version": "1.0"
+			},
+			{
+				"name": "cySubNetworks",
+				"version": "1.0"
+			}
+		]
+	},
+	{
+		"cyTableColumn": [
+			{
+				"applies_to": "network_table",
+				"n": "shared name"
+			},
+			{
+				"applies_to": "node_table",
+				"n": "shared name"
+			},
+			{
+				"applies_to": "edge_table",
+				"n": "shared name"
+			},
+			{
+				"applies_to": "edge_table",
+				"n": "shared interaction"
+			},
+			{
+				"s": 51,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 51,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 51,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 51,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 51,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 62,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 62,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 62,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 62,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 62,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 73,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 73,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 73,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 73,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 73,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 84,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 84,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 84,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 84,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 84,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 95,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 95,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 95,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 95,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 95,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 106,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 106,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 106,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 106,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 106,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 117,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 117,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 117,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 117,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 117,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 128,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 128,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 128,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 128,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 128,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 139,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 139,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 139,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 139,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 139,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			},
+			{
+				"s": 150,
+				"applies_to": "node_table",
+				"n": "name"
+			},
+			{
+				"s": 150,
+				"applies_to": "edge_table",
+				"n": "name"
+			},
+			{
+				"s": 150,
+				"applies_to": "edge_table",
+				"n": "interaction"
+			},
+			{
+				"s": 150,
+				"applies_to": "network_table",
+				"n": "name"
+			},
+			{
+				"s": 150,
+				"applies_to": "network_table",
+				"n": "__Annotations",
+				"d": "list_of_string"
+			}
+		]
+	},
+	{
+		"networkAttributes": [
+			{
+				"n": "name",
+				"v": "Collection of small"
+			},
+			{
+				"s": 51,
+				"n": "shared name",
+				"v": "Network7"
+			},
+			{
+				"s": 51,
+				"n": "name",
+				"v": "Network7"
+			},
+			{
+				"s": 51,
+				"n": "selected",
+				"v": "true",
+				"d": "boolean"
+			},
+			{
+				"s": 62,
+				"n": "shared name",
+				"v": "Network4"
+			},
+			{
+				"s": 62,
+				"n": "name",
+				"v": "Network4"
+			},
+			{
+				"s": 73,
+				"n": "shared name",
+				"v": "Network1"
+			},
+			{
+				"s": 73,
+				"n": "name",
+				"v": "Network1"
+			},
+			{
+				"s": 84,
+				"n": "shared name",
+				"v": "Network9"
+			},
+			{
+				"s": 84,
+				"n": "name",
+				"v": "Network9"
+			},
+			{
+				"s": 95,
+				"n": "shared name",
+				"v": "Network6"
+			},
+			{
+				"s": 95,
+				"n": "name",
+				"v": "Network6"
+			},
+			{
+				"s": 106,
+				"n": "shared name",
+				"v": "Network3"
+			},
+			{
+				"s": 106,
+				"n": "name",
+				"v": "Network3"
+			},
+			{
+				"s": 117,
+				"n": "shared name",
+				"v": "Network8"
+			},
+			{
+				"s": 117,
+				"n": "name",
+				"v": "Network8"
+			},
+			{
+				"s": 128,
+				"n": "shared name",
+				"v": "Network5"
+			},
+			{
+				"s": 128,
+				"n": "name",
+				"v": "Network5"
+			},
+			{
+				"s": 139,
+				"n": "shared name",
+				"v": "Network2"
+			},
+			{
+				"s": 139,
+				"n": "name",
+				"v": "Network2"
+			},
+			{
+				"s": 150,
+				"n": "shared name",
+				"v": "Network10"
+			},
+			{
+				"s": 150,
+				"n": "name",
+				"v": "Network10"
+			}
+		]
+	},
+	{
+		"nodes": [
+			{
+				"@id": 160,
+				"n": "Node 10"
+			},
+			{
+				"@id": 149,
+				"n": "Node 2"
+			},
+			{
+				"@id": 138,
+				"n": "Node 5"
+			},
+			{
+				"@id": 127,
+				"n": "Node 8"
+			},
+			{
+				"@id": 116,
+				"n": "Node 3"
+			},
+			{
+				"@id": 105,
+				"n": "Node 6"
+			},
+			{
+				"@id": 94,
+				"n": "Node 9"
+			},
+			{
+				"@id": 83,
+				"n": "Node 1"
+			},
+			{
+				"@id": 72,
+				"n": "Node 4"
+			},
+			{
+				"@id": 61,
+				"n": "Node 7"
+			}
+		]
+	},
+	{
+		"nodeAttributes": [
+			{
+				"po": 160,
+				"n": "shared name",
+				"v": "Node 10"
+			},
+			{
+				"po": 149,
+				"n": "shared name",
+				"v": "Node 2"
+			},
+			{
+				"po": 138,
+				"n": "shared name",
+				"v": "Node 5"
+			},
+			{
+				"po": 127,
+				"n": "shared name",
+				"v": "Node 8"
+			},
+			{
+				"po": 116,
+				"n": "shared name",
+				"v": "Node 3"
+			},
+			{
+				"po": 105,
+				"n": "shared name",
+				"v": "Node 6"
+			},
+			{
+				"po": 94,
+				"n": "shared name",
+				"v": "Node 9"
+			},
+			{
+				"po": 83,
+				"n": "shared name",
+				"v": "Node 1"
+			},
+			{
+				"po": 72,
+				"n": "shared name",
+				"v": "Node 4"
+			},
+			{
+				"po": 61,
+				"n": "shared name",
+				"v": "Node 7"
+			},
+			{
+				"s": 51,
+				"po": 61,
+				"n": "name",
+				"v": "Node 7"
+			},
+			{
+				"s": 62,
+				"po": 72,
+				"n": "name",
+				"v": "Node 4"
+			},
+			{
+				"s": 73,
+				"po": 83,
+				"n": "name",
+				"v": "Node 1"
+			},
+			{
+				"s": 84,
+				"po": 94,
+				"n": "name",
+				"v": "Node 9"
+			},
+			{
+				"s": 95,
+				"po": 105,
+				"n": "name",
+				"v": "Node 6"
+			},
+			{
+				"s": 106,
+				"po": 116,
+				"n": "name",
+				"v": "Node 3"
+			},
+			{
+				"s": 117,
+				"po": 127,
+				"n": "name",
+				"v": "Node 8"
+			},
+			{
+				"s": 128,
+				"po": 138,
+				"n": "name",
+				"v": "Node 5"
+			},
+			{
+				"s": 139,
+				"po": 149,
+				"n": "name",
+				"v": "Node 2"
+			},
+			{
+				"s": 150,
+				"po": 160,
+				"n": "name",
+				"v": "Node 10"
+			}
+		]
+	},
+	{
+		"CX Element ID": [
+			{
+				"61": 158,
+				"72": 155,
+				"83": 152,
+				"94": 160,
+				"105": 157,
+				"116": 154,
+				"127": 159,
+				"138": 156,
+				"149": 153,
+				"160": 161
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 61,
+				"view": 161,
+				"x": -151.91540196469774,
+				"y": -152.96138281665912
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 161,
+				"view": 161,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network7 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 161,
+				"view": 161,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 161,
+				"view": 161,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 72,
+				"view": 163,
+				"x": -164.71325964771378,
+				"y": -68.43471878571648
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 163,
+				"view": 163,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network4 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 163,
+				"view": 163,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 163,
+				"view": 163,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 83,
+				"view": 165,
+				"x": -126.0,
+				"y": -109.0
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 165,
+				"view": 165,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network1 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 165,
+				"view": 165,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 165,
+				"view": 165,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 94,
+				"view": 167,
+				"x": -87.73576000693775,
+				"y": -125.73982238769531
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 167,
+				"view": 167,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network9 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 167,
+				"view": 167,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 167,
+				"view": 167,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 105,
+				"view": 169,
+				"x": -49.97275924682617,
+				"y": -103.48582560435533
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 169,
+				"view": 169,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network6 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 169,
+				"view": 169,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 169,
+				"view": 169,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 116,
+				"view": 171,
+				"x": 9.253292658764712,
+				"y": -36.19614791870117
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 171,
+				"view": 171,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network3 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 171,
+				"view": 171,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 171,
+				"view": 171,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 127,
+				"view": 173,
+				"x": -136.77814426883253,
+				"y": -93.3991928100586
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 173,
+				"view": 173,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network8 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 173,
+				"view": 173,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 173,
+				"view": 173,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 138,
+				"view": 175,
+				"x": -64.25927847403068,
+				"y": -24.197526931762695
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 175,
+				"view": 175,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network5 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 175,
+				"view": 175,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 175,
+				"view": 175,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 149,
+				"view": 177,
+				"x": -10.0,
+				"y": 31.0
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 177,
+				"view": 177,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network2 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 177,
+				"view": 177,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 177,
+				"view": 177,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 160,
+				"view": 179,
+				"x": -42.0,
+				"y": -56.0
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"applies_to": 179,
+				"view": 179,
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_FORCE_HIGH_DETAIL": "false",
+					"NETWORK_HEIGHT": "365.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_SIZE": "550.0",
+					"NETWORK_TITLE": "Network10 view",
+					"NETWORK_WIDTH": "795.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"applies_to": 179,
+				"view": 179,
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#CCCCCC",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "0.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "50.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "50.0",
+					"NODE_CUSTOMPAINT_1": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)",
+					"NODE_CUSTOMPAINT_2": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)",
+					"NODE_CUSTOMPAINT_3": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)",
+					"NODE_CUSTOMPAINT_4": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)",
+					"NODE_CUSTOMPAINT_5": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)",
+					"NODE_CUSTOMPAINT_6": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)",
+					"NODE_CUSTOMPAINT_7": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)",
+					"NODE_CUSTOMPAINT_8": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)",
+					"NODE_CUSTOMPAINT_9": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#89D0F5",
+					"NODE_HEIGHT": "35.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_PAINT": "#1E90FF",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_SIZE": "35.0",
+					"NODE_TRANSPARENCY": "255",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "75.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"applies_to": 179,
+				"view": 179,
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "Dialog,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_PAINT": "#323232",
+					"EDGE_SELECTED": "false",
+					"EDGE_SELECTED_PAINT": "#FF0000",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#848484",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#404040",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "2.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "false"
+				}
+			}
+		]
+	},
+	{
+		"cySubNetworks": [
+			{
+				"@id": 51,
+				"nodes": [
+					61
+				],
+				"edges": []
+			},
+			{
+				"@id": 62,
+				"nodes": [
+					72
+				],
+				"edges": []
+			},
+			{
+				"@id": 73,
+				"nodes": [
+					83
+				],
+				"edges": []
+			},
+			{
+				"@id": 84,
+				"nodes": [
+					94
+				],
+				"edges": []
+			},
+			{
+				"@id": 95,
+				"nodes": [
+					105
+				],
+				"edges": []
+			},
+			{
+				"@id": 106,
+				"nodes": [
+					116
+				],
+				"edges": []
+			},
+			{
+				"@id": 117,
+				"nodes": [
+					127
+				],
+				"edges": []
+			},
+			{
+				"@id": 128,
+				"nodes": [
+					138
+				],
+				"edges": []
+			},
+			{
+				"@id": 139,
+				"nodes": [
+					149
+				],
+				"edges": []
+			},
+			{
+				"@id": 150,
+				"nodes": [
+					160
+				],
+				"edges": []
+			}
+		]
+	},
+	{
+		"cyNetworkRelations": [
+			{
+				"c": 51,
+				"r": "subnetwork",
+				"name": "Network7"
+			},
+			{
+				"p": 51,
+				"c": 161,
+				"r": "view",
+				"name": "Network7 view"
+			},
+			{
+				"c": 62,
+				"r": "subnetwork",
+				"name": "Network4"
+			},
+			{
+				"p": 62,
+				"c": 163,
+				"r": "view",
+				"name": "Network4 view"
+			},
+			{
+				"c": 73,
+				"r": "subnetwork",
+				"name": "Network1"
+			},
+			{
+				"p": 73,
+				"c": 165,
+				"r": "view",
+				"name": "Network1 view"
+			},
+			{
+				"c": 84,
+				"r": "subnetwork",
+				"name": "Network9"
+			},
+			{
+				"p": 84,
+				"c": 167,
+				"r": "view",
+				"name": "Network9 view"
+			},
+			{
+				"c": 95,
+				"r": "subnetwork",
+				"name": "Network6"
+			},
+			{
+				"p": 95,
+				"c": 169,
+				"r": "view",
+				"name": "Network6 view"
+			},
+			{
+				"c": 106,
+				"r": "subnetwork",
+				"name": "Network3"
+			},
+			{
+				"p": 106,
+				"c": 171,
+				"r": "view",
+				"name": "Network3 view"
+			},
+			{
+				"c": 117,
+				"r": "subnetwork",
+				"name": "Network8"
+			},
+			{
+				"p": 117,
+				"c": 173,
+				"r": "view",
+				"name": "Network8 view"
+			},
+			{
+				"c": 128,
+				"r": "subnetwork",
+				"name": "Network5"
+			},
+			{
+				"p": 128,
+				"c": 175,
+				"r": "view",
+				"name": "Network5 view"
+			},
+			{
+				"c": 139,
+				"r": "subnetwork",
+				"name": "Network2"
+			},
+			{
+				"p": 139,
+				"c": 177,
+				"r": "view",
+				"name": "Network2 view"
+			},
+			{
+				"c": 150,
+				"r": "subnetwork",
+				"name": "Network10"
+			},
+			{
+				"p": 150,
+				"c": 179,
+				"r": "view",
+				"name": "Network10 view"
+			}
+		]
+	},
+	{
+		"metaData": [
+			{
+				"name": "nodeAttributes",
+				"elementCount": 20,
+				"version": "1.0"
+			},
+			{
+				"name": "cyHiddenAttributes",
+				"version": "1.0"
+			},
+			{
+				"name": "nodes",
+				"elementCount": 10,
+				"idCounter": 160,
+				"version": "1.0"
+			},
+			{
+				"name": "cyNetworkRelations",
+				"elementCount": 20,
+				"version": "1.0"
+			},
+			{
+				"name": "cyGroups",
+				"version": "1.0"
+			},
+			{
+				"name": "networkAttributes",
+				"elementCount": 22,
+				"version": "1.0"
+			},
+			{
+				"name": "cyTableColumn",
+				"elementCount": 54,
+				"version": "1.0"
+			},
+			{
+				"name": "cartesianLayout",
+				"elementCount": 10,
+				"version": "1.0"
+			},
+			{
+				"name": "edgeAttributes",
+				"version": "1.0"
+			},
+			{
+				"name": "edges",
+				"version": "1.0"
+			},
+			{
+				"name": "cyVisualProperties",
+				"elementCount": 30,
+				"version": "1.0"
+			},
+			{
+				"name": "cySubNetworks",
+				"elementCount": 10,
+				"idCounter": 150,
+				"version": "1.0"
+			},
+			{
+				"name": "CX Element ID",
+				"elementCount": 1,
+				"version": "1.0"
+			}
+		]
+	},
+	{
+		"status": [
+			{
+				"error": "",
+				"success": true
+			}
+		]
+	}
+]
