@@ -17,6 +17,7 @@ public class SourceQueryResult {
     private String _networkUUID;
     private String _description;
     private String _imageURL;
+    private String _url;
     private int _percentOverlap;
     private int _nodes;
     private int _edges;
@@ -100,5 +101,13 @@ public class SourceQueryResult {
 
 	public void setDetails(Map<String,Object> _details) {
 		this._details = _details;
+	}
+	
+	public String getUrl() {
+		return _url;
+	}
+
+	public void setUrl(String _url) {
+		this._url = _url;
 	}
 }
