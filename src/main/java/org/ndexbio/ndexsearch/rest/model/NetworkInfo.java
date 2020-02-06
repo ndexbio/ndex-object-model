@@ -6,6 +6,7 @@ public class NetworkInfo {
 	private String _name;
 	private String _url;
 	private String _imageUrl;
+	private int _geneCount;
 	
 	public String getUuid() {
 		return _uuid;
@@ -46,4 +47,23 @@ public class NetworkInfo {
 	public void setImageUrl(String _imageUrl) {
 		this._imageUrl = _imageUrl;
 	}
+
+	/**
+	 * Gets number of genes found in network
+	 * @return 
+	 */
+	public int getGeneCount() {
+		return _geneCount;
+	}
+
+	/**
+	 * Sets number of genes found in network
+	 * 
+	 * @param _geneCount 
+	 */
+	public void setGeneCount(int _geneCount) {
+		this._geneCount = _geneCount;
+	}
+	
+	
 }
