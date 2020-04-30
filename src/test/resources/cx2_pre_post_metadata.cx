@@ -1,0 +1,17 @@
+[{"hasFragments":false,"CXVersion":"2.0"},
+{"metaData":[{"name":"edges","elementCount":2},{"name":"nodes"},{"name":"networkAttributes","elementCount":1}}]},
+{"attributeDeclarations":[ {"nodes":{"name":{"a":"n"}},"edges":{"interaction":{"v":"interacts with","a":"i"},"evtype":{"v":"co-essentialty"},"percentile_rank_score":{"a":"p"}}}]},
+{"networkAttributes":[{"organism":"homo sapiens","author":"Anton Kratz","name":"boost18Dec evidence network percentile rank score","description":"Red: physical PPI Blue: co-expression Green: co-essentiality Violet: co-abundance Score is percentile rank - transformed score of the random forest prediction. Source: evidence_nw_p_rank.tsv, https://github.com/antonkratz/evtype","version":"3.0.0"}]},
+{"nodes":[{"v":{"n":"WDR4"},"id":94913},
+{"v":{"n":"WDR48"},"id":94915},
+{"v":{"n":"WRAP53"},"id":94917}
+]},
+{"edges":[{"s":94915,"t":94913,"v":{"name":"WDR48 (interacts with) XRCC4","p":0.884},"id":187906},
+{"s":94915,"t":94917,"v":{"name":"WDR48 (interacts with) XRCC5","p":0.715},"id":187907}
+]},
+{"visualProperties":[{"at":"style","v":{"default":{"node":{"NODE_BORDER_WIDTH":0.0,"NODE_BORDER_PAINT":"#CCCCCC","NODE_LABEL_COLOR":"#000000","NODE_HEIGHT":35.0,"NODE_BACKGROUND_COLOR":"#89D0F5","NODE_SHAPE":"round-rectangle","NODE_WIDTH":75.0},"edge":{"EDGE_WIDTH":2.0,"EDGE_LINE_COLOR":"#323232"},"network":{"NETWORK_BACKGROUND_COLOR":"#FFFFFF"}},"edgeMapping":{"EDGE_LABEL":{"type":"PASSTHROUGH","definition":{"attribute":"percentile_rank_score"}},"EDGE_WIDTH":{"type":"PASSTHROUGH","definition":{"attribute":"percentile_rank_score"}}},"nodeMapping":{"NODE_LABEL":{"type":"PASSTHROUGH","definition":{"attribute":"name"}}}}}]},
+{"visualEditorProperties":[ {"properties": {"nodeSizeLocked":false,"arrowColorMatchesEdge":true,"nodeCustomGraphicsSizeSync":true}}]},
+{"metaData":[{"name":"nodes","elementCount":x13},{"name":"visualProperties","elementCount":1}]},
+{"status":[{"success":true}]}]
+
+
