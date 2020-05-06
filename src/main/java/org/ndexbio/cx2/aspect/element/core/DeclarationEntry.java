@@ -31,6 +31,12 @@ public class DeclarationEntry {
 	
 	public DeclarationEntry () {}
 
+	public DeclarationEntry (ATTRIBUTE_DATA_TYPE datatype, Object defaultValue, String alias) {
+		this.dataType = datatype;
+		this.defaultValue = defaultValue;
+		this.alias = alias;
+	}
+
 	@JsonGetter (dataTypeAttrName)
 	public String getDataTypeStr() {
 		if (dataType !=null)

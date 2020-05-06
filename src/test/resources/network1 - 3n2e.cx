@@ -1,8 +1,369 @@
-[{"numberVerification":[{"longNumber":281474976710655}]},{"metaData":[{"name":"provenanceHistory","elementCount":1,"version":"1.0","consistencyGroup":1,"properties":[]},{"name":"nodes","elementCount":3,"idCounter":108,"version":"1.0","consistencyGroup":1,"properties":[]},{"name":"edges","elementCount":2,"idCounter":109,"version":"1.0","consistencyGroup":1,"properties":[]},{"name":"networkAttributes","elementCount":1,"version":"1.0","consistencyGroup":1,"properties":[]},{"name":"edgeAttributes","elementCount":4,"version":"1.0","consistencyGroup":1,"properties":[]},{"name":"cartesianLayout","elementCount":3,"version":"1.0","consistencyGroup":1,"properties":[]},{"name":"cyVisualProperties","elementCount":3,"version":"1.0","consistencyGroup":1,"properties":[]},{"name":"ndexStatus","elementCount":1,"version":"1.0","consistencyGroup":1,"properties":[]}]},
-{"ndexStatus":[{"externalId":"3a80fcaa-b064-11e8-95f2-525400c25d22","creationTime":1536080515956,"modificationTime":1536080515956,"visibility":"PRIVATE","published":false,"nodeCount":3,"edgeCount":2,"owner":"cj","ndexServerURI":"http://dev.ndexbio.org","readOnly":false}]}, {"provenanceHistory":[{"entity":{"uri":"http://dev.ndexbio.org/v2/network/3a80fcaa-b064-11e8-95f2-525400c25d22/summary","creationEvent":{"inputs":[{"uri":null,"creationEvent":{"inputs":null,"endedAtTime":1536080515866,"startedAtTime":1536080515866,"eventType":"CyNDEx-2 Upload","properties":[{"name":"cyNDEx2 Version","value":"2.2.3"},{"name":"Cytoscape Version","value":"3.7.0.SNAPSHOT"},{"name":"dc:title","value":"network1 - 3n2e"}]},"properties":[]}],"endedAtTime":1536080515956,"startedAtTime":1536080515956,"eventType":"Program Upload in CX","properties":[{"name":"user name","value":"cj"}]},"properties":[{"name":"dc:title","value":"network1 - 3n2e"}]}}]}, {"nodes":[{"@id":70,"n":"Node 3"}, {"@id":66,"n":"Node 2"}, {"@id":64,"n":"Node 1"}]},
- {"edges":[{"@id":72,"s":64,"t":70,"i":"interacts with"}, {"@id":68,"s":64,"t":66,"i":"interacts with"}]},
- {"networkAttributes":[{"n":"name","v":"network1 - 3n2e"}]},
- {"edgeAttributes":[{"po":72,"n":"name","v":"Node 1 (interacts with) Node 3"}, {"po":72,"n":"interaction","v":"interacts with"}, {"po":68,"n":"name","v":"Node 1 (interacts with) Node 2"}, {"po":68,"n":"interaction","v":"interacts with"}]},
- {"cartesianLayout":[{"node":70,"x":-88.0,"y":19.0}, {"node":66,"x":-26.0,"y":-122.0}, {"node":64,"x":-324.0,"y":-29.0}]},
- {"cyVisualProperties":[{"properties_of":"network","properties":{"NETWORK_ANNOTATION_SELECTION":"false","NETWORK_BACKGROUND_PAINT":"#FFFFFF","NETWORK_CENTER_X_LOCATION":"0.0","NETWORK_CENTER_Y_LOCATION":"0.0","NETWORK_CENTER_Z_LOCATION":"0.0","NETWORK_DEPTH":"0.0","NETWORK_EDGE_SELECTION":"true","NETWORK_HEIGHT":"400.0","NETWORK_NODE_SELECTION":"true","NETWORK_SCALE_FACTOR":"1.0","NETWORK_WIDTH":"550.0"}}, {"properties_of":"nodes:default","properties":{"COMPOUND_NODE_PADDING":"10.0","COMPOUND_NODE_SHAPE":"ROUND_RECTANGLE","NODE_BORDER_PAINT":"#000000","NODE_BORDER_STROKE":"SOLID","NODE_BORDER_TRANSPARENCY":"255","NODE_BORDER_WIDTH":"2.0","NODE_CUSTOMGRAPHICS_1":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_2":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_3":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_4":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_5":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_6":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_7":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_8":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_9":"org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],","NODE_CUSTOMGRAPHICS_POSITION_1":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_2":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_3":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_4":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_5":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_6":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_7":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_8":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_POSITION_9":"C,C,c,0.00,0.00","NODE_CUSTOMGRAPHICS_SIZE_1":"0.0","NODE_CUSTOMGRAPHICS_SIZE_2":"0.0","NODE_CUSTOMGRAPHICS_SIZE_3":"0.0","NODE_CUSTOMGRAPHICS_SIZE_4":"0.0","NODE_CUSTOMGRAPHICS_SIZE_5":"0.0","NODE_CUSTOMGRAPHICS_SIZE_6":"0.0","NODE_CUSTOMGRAPHICS_SIZE_7":"0.0","NODE_CUSTOMGRAPHICS_SIZE_8":"0.0","NODE_CUSTOMGRAPHICS_SIZE_9":"0.0","NODE_DEPTH":"0.0","NODE_FILL_COLOR":"#FF9999","NODE_HEIGHT":"40.0","NODE_LABEL_COLOR":"#000000","NODE_LABEL_FONT_FACE":"SansSerif,plain,12","NODE_LABEL_FONT_SIZE":"12","NODE_LABEL_POSITION":"C,C,c,0.00,0.00","NODE_LABEL_TRANSPARENCY":"255","NODE_LABEL_WIDTH":"200.0","NODE_NESTED_NETWORK_IMAGE_VISIBLE":"true","NODE_SELECTED":"false","NODE_SELECTED_PAINT":"#FFFF00","NODE_SHAPE":"ELLIPSE","NODE_TRANSPARENCY":"125","NODE_VISIBLE":"true","NODE_WIDTH":"60.0","NODE_X_LOCATION":"0.0","NODE_Y_LOCATION":"0.0","NODE_Z_LOCATION":"0.0"},"dependencies":{"nodeCustomGraphicsSizeSync":"true","nodeSizeLocked":"false"},"mappings":{"NODE_FILL_COLOR":{"type":"DISCRETE","definition":"COL=BIOPAX_TYPE,T=string,K=0=Complex,V=0=#99CCFF"},"NODE_LABEL":{"type":"PASSTHROUGH","definition":"COL=name,T=string"},"NODE_SHAPE":{"type":"DISCRETE","definition":"COL=BIOPAX_TYPE,T=string,K=0=Complex,V=0=HEXAGON"}}}, {"properties_of":"edges:default","properties":{"EDGE_CURVED":"true","EDGE_LABEL_COLOR":"#000000","EDGE_LABEL_FONT_FACE":"SansSerif,plain,10","EDGE_LABEL_FONT_SIZE":"10","EDGE_LABEL_TRANSPARENCY":"255","EDGE_LABEL_WIDTH":"200.0","EDGE_LINE_TYPE":"SOLID","EDGE_SELECTED":"false","EDGE_SOURCE_ARROW_SELECTED_PAINT":"#FFFF00","EDGE_SOURCE_ARROW_SHAPE":"NONE","EDGE_SOURCE_ARROW_SIZE":"6.0","EDGE_SOURCE_ARROW_UNSELECTED_PAINT":"#000000","EDGE_STROKE_SELECTED_PAINT":"#FF0000","EDGE_STROKE_UNSELECTED_PAINT":"#000000","EDGE_TARGET_ARROW_SELECTED_PAINT":"#FFFF00","EDGE_TARGET_ARROW_SHAPE":"NONE","EDGE_TARGET_ARROW_SIZE":"6.0","EDGE_TARGET_ARROW_UNSELECTED_PAINT":"#000000","EDGE_TRANSPARENCY":"255","EDGE_UNSELECTED_PAINT":"#003399","EDGE_VISIBLE":"true","EDGE_WIDTH":"4.0"},"dependencies":{"arrowColorMatchesEdge":"true"},"mappings":{"EDGE_STROKE_UNSELECTED_PAINT":{"type":"DISCRETE","definition":"COL=interaction,T=string,K=0=interacts-with,V=0=#005500,K=1=chemical-affects,V=1=#F09000,K=2=controls-state-change-of,V=2=#0000C0,K=3=controls-transport-of,V=3=#700000,K=4=consumption-controled-by,V=4=#FF3300,K=5=reacts-with,V=5=#00FF00,K=6=neighbor-of,V=6=#00AA00,K=7=controls-expression-of,V=7=#00A0A0,K=8=controls-phosphorylation-of,V=8=#0000FF,K=9=controls-transport-of-chemical,V=9=#A00000,K=10=used-to-produce,V=10=#F75500,K=11=in-complex-with,V=11=#F000A0,K=12=controls-production-of,V=12=#00CCF0,K=13=catalysis-precedes,V=13=#7000A0"},"EDGE_TARGET_ARROW_SHAPE":{"type":"DISCRETE","definition":"COL=interaction,T=string,K=0=controls-expression-of,V=0=ARROW,K=1=chemical-affects,V=1=ARROW,K=2=controls-state-change-of,V=2=ARROW,K=3=controls-phosphorylation-of,V=3=ARROW,K=4=controls-transport-of-chemical,V=4=ARROW,K=5=used-to-produce,V=5=ARROW,K=6=controls-transport-of,V=6=ARROW,K=7=consumption-controled-by,V=7=ARROW,K=8=controls-production-of,V=8=ARROW,K=9=catalysis-precedes,V=9=ARROW"},"EDGE_UNSELECTED_PAINT":{"type":"DISCRETE","definition":"COL=interaction,T=string,K=0=interacts-with,V=0=#005500,K=1=chemical-affects,V=1=#F09000,K=2=controls-state-change-of,V=2=#0000C0,K=3=controls-transport-of,V=3=#700000,K=4=consumption-controled-by,V=4=#FF3300,K=5=reacts-with,V=5=#00FF00,K=6=neighbor-of,V=6=#00AA00,K=7=controls-expression-of,V=7=#00A0A0,K=8=controls-phosphorylation-of,V=8=#0000FF,K=9=controls-transport-of-chemical,V=9=#A00000,K=10=used-to-produce,V=10=#F75500,K=11=in-complex-with,V=11=#F000A0,K=12=controls-production-of,V=12=#00CCF0,K=13=catalysis-precedes,V=13=#7000A0"}}}]},
-{"status":[{"error":"","success":true}]}]
+[
+	{
+		"numberVerification": [
+			{
+				"longNumber": 281474976710655
+			}
+		]
+	},
+	{
+		"metaData": [
+			{
+				"name": "provenanceHistory",
+				"elementCount": 1,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			},
+			{
+				"name": "nodes",
+				"elementCount": 3,
+				"idCounter": 108,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			},
+			{
+				"name": "edges",
+				"elementCount": 2,
+				"idCounter": 109,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			},
+			{
+				"name": "networkAttributes",
+				"elementCount": 1,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			},
+			{
+				"name": "edgeAttributes",
+				"elementCount": 4,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			},
+			{
+				"name": "cartesianLayout",
+				"elementCount": 3,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			},
+			{
+				"name": "cyVisualProperties",
+				"elementCount": 3,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			},
+			{
+				"name": "ndexStatus",
+				"elementCount": 1,
+				"version": "1.0",
+				"consistencyGroup": 1,
+				"properties": []
+			}
+		]
+	},
+	{
+		"ndexStatus": [
+			{
+				"externalId": "3a80fcaa-b064-11e8-95f2-525400c25d22",
+				"creationTime": 1536080515956,
+				"modificationTime": 1536080515956,
+				"visibility": "PRIVATE",
+				"published": false,
+				"nodeCount": 3,
+				"edgeCount": 2,
+				"owner": "cj",
+				"ndexServerURI": "http://dev.ndexbio.org",
+				"readOnly": false
+			}
+		]
+	},
+	{
+		"provenanceHistory": [
+			{
+				"entity": {
+					"uri": "http://dev.ndexbio.org/v2/network/3a80fcaa-b064-11e8-95f2-525400c25d22/summary",
+					"creationEvent": {
+						"inputs": [
+							{
+								"uri": null,
+								"creationEvent": {
+									"inputs": null,
+									"endedAtTime": 1536080515866,
+									"startedAtTime": 1536080515866,
+									"eventType": "CyNDEx-2 Upload",
+									"properties": [
+										{
+											"name": "cyNDEx2 Version",
+											"value": "2.2.3"
+										},
+										{
+											"name": "Cytoscape Version",
+											"value": "3.7.0.SNAPSHOT"
+										},
+										{
+											"name": "dc:title",
+											"value": "network1 - 3n2e"
+										}
+									]
+								},
+								"properties": []
+							}
+						],
+						"endedAtTime": 1536080515956,
+						"startedAtTime": 1536080515956,
+						"eventType": "Program Upload in CX",
+						"properties": [
+							{
+								"name": "user name",
+								"value": "cj"
+							}
+						]
+					},
+					"properties": [
+						{
+							"name": "dc:title",
+							"value": "network1 - 3n2e"
+						}
+					]
+				}
+			}
+		]
+	},
+	{
+		"nodes": [
+			{
+				"@id": 70,
+				"n": "Node 3"
+			},
+			{
+				"@id": 66,
+				"n": "Node 2"
+			},
+			{
+				"@id": 64,
+				"n": "Node 1"
+			}
+		]
+	},
+	{
+		"edges": [
+			{
+				"@id": 72,
+				"s": 64,
+				"t": 70,
+				"i": "interacts with"
+			},
+			{
+				"@id": 68,
+				"s": 64,
+				"t": 66,
+				"i": "interacts with"
+			}
+		]
+	},
+	{
+		"networkAttributes": [
+			{
+				"n": "name",
+				"v": "network1 - 3n2e"
+			}
+		]
+	},
+	{
+		"edgeAttributes": [
+			{
+				"po": 72,
+				"n": "name",
+				"v": "Node 1 (interacts with) Node 3"
+			},
+			{
+				"po": 72,
+				"n": "interaction",
+				"v": "interacts with"
+			},
+			{
+				"po": 68,
+				"n": "name",
+				"v": "Node 1 (interacts with) Node 2"
+			},
+			{
+				"po": 68,
+				"n": "interaction",
+				"v": "interacts with"
+			}
+		]
+	},
+	{
+		"cartesianLayout": [
+			{
+				"node": 70,
+				"x": -88.0,
+				"y": 19.0
+			},
+			{
+				"node": 66,
+				"x": -26.0,
+				"y": -122.0
+			},
+			{
+				"node": 64,
+				"x": -324.0,
+				"y": -29.0
+			}
+		]
+	},
+	{
+		"cyVisualProperties": [
+			{
+				"properties_of": "network",
+				"properties": {
+					"NETWORK_ANNOTATION_SELECTION": "false",
+					"NETWORK_BACKGROUND_PAINT": "#FFFFFF",
+					"NETWORK_CENTER_X_LOCATION": "0.0",
+					"NETWORK_CENTER_Y_LOCATION": "0.0",
+					"NETWORK_CENTER_Z_LOCATION": "0.0",
+					"NETWORK_DEPTH": "0.0",
+					"NETWORK_EDGE_SELECTION": "true",
+					"NETWORK_HEIGHT": "400.0",
+					"NETWORK_NODE_SELECTION": "true",
+					"NETWORK_SCALE_FACTOR": "1.0",
+					"NETWORK_WIDTH": "550.0"
+				}
+			},
+			{
+				"properties_of": "nodes:default",
+				"properties": {
+					"COMPOUND_NODE_PADDING": "10.0",
+					"COMPOUND_NODE_SHAPE": "ROUND_RECTANGLE",
+					"NODE_BORDER_PAINT": "#000000",
+					"NODE_BORDER_STROKE": "SOLID",
+					"NODE_BORDER_TRANSPARENCY": "255",
+					"NODE_BORDER_WIDTH": "2.0",
+					"NODE_CUSTOMGRAPHICS_1": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_2": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_3": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_4": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_5": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_6": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_7": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_8": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_9": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],",
+					"NODE_CUSTOMGRAPHICS_POSITION_1": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_2": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_3": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_4": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_5": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_6": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_7": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_8": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_POSITION_9": "C,C,c,0.00,0.00",
+					"NODE_CUSTOMGRAPHICS_SIZE_1": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_2": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_3": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_4": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_5": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_6": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_7": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_8": "0.0",
+					"NODE_CUSTOMGRAPHICS_SIZE_9": "0.0",
+					"NODE_DEPTH": "0.0",
+					"NODE_FILL_COLOR": "#FF9999",
+					"NODE_HEIGHT": "40.0",
+					"NODE_LABEL_COLOR": "#000000",
+					"NODE_LABEL_FONT_FACE": "SansSerif,plain,12",
+					"NODE_LABEL_FONT_SIZE": "12",
+					"NODE_LABEL_POSITION": "C,C,c,0.00,0.00",
+					"NODE_LABEL_TRANSPARENCY": "255",
+					"NODE_LABEL_WIDTH": "200.0",
+					"NODE_NESTED_NETWORK_IMAGE_VISIBLE": "true",
+					"NODE_SELECTED": "false",
+					"NODE_SELECTED_PAINT": "#FFFF00",
+					"NODE_SHAPE": "ELLIPSE",
+					"NODE_TRANSPARENCY": "125",
+					"NODE_VISIBLE": "true",
+					"NODE_WIDTH": "60.0",
+					"NODE_X_LOCATION": "0.0",
+					"NODE_Y_LOCATION": "0.0",
+					"NODE_Z_LOCATION": "0.0"
+				},
+				"dependencies": {
+					"nodeCustomGraphicsSizeSync": "true",
+					"nodeSizeLocked": "false"
+				},
+				"mappings": {
+					"NODE_FILL_COLOR": {
+						"type": "DISCRETE",
+						"definition": "COL=BIOPAX_TYPE,T=string,K=0=Complex,V=0=#99CCFF"
+					},
+					"NODE_LABEL": {
+						"type": "PASSTHROUGH",
+						"definition": "COL=name,T=string"
+					},
+					"NODE_SHAPE": {
+						"type": "DISCRETE",
+						"definition": "COL=BIOPAX_TYPE,T=string,K=0=Complex,V=0=HEXAGON"
+					}
+				}
+			},
+			{
+				"properties_of": "edges:default",
+				"properties": {
+					"EDGE_CURVED": "true",
+					"EDGE_LABEL_COLOR": "#000000",
+					"EDGE_LABEL_FONT_FACE": "SansSerif,plain,10",
+					"EDGE_LABEL_FONT_SIZE": "10",
+					"EDGE_LABEL_TRANSPARENCY": "255",
+					"EDGE_LABEL_WIDTH": "200.0",
+					"EDGE_LINE_TYPE": "SOLID",
+					"EDGE_SELECTED": "false",
+					"EDGE_SOURCE_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_SOURCE_ARROW_SHAPE": "NONE",
+					"EDGE_SOURCE_ARROW_SIZE": "6.0",
+					"EDGE_SOURCE_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_STROKE_SELECTED_PAINT": "#FF0000",
+					"EDGE_STROKE_UNSELECTED_PAINT": "#000000",
+					"EDGE_TARGET_ARROW_SELECTED_PAINT": "#FFFF00",
+					"EDGE_TARGET_ARROW_SHAPE": "NONE",
+					"EDGE_TARGET_ARROW_SIZE": "6.0",
+					"EDGE_TARGET_ARROW_UNSELECTED_PAINT": "#000000",
+					"EDGE_TRANSPARENCY": "255",
+					"EDGE_UNSELECTED_PAINT": "#003399",
+					"EDGE_VISIBLE": "true",
+					"EDGE_WIDTH": "4.0"
+				},
+				"dependencies": {
+					"arrowColorMatchesEdge": "true"
+				},
+				"mappings": {
+					"EDGE_STROKE_UNSELECTED_PAINT": {
+						"type": "DISCRETE",
+						"definition": "COL=interaction,T=string,K=0=interacts-with,V=0=#005500,K=1=chemical-affects,V=1=#F09000,K=2=controls-state-change-of,V=2=#0000C0,K=3=controls-transport-of,V=3=#700000,K=4=consumption-controled-by,V=4=#FF3300,K=5=reacts-with,V=5=#00FF00,K=6=neighbor-of,V=6=#00AA00,K=7=controls-expression-of,V=7=#00A0A0,K=8=controls-phosphorylation-of,V=8=#0000FF,K=9=controls-transport-of-chemical,V=9=#A00000,K=10=used-to-produce,V=10=#F75500,K=11=in-complex-with,V=11=#F000A0,K=12=controls-production-of,V=12=#00CCF0,K=13=catalysis-precedes,V=13=#7000A0"
+					},
+					"EDGE_TARGET_ARROW_SHAPE": {
+						"type": "DISCRETE",
+						"definition": "COL=interaction,T=string,K=0=controls-expression-of,V=0=ARROW,K=1=chemical-affects,V=1=ARROW,K=2=controls-state-change-of,V=2=ARROW,K=3=controls-phosphorylation-of,V=3=ARROW,K=4=controls-transport-of-chemical,V=4=ARROW,K=5=used-to-produce,V=5=ARROW,K=6=controls-transport-of,V=6=ARROW,K=7=consumption-controled-by,V=7=ARROW,K=8=controls-production-of,V=8=ARROW,K=9=catalysis-precedes,V=9=ARROW"
+					},
+					"EDGE_UNSELECTED_PAINT": {
+						"type": "DISCRETE",
+						"definition": "COL=interaction,T=string,K=0=interacts-with,V=0=#005500,K=1=chemical-affects,V=1=#F09000,K=2=controls-state-change-of,V=2=#0000C0,K=3=controls-transport-of,V=3=#700000,K=4=consumption-controled-by,V=4=#FF3300,K=5=reacts-with,V=5=#00FF00,K=6=neighbor-of,V=6=#00AA00,K=7=controls-expression-of,V=7=#00A0A0,K=8=controls-phosphorylation-of,V=8=#0000FF,K=9=controls-transport-of-chemical,V=9=#A00000,K=10=used-to-produce,V=10=#F75500,K=11=in-complex-with,V=11=#F000A0,K=12=controls-production-of,V=12=#00CCF0,K=13=catalysis-precedes,V=13=#7000A0"
+					}
+				}
+			}
+		]
+	},
+	{
+		"status": [
+			{
+				"error": "",
+				"success": true
+			}
+		]
+	}
+]

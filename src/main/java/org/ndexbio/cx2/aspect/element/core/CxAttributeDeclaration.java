@@ -13,6 +13,10 @@ public class CxAttributeDeclaration implements CxAspectElement{
 	
 	public final static String ASPECT_NAME = "attributeDeclarations";
 	
+	/*
+	 * Key1: aspect name
+	 * Key2: attribute name in that aspect.
+	 */
 	private Map<String, Map<String,DeclarationEntry>> declarations;
 	
 	public CxAttributeDeclaration() {declarations = new HashMap<>();}
