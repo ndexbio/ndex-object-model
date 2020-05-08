@@ -440,11 +440,13 @@ public class CXToCX2Converter {
 		edgeM.setConsistencyGroup(null);
 		
 		MetaDataElement vpM = metadata.getMetaDataElement("cyVisualProperties");
-		vpM.setIdCounter(null);
-		vpM.setVersion(null);
-		vpM.setConsistencyGroup(null);
-		vpM.setElementCount(vpM.getElementCount() -2 );
-		vpM.setName("visualProperties");
+		if ( vpM != null) {
+			vpM.setIdCounter(null);
+			vpM.setVersion(null);
+			vpM.setConsistencyGroup(null);
+			vpM.setElementCount(vpM.getElementCount() -2 );
+			vpM.setName("visualProperties");
+		}
 
 	}
 	
@@ -707,9 +709,10 @@ public class CXToCX2Converter {
     		
     		if ( nodeSizeLocked ) {
        			Mapping sizeMapping = nodeMappings.remove("NODE_SIZE");
-       			if ( sizeMapping != null )
-       			nodeMappings.put("NODE_WIDTH", sizeMapping);
-       			nodeMappings.put("NODE_HEIGHT", sizeMapping);	
+       			if ( sizeMapping != null ) {
+       				nodeMappings.put("NODE_WIDTH", sizeMapping);
+       				nodeMappings.put("NODE_HEIGHT", sizeMapping);
+       			}
     		}
     		
     		if ( nodeMappings != null && !nodeMappings.isEmpty()) {

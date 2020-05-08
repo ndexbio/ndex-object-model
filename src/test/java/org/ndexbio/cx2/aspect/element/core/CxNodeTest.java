@@ -57,6 +57,7 @@ public class CxNodeTest {
         		s3);
         
         
+        // test attribute validating function.
 		DeclarationEntry de = new DeclarationEntry();
 		de.setDataType(ATTRIBUTE_DATA_TYPE.LIST_OF_DOUBLE);
 		

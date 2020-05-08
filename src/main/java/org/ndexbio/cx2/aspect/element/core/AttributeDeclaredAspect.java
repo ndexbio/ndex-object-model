@@ -29,7 +29,22 @@ public abstract class AttributeDeclaredAspect {
 		this.attributes = attributes;
 	}
 	
+
+	public void transformAttrites(Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
+		for ( Map.Entry<String, DeclarationEntry> e : attributeDeclarations.entrySet()) {
+			String a = e.getValue().getAlias();
+			if ( a != null) {
+				Object v = attributes.remove(a);
+				if ( v!= null)
+					attributes.put(e.getKey(), v);
+			}
+		}
+		
+		validateAttribute(attributeDeclarations);
+	}
+	
 	public void validateAttribute( Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
+		
 		for ( Map.Entry<String, Object> entry : attributes.entrySet()) {
 			DeclarationEntry decl = attributeDeclarations.get(entry.getKey());
 			if ( decl == null)
