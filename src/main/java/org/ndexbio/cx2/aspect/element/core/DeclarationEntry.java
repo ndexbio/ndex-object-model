@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
-import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -46,7 +45,7 @@ public class DeclarationEntry {
 	}
 	
 	@JsonSetter (dataTypeAttrName) 
-	public void setDataTypeStr( String typeStr) throws NdexException {
+	public void setDataTypeStr( String typeStr) {
 		ATTRIBUTE_DATA_TYPE t = ATTRIBUTE_DATA_TYPE.fromCxLabel(typeStr);
 		setDataType (t);
 		
@@ -57,14 +56,14 @@ public class DeclarationEntry {
 		return dataType;
 	}
 	
-	public void setDataType(ATTRIBUTE_DATA_TYPE dataType) throws NdexException {
-		if ( dataType == ATTRIBUTE_DATA_TYPE.LONG  || dataType == ATTRIBUTE_DATA_TYPE.INTEGER
+	public void setDataType(ATTRIBUTE_DATA_TYPE dataType) {
+	/*	if ( dataType == ATTRIBUTE_DATA_TYPE.LONG  || dataType == ATTRIBUTE_DATA_TYPE.INTEGER
 			|| dataType == ATTRIBUTE_DATA_TYPE.LIST_OF_LONG ||
-			   dataType == ATTRIBUTE_DATA_TYPE.LIST_OF_INTEGER )
+			   dataType == ATTRIBUTE_DATA_TYPE.LIST_OF_INTEGER ) */
 			this.dataType = dataType;
-		else 
+	/*	else 
 			throw new NdexException ("Data type declaration can only be long, integer, list-of-long or list-of-integer");
-		
+	*/	
 	}
 	public Object getDefaultValue() {
 		return defaultValue;

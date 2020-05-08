@@ -28,13 +28,12 @@ public class CXWriter {
 
 	
 	private OutputStream out;
-	private String currentAspect;
+	private String currentAspectName;
 	
 	
 	private int state;
 	
 	private boolean hasFragments;
-	private Class<? extends CxAspectElement> currentAspectCls;
 	
 	ObjectMapper om;
 	
@@ -45,7 +44,7 @@ public class CXWriter {
 	public CXWriter (OutputStream s, boolean hasFragments) {
 		this.out = s;
 		
-		currentAspect = "";
+		currentAspectName = null;
 		state = INIT;
 		this.hasFragments = hasFragments;
 		metadataCount = 0;
@@ -68,6 +67,8 @@ public class CXWriter {
 	}
 	
 	public void writeMetadata(List<CxMetadata> metadata) throws NdexException, IOException {
+		if( state == INIT )
+			init();
 		if ( metadataCount >=2)
 			throw new NdexException ("To many metadata fragements");
 
@@ -81,11 +82,15 @@ public class CXWriter {
 		out.flush();
 		metadataCount ++;
 		
-		if (metadataCount == 2) 
+		// check if we this is the post metadata.
+		if (metadataCount == 2 || ( metadataCount == 1 && currentAspectName != null)) 
 			state = POST_METATDATA;
 	}
 	
-	public void writeAspectFragment(List<? extends CxAspectElement> fragment) throws JsonGenerationException, JsonMappingException, IOException {
+	public void writeAspectFragment(List<? extends CxAspectElement> fragment) throws JsonGenerationException, JsonMappingException, IOException, NdexException {
+		if ( state == INIT)
+			init();
+		
 		if ( fragment.size() > 0 ) {
 			Map<String,List<? extends CxAspectElement>> holder = new HashMap<>(1);
 			holder.put( fragment.get(0).getAspectName(), fragment);
@@ -123,18 +128,19 @@ public class CXWriter {
 		
 	}
 	
-	public void startAspectFragment ( Class<? extends CxAspectElement> aspectClass) 
-			throws InstantiationException, IllegalAccessException, IOException, NdexException {
-		currentAspectCls = aspectClass;
-		CxAspectElement e = aspectClass.newInstance();
-		currentAspect = e.getAspectName();
+	public void startAspectFragment ( String aspectName) 
+			throws IOException, NdexException {
+		currentAspectName = aspectName;
+		
+		if ( state == INIT)
+			init();
 		
 		if ( state != BEFORE_ASPECT ) 
-			throw new NdexException ("Starting new aspect fragment for " + currentAspect + " is not allowed here.");
+			throw new NdexException ("Starting new aspect fragment for " + currentAspectName + " is not allowed here.");
 				
-		if ( currentAspect.indexOf('"')!= -1)
+		if ( currentAspectName.indexOf('"')!= -1)
 			throw new NdexException ("Having '\"' in aspect name is not allowed.");
-		writeStr("{\"" + currentAspect + "\":[");
+		writeStr("{\"" + currentAspectName + "\":[");
 		state = ASPECT_STARTED;
 		currentElmtCounter = 0;
 	}
@@ -147,8 +153,6 @@ public class CXWriter {
 		writeStr("]}");
 		out.write(elmtDivider);
 		out.flush();
-		currentAspectCls = null;
-		currentAspect = null;
 	}
 	
 	public void writeElementInFragment(CxAspectElement element) throws NdexException, JsonGenerationException, JsonMappingException, IOException {

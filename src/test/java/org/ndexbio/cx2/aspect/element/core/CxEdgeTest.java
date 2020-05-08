@@ -29,7 +29,7 @@ public class CxEdgeTest {
 		assertEquals(2, val.size());
 		
 		String s = om.writeValueAsString(e);
-		assertEquals("{\"id\":23,\"s\":2,\"t\":33,\"v\":{\"i\":\"interact with\",\"pmids\":[13333,25555]}}"
+		assertEquals("{\"v\":{\"i\":\"interact with\",\"pmids\":[13333,25555]},\"id\":23,\"s\":2,\"t\":33}"
 				,s);
 		
 	}

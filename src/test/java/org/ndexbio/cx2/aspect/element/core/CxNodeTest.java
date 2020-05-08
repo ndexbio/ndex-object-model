@@ -3,10 +3,14 @@ package org.ndexbio.cx2.aspect.element.core;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
+import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CxNodeTest {
 
 	@Test
-	public void test() throws JsonProcessingException {
+	public void test() throws JsonProcessingException, NdexException {
 
 		CxNode n = new CxNode();
 		
@@ -44,11 +48,27 @@ public class CxNodeTest {
         nv.add(32);
         assertEquals(n2.getAttributes().get("n"), nv);
         
+        
         System.out.println(n2.getAttributes());
         
         String s3 = om.writeValueAsString(n2);
         
-        assertEquals ( s3, "{\"id\":12,\"v\":{\"n\":[23,32]},\"x\":11.0,\"y\":22.0,\"z\":0.0}");
+        assertEquals (  "{\"v\":{\"n\":[23,32]},\"id\":12,\"x\":11.0,\"y\":22.0,\"z\":0.0}",
+        		s3);
+        
+        
+		DeclarationEntry de = new DeclarationEntry();
+		de.setDataType(ATTRIBUTE_DATA_TYPE.LIST_OF_DOUBLE);
+		
+		Map<String, DeclarationEntry> m = new HashMap<>();
+		m.put("n", de);
+			
+        n2.validateAttribute(m);
+        
+        @SuppressWarnings("unchecked")
+		List<Double> l = (List<Double>) n2.getAttributes().get("n");
+        assertEquals ( Boolean.TRUE, (l.get(0) instanceof Double));
+        
         
 
 	}

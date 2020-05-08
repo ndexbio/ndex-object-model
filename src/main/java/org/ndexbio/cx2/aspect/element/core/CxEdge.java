@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(Include.NON_NULL)
 
-public class CxEdge implements CxAspectElement{
+public class CxEdge extends AttributeDeclaredAspect implements CxAspectElement{
 	
 	public static final String ASPECT_NAME= "edges";
 	
@@ -23,8 +23,8 @@ public class CxEdge implements CxAspectElement{
 	@JsonProperty("t")
 	private long target;
 	
-	@JsonProperty("v")
-	private Map<String, Object> attributes;
+/*	@JsonProperty("v")
+	private Map<String, Object> attributes; */
 	
 	public CxEdge() {}
 
@@ -52,14 +52,14 @@ public class CxEdge implements CxAspectElement{
 		this.target = target;
 	}
 	
-	public Map<String, Object> getAttributes() {
+/*	public Map<String, Object> getAttributes() {
 		return this.attributes;
 	}
 	
 	public void setAttributes(Map<String, Object> attributes) {
 		this.attributes = attributes;
 	}
-
+*/
 
 	@Override
 	@JsonIgnore

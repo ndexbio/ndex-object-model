@@ -9,16 +9,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @JsonInclude(Include.NON_NULL)
-public class CxNode implements CxAspectElement {
+public class CxNode extends AttributeDeclaredAspect implements CxAspectElement {
 	
 	public final static String ASPECT_NAME = "nodes";
 	
 	@JsonProperty("id")
 	private long id;
 	
-	@JsonProperty("v")
+/*	@JsonProperty("v")
 	private Map<String, Object> attributes;
-	
+*/	
 	@JsonProperty("x")
 	private Double x;
 	
@@ -45,6 +45,7 @@ public class CxNode implements CxAspectElement {
 		this.id = id;
 	}
 
+/*	
 	public Map<String, Object> getAttributes() {
 		return attributes;
 	}
@@ -52,7 +53,7 @@ public class CxNode implements CxAspectElement {
 	public void setAttributes(Map<String, Object> attributes) {
 		this.attributes = attributes;
 	}
-
+*/
 	public Double getX() {
 		return x;
 	}
