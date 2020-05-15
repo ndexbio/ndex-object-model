@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public abstract class AttributeDeclaredAspect {
 
 	@JsonProperty("v")
-	private Map<String, Object> attributes;
+	protected Map<String, Object> attributes;
 	
 	public AttributeDeclaredAspect () {attributes = new HashMap<>(); }
 	
@@ -31,6 +31,8 @@ public abstract class AttributeDeclaredAspect {
 	
 
 	public void transformAttrites(Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
+		
+		// convert alias back to the real attribute name first
 		for ( Map.Entry<String, DeclarationEntry> e : attributeDeclarations.entrySet()) {
 			String a = e.getValue().getAlias();
 			if ( a != null) {

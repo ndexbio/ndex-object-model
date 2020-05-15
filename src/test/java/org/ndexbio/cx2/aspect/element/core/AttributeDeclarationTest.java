@@ -39,6 +39,7 @@ public class AttributeDeclarationTest {
 	      
 	    CxAttributeDeclaration rd2 = om.readValue(jsonString, CxAttributeDeclaration.class);
 	    
+	    assertEquals ("t",rd2.getAttributesInAspect("nodes").get("name").getAlias());
 	    assertEquals ( ATTRIBUTE_DATA_TYPE.LONG, rd2.getDeclarations().get("nodes").get("name").getDataType());
 	    System.out.println (rd2.getDeclarations());
 

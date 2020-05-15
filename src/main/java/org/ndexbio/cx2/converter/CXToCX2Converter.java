@@ -68,17 +68,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class CXToCX2Converter {
 	
-	private final static String attributeDefs = "attributeDeclarations";
-
 	private Set<AspectFragmentReader> _readers;
 	File cxFile;
-//	Map<String, Object> configObj;
 	String newFileName;
 
-	//key: attribute name 
-	Map<String, DeclarationEntry> nodeAttributeDef;
-	Map<String, DeclarationEntry> edgeAttributeDef;
-
+	private CxAttributeDeclaration attrDeclarations;
+	
 	long nodeIdCounter;
 	long edgeIdCounter;
 
@@ -116,22 +111,12 @@ public class CXToCX2Converter {
 			throws JsonParseException, JsonMappingException, IOException {
 		cxFile = new File(filePath);
 		ObjectMapper mapper = new ObjectMapper();
-
-		nodeAttributeDef = new HashMap<>();
-		edgeAttributeDef = new HashMap<>();
 		
 		if (configJsonFilePath != null) {
-			CxAttributeDeclaration configObj = mapper.readValue(new File(configJsonFilePath), 
+			attrDeclarations = mapper.readValue(new File(configJsonFilePath), 
 					CxAttributeDeclaration.class);
-			if (configObj.getDeclarations().get(CxNode.ASPECT_NAME)!= null)
-				nodeAttributeDef.putAll(configObj.getDeclarations().get(CxNode.ASPECT_NAME));
-			if (configObj.getDeclarations().get(CxEdge.ASPECT_NAME) != null)
-				edgeAttributeDef.putAll(configObj.getDeclarations().get(CxEdge.ASPECT_NAME));
-		} else {
-			nodeAttributeDef.put("name", new DeclarationEntry(null,null, "n"));
-			nodeAttributeDef.put("represents", new DeclarationEntry(null,null, "r"));
-			edgeAttributeDef.put("interaction", new DeclarationEntry(null,null,"i"));
-		}
+		} else
+			attrDeclarations = null;
 		
 		createReaders();
 		this.newFileName = newFileName;
@@ -174,6 +159,11 @@ public class CXToCX2Converter {
 		edgeCounter = 0;
 		Map<String, Object> descriptor = new HashMap<>();
 		
+		if ( attrDeclarations == null) {
+			AspectAttributeStat attrStats = analyzeAttributes();
+			attrDeclarations = attrStats.createCxDeclaration();
+		}
+		
 		try ( FileOutputStream out = new FileOutputStream(newFileName) ) {
 			
 			//write start
@@ -198,15 +188,9 @@ public class CXToCX2Converter {
 			out.flush();
 
 			//write attributeDeclarations
-			CxAttributeDeclaration attrDef = new CxAttributeDeclaration ();
-			if ( !nodeAttributeDef.isEmpty())
-				attrDef.getDeclarations().put(CxNode.ASPECT_NAME, nodeAttributeDef);
-			if ( !edgeAttributeDef.isEmpty())
-				attrDef.getDeclarations().put(CxEdge.ASPECT_NAME, edgeAttributeDef);
-			
-			if (!attrDef.getDeclarations().isEmpty()) {
-				out.write(("{\"" + attributeDefs + "\":[ ").getBytes());
-				mapper.writeValue (out, attrDef);
+			if (!attrDeclarations.getDeclarations().isEmpty()) {
+				out.write(("{\"" + CxAttributeDeclaration.ASPECT_NAME + "\":[ ").getBytes());
+				mapper.writeValue (out, attrDeclarations);
 				out.write("]},\n".getBytes());
 				out.flush();
 			}
@@ -235,29 +219,6 @@ public class CXToCX2Converter {
 			out.flush();
 		
 			System.out.println("Finished writing nodes.");
-			
-			//write node attributes
-	/*		out.write("{\"nodeAttributes\":[".getBytes());
-			
-			for (Map<String, Object> entry : nodes.values()) {
-
-				if (entry.containsKey("v")) {
-					Long id = (Long) entry.remove("@id");
-					entry.remove("r");
-					entry.remove("n");
-					entry.remove("x");
-					entry.remove("y");
-					entry.remove("z");
-					entry.put("po", id);
-					mapper.writeValue(out, entry);
-						// out.flush();
-					out.write(elmtDivider);
-				}
-			} 
-			
-			out.write("]},\n".getBytes());
-			out.flush();
-			*/
 			
 			nodes = null;  // kick in gc.
 			
@@ -354,6 +315,55 @@ public class CXToCX2Converter {
 		}   
 		
 	}
+	
+	private AspectAttributeStat analyzeAttributes() throws NdexException, IOException {
+		
+		AspectAttributeStat attributeStats = new AspectAttributeStat();
+		
+		try (FileInputStream in = new FileInputStream(cxFile)) {
+			try {
+				CxElementReader2 r = new CxElementReader2(in, _readers, true);
+
+				metadata = r.getPreMetaData();
+
+				for (AspectElement elmt : r) {
+					switch (elmt.getAspectName()) {
+					case NodesElement.ASPECT_NAME: // Node
+						NodesElement n = (NodesElement) elmt;
+						attributeStats.addNode(n);
+						break;
+					case EdgesElement.ASPECT_NAME: { // Edge
+						EdgesElement e = (EdgesElement) elmt;
+						attributeStats.addEdge(e);
+						break;
+					}
+					case NodeAttributesElement.ASPECT_NAME: // node attributes
+						NodeAttributesElement attr = (NodeAttributesElement) elmt;
+						if ( attr.getName().equals("name") || attr.getName().equals("represents"))
+							throw new NdexException ("Node attribute " + attr.getName() + " is not allowed in CX spec.");
+						attributeStats.addNodeAttribute(attr);
+						break;
+					case NetworkAttributesElement.ASPECT_NAME: // network attributes
+						NetworkAttributesElement netAttr = (NetworkAttributesElement)elmt;
+						attributeStats.addNetworkAttribute(netAttr);
+						break;
+					case EdgeAttributesElement.ASPECT_NAME:
+						EdgeAttributesElement e = (EdgeAttributesElement) elmt;
+						if ( e.getName().equals("interaction"))
+							throw new NdexException ( "Edge attribute interaction is not allowed.");
+						attributeStats.addEdgeAttribute(e);
+						break;
+					default:
+						break;
+					}
+				}
+				return attributeStats;
+			} catch (IOException io) {
+				throw new NdexException("Error reading CX from stream", io);
+			}
+		}
+	}
+	
 
 	private Map<Long, Map<String, Object>> readNodes() throws NdexException, IOException {
 
@@ -576,8 +586,10 @@ public class CXToCX2Converter {
 		}
 
 		Object v = convertAttributeValue(elmt);
-		String attrName = elmt.getName() ;
-		if (nodeAttributeDef.containsKey( attrName )) {
+		String attrName = elmt.getName();
+		Map<String, DeclarationEntry> nodeAttributeDef = attrDeclarations.getDeclarations().get(CxNode.ASPECT_NAME);
+		if ( nodeAttributeDef != null && 
+				nodeAttributeDef.containsKey( attrName )) {
 			DeclarationEntry decl = nodeAttributeDef.get( attrName );
 			if ( decl.getDefaultValue() !=null) {
 				Object defaultV = decl.getDefaultValue();
@@ -1080,6 +1092,7 @@ public class CXToCX2Converter {
 
 		Object v = convertAttributeValue(elmt);
 		String attrName = elmt.getName();
+		Map<String, DeclarationEntry> edgeAttributeDef = attrDeclarations.getDeclarations().get(CxEdge.ASPECT_NAME);
 		if (edgeAttributeDef.containsKey(attrName )) {
 			DeclarationEntry decl = edgeAttributeDef.get(elmt.getName());
 			if ( decl.getDefaultValue() !=null) {
@@ -1137,33 +1150,6 @@ public class CXToCX2Converter {
 		} 
 			
 		resultHolder.put(attrName, v);			
-		
- 		
-/*		Map<String, Object> newEdgeAttrs = result.get(elmt.getPropertyOf());
-
-		if (newEdgeAttrs == null) {
-			newEdgeAttrs = new HashMap<>();
-			result.put(elmt.getPropertyOf(), newEdgeAttrs);
-		}
-
-		Object v = convertAttributeValue(elmt);
-		String attrName = elmt.getName();
-		if (edgeAttributeDef.containsKey(attrName )) {
-			Map<String,Object> decl = edgeAttributeDef.get(elmt.getName());
-			if ( decl.get("v") !=null) {
-				Object defaultV = decl.get("v");
-				if ( v.equals(defaultV))
-					return;
-			}
-			if (decl.get("a") !=null) {
-				attrName = (String)decl.get("a");
-			}
-		}
-		Object oldV = newEdgeAttrs.put(attrName, v);
-		if (oldV != null)
-			throw new NdexException("Duplicate node attribute on node id: " + elmt.getPropertyOf() + ". Attribute name:"
-					+ elmt.getName() + " has value " + oldV + " and " + elmt.getValue());
-*/
 	}
 
 	private void readOpaqueAspects() throws NdexException, IOException {
@@ -1176,19 +1162,18 @@ public class CXToCX2Converter {
 				for (AspectElement elmt : r) {
 					switch (elmt.getAspectName()) {
 					case NodesElement.ASPECT_NAME: // Node
-					case NdexNetworkStatus.ASPECT_NAME: // ndexStatus we ignore this in CX
 					case EdgesElement.ASPECT_NAME: // Edge
 					case NodeAttributesElement.ASPECT_NAME: // node attributes
 					case NetworkAttributesElement.ASPECT_NAME: // network attributes
 					case EdgeAttributesElement.ASPECT_NAME:
 					case CartesianLayoutElement.ASPECT_NAME:
-					case CyVisualPropertiesElement.ASPECT_NAME:	
+					case CyVisualPropertiesElement.ASPECT_NAME:
+					case NdexNetworkStatus.ASPECT_NAME: // these are deprecated aspects
 						break;
-					case CitationElement.ASPECT_NAME:
 					default:
 						OpaqueElement e = (OpaqueElement) elmt;
 						List<OpaqueElement> aspectElementList = opaqueAspectTable.get(e.getAspectName());
-						if ( aspectElementList == null) {
+						if (aspectElementList == null) {
 							aspectElementList = new ArrayList<>();
 							opaqueAspectTable.put(e.getAspectName(), aspectElementList);
 						}
@@ -1201,7 +1186,7 @@ public class CXToCX2Converter {
 			}
 		}
 	}
-	
+
 	public static void main(String args[]) throws JsonParseException, JsonMappingException, IOException, NdexException {
 		if ( args.length <2 || args.length > 3 ) {
 			System.out.println("Usage: java -cp <jar> org.ndexbio.cx2.converter.CXToCX2Converter <CXFilePath> <CX2FilePath> [attribute_defination_file]\n" + 

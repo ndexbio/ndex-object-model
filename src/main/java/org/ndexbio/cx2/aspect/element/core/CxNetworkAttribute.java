@@ -7,14 +7,14 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class CxNetworkAttribute implements CxAspectElement {
+@JsonIgnoreProperties({ "v" })
+
+public class CxNetworkAttribute extends AttributeDeclaredAspect implements CxAspectElement {
 
 	public final static String ASPECT_NAME = "networkAttributes";
 	
-	
-	private Map<String, Object> attributes = new HashMap<>();
-
 	public CxNetworkAttribute () {}
 	
 	@JsonAnyGetter

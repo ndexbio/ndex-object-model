@@ -38,5 +38,9 @@ public class CxAttributeDeclaration implements CxAspectElement{
 		return ASPECT_NAME;
 	}
 
+	@JsonIgnore
+	public Map<String,DeclarationEntry> getAttributesInAspect(String aspectName) {
+		return declarations.get(aspectName);
+	}
 	
 }

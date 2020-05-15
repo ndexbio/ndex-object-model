@@ -1,9 +1,8 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
+import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +26,7 @@ public class DeclarationEntry {
 	
 	@JsonProperty( aliasAttrName)
     private String alias;
-	
+		
 	public DeclarationEntry () {}
 
 	public DeclarationEntry (ATTRIBUTE_DATA_TYPE datatype, Object defaultValue, String alias) {
@@ -79,13 +78,13 @@ public class DeclarationEntry {
 	}
 	
 	
-	public void processValue() {
+	public void processValue() throws NdexException {
 		if( defaultValue != null) {
-			defaultValue = processAttributeValue (dataType, defaultValue);
+			defaultValue = AttributeDeclaredAspect.processAttributeValue (dataType, defaultValue);
 		}
 	}
 	
-	public static Object processAttributeValue (ATTRIBUTE_DATA_TYPE declaredType, Object value) {
+/*	public static Object processAttributeValue (ATTRIBUTE_DATA_TYPE declaredType, Object value) {
 		if (declaredType != null) {
 			if (declaredType == ATTRIBUTE_DATA_TYPE.INTEGER) {
 				return Integer.valueOf(((Number)value).intValue());
@@ -116,6 +115,6 @@ public class DeclarationEntry {
 		} 
 		return value;
 			
-	}
+	} */
 	
 }
