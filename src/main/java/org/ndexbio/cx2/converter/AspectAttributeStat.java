@@ -106,7 +106,7 @@ public class AspectAttributeStat {
 		ATTRIBUTE_DATA_TYPE t = attr.getDataType();
 		e.addDatatype(t);
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t == ATTRIBUTE_DATA_TYPE.BOOLEAN) {
-			e.addValue(attr.getValue());
+			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
 			
 		}
 	}
@@ -152,7 +152,7 @@ public class AspectAttributeStat {
 		ATTRIBUTE_DATA_TYPE t = attr.getDataType();
 		e.addDatatype(t);
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t== ATTRIBUTE_DATA_TYPE.BOOLEAN ) {
-			e.addValue(attr.getValue());
+			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
 			
 		}
 	}

@@ -494,7 +494,7 @@ public class CXToCX2Converter {
 		}
 	}
 	
-	private static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
+	protected static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
 		switch (attr.getDataType()) {
 		case BOOLEAN: 
 		case DOUBLE:
