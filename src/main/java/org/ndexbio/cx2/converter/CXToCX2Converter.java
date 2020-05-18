@@ -947,9 +947,19 @@ public class CXToCX2Converter {
 		} else if (cytoscapeDataType.equals("double")) {
 		   return Double.valueOf(value);
 		}else if (cytoscapeDataType.equals("long")) {
+			try {
 			   return Long.valueOf(value);
+			} catch (NumberFormatException e) {
+				System.err.println("Value " + value + " is not a valid string for long. NDEx is converting it to long from double.");
+				return Long.valueOf(Double.valueOf(value).longValue());		
+			}
 		}else if (cytoscapeDataType.equals("integer")) {
-				   return Integer.valueOf(value);
+			try {
+				return Integer.valueOf(value);
+			}  catch (NumberFormatException e) {
+				System.err.println("Value " + value + " is not a valid string for integer. NDEx is converting it to long from double.");
+				return Integer.valueOf(Double.valueOf(value).intValue());		
+			}
 		}else if (cytoscapeDataType.equals("boolean")) {
 				   return Boolean.valueOf(value);
 		} else {
