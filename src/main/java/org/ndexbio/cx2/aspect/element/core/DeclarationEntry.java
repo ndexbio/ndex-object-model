@@ -79,6 +79,11 @@ public class DeclarationEntry {
 	
 	
 	public void processValue() throws NdexException {
+		if ( dataType == null) {
+			throw new NdexException("Data type attribute is not declared in DeclarationEntry. Default value " + 
+					defaultValue + " can't be processed.");
+		}
+		
 		if( defaultValue != null) {
 			defaultValue = AttributeDeclaredAspect.processAttributeValue (dataType, defaultValue);
 		}

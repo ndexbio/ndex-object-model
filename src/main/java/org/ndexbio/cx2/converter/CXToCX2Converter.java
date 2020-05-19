@@ -440,15 +440,17 @@ public class CXToCX2Converter {
 			networkAttribute.setVersion(null);
 		}	
 		MetaDataElement nodeM = metadata.getMetaDataElement(CxNode.ASPECT_NAME);
-		nodeM.setIdCounter(null);
-		nodeM.setVersion(null);
-		nodeM.setConsistencyGroup(null);
-		
+		if ( nodeM != null) {
+			nodeM.setIdCounter(null);
+			nodeM.setVersion(null);
+			nodeM.setConsistencyGroup(null);
+		}
 		MetaDataElement edgeM = metadata.getMetaDataElement(CxEdge.ASPECT_NAME);
-		edgeM.setIdCounter(null);
-		edgeM.setVersion(null);
-		edgeM.setConsistencyGroup(null);
-		
+		if ( edgeM != null) {
+			edgeM.setIdCounter(null);
+			edgeM.setVersion(null);
+			edgeM.setConsistencyGroup(null);
+		}
 		MetaDataElement vpM = metadata.getMetaDataElement("cyVisualProperties");
 		if ( vpM != null) {
 			vpM.setIdCounter(null);

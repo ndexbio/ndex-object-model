@@ -50,7 +50,7 @@ public class DeclarationEntryTest {
 
 		ObjectMapper om = new ObjectMapper();
 
-		String s1 = "{\"v\": [2,3.3]}";
+		String s1 = "{\"d\": \"list_of_double\",\"v\": [2,3.3]}";
 		
 		DeclarationEntry e = om.readerFor(DeclarationEntry.class).readValue(s1);
 
@@ -64,6 +64,18 @@ public class DeclarationEntryTest {
 		
 		
 		
+	}
+	
+	@Test (expected = NdexException.class) 
+	public void testDeserialization1() throws NdexException, IOException {
+
+		ObjectMapper om = new ObjectMapper();
+
+		String s1 = "{\"v\": [2,3.3]}";
+		
+		DeclarationEntry e = om.readerFor(DeclarationEntry.class).readValue(s1);
+
+		e.processValue();
 	}
 
 }
