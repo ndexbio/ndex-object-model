@@ -20,7 +20,7 @@ public class NetworkAttributeTest {
 		
 		String s1 = om.writeValueAsString(e);
 		
-		assertEquals("{\"edgecount\":23,\"name\":\"foo\",\"hasLayout\":false,\"authors\":[\"AK\",\"EG\"],\"avg_score\":3.224}"
+		assertEquals("{\"name\":\"foo\",\"edgecount\":23,\"hasLayout\":false,\"authors\":[\"AK\",\"EG\"],\"avg_score\":3.224}"
 				, s1);
 		System.out.println(s1);
 	}
