@@ -39,7 +39,7 @@ public class CxNodeTest {
         
         System.out.println(s);
         
-        String s1 = "{\"id\":12,\"x\":11.0,\"y\":22,\"z\":0, \"v\":{\"n\":[23,32]}}";
+        String s1 = "{\"id\":12,\"x\":11.0,\"y\":22,\"z\":0, \"v\":{\"n\":[23,32], \"ab\": 33, \"about\": \"something\"}}";
         CxNode n2 = om.readerFor(CxNode.class).readValue(s1);
         
         List<Integer> nv = new ArrayList<> ();
@@ -53,8 +53,10 @@ public class CxNodeTest {
         
         String s3 = om.writeValueAsString(n2);
         
-        assertEquals (  "{\"v\":{\"n\":[23,32]},\"id\":12,\"x\":11.0,\"y\":22.0,\"z\":0.0}",
+        assertEquals ( // "{\"v\":{\"n\":[23,32]},\"id\":12,\"x\":11.0,\"y\":22.0,\"z\":0.0}",
+        		"{\"id\":12,\"x\":11.0,\"y\":22.0,\"z\":0.0,\"v\":{\"n\":[23,32],\"ab\":33,\"about\":\"something\"}}",
         		s3);
+        
         
         
         // test attribute validating function.
@@ -63,15 +65,26 @@ public class CxNodeTest {
 		
 		Map<String, DeclarationEntry> m = new HashMap<>();
 		m.put("n", de);
-			
+		
+		de = new DeclarationEntry();
+		de.setDataType(ATTRIBUTE_DATA_TYPE.INTEGER);
+		m.put("ab", de);
+		
+		de = new DeclarationEntry();
+		de.setDataType(ATTRIBUTE_DATA_TYPE.STRING);
+		m.put("about", de);
+		
         n2.validateAttribute(m);
         
         @SuppressWarnings("unchecked")
 		List<Double> l = (List<Double>) n2.getAttributes().get("n");
         assertEquals ( Boolean.TRUE, (l.get(0) instanceof Double));
         
+        s1 = "{\"id\":12,\"x\":11.0,\"y\":22}";
+        n2 = om.readValue(s1, CxNode.class);
+        s3 = om.writeValueAsString(n2);
+        assertEquals("{\"id\":12,\"x\":11.0,\"y\":22.0}", s3);
         
-
 	}
 
 }

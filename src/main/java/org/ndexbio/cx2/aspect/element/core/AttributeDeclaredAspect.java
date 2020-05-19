@@ -1,6 +1,6 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,20 +12,20 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@JsonInclude(Include.NON_NULL)
 
 public abstract class AttributeDeclaredAspect {
 
 	@JsonProperty("v")
-	protected Map<String, Object> attributes;
+    @JsonInclude(Include.NON_EMPTY)	
+	protected LinkedHashMap<String, Object> attributes;
 	
-	public AttributeDeclaredAspect () {attributes = new HashMap<>(); }
+	public AttributeDeclaredAspect () {attributes = new LinkedHashMap<>(); }
 	
-	public Map<String, Object> getAttributes() {
+	public LinkedHashMap<String, Object> getAttributes() {
 		return this.attributes;
 	}
 	
-	public void setAttributes(Map<String, Object> attributes) {
+	public void setAttributes(LinkedHashMap<String, Object> attributes) {
 		this.attributes = attributes;
 	}
 	

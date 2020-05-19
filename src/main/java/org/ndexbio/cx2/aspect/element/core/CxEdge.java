@@ -6,10 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 @JsonInclude(Include.NON_NULL)
-
+@JsonPropertyOrder({ "id", "s","t" })
 public class CxEdge extends AttributeDeclaredAspect implements CxAspectElement{
 	
 	public static final String ASPECT_NAME= "edges";
@@ -22,10 +23,7 @@ public class CxEdge extends AttributeDeclaredAspect implements CxAspectElement{
 	
 	@JsonProperty("t")
 	private long target;
-	
-/*	@JsonProperty("v")
-	private Map<String, Object> attributes; */
-	
+		
 	public CxEdge() {}
 
 	public long getId() {
@@ -52,14 +50,6 @@ public class CxEdge extends AttributeDeclaredAspect implements CxAspectElement{
 		this.target = target;
 	}
 	
-/*	public Map<String, Object> getAttributes() {
-		return this.attributes;
-	}
-	
-	public void setAttributes(Map<String, Object> attributes) {
-		this.attributes = attributes;
-	}
-*/
 
 	@Override
 	@JsonIgnore
