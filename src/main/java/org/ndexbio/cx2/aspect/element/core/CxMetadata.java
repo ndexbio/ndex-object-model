@@ -14,7 +14,7 @@ public class CxMetadata {
 	private String name;
 	
 	@JsonProperty("elementCount")
-	private int elementCount;
+	private Long elementCount;
 	
 	public CxMetadata() {}
 
@@ -26,11 +26,11 @@ public class CxMetadata {
 		this.name = name;
 	}
 
-	public int getElementCount() {
+	public Long getElementCount() {
 		return elementCount;
 	}
 
-	public void setElementCount(int elementCount) {
+	public void setElementCount(Long elementCount) {
 		this.elementCount = elementCount;
 	}
 

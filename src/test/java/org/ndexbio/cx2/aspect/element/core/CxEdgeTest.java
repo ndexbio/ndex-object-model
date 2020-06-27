@@ -20,9 +20,9 @@ public class CxEdgeTest {
 		CxEdge e = om.readerFor(CxEdge.class)
 				.readValue("{\"id\":23, \"s\": 2, \"t\": 33, \"v\":{\"i\":\"interact with\", \"pmids\": [13333,25555]}}");
 		
-		assertEquals(23, e.getId());
-		assertEquals(2, e.getSource());
-		assertEquals(33, e.getTarget());
+		assertEquals(Long.valueOf(23), e.getId());
+		assertEquals(Long.valueOf(2), e.getSource());
+		assertEquals(Long.valueOf(33), e.getTarget());
 		List<Object> val =  (List<Object>) e.getAttributes().get("pmids");
 		
 		assertEquals(Integer.valueOf(13333), val.get(0));

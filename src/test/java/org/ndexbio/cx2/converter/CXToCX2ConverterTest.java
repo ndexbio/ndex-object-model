@@ -18,22 +18,22 @@ public class CXToCX2ConverterTest {
 	public void test0() throws JsonParseException, JsonMappingException, IOException, NdexException {
 		
 		Path resourceDirectory = Paths.get("src","test","resources");
-		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+		String absolutePath = "/Users/jingchen/eclipse-workspace/CXBenchMark/src/test/resources" ;//resourceDirectory.toFile().getAbsolutePath();
 		
 		CXToCX2Converter cvt = new CXToCX2Converter (
-				absolutePath + "/60medge_sample.cx",absolutePath + "/60medges_2_conf.json", "test1.cx");
+				absolutePath + "/60medge_sample.cx",null, "test1.cx");
 		cvt.convert();
 	}  
-	
 	
 	@Test
 	public void test2() throws JsonParseException, JsonMappingException, IOException, NdexException {
 		
 		Path resourceDirectory = Paths.get("src","test","resources");
-		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+		String absolutePath = "/Users/jingchen/eclipse-workspace/CXBenchMark/src/test/resources"; //resourceDirectory.toFile().getAbsolutePath();
 		
 		CXToCX2Converter cvt = new CXToCX2Converter (
-				absolutePath + "/Anton_private.cx",absolutePath + "/Anton_private_conf.json", "Anton_private_cx2.cx");
+				absolutePath + "/Anton_private.cx",null,
+				"Anton_private_cx2.cx");
 		cvt.convert();
 	}
 
@@ -42,26 +42,26 @@ public class CXToCX2ConverterTest {
 	public void test() throws JsonParseException, JsonMappingException, IOException, NdexException {
 		
 		Path resourceDirectory = Paths.get("src","test","resources");
-		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+		String absolutePath = "/Users/jingchen/eclipse-workspace/CXBenchMark/src/test/resources";//resourceDirectory.toFile().getAbsolutePath();
 		
 		CXToCX2Converter cvt = new CXToCX2Converter (
 				 "/Users/jingchen/temp/Anton_private_sample.cx",
-				   absolutePath + "/Anton_private_conf.json", "Anton_private_sample_cx2.cx");
+				   null, "Anton_private_sample_cx2.cx");
 		cvt.convert();
 		
 		CXToCX2Converter cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/sample_with_continues_mappings.cx",
-				   absolutePath + "/60medges_2_conf.json", "sample_with_continues_mappings_cx2.cx");
+				   null, "sample_with_continues_mappings_cx2.cx");
 		cvt2.convert();
 		
 		cvt2 = new CXToCX2Converter (
 				   absolutePath + "/Node_edge_bypasses.cx",
-				   absolutePath + "/general_conf.json", "Node_edge_bypasses_cx2.cx");
+				   null, "Node_edge_bypasses_cx2.cx");
 		cvt2.convert();
 	}  
 	
-	*/
 	
+	*/
 	
 	@Test
 	public void test3() throws JsonMappingException, IOException, NdexException {
@@ -70,11 +70,21 @@ public class CXToCX2ConverterTest {
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
 		CXToCX2Converter cvt2;
+
+		cvt2 = new CXToCX2Converter (
+				 "/Users/jingchen/temp/invalid_long_sample.cx",
+				null, "long_as_float_test.cx2");
+		cvt2.convert();
 		
 		cvt2 = new CXToCX2Converter (
+				 "/Users/jingchen/temp/node_mapping_on_long_integer.cx",
+				null, "node_mapping_on_long_integer.cx2");
+		cvt2.convert();
+		
+	/*	cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/NeST_raw1_wstyle.cx",
 				null, "kei_test.cx2");
-		cvt2.convert(); 
+		cvt2.convert(); */
 
 		/* cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/STRING - Human Protein Links - High Confidence (Score _= 0.7) grid layout.cx",

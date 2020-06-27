@@ -89,7 +89,21 @@ public class DeclarationEntry {
 		}
 	}
 	
-/*	public static Object processAttributeValue (ATTRIBUTE_DATA_TYPE declaredType, Object value) {
+	/*
+	@Override
+	public boolean equals (Object declaration ) {
+		if ( declaration instanceof DeclarationEntry) {
+			DeclarationEntry e = (DeclarationEntry) declaration;
+			ATTRIBUTE_DATA_TYPE dt = e.getDataType();
+			if ( dataType == null ) {
+				
+			}
+ 			
+		}
+		throw new RuntimeException("Can't compare DeclarationEntry with " + declaration.getClass().getName());
+		
+	} */
+ /*	public static Object processAttributeValue (ATTRIBUTE_DATA_TYPE declaredType, Object value) {
 		if (declaredType != null) {
 			if (declaredType == ATTRIBUTE_DATA_TYPE.INTEGER) {
 				return Integer.valueOf(((Number)value).intValue());

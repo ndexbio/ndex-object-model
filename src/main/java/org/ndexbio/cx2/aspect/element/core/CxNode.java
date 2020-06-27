@@ -1,7 +1,8 @@
 package org.ndexbio.cx2.aspect.element.core;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
+
+import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,11 +18,8 @@ public class CxNode extends AttributeDeclaredAspect implements CxAspectElement {
 	public final static String ASPECT_NAME = "nodes";
 	
 	@JsonProperty("id")
-	private long id;
-	
-/*	@JsonProperty("v")
-	private Map<String, Object> attributes;
-*/	
+	private Long id;
+		
 	@JsonProperty("x")
 	private Double x;
 	
@@ -40,23 +38,14 @@ public class CxNode extends AttributeDeclaredAspect implements CxAspectElement {
 		this.setAttributes(attributes);
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-/*	
-	public Map<String, Object> getAttributes() {
-		return attributes;
-	}
-
-	public void setAttributes(Map<String, Object> attributes) {
-		this.attributes = attributes;
-	}
-*/
 	public Double getX() {
 		return x;
 	}
@@ -88,5 +77,15 @@ public class CxNode extends AttributeDeclaredAspect implements CxAspectElement {
 		return ASPECT_NAME;
 	}
 
+	
+	public void validate() throws NdexException {
+		if (id == null)
+			throw new NdexException("Node id is missing.");
+		if ( (x != null && y == null) || 
+				x== null && y != null || 
+				(z!=null && ( x ==null || y == null)))
+			throw new NdexException ("One or more Coordinate values are missing in node " + id + ".");
+			
+	}
 
 }

@@ -6,13 +6,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.TreeMap;
 
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxAspectElement;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
+import org.ndexbio.cx2.aspect.element.core.CxEdgeBypass;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
+import org.ndexbio.cx2.aspect.element.core.CxNodeBypass;
 import org.ndexbio.cx2.aspect.element.core.CxMetadata;
+import org.ndexbio.cx2.aspect.element.core.CxNetworkAttribute;
 import org.ndexbio.cx2.aspect.element.core.CxOpaqueAspectElement;
+import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
 import org.ndexbio.cxio.misc.Status;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -38,7 +43,7 @@ public class CXReader implements Iterable<CxAspectElement> {
     private CxAspectElement        _current;
     private int metadataAspectCount ;
 
-	private CxAttributeDeclaration attrDeclarations;
+	//private CxAttributeDeclaration attrDeclarations;
     Status              _status;
 
     private JsonParser   jp;
@@ -46,6 +51,8 @@ public class CXReader implements Iterable<CxAspectElement> {
     private int state;
     private String currentAspect; 
     private Class<? extends CxAspectElement> currentAspectClass;
+    private Map<String, Long> elementCounterTable;
+    
     
     private  Map<String, Class<? extends CxAspectElement>> aspectTable;
 
@@ -56,7 +63,7 @@ public class CXReader implements Iterable<CxAspectElement> {
         om =new ObjectMapper();
         
         metadataTable = new HashMap<>();
-        attrDeclarations = null;
+       // attrDeclarations = null;
         
         state = START;
         _current = null;
@@ -65,10 +72,15 @@ public class CXReader implements Iterable<CxAspectElement> {
         
         aspectTable = new HashMap<>();
         
-    	aspectTable.put("nodes", CxNode.class);
-	    aspectTable.put("edges", CxEdge.class);
-	    aspectTable.put("attributeDeclarations", CxAttributeDeclaration.class);
+    	aspectTable.put( CxNode.ASPECT_NAME, CxNode.class);
+	    aspectTable.put(CxEdge.ASPECT_NAME, CxEdge.class);
+	    aspectTable.put(CxAttributeDeclaration.ASPECT_NAME, CxAttributeDeclaration.class);
+	    aspectTable.put(CxNetworkAttribute.ASPECT_NAME,CxNetworkAttribute.class);
+	    aspectTable.put(CxVisualProperty.ASPECT_NAME,CxVisualProperty.class);
+	    aspectTable.put(CxEdgeBypass.ASPECT_NAME, CxEdgeBypass.class);
+	    aspectTable.put(CxNodeBypass.ASPECT_NAME, CxEdgeBypass.class);
 	    
+	    elementCounterTable = new TreeMap<>();
 	}
 	
 	
@@ -79,7 +91,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 			
 		}		
 		TypeReference<HashMap<String,Object>> typeRef 
-        = new TypeReference<HashMap<String,Object>>() {};
+        = new TypeReference<HashMap<String,Object>>() {/**/};
         
         
 		Map<String, Object> r = om.readValue(jp, typeRef);
@@ -104,7 +116,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 			
 		}		
 		TypeReference<HashMap<String,Object>> typeRef 
-        = new TypeReference<HashMap<String,Object>>() {};
+        = new TypeReference<HashMap<String,Object>>() {/**/};
         
         
 		Map<String, Object> r = om.readValue(jp, typeRef);
@@ -192,6 +204,7 @@ public class CXReader implements Iterable<CxAspectElement> {
     	if ( _current != null) {
     		CxAspectElement result = _current;
     		_current = null;
+    		countElement(result);
     		return result;
     	}
     	
@@ -227,40 +240,13 @@ public class CXReader implements Iterable<CxAspectElement> {
 				} else if (metadataAspectCount ==2 ) {
 					throw new IOException("Only " + Status.NAME
 							+ " aspect is allowed after post metadata section. Error at " + getPosition());
-				} else { // process a normal aspect fragment
-//					if (_post_meta_data != null)
-//						throw new IOException("New aspect fragement found after post metadata at " + getPosition());
+				} else { 
 					currentAspectClass = aspectTable.get(currentAspect);
-					/*if (currentAspectClass == null) {
-						_reader = OpaqueFragmentReader.createInstance( aspectName);
-					} */
+					
 					state = ELEMENT_LIST_START;
 				}
-				/*
-				 * } else if ( state == ASPECT_FRAGMENT_END) { if ( token !=
-				 * JsonToken.END_ARRAY) throw new IOException ("End of array expected at: " +
-				 * getPosition()); state = START;
-				 */
-			} /*else if ( state == BEFORE_PRE_METADATA) {
-				if (token != JsonToken.FIELD_NAME)
-					throw new IOException("Expecting aspect name as a field name at " + getPosition());
-
-				String aspectName = jp.getCurrentName();
-				if (aspectName.equals(MetaDataCollection.NAME)) { // MetaDataCollection
-					
-
-				} else if (aspectName.equals(Status.NAME)) {
-					while (jp.nextToken()!=null && jp.nextToken() != JsonToken.END_ARRAY) {
-						token = jp.currentToken();
-						if(token == JsonToken.END_OBJECT)
-							break;
-						Metadata e = om.readValue(jp, Metadata.class);
-						metadataTable.put(e.getName(), e);
-					}
-				} else 
-					throw new IOException ("MetaData is expected at the beginning of a CX document.");
-						    	
-		    }*/ else if (state == AFTER_HEADER)  { 
+				
+			} else if (state == AFTER_HEADER)  { 
 		    	if (token != JsonToken.START_OBJECT) {
 					throw parsingError("Expecting '{'");
 				}
@@ -313,6 +299,34 @@ public class CXReader implements Iterable<CxAspectElement> {
 	private String getPosition() {
 	    	return " at line: " + jp.getCurrentLocation().getLineNr() + ", column: "
 					+ jp.getCurrentLocation().getColumnNr();
+	}
+	
+	private void countElement(CxAspectElement result) {
+		Long cnt = this.elementCounterTable.get(result.getAspectName());
+		if ( cnt == null)
+			this.elementCounterTable.put(result.getAspectName(), Long.valueOf(1L));
+		else
+			this.elementCounterTable.put(result.getAspectName(), Long.valueOf(cnt.longValue() + 1));
+	}
+	
+	/**
+	 * 
+	 * @return Key is an aspect name and value is the number of element that has been read so far.  
+	 */
+	public Map<String, Long> getElementCounterTable() {return this.elementCounterTable;}
+	
+	public Map<String, CxMetadata> getMetadata() { return this.metadataTable;}
+	
+	/**
+	 * 
+	 * @param aspectName
+	 * @return
+	 */
+	public long getAspectElementCount(String aspectName) {
+		Long cnt = this.elementCounterTable.get(aspectName);
+		if (cnt == null)
+			return 0;
+		return cnt.longValue();
 	}
 	
 }

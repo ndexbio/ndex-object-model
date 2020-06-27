@@ -23,6 +23,13 @@ public class NetworkAttributeTest {
 		assertEquals("{\"name\":\"foo\",\"edgecount\":23,\"hasLayout\":false,\"authors\":[\"AK\",\"EG\"],\"avg_score\":3.224}"
 				, s1);
 		System.out.println(s1);
+		
+		e.add("description", "some test");
+		e.getAttributes().put("version", "3.0");
+		
+		assertEquals ( "foo", e.getNetworkName());
+		assertEquals ( "some test", e.getNetworkDescription());
+		assertEquals ("3.0", e.getNetworkVersion());
 	}
 
 }

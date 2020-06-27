@@ -1,7 +1,5 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -16,37 +14,37 @@ public class CxEdge extends AttributeDeclaredAspect implements CxAspectElement{
 	public static final String ASPECT_NAME= "edges";
 	
 	@JsonProperty("id")
-	private long id;
+	private Long id;
 	
 	@JsonProperty("s")
-	private long source;
+	private Long source;
 	
 	@JsonProperty("t")
-	private long target;
+	private Long target;
 		
 	public CxEdge() {}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public long getSource() {
+	public Long getSource() {
 		return source;
 	}
 
-	public void setSource(long source) {
+	public void setSource(Long source) {
 		this.source = source;
 	}
 
-	public long getTarget() {
+	public Long getTarget() {
 		return target;
 	}
 
-	public void setTarget(long target) {
+	public void setTarget(Long target) {
 		this.target = target;
 	}
 	
