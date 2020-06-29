@@ -37,6 +37,7 @@ import java.util.LinkedList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Deprecated
 public abstract class CitationLinksElement extends NdexAspectElement {
 	
 	/**

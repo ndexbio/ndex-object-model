@@ -77,7 +77,12 @@ public class CxNode extends AttributeDeclaredAspect implements CxAspectElement {
 		return ASPECT_NAME;
 	}
 
-	
+
+	/**
+	 * Basic validaation of a node. Only check if it has an ID and the data integrity of coordinates.
+	 * Attributes are not validated. 
+	 * @throws NdexException
+	 */
 	public void validate() throws NdexException {
 		if (id == null)
 			throw new NdexException("Node id is missing.");

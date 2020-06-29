@@ -33,6 +33,7 @@ package org.ndexbio.model.cx;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class BELNamespaceElement extends NdexAspectElement {

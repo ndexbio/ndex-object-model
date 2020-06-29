@@ -30,6 +30,7 @@
  */
 package org.ndexbio.model.object;
 
+@Deprecated
 public interface NdexProvenanceEventType {
 
 	public static final String FILE_UPLOAD = "File Upload"; 

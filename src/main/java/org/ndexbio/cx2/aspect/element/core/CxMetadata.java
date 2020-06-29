@@ -1,5 +1,7 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import org.ndexbio.cxio.metadata.MetaDataElement;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -18,6 +20,12 @@ public class CxMetadata {
 	
 	public CxMetadata() {}
 
+	public CxMetadata (MetaDataElement mde) {
+		elementCount = mde.getElementCount();
+		name = mde.getName();
+		
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -32,6 +40,12 @@ public class CxMetadata {
 
 	public void setElementCount(Long elementCount) {
 		this.elementCount = elementCount;
+	}
+	
+	public MetaDataElement toMetaDataElement () {
+		MetaDataElement mde = new MetaDataElement(name, "1.0");
+		mde.setElementCount(elementCount);
+		return mde;
 	}
 
 /*	public String getAspectName() {
