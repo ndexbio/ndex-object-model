@@ -1,10 +1,5 @@
 package org.ndexbio.cxio.metadata;
 
-import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.ndexbio.cxio.core.interfaces.AspectElement;
 import org.ndexbio.cxio.util.CxioUtil;
 import org.ndexbio.cxio.util.ForceLongDeserializer;
@@ -27,13 +22,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class MetaDataElement {
 
-  /*  public final static String              CONSISTENCY_GROUP = "consistencyGroup";
-    public final static String              ELEMENT_COUNT     = "elementCount";
-    public final static String              ID_COUNTER        = "idCounter";
-    public final static String              LAST_UPDATE       = "lastUpdate";
-    public final static String              NAME              = "name";
-    public final static String              PROPERTIES        = "properties";
-    public final static String              VERSION           = "version"; */
 
     //final private SortedMap<String, Object> _data;
 
@@ -48,8 +36,8 @@ public class MetaDataElement {
 	@JsonDeserialize(using=ForceLongDeserializer.class)
 	private Long idCounter;
 	
-	@JsonProperty("checksum")	
-	private String checksum;
+	//@JsonProperty("checksum")	
+	//private String checksum;
 	
 	@JsonProperty("version")	
 	private String version;
@@ -58,8 +46,8 @@ public class MetaDataElement {
 	@JsonDeserialize(using=ForceLongDeserializer.class)
 	private Long consistencyGroup;
 	
-	@JsonProperty("properties")	
-	private List<Map.Entry<String, String>> properties;
+	//@JsonProperty("properties")	
+	//private List<Map.Entry<String, String>> properties;
    
 	private static final String errMsg = "Name attribute of MetaDataElement can't be null.";
 	
@@ -68,7 +56,7 @@ public class MetaDataElement {
      *
      */
     public MetaDataElement() {
-    		properties = new ArrayList<>();
+    //		properties = new ArrayList<>();
     }
 
     public MetaDataElement(String name, String version) {   	
@@ -89,11 +77,11 @@ public class MetaDataElement {
      *
      * @param property a key value pair
      */
-    public final void addProperty(final String key, final String value) {
+   /* public final void addProperty(final String key, final String value) {
     	
     	 	properties.add(new SimpleEntry<>(key,value));
  
-    }
+    } */
 
     /**
      * Convenience method to get the consistency group.
@@ -137,9 +125,9 @@ public class MetaDataElement {
      *
      * @return  all "properties"
      */
-    public final List<Map.Entry<String, String>> getProperties() {
+   /* public final List<Map.Entry<String, String>> getProperties() {
     		return properties;
-    }
+    } */
 
     /**
      * Convenience method to get the (corresponding aspect) version.
@@ -225,19 +213,19 @@ public class MetaDataElement {
      * The checksum attribute in metadata is optional. It might be removed in future versions of CX specification.
      * @return
      */
-    @Deprecated
-	public String getChecksum() {
+    //@Deprecated
+/*	public String getChecksum() {
 		return checksum;
-	}
+	} */
 
     /**
      * checksum attribute in metadata is optional. It might be removed in future versions of CX specification.
      * 
      * @param checksum
      */
-    @Deprecated
-	public void setChecksum(String checksum) {
+    //@Deprecated
+	/*public void setChecksum(String checksum) {
 		this.checksum = checksum;
-	}
+	}*/
 
 }

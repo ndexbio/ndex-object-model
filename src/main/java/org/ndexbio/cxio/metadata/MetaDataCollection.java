@@ -70,8 +70,7 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
      */
     public final static MetaDataCollection createInstanceFromJson(final String str) throws IOException {
         final ObjectMapper m = new ObjectMapper();
-        m.configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false);
-
+        m.configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false);        
         return m.readValue(str, MetaDataCollection.class);
     } 
 
@@ -290,10 +289,10 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
      * @param key
      * @param value
      */
-    public final void setProperty(final String name, final String key, final String value) {
+  /*  public final void setProperty(final String name, final String key, final String value) {
         final MetaDataElement e = checkIfElementPresent(name);
         e.addProperty(key, value);
-    }
+    } */
 
     /**
      * Convenience method to set the (corresponding aspect) version for the meta data element with
