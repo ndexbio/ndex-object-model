@@ -3,6 +3,9 @@ package org.ndexbio.cx2.io;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +14,9 @@ import org.ndexbio.cx2.aspect.element.core.CxAspectElement;
 import org.ndexbio.cx2.aspect.element.core.CxMetadata;
 import org.ndexbio.model.exceptions.NdexException;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -35,7 +40,7 @@ public class CXWriter {
 	
 	private boolean hasFragments;
 	
-	ObjectMapper om;
+	private ObjectMapper om;
 	
 	private int metadataCount ;
 	
@@ -48,7 +53,9 @@ public class CXWriter {
 		state = INIT;
 		this.hasFragments = hasFragments;
 		metadataCount = 0;
-		om = new ObjectMapper();
+		JsonFactory factory = new JsonFactory();
+		factory.disable(JsonGenerator.Feature.AUTO_CLOSE_TARGET);
+		om = new ObjectMapper(factory);
 	}
 	
 	
@@ -102,6 +109,11 @@ public class CXWriter {
 		}
 	}
 	
+	/**
+	 * Wrap up the CX data. Note: the output stream is NOT closed by this function. 
+	 * @throws IOException
+	 * @throws NdexException
+	 */
 	public void finish() throws IOException, NdexException {
 		if ( state == FINISHED) 
 			throw new NdexException("CX stream is already finished.");
@@ -128,6 +140,13 @@ public class CXWriter {
 		
 	}
 	
+	/**
+	 * Write the aspect name, the array is not started yet.
+	 * 
+	 * @param aspectName
+	 * @throws IOException
+	 * @throws NdexException
+	 */
 	public void startAspectFragment ( String aspectName) 
 			throws IOException, NdexException {
 		currentAspectName = aspectName;
@@ -153,6 +172,35 @@ public class CXWriter {
 		writeStr("]}");
 		out.write(elmtDivider);
 		out.flush();
+		
+		state = BEFORE_ASPECT;
+	}
+	
+	/**
+	 * Write the aspect from a file. The File object should point to a file that is a json array of aspect elements.
+	 * @param aspectName
+	 * @param aspectElementArrayFile
+	 * @throws IOException 
+	 * @throws NdexException 
+	 */
+	public void writeAspectFromAspectFile (String aspectName, String aspectElementArrayFilePath) throws NdexException, IOException {
+		
+		if ( state == INIT)
+			init();
+		
+		if ( state != BEFORE_ASPECT ) 
+			throw new NdexException ("Starting new aspect fragment for " + aspectName + " is not allowed here.");
+				
+		if ( aspectName.indexOf('"')!= -1)
+			throw new NdexException ("Having '\"' in aspect name is not allowed.");
+		writeStr("{\"" + aspectName + "\":[");
+
+		Path p = Paths.get(aspectElementArrayFilePath);
+		Files.copy(p, out);		
+		
+		writeStr("]}");
+		out.write(elmtDivider);
+		out.flush();
 	}
 	
 	public void writeElementInFragment(CxAspectElement element) throws NdexException, JsonGenerationException, JsonMappingException, IOException {
@@ -162,6 +210,7 @@ public class CXWriter {
 	
 		if ( currentElmtCounter != 0)
 			out.write(elmtDivider);
+		
 		om.writeValue(out, element);
 		
 		currentElmtCounter++;

@@ -1,5 +1,9 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.ndexbio.cxio.metadata.MetaDataCollection;
 import org.ndexbio.cxio.metadata.MetaDataElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -47,9 +51,14 @@ public class CxMetadata {
 		mde.setElementCount(elementCount);
 		return mde;
 	}
-
-/*	public String getAspectName() {
-		return "metaData";
+	
+	public static List<CxMetadata> createCxMetadataListFromMetedataCollection(MetaDataCollection c) {
+		List<MetaDataElement > md = c.getMetaData();
+		List<CxMetadata> result = new ArrayList<>(md.size());
+		for (MetaDataElement e : md) {
+			result.add(new CxMetadata(e));
+		}
+		return result;
 	}
-*/
+ 
 }

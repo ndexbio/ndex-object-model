@@ -29,6 +29,9 @@
 				"nodes": {
 					"name": {
 						"a": "n"
+					},
+					"longV": {
+						"d": "long"
 					}
 				},
 				"edges": {
@@ -41,6 +44,9 @@
 					},
 					"percentile_rank_score": {
 						"a": "p"
+					}, 
+					"dV": {
+						"d": "double"
 					}
 				}
 			}
@@ -61,19 +67,22 @@
 		"nodes": [
 			{
 				"v": {
-					"n": "WDR4"
+					"n": "WDR4",
+					"longV": 302
 				},
 				"id": 94913
 			},
 			{
 				"v": {
-					"n": "WDR48"
+					"n": "WDR48",
+					"longV": 30233000000033
 				},
 				"id": 94915
 			},
 			{
 				"v": {
-					"n": "WRAP53"
+					"n": "WRAP53",
+					"longV": 9999999999
 				},
 				"id": 94917
 			}
@@ -86,6 +95,7 @@
 				"t": 94913,
 				"v": {
 					"name": "WDR48 (interacts with) XRCC4",
+					"dV": 30.12345678901,
 					"p": 0.884
 				},
 				"id": 187906
@@ -95,6 +105,7 @@
 				"t": 94917,
 				"v": {
 					"name": "WDR48 (interacts with) XRCC5",
+					"dV": 31.0987654321012345,
 					"p": 0.715
 				},
 				"id": 187907
@@ -104,46 +115,47 @@
 	{
 		"visualProperties": [
 			{
-				"default": {
-					"node": {
-						"NODE_BORDER_WIDTH": 0.0,
-						"NODE_BORDER_PAINT": "#CCCCCC",
-						"NODE_LABEL_COLOR": "#000000",
-						"NODE_HEIGHT": 35.0,
-						"NODE_BACKGROUND_COLOR": "#89D0F5",
-						"NODE_SHAPE": "round-rectangle",
-						"NODE_WIDTH": 75.0
-					},
-					"edge": {
-						"EDGE_WIDTH": 2.0,
-						"EDGE_LINE_COLOR": "#323232"
-					},
-					"network": {
-						"NETWORK_BACKGROUND_COLOR": "#FFFFFF"
-					}
-				},
-				"edgeMapping": {
-					"EDGE_LABEL": {
-						"type": "PASSTHROUGH",
-						"definition": {
-							"attribute": "percentile_rank_score"
+					"default": {
+						"node": {
+							"NODE_BORDER_WIDTH": 0.0,
+							"NODE_BORDER_PAINT": "#CCCCCC",
+							"NODE_LABEL_COLOR": "#000000",
+							"NODE_HEIGHT": 35.0,
+							"NODE_BACKGROUND_COLOR": "#89D0F5",
+							"NODE_SHAPE": "round-rectangle",
+							"NODE_WIDTH": 75.0
+						},
+						"edge": {
+							"EDGE_WIDTH": 2.0,
+							"EDGE_LINE_COLOR": "#323232"
+						},
+						"network": {
+							"NETWORK_BACKGROUND_COLOR": "#FFFFFF"
 						}
 					},
-					"EDGE_WIDTH": {
-						"type": "PASSTHROUGH",
-						"definition": {
-							"attribute": "percentile_rank_score"
+					"edgeMapping": {
+						"EDGE_LABEL": {
+							"type": "PASSTHROUGH",
+							"definition": {
+								"attribute": "percentile_rank_score"
+							}
+						},
+						"EDGE_WIDTH": {
+							"type": "PASSTHROUGH",
+							"definition": {
+								"attribute": "percentile_rank_score"
+							}
+						}
+					},
+					"nodeMapping": {
+						"NODE_LABEL": {
+							"type": "PASSTHROUGH",
+							"definition": {
+								"attribute": "name"
+							}
 						}
 					}
-				},
-				"nodeMapping": {
-					"NODE_LABEL": {
-						"type": "PASSTHROUGH",
-						"definition": {
-							"attribute": "name"
-						}
-					}
-				}
+				
 			}
 		]
 	},

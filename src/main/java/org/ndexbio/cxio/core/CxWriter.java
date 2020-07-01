@@ -25,6 +25,7 @@ import org.ndexbio.cxio.util.JsonWriter;
  * @author cmzmasek
  *
  */
+@Deprecated
 public final class CxWriter {
 
     private final JsonWriter                        _jw;

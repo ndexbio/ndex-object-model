@@ -25,6 +25,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CXReader implements Iterable<CxAspectElement> {
@@ -61,6 +62,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 		final JsonFactory f = new JsonFactory();
         jp = f.createParser(input);
         om =new ObjectMapper();
+        om.configure(DeserializationFeature.USE_LONG_FOR_INTS, true);
         
         metadataTable = new HashMap<>();
        // attrDeclarations = null;
