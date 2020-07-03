@@ -49,8 +49,9 @@ public abstract class AttributeDeclaredAspect {
 		
 		for ( Map.Entry<String, Object> entry : attributes.entrySet()) {
 			DeclarationEntry decl = attributeDeclarations.get(entry.getKey());
-			//if ( decl == null)
-			//	throw new NdexException ("Type of Attribute " + entry.getKey() + " is not declared.");
+			if ( decl == null)
+				throw new NdexException ("Attribute " + entry.getKey() + " is not declared in " + 
+						CxAttributeDeclaration.ASPECT_NAME + " aspect.");
 			ATTRIBUTE_DATA_TYPE t = decl.getDataType() == null? ATTRIBUTE_DATA_TYPE.STRING : 
 				                     decl.getDataType();
 			
