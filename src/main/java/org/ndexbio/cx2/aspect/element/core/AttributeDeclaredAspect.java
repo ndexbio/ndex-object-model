@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 
-public abstract class AttributeDeclaredAspect {
+public abstract class AttributeDeclaredAspect implements CxAspectElement{
 
 	@JsonProperty("v")
     @JsonInclude(Include.NON_EMPTY)	
@@ -30,23 +30,74 @@ public abstract class AttributeDeclaredAspect {
 	}
 	
 	
+	/**
+	 * 
+	 * @param attributeDeclarations attribute declarations for this aspect.
+	 * @throws NdexException
+	 */
 	public void transformAttrites(Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
 		
 		// convert alias back to the real attribute name first
+		replaceShortenedName(attributeDeclarations);
+		
+		validateAttribute(attributeDeclarations,true);
+	}
+	
+	
+	
+	/**
+	 * Convert shortened name to full name, and put back the default value
+	 * @param attributeDeclarations
+	 */
+	public void extendToFullNode(Map<String,DeclarationEntry> attributeDeclarations) {
+		if ( attributeDeclarations !=null) {
 		for ( Map.Entry<String, DeclarationEntry> e : attributeDeclarations.entrySet()) {
-			String a = e.getValue().getAlias();
+			DeclarationEntry entry = e.getValue(); 
+
+			// convert alias back to the real attribute name first
+			String a = entry.getAlias();
 			if ( a != null) {
 				Object v = attributes.remove(a);
 				if ( v!= null)
 					attributes.put(e.getKey(), v);
 			}
+			
+			//Add back the defaultValue
+			Object defaultV = entry.getDefaultValue();
+			if ( defaultV!=null && attributes.get(e.getKey()) == null ) {
+				attributes.put(e.getKey(), defaultV);
+			}
+				
 		}
-		
-		validateAttribute(attributeDeclarations);
+		}
 	}
 	
-	public void validateAttribute( Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
+	
+	public void replaceShortenedName(Map<String, DeclarationEntry> attributeDeclarations) {
+		if (attributeDeclarations != null) {
+			for (Map.Entry<String, DeclarationEntry> e : attributeDeclarations.entrySet()) {
+				String a = e.getValue().getAlias();
+				if (a != null) {
+					Object v = attributes.remove(a);
+					if (v != null)
+						attributes.put(e.getKey(), v);
+				}
+			}
+		}
+	}
+	/**
+	 * Validate the attributes. This function assumes all the shortened attibute names has been replaced. 
+	 * 
+	 * @param attributeDeclarations
+	 * @param updateValue when the value is true, this function will replace an attribute value with the
+	 *  transformed value. 
+	 * @throws NdexException
+	 */
+	public void validateAttribute( Map<String,DeclarationEntry> attributeDeclarations, boolean updateValue) throws NdexException {
 		
+		if ( !attributes.isEmpty() && attributeDeclarations == null)
+			throw new NdexException ("Attribute in aspect " + getAspectName() + 
+					" is not declared in " + CxAttributeDeclaration.ASPECT_NAME + " aspect.");
 		for ( Map.Entry<String, Object> entry : attributes.entrySet()) {
 			DeclarationEntry decl = attributeDeclarations.get(entry.getKey());
 			if ( decl == null)
@@ -55,10 +106,14 @@ public abstract class AttributeDeclaredAspect {
 			ATTRIBUTE_DATA_TYPE t = decl.getDataType() == null? ATTRIBUTE_DATA_TYPE.STRING : 
 				                     decl.getDataType();
 			
-			entry.setValue(processAttributeValue(t, entry.getValue()));	
+			if ( updateValue)
+				entry.setValue(processAttributeValue(t, entry.getValue()));
+			else 
+				processAttributeValue(t, entry.getValue());
 		}
 		
 	}
+	
 	
 	public static Object processAttributeValue (ATTRIBUTE_DATA_TYPE declaredType, Object value) throws NdexException {
 

@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @JsonIgnoreProperties({ "v" })
 
-public class CxNetworkAttribute extends AttributeDeclaredAspect implements CxAspectElement {
+public class CxNetworkAttribute extends AttributeDeclaredAspect {
 
 	public final static String ASPECT_NAME = "networkAttributes";
 	

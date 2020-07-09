@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({ "id", "x","y","z" })
-public class CxNode extends AttributeDeclaredAspect implements CxAspectElement {
+public class CxNode extends AttributeDeclaredAspect  {
 	
 	public final static String ASPECT_NAME = "nodes";
 	
@@ -33,7 +33,7 @@ public class CxNode extends AttributeDeclaredAspect implements CxAspectElement {
 		
 	}
 	
-	public CxNode (long id, LinkedHashMap<String, Object> attributes ) {
+	public CxNode (Long id, LinkedHashMap<String, Object> attributes ) {
 		this.setId(id);
 		this.setAttributes(attributes);
 	}

@@ -75,7 +75,7 @@ public class CxNodeTest {
 		de.setDataType(ATTRIBUTE_DATA_TYPE.STRING);
 		m.put("about", de);
 		
-        n2.validateAttribute(m);
+        n2.validateAttribute(m,true);
         
         @SuppressWarnings("unchecked")
 		List<Double> l = (List<Double>) n2.getAttributes().get("n");

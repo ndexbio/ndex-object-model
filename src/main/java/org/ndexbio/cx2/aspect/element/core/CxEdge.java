@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({ "id", "s","t" })
-public class CxEdge extends AttributeDeclaredAspect implements CxAspectElement{
+public class CxEdge extends AttributeDeclaredAspect {
 	
 	public static final String ASPECT_NAME= "edges";
 	
