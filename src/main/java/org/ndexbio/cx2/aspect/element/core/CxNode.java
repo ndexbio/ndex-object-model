@@ -17,6 +17,10 @@ public class CxNode extends AttributeDeclaredAspect  {
 	
 	public final static String ASPECT_NAME = "nodes";
 	
+	public final static String NAME = "name";
+	public final static String REPRESENTS = "represents";
+	
+	
 	@JsonProperty("id")
 	private Long id;
 		
@@ -30,7 +34,7 @@ public class CxNode extends AttributeDeclaredAspect  {
 	private Double z;
 	
 	public CxNode() {
-		
+		super();
 	}
 	
 	public CxNode (Long id, LinkedHashMap<String, Object> attributes ) {

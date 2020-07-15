@@ -60,5 +60,5 @@ public class CxMetadata {
 		}
 		return result;
 	}
- 
+
 }

@@ -13,6 +13,8 @@ public class CxEdge extends AttributeDeclaredAspect {
 	
 	public static final String ASPECT_NAME= "edges";
 	
+	public static final String INTERACTION ="interaction";
+	
 	@JsonProperty("id")
 	private Long id;
 	
