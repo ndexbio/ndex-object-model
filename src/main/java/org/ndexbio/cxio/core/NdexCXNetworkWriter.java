@@ -80,6 +80,11 @@ public class NdexCXNetworkWriter {
 		writer.flush();
 	}
 	
+	/**
+	 * Starts a new aspect fragment. endAspectFrgament() need to be called to close this aspect fragment.
+	 * @param aspectName
+	 * @throws IOException
+	 */
 	public void startAspectFragment(String aspectName) throws IOException {
 		g.writeStartObject();
 		g.writeFieldName(aspectName);
@@ -118,6 +123,11 @@ public class NdexCXNetworkWriter {
 	
 	public long getFragmentLength() { return fragmentLength;}
 	
+	
+	/**
+	 * Close an aspect fragment. startAspectFragment need to be called before this. 
+	 * @throws IOException
+	 */
 	public void endAspectFragment() throws IOException {
 		g.writeEndObject();
 		g.flush();
