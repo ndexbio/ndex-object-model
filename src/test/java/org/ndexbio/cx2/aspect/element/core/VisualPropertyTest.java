@@ -10,6 +10,7 @@ public class VisualPropertyTest {
 
 	@Test
 	public void test() {
+		//TODO: to be implemented.
 		ObjectMapper om = new ObjectMapper ();
 		
 		String s0 = "";

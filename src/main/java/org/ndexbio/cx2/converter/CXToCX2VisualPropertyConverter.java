@@ -60,7 +60,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_LABEL_FONT_SIZE", "NODE_LABEL_FONT_SIZE", intCvtr );
     	addEntry ( "NODE_WIDTH",      "NODE_WIDTH", numberCvtr );
     	addEntry ( "NODE_HEIGHT",     "NODE_HEIGHT", numberCvtr	 );
-    	addEntry ( "NODE_OPACITY",    "NODE_BACKGROUND_OPACITY", opacityCvter );
+    	addEntry ( "NODE_TRANSPARENCY",    "NODE_BACKGROUND_OPACITY", opacityCvter );
     	addEntry ( "NODE_BORDER_PAINT",    "NODE_BORDER_PAINT", stringCvtr );
     	addEntry ( "NODE_BORDER_WIDTH",    "NODE_BORDER_WIDTH", numberCvtr );
     	
@@ -70,7 +70,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_SOURCE_ARROW_UNSELECTED_PAINT", "EDGE_SOURCE_ARROW_COLOR", stringCvtr);
     	addEntry ( "EDGE_TARGET_ARROW_UNSELECTED_PAINT", "EDGE_TARGET_ARROW_COLOR", stringCvtr);
     	addEntry ( "EDGE_LABEL", "EDGE_LABEL", stringCvtr);
-    	addEntry ( "EDGE_OPACITY", "EDGE_OPACITY", opacityCvter );
+    	addEntry ( "EDGE_TRANSPARENCY", "EDGE_OPACITY", opacityCvter );
     	addEntry ( "EDGE_WIDTH", "EDGE_WIDTH", numberCvtr );
  
     	

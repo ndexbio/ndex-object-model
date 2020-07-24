@@ -3,6 +3,8 @@ package org.ndexbio.cx2.converter;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class CX2ToCXVisualPropertyConverter {
 	
@@ -53,7 +55,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "NODE_LABEL_FONT_SIZE");
     	addEntry ( "NODE_WIDTH");
     	addEntry ( "NODE_HEIGHT");
-    	addEntry ( "NODE_BACKGROUND_OPACITY", "NODE_OPACITY",    opacityCvter );
+    	addEntry ( "NODE_BACKGROUND_OPACITY", "NODE_TRANSPARENCY",    opacityCvter );
     	addEntry ( "NODE_BORDER_PAINT");
     	addEntry ( "NODE_BORDER_WIDTH");
     	
@@ -63,7 +65,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry (  "EDGE_SOURCE_ARROW_COLOR", "EDGE_SOURCE_ARROW_UNSELECTED_PAINT");
     	addEntry ( "EDGE_TARGET_ARROW_COLOR", "EDGE_TARGET_ARROW_UNSELECTED_PAINT");
     	addEntry ( "EDGE_LABEL");
-    	addEntry ( "EDGE_OPACITY", "EDGE_OPACITY", opacityCvter );
+    	addEntry ( "EDGE_OPACITY", "EDGE_TRANSPARENCY", opacityCvter );
     	addEntry ( "EDGE_WIDTH" );
  
     	
@@ -98,9 +100,9 @@ public class CX2ToCXVisualPropertyConverter {
 			nodeEdgeCvtTable.put(vp, cvtrEntry );
 		}
 	
-	private static Map<String,String> convertNetworkProperties(Map<String, Map.Entry<String,CX2ToCXVisualPropertyCvtFunction>>  table,
+	private static SortedMap<String,String> convertNetworkProperties(Map<String, Map.Entry<String,CX2ToCXVisualPropertyCvtFunction>>  table,
 				Map<String,Object> cx1Properties) {
-		Map<String,String> result = new HashMap<>();
+		SortedMap<String,String> result = new TreeMap<>();
 		
 		for (Map.Entry<String, Object> e : cx1Properties.entrySet()) {
 			Map.Entry<String,CX2ToCXVisualPropertyCvtFunction> cvtrEntry = table.get(e.getKey());
@@ -113,12 +115,12 @@ public class CX2ToCXVisualPropertyConverter {
 		return result;
 	}
 	
-	public Map<String,String>  convertNetworkVPs (Map<String,Object> cx1Properties ) {
+	public SortedMap<String,String>  convertNetworkVPs (Map<String,Object> cx1Properties ) {
 		return convertNetworkProperties(networkCvtTable, cx1Properties);
 	}
     
 	
-	public Map<String,String>  convertEdgeOrNodeVPs (Map<String,Object> cx1Properties ) {
+	public SortedMap<String,String>  convertEdgeOrNodeVPs (Map<String,Object> cx1Properties ) {
 		return convertNetworkProperties(nodeEdgeCvtTable, cx1Properties);
 
 	}

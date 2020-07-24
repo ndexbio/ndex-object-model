@@ -24,6 +24,9 @@ import org.ndexbio.cx2.aspect.element.core.CxNode;
 import org.ndexbio.cx2.aspect.element.core.CxNodeBypass;
 import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
 import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
+import org.ndexbio.cx2.aspect.element.core.MappingDefinition;
+import org.ndexbio.cx2.aspect.element.core.VPMappingType;
+import org.ndexbio.cx2.aspect.element.core.VisualPropertyMapping;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.AbstractAttributesAspectElement;
 import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
@@ -816,7 +819,7 @@ public class CXToCX2Converter {
 		return defaultVp;
     } */
     
-	private void processMappingEntry(SortedMap<String, Mapping> nodeMappings, Map<String, Object> v2NodeMappings)
+	private void processMappingEntry(SortedMap<String, Mapping> nodeMappings, Map<String, VisualPropertyMapping> v2NodeMappings)
 			throws NdexException, IOException {
 		for ( Map.Entry<String, Mapping> entry : nodeMappings.entrySet() ) {
 			String vpName = entry.getKey();
@@ -824,15 +827,15 @@ public class CXToCX2Converter {
 			if ( newVPName == null)
 				continue;
 			
-			Map<String,Object> mappingObj = new HashMap<>(4);
+			VisualPropertyMapping mappingObj = new VisualPropertyMapping();
 			String mappingType = entry.getValue().getType();
-			mappingObj.put("type", mappingType);
-			Map<String,Object> defObj = new HashMap<>(4);
-			mappingObj.put("definition", defObj);
+			mappingObj.setType(VPMappingType.valueOf(mappingType));
+			MappingDefinition defObj = new MappingDefinition();
+			mappingObj.setMappingDef(defObj);
 			String defString = entry.getValue().getDefinition();
 			if ( mappingType.equals("PASSTHROUGH")) {
 				String mappingAttrName = getPassThroughMappingAttribute(defString); 
-				defObj.put("attribute", mappingAttrName);
+				defObj.setAttributeName(mappingAttrName);
 			} else if (mappingType.equals("DISCRETE")) {
 				List<Map<String,Object>> m = new ArrayList<> ();
 				MappingValueStringParser sp = new MappingValueStringParser(defString);	
@@ -857,8 +860,8 @@ public class CXToCX2Converter {
 		            counter++;
 		        }
 		        
-				defObj.put("attribute", col);
-				defObj.put("map", m);
+				defObj.setAttributeName(col);
+				defObj.setMapppingList(m);
 
 			} else {  //continuous mapping
 				List<Map<String,Object>> m = new ArrayList<> ();
@@ -936,8 +939,8 @@ public class CXToCX2Converter {
             	m.add(currentMapping);
 		        
 		        // add the list
-		    	defObj.put("attribute", col);
-				defObj.put("map", m);
+		    	defObj.setAttributeName(col);
+				defObj.setMapppingList(m);
 			}
 			v2NodeMappings.put(newVPName, mappingObj);
 		}

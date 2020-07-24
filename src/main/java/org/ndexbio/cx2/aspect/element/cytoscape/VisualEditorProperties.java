@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class visualEditorProperties implements CxAspectElement {
+public class VisualEditorProperties implements CxAspectElement {
 	
 	public static final String ASPECT_NAME = "visualEditorProperties";
 
 	@JsonProperty("properties")
 	private Map<String, Object> properties;
 	
-	public visualEditorProperties() { setProperties(new HashMap<>());}
+	public VisualEditorProperties() { setProperties(new HashMap<>());}
 	
 	@Override
 	public String getAspectName() {

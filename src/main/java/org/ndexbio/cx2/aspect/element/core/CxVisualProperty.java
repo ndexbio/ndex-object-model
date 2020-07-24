@@ -21,10 +21,10 @@ public class CxVisualProperty implements CxAspectElement {
 	private DefaultVisualProperties defaultProps;
 	
 	@JsonProperty("edgeMapping")
-	private Map<String, Object>  edgeMappings;
+	private Map<String, VisualPropertyMapping>  edgeMappings;
 	
 	@JsonProperty("nodeMapping")
-	private Map<String, Object>  nodeMappings;  
+	private Map<String, VisualPropertyMapping>  nodeMappings;  
 
 	
 	public CxVisualProperty() {
@@ -50,22 +50,22 @@ public class CxVisualProperty implements CxAspectElement {
 	}
 
 	@JsonIgnore
-	public Map<String, Object> getEdgeMappings() {
+	public Map<String, VisualPropertyMapping> getEdgeMappings() {
 		return edgeMappings;
 	}
 
 	@JsonIgnore
-	public void setEdgeMappings(Map<String, Object> edgeMappings) {
+	public void setEdgeMappings(Map<String, VisualPropertyMapping> edgeMappings) {
 		this.edgeMappings = edgeMappings;
 	}
 
 	@JsonIgnore
-	public Map<String, Object> getNodeMappings() {
+	public Map<String, VisualPropertyMapping> getNodeMappings() {
 		return nodeMappings;
 	}
 
 	@JsonIgnore
-	public void setNodeMappings(Map<String, Object> nodeMappings) {
+	public void setNodeMappings(Map<String, VisualPropertyMapping> nodeMappings) {
 		this.nodeMappings = nodeMappings;
 	}
 	
