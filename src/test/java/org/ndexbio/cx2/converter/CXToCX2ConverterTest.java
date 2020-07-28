@@ -79,7 +79,13 @@ public class CXToCX2ConverterTest {
 		cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/node_mapping_on_long_integer.cx",
 				null, "node_mapping_on_long_integer.cx2");
+		cvt2.convert(); 
+		
+	/*	cvt2 = new CXToCX2Converter (
+				 "/Users/jingchen/temp/no_attr_on_edges.cx",
+				null, "no_attr_on_edges.cx2");
 		cvt2.convert();
+	*/	
 		
 	/*	cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/NeST_raw1_wstyle.cx",

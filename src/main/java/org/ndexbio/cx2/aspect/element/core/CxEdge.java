@@ -25,6 +25,15 @@ public class CxEdge extends AttributeDeclaredAspect {
 	private Long target;
 		
 	public CxEdge() {}
+	
+	
+	public CxEdge(Long id, Long source, Long target) {
+		
+		super();
+		this.id = id;
+		this.source = source;
+		this.target = target;			
+	}
 
 	public Long getId() {
 		return id;

@@ -66,8 +66,8 @@ public class CxNetworkAttribute extends AttributeDeclaredAspect {
 	
 	
 	@Override
-	public void transformAttrites(Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
-		super.transformAttrites(attributeDeclarations);
+	public void transformAttributes(Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
+		super.transformAttributes(attributeDeclarations);
 		checkStringtype(nameAttribute);
 		checkStringtype(descriptionAttribute);
 		checkStringtype(versionAttribute);

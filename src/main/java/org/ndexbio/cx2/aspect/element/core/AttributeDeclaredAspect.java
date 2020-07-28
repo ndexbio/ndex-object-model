@@ -35,7 +35,7 @@ public abstract class AttributeDeclaredAspect implements CxAspectElement{
 	 * @param attributeDeclarations attribute declarations for this aspect.
 	 * @throws NdexException
 	 */
-	public void transformAttrites(Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
+	public void transformAttributes(Map<String,DeclarationEntry> attributeDeclarations) throws NdexException {
 		
 		// convert alias back to the real attribute name first
 		replaceShortenedName(attributeDeclarations);

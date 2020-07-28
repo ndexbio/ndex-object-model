@@ -1091,8 +1091,24 @@ public class CXToCX2Converter {
 					if ( edgeCounter != 0 )
 						out.write(elmtDivider);
 					mapper.writeValue(out, worker);
+				    edgeCounter ++;
 				    out.flush();
 				}    
+				
+				// print out the remaining edges in the table. These are the edges that have no attributes
+				for (EdgesElement edge : edges.values()) {
+					CxEdge e = new CxEdge(edge.getId(),edge.getSource(),edge.getTarget());
+					
+					if (edge.getInteraction() != null) {
+						e.getAttributes().put("i", edge.getInteraction());	
+					}
+					
+					if ( edgeCounter != 0 )
+						out.write(elmtDivider);
+					mapper.writeValue(out, e);
+				    edgeCounter ++;
+				}
+				
 				return ;
 			} catch (IOException io) {
 				throw new NdexException("Error reading CX from stream", io);
