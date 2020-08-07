@@ -20,10 +20,6 @@ public class AspectAttributeStat {
 	
 	private Map<String, Map<String, AspectAttributeStatEntry>> table;
 	
-	private static final String NAME= "name";
-	private static final String REPRESENTS = "represents";
-	private static final String INTERACTION = "interaction";
-	
 	// internal state controls for performance.
 	private boolean hasNodeName;
 	private boolean hasNodeRep;
@@ -41,13 +37,13 @@ public class AspectAttributeStat {
 	public void addNode (NodesElement n ) throws NdexException {
 		if ( ! hasNodeName) {
 			if (n.getNodeName() !=null ) {
-				addCX1ReservedAttr(CxNode.ASPECT_NAME,NAME, "n",null);
+				addCX1ReservedAttr(CxNode.ASPECT_NAME, CxNode.NAME, "n",null);
 				hasNodeName = true;
 			}
 		}
 		if ( !hasNodeRep) {
 			if ( n.getNodeRepresents() != null) {
-				addCX1ReservedAttr(CxNode.ASPECT_NAME, REPRESENTS, "r",null);
+				addCX1ReservedAttr(CxNode.ASPECT_NAME, CxNode.REPRESENTS, "r",null);
 				hasNodeRep = true;
 			}
 		}
@@ -56,7 +52,7 @@ public class AspectAttributeStat {
 	public void addEdge (EdgesElement edge) throws NdexException {
 		if ( !hasEdgeInteraction) {
 			if ( edge.getInteraction() != null) {
-				addCX1ReservedAttr(CxEdge.ASPECT_NAME, INTERACTION, "i", edge.getInteraction());
+				addCX1ReservedAttr(CxEdge.ASPECT_NAME, CxEdge.INTERACTION, "i", edge.getInteraction());
 				hasEdgeInteraction = true;
 			}
 		}
@@ -91,10 +87,10 @@ public class AspectAttributeStat {
 		}	
 
 		// check if there are name conflicts
-		if ( nodeAttributes.get(NAME) != null && attrName.equals("n")) {
-			nodeAttributes.get(NAME).setAlias(null);
-		} else if (nodeAttributes.get(REPRESENTS) != null && attrName.equals("r")) {
-			nodeAttributes.get(REPRESENTS).setAlias(null);
+		if ( nodeAttributes.get(CxNode.NAME) != null && attrName.equals("n")) {
+			nodeAttributes.get(CxNode.NAME).setAlias(null);
+		} else if (nodeAttributes.get(CxNode.REPRESENTS) != null && attrName.equals("r")) {
+			nodeAttributes.get(CxNode.REPRESENTS).setAlias(null);
 		}
 
 		AspectAttributeStatEntry e = nodeAttributes.get(attrName);
@@ -140,8 +136,8 @@ public class AspectAttributeStat {
 		}	
 
 		// check if there are name conflicts
-		if ( edgeAttributes.get(INTERACTION) != null && attrName.equals("i")) {
-			edgeAttributes.get(INTERACTION).setAlias(null);
+		if ( edgeAttributes.get(CxEdge.INTERACTION) != null && attrName.equals("i")) {
+			edgeAttributes.get(CxEdge.INTERACTION).setAlias(null);
 		} 
 
 		AspectAttributeStatEntry e = edgeAttributes.get(attrName);
@@ -178,4 +174,8 @@ public class AspectAttributeStat {
 		return declaration;
 		
 	}
+	
+	public boolean hasBothReservedNodeAttr() { return hasNodeName && hasNodeRep; }
+	public boolean hasEdgeInteractionAttr() { return this.hasEdgeInteraction; }
+
 }

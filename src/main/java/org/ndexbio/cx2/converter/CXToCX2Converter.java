@@ -912,7 +912,7 @@ public class CXToCX2Converter {
 		            	m.add(currentMapping);
 
 		            } else {
-		            	currentMapping.put("includeMin", Boolean.FALSE);
+		            	currentMapping.put("includeMin", includeMin);
 		            	currentMapping.put("includeMax", Boolean.valueOf(E.equals(L)));
 		            	currentMapping.put("minVPValue", minVP);
 		            	currentMapping.put("min", min);
