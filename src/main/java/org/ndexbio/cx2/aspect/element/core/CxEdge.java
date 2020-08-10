@@ -1,5 +1,8 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
+import org.ndexbio.model.exceptions.NdexException;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -29,11 +32,15 @@ public class CxEdge extends AttributeDeclaredAspect {
 	
 	public CxEdge(Long id, Long source, Long target) {
 		
-		super();
 		this.id = id;
 		this.source = source;
 		this.target = target;			
 	}
+	
+	public CxEdge(Long id) {	
+		this.id = id;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -66,4 +73,8 @@ public class CxEdge extends AttributeDeclaredAspect {
 		return ASPECT_NAME;
 	}
 
+	
+	public void addCX1EdgeAttribute(EdgeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
+		addCX1Attribute(elmt, decls, CxEdge.ASPECT_NAME);
+	}
 }

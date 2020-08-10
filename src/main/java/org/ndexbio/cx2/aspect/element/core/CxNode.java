@@ -2,6 +2,7 @@ package org.ndexbio.cx2.aspect.element.core;
 
 import java.util.LinkedHashMap;
 
+import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -37,6 +38,9 @@ public class CxNode extends AttributeDeclaredAspect  {
 		super();
 	}
 	
+	public CxNode(Long id) {
+		this.id = id;
+	}
 	public CxNode (Long id, LinkedHashMap<String, Object> attributes ) {
 		this.setId(id);
 		this.setAttributes(attributes);
@@ -80,6 +84,13 @@ public class CxNode extends AttributeDeclaredAspect  {
 	public String getAspectName() {
 		return ASPECT_NAME;
 	}
+	
+	@JsonIgnore
+	public void setCoordinates(Double x, Double y, Double z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
 
 
 	/**
@@ -97,4 +108,8 @@ public class CxNode extends AttributeDeclaredAspect  {
 			
 	}
 
+	
+	public void addCX1NodeAttribute(NodeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
+		addCX1Attribute(elmt, decls, CxNode.ASPECT_NAME);
+	}
 }

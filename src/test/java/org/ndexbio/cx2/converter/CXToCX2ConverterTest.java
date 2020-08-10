@@ -81,6 +81,11 @@ public class CXToCX2ConverterTest {
 				null, "node_mapping_on_long_integer.cx2");
 		cvt2.convert(); 
 		
+		cvt2 = new CXToCX2Converter (
+				 "/Users/jingchen/temp/HIV-human PPI_continuousmapping.cx",
+				null, "HIV-human_continuesmapping.cx2");
+		cvt2.convert(); 
+		
 	/*	cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/no_attr_on_edges.cx",
 				null, "no_attr_on_edges.cx2");

@@ -77,7 +77,7 @@ public class CXToCX2Converter {
 
 	private CxAttributeDeclaration attrDeclarations;
 	
-	long nodeIdCounter;
+	//long nodeIdCounter;
 	long edgeIdCounter;
 
 	Map<String, Object> netAttributes;
@@ -124,7 +124,7 @@ public class CXToCX2Converter {
 		createReaders();
 		this.newFileName = newFileName;
 
-		nodeIdCounter = 0;
+		//nodeIdCounter = 0;
 		edgeIdCounter = 0;
 		netAttributes = new HashMap<>();
 		opaqueAspectTable = new HashMap<>();
@@ -383,8 +383,8 @@ public class CXToCX2Converter {
 					switch (elmt.getAspectName()) {
 					case NodesElement.ASPECT_NAME: // Node
 						NodesElement n = (NodesElement) elmt;
-						if (n.getId() > nodeIdCounter)
-							nodeIdCounter = n.getId();
+					//	if (n.getId() > nodeIdCounter)
+					//		nodeIdCounter = n.getId();
 						addNode(n, result);
 						break;
 					case NdexNetworkStatus.ASPECT_NAME: // ndexStatus we ignore this in CX
@@ -482,7 +482,7 @@ public class CXToCX2Converter {
 		}
 	}
 	
-	private static ATTRIBUTE_DATA_TYPE getElementType(ATTRIBUTE_DATA_TYPE t ) throws NdexException {
+	/*private static ATTRIBUTE_DATA_TYPE getElementType(ATTRIBUTE_DATA_TYPE t ) throws NdexException {
 		switch (t) {
 		case LIST_OF_BOOLEAN:
 			return ATTRIBUTE_DATA_TYPE.BOOLEAN;
@@ -497,9 +497,9 @@ public class CXToCX2Converter {
 		default: 
 			throw new NdexException (t + " is not a list type.");
 		}
-	}
+	} */
 	
-	protected static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
+	public static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
 		switch (attr.getDataType()) {
 		case BOOLEAN: 
 		case DOUBLE:
@@ -515,7 +515,7 @@ public class CXToCX2Converter {
 			List<String> ls = attr.getValues();
 			ArrayList<Object> result = new ArrayList<>(ls.size());
 			for ( String s : ls) {
-				result.add(convertSingleAttributeValue(getElementType(attr.getDataType()), s));
+				result.add(convertSingleAttributeValue(attr.getDataType().elementType(), s));
 			}
 			return result;
 		default:
@@ -834,7 +834,7 @@ public class CXToCX2Converter {
 			mappingObj.setMappingDef(defObj);
 			String defString = entry.getValue().getDefinition();
 			if ( mappingType.equals("PASSTHROUGH")) {
-				String mappingAttrName = getPassThroughMappingAttribute(defString); 
+				String mappingAttrName = ConverterUtilities.getPassThroughMappingAttribute(defString); 
 				defObj.setAttributeName(mappingAttrName);
 			} else if (mappingType.equals("DISCRETE")) {
 				List<Map<String,Object>> m = new ArrayList<> ();
@@ -854,7 +854,7 @@ public class CXToCX2Converter {
 		            }
 		            
 		            Map<String,Object> mapEntry = new HashMap<>(2);
-		            mapEntry.put("v", cvtStringValueToObj(t,k));
+		            mapEntry.put("v", ConverterUtilities.cvtStringValueToObj(t,k));
 		            mapEntry.put("vp", vpConverter.getNewEdgeOrNodePropertyValue(vpName,v));
 		        	m.add(mapEntry);
 		            counter++;
@@ -898,7 +898,7 @@ public class CXToCX2Converter {
 		            Object GO = vpConverter.getNewEdgeOrNodePropertyValue(vpName,G);
 
 		            final String OV = sp.get("OV=" + counter);
-		            Object OVO = cvtStringValueToObj(t, OV);
+		            Object OVO = ConverterUtilities.cvtStringValueToObj(t, OV);
 		        
 		            if (OV == null) {
 		            	throw new NdexException("error: continuous mapping string is corruptted for " + defString);
@@ -946,40 +946,7 @@ public class CXToCX2Converter {
 		}
 	}
 	
-	private static Object cvtStringValueToObj(String cytoscapeDataType, String value) throws NdexException {
-		if ( cytoscapeDataType.equals("string")) {
-			return value;
-		} else if (cytoscapeDataType.equals("double")) {
-		   return Double.valueOf(value);
-		}else if (cytoscapeDataType.equals("long")) {
-			try {
-			   return Long.valueOf(value);
-			} catch (NumberFormatException e) {
-				System.err.println("Value " + value + " is not a valid string for long. NDEx is converting it to long from double.");
-				return Long.valueOf(Double.valueOf(value).longValue());		
-			}
-		}else if (cytoscapeDataType.equals("integer")) {
-			try {
-				return Integer.valueOf(value);
-			}  catch (NumberFormatException e) {
-				System.err.println("Value " + value + " is not a valid string for integer. NDEx is converting it to long from double.");
-				return Integer.valueOf(Double.valueOf(value).intValue());		
-			}
-		}else if (cytoscapeDataType.equals("boolean")) {
-				   return Boolean.valueOf(value);
-		} else {
-			throw new NdexException ("Unsupported cy data type found:" + cytoscapeDataType);
-		}
-	}
 		
-    private static String getPassThroughMappingAttribute(String mappingString) throws NdexException {
-		Pattern p = Pattern.compile("^COL=(.*),T=.*$");
-		Matcher m = p.matcher(mappingString);
-		if ( m.matches() ) {
-			return  m.group(1);
-		}
-		throw new NdexException("Malformed mapping string for Passthrough mapping: " + mappingString);
-    }
     
 	private Map<Long, EdgesElement> readEdges() throws IOException {
 		

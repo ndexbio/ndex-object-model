@@ -94,7 +94,7 @@ public class CXWriter {
 			state = POST_METATDATA;
 	}
 	
-	public void writeAspectFragment(List<? extends CxAspectElement> fragment) throws JsonGenerationException, JsonMappingException, IOException, NdexException {
+	public void writeFullAspectFragment(List<? extends CxAspectElement> fragment) throws JsonGenerationException, JsonMappingException, IOException, NdexException {
 		if ( state == INIT)
 			init();
 		

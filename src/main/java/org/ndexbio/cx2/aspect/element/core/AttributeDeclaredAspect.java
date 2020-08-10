@@ -1,11 +1,14 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
+import org.ndexbio.cxio.aspects.datamodels.AbstractAttributesAspectElement;
+import org.ndexbio.cxio.aspects.datamodels.AbstractElementAttributesAspectElement;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -148,5 +151,69 @@ public abstract class AttributeDeclaredAspect implements CxAspectElement{
 			} 
 	}
 
+	
+	protected void addCX1Attribute (AbstractElementAttributesAspectElement cx1ElementAttribute, CxAttributeDeclaration attrDeclarations, 
+			String aspectName) throws NdexException {
 
+		Object v = convertAttributeValue(cx1ElementAttribute);
+		String attrName = cx1ElementAttribute.getName();
+		Map<String, DeclarationEntry> attributeDef = attrDeclarations.getDeclarations().get(aspectName);
+		if ( attributeDef != null && attributeDef.containsKey( attrName )) {
+			DeclarationEntry decl = attributeDef.get( attrName );
+			if ( decl.getDefaultValue() !=null) {
+				Object defaultV = decl.getDefaultValue();
+				if ( v.equals(defaultV))
+					return;
+			}
+			
+			if (decl.getAlias() !=null) {
+				attrName = decl.getAlias();
+			}
+		}
+		Object oldV = attributes.put(attrName, v);
+		if (oldV != null)
+			throw new NdexException("Duplicate node attribute on node id: " + cx1ElementAttribute.getPropertyOf() + ". Attribute name:"
+					+ cx1ElementAttribute.getName() + " has value " + oldV + " and " + cx1ElementAttribute.getValue());
+	}
+	
+	private static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
+		switch (attr.getDataType()) {
+		case BOOLEAN: 
+		case DOUBLE:
+		case INTEGER:
+		case LONG:
+		case STRING:
+			return convertSingleAttributeValue(attr.getDataType(), attr.getValue());
+		case LIST_OF_BOOLEAN:
+		case LIST_OF_DOUBLE:
+		case LIST_OF_INTEGER:
+		case LIST_OF_LONG:
+		case LIST_OF_STRING:	
+			List<String> ls = attr.getValues();
+			ArrayList<Object> result = new ArrayList<>(ls.size());
+			for ( String s : ls) {
+				result.add(convertSingleAttributeValue(attr.getDataType().elementType(), s));
+			}
+			return result;
+		default:
+			throw new NdexException ("Unsupported attribute data type found: " + attr.getDataType());
+		}
+	}
+
+	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
+		switch (t) {
+		case BOOLEAN: 
+			return Boolean.valueOf( value);
+		case DOUBLE:
+			return Double.valueOf(value);
+		case INTEGER:
+			return Integer.valueOf(value);
+		case LONG:
+			return Long.valueOf(value);
+		case STRING:
+			return value;
+		default: 
+			throw new NdexException ("Value " + value + " is not a single value type. It is " + t.toString());
+		}
+	}
 }

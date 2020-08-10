@@ -30,6 +30,12 @@ public class CxMetadata {
 		
 	}
 	
+	public CxMetadata (String aspect, long count) {
+		this.name = aspect;
+		this.elementCount = Long.valueOf(count);
+		
+	}
+	
 	public String getName() {
 		return name;
 	}

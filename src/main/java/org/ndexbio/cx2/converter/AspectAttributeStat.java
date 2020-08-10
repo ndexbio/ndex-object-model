@@ -9,6 +9,7 @@ import org.ndexbio.cx2.aspect.element.core.CxNetworkAttribute;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
 import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
+import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
 import org.ndexbio.cxio.aspects.datamodels.NetworkAttributesElement;
@@ -25,12 +26,18 @@ public class AspectAttributeStat {
 	private boolean hasNodeRep;
 	private boolean hasEdgeInteraction;
 	
+	// number of node and edge visual property bypasses in the cyVisualProperties aspect. 
+	private int nodeBypassCount;
+	private int edgeBypassCount;
+	
 	public AspectAttributeStat() {
 		
 		table = new HashMap<> ();
 		hasNodeName = false;
 		hasNodeRep = false;
 		hasEdgeInteraction = false;
+		nodeBypassCount = 0;
+		edgeBypassCount = 0;
 	}
 	
 	
@@ -175,7 +182,17 @@ public class AspectAttributeStat {
 		
 	}
 	
+	public void addCyVisualPropertiesElement(CyVisualPropertiesElement e) {
+		if (e.getProperties_of().equals("nodes"))
+			nodeBypassCount++;
+		else if ( e.getProperties_of().equals("edges"))
+			edgeBypassCount++;
+	}
+	
 	public boolean hasBothReservedNodeAttr() { return hasNodeName && hasNodeRep; }
 	public boolean hasEdgeInteractionAttr() { return this.hasEdgeInteraction; }
+	
+	public int getNodeBypassCount() {return this.nodeBypassCount;}
+	public int getEdgeBypassCount() {return this.edgeBypassCount;}
 
 }
