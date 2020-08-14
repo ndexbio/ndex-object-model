@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.ndexbio.cx2.aspect.element.core.CxAspectElement;
 import org.ndexbio.cx2.aspect.element.core.CxMetadata;
@@ -20,6 +22,10 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+/**
+ * This Class is not thread safe. User should not use the same writer in different threads.
+ */
 public class CXWriter {
 
 	private static final int  INIT = 0;
@@ -39,6 +45,9 @@ public class CXWriter {
 	private int state;
 	
 	private boolean hasFragments;
+	
+	// tracking aspects that has been written in this writer.
+	private Set<String> finishedAspects;
 	
 	private ObjectMapper om;
 	
@@ -69,6 +78,7 @@ public class CXWriter {
 		
 		out.write(("[{\"CXVersion\":\"2.0\",\"hasFragments\":"+ hasFragments + "},").getBytes(charset));
 		out.flush();
+		finishedAspects = new TreeSet();
 		
 		state = BEFORE_ASPECT;
 	}
@@ -98,15 +108,25 @@ public class CXWriter {
 		if ( state == INIT)
 			init();
 		
+		if ( fragment.isEmpty()) return;
+		
+		String aspectName = fragment.get(0).getAspectName();
+		checkAspectName(aspectName);
 		if ( fragment.size() > 0 ) {
 			Map<String,List<? extends CxAspectElement>> holder = new HashMap<>(1);
-			holder.put( fragment.get(0).getAspectName(), fragment);
+			holder.put( aspectName, fragment);
 			//writeStr("{\"" + fragment.get(0).getAspectName() + "\":");
 			om.writeValue(out, holder);
 			//writeStr("}");
 			out.write(elmtDivider);
 			out.flush();
 		}
+	}
+
+	
+	private void checkAspectName(String aspectName) throws NdexException {
+		if ( !hasFragments && finishedAspects.contains(aspectName)) 
+			throw new NdexException("Writing more than one " + aspectName + " aspect fragment is not allowed in no-fragment mode.");
 	}
 	
 	/**
@@ -153,6 +173,8 @@ public class CXWriter {
 		
 		if ( state == INIT)
 			init();
+		
+		checkAspectName(aspectName);
 		
 		if ( state != BEFORE_ASPECT ) 
 			throw new NdexException ("Starting new aspect fragment for " + currentAspectName + " is not allowed here.");
