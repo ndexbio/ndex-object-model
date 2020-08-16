@@ -14,7 +14,7 @@ public class CXToCX2VisualPropertyConverter {
 	/* These node or edge visual properties are not part of the cx2 portable styles, we just carry them over to cx2, and it is up to the 
 	 * application to decide whether supporting them.
 	 */
-	private static final List<String> cx1CarryOverVPNames = Arrays.asList(
+	protected static final List<String> cx1CarryOverVPNames = Arrays.asList(
 			"COMPOUND_NODE_PADDING",
 			"COMPOUND_NODE_SHAPE",
 			"NODE_CUSTOMGRAPHICS_1",
