@@ -10,7 +10,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class CX2AspectWriter implements AutoCloseable {
+public class CX2AspectWriter<T extends CxAspectElement> implements AutoCloseable {
 
 	private OutputStream out;
 	private ObjectMapper om;
@@ -47,7 +47,7 @@ public class CX2AspectWriter implements AutoCloseable {
 
 
 	
-	public void writeCXElement(CxAspectElement e) throws IOException {
+	public void writeCXElement(T e) throws IOException {
 		if ( count == 0 ) 
 			out.write(start);
 		else 
