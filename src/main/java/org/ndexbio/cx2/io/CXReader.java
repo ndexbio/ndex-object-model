@@ -80,7 +80,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 	    aspectTable.put(CxNetworkAttribute.ASPECT_NAME,CxNetworkAttribute.class);
 	    aspectTable.put(CxVisualProperty.ASPECT_NAME,CxVisualProperty.class);
 	    aspectTable.put(CxEdgeBypass.ASPECT_NAME, CxEdgeBypass.class);
-	    aspectTable.put(CxNodeBypass.ASPECT_NAME, CxEdgeBypass.class);
+	    aspectTable.put(CxNodeBypass.ASPECT_NAME, CxNodeBypass.class);
 	    
 	    elementCounterTable = new TreeMap<>();
 	}

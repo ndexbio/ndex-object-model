@@ -1,7 +1,9 @@
 package org.ndexbio.cx2.aspect.element.core;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -111,5 +113,38 @@ public class CxNode extends AttributeDeclaredAspect  {
 	
 	public void addCX1NodeAttribute(NodeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
 		addCX1Attribute(elmt, decls, CxNode.ASPECT_NAME);
+	}
+	
+	
+	private String getStringAttr(Map<String, DeclarationEntry> attrDecls, String attrName) {
+		if ( attrDecls == null )
+			return null;
+		
+		DeclarationEntry decl = attrDecls.get(attrName);
+		if (decl==null || decl.getDataType()!=ATTRIBUTE_DATA_TYPE.STRING)
+			return null;
+		String defaultVal = (String)decl.getDefaultValue();
+		
+		
+		String a = decl.getAlias();
+		Object v = this.getAttributes().get((a == null ? attrName : a));
+		if ( v!= null)
+		  return (String)v;
+		return defaultVal;
+		
+	}
+	
+	/** 
+	 * Get node name
+	 * @param attrDecls
+	 * @return node name if this object has one. null if this node doesn't have a name attribute or name attribute is not 
+	 * a string.
+	 */
+	public String getNodeName(Map<String, DeclarationEntry> attrDecls) {
+		return getStringAttr(attrDecls, NAME);
+	}
+	
+	public String getNodeRepresents(Map<String, DeclarationEntry> attrDecls) {
+		return getStringAttr(attrDecls, REPRESENTS);
 	}
 }
