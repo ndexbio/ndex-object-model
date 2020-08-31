@@ -216,4 +216,22 @@ public abstract class AttributeDeclaredAspect implements CxAspectElement{
 			throw new NdexException ("Value " + value + " is not a single value type. It is " + t.toString());
 		}
 	}
+	
+	protected String getStringAttr(Map<String, DeclarationEntry> attrDecls, String attrName) {
+		if ( attrDecls == null )
+			return null;
+		
+		DeclarationEntry decl = attrDecls.get(attrName);
+		if (decl==null || decl.getDataType()!=ATTRIBUTE_DATA_TYPE.STRING)
+			return null;
+		String defaultVal = (String)decl.getDefaultValue();
+		
+		
+		String a = decl.getAlias();
+		Object v = this.getAttributes().get((a == null ? attrName : a));
+		if ( v!= null)
+		  return (String)v;
+		return defaultVal;
+		
+	}
 }

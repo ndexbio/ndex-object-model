@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 public class CX2ToCXVisualPropertyConverter {
 	
+	
 	private Map<String, Map.Entry<String,CX2ToCXVisualPropertyCvtFunction>> networkCvtTable; 
 	private Map<String, Map.Entry<String,CX2ToCXVisualPropertyCvtFunction>> nodeEdgeCvtTable; 
 	
@@ -68,7 +69,7 @@ public class CX2ToCXVisualPropertyConverter {
 
 		
 	
-	public CX2ToCXVisualPropertyConverter () {
+	private CX2ToCXVisualPropertyConverter () {
     	networkCvtTable = new HashMap<>(100);
     	nodeEdgeCvtTable = new HashMap<>(100);
     	    	
@@ -155,6 +156,8 @@ public class CX2ToCXVisualPropertyConverter {
     	
     }
     
+	private static final CX2ToCXVisualPropertyConverter instance = new CX2ToCXVisualPropertyConverter();
+
 	private static void addEntryToCvterTable (Map<String, Map.Entry<String, CX2ToCXVisualPropertyCvtFunction>> table, String oldVP, String newVP,
 			CX2ToCXVisualPropertyCvtFunction cvt) { 
 		AbstractMap.Entry<String, CX2ToCXVisualPropertyCvtFunction> cvtrEntry= new AbstractMap.SimpleImmutableEntry<>(newVP, cvt);
@@ -229,5 +232,7 @@ public class CX2ToCXVisualPropertyConverter {
 			return cvtr.getValue().convert(oldValue);
 		return null;
 	}
+	
+	public static CX2ToCXVisualPropertyConverter getInstance() { return instance;}
 	
 }

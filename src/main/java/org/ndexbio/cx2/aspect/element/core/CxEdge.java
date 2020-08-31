@@ -1,5 +1,7 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.util.Map;
+
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -76,5 +78,11 @@ public class CxEdge extends AttributeDeclaredAspect {
 	
 	public void addCX1EdgeAttribute(EdgeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
 		addCX1Attribute(elmt, decls, CxEdge.ASPECT_NAME);
+	}
+	
+	@JsonIgnore
+	public String getInteraction(Map<String, DeclarationEntry> attrDecls) {
+		return getStringAttr(attrDecls, INTERACTION);
+
 	}
 }

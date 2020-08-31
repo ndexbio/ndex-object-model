@@ -129,7 +129,7 @@ public class CXToCX2Converter {
 		netAttributes = new HashMap<>();
 		opaqueAspectTable = new HashMap<>();
 		
-		vpConverter = new CXToCX2VisualPropertyConverter();
+		vpConverter = CXToCX2VisualPropertyConverter.getInstance();
 		
 		visualDependencies = new HashMap<> ();
 		

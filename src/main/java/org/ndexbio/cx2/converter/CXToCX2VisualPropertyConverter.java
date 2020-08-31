@@ -11,6 +11,7 @@ import java.util.TreeMap;
 public class CXToCX2VisualPropertyConverter {
 	
 	
+	
 	/* These node or edge visual properties are not part of the cx2 portable styles, we just carry them over to cx2, and it is up to the 
 	 * application to decide whether supporting them.
 	 */
@@ -145,8 +146,9 @@ public class CXToCX2VisualPropertyConverter {
 					} };						
 	
 
-					
-	public CXToCX2VisualPropertyConverter () {
+	private static final CXToCX2VisualPropertyConverter instance = new CXToCX2VisualPropertyConverter();
+			
+	private CXToCX2VisualPropertyConverter () {
     	networkCvtTable = new TreeMap<>();
     	nodeEdgeCvtTable = new TreeMap<>();
     	    	
@@ -302,4 +304,8 @@ public class CXToCX2VisualPropertyConverter {
 		return null;
 	}
 	
+	
+	public static CXToCX2VisualPropertyConverter getInstance() {
+		return instance;
+	}
 }
