@@ -71,7 +71,7 @@ public class CXToCX2ConverterTest {
 
 		CXToCX2Converter cvt2;
 
-		cvt2 = new CXToCX2Converter (
+		/* cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/invalid_long_sample.cx",
 				null, "long_as_float_test.cx2");
 		cvt2.convert();
@@ -84,7 +84,7 @@ public class CXToCX2ConverterTest {
 		cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/HIV-human PPI_continuousmapping.cx",
 				null, "HIV-human_continuesmapping.cx2");
-		cvt2.convert(); 
+		cvt2.convert();  */
 		
 	/*	cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/no_attr_on_edges.cx",
