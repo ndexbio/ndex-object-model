@@ -23,14 +23,19 @@ public class AspectAttributeStatEntry {
 		alias = null;
 	} 
 	
-	public void addDatatype (ATTRIBUTE_DATA_TYPE dataType) throws NdexException {
+	/**
+	 * Add check the data type of an attribute. 
+	 * @param dataType
+	 * @return error message when data type is inconsistent in the CX. null if no errors were found. 
+	 */
+	public String addDatatype (ATTRIBUTE_DATA_TYPE dataType) {
 		if ( datatype == null)
 		   this.datatype = dataType;
 		else {
 			if ( datatype != dataType) 
-				throw new NdexException ("Attribure has inconsistent datatype between " + datatype 
-						+ " and " + dataType);
+				return ("data type " + dataType + " is inconsistent with previously declared data type " + datatype);
 		}
+		return null;
 	}
 	
 	public void addValue (Object v) {

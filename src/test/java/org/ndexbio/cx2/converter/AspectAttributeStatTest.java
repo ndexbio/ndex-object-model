@@ -15,10 +15,12 @@ import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.model.exceptions.NdexException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 public class AspectAttributeStatTest {
 
 	@Test
-	public void test() throws NdexException {
+	public void test() throws NdexException, JsonProcessingException {
 		AspectAttributeStat stats = new AspectAttributeStat();
 		
 		//testing addEdge()

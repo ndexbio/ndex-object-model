@@ -11,18 +11,22 @@ public class AspectAttributeStatEntryTest {
 	@Test
 	public void test() throws NdexException {
 		AspectAttributeStatEntry e = new AspectAttributeStatEntry();
-		e.addDatatype(ATTRIBUTE_DATA_TYPE.DOUBLE);
-		e.addDatatype(ATTRIBUTE_DATA_TYPE.DOUBLE);
+		String e1 = e.addDatatype(ATTRIBUTE_DATA_TYPE.DOUBLE);
+		assertNull (e1);
+		assertNull (e.addDatatype(ATTRIBUTE_DATA_TYPE.DOUBLE));
+		
 		e.setAlias("foo");
 		assertEquals(ATTRIBUTE_DATA_TYPE.DOUBLE,e.getDataType());
 		assertEquals("foo", e.getAlias());
 	}
 	
-	@Test (expected = NdexException.class)
-	public void test1() throws NdexException {
+	@Test 
+	public void test1() {
 		AspectAttributeStatEntry e = new AspectAttributeStatEntry();
 		e.addDatatype(ATTRIBUTE_DATA_TYPE.DOUBLE);
-		e.addDatatype(ATTRIBUTE_DATA_TYPE.STRING);
+		String error = e.addDatatype(ATTRIBUTE_DATA_TYPE.STRING);
+		assertEquals ( "data type string is inconsistent with previously declared data type double",
+				error);
 		
 	}
 	
@@ -30,7 +34,7 @@ public class AspectAttributeStatEntryTest {
 	@Test
 	public void test2() throws NdexException {
 		AspectAttributeStatEntry e = new AspectAttributeStatEntry();
-		e.addDatatype(ATTRIBUTE_DATA_TYPE.STRING);
+		assertNull(e.addDatatype(ATTRIBUTE_DATA_TYPE.STRING));
 		
 		
 		for (int i = 0 ; i < 40 ; i++ ) {

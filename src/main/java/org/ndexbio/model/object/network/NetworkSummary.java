@@ -77,7 +77,6 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	
 	private boolean isShowcase;
 
-//	private boolean isIndexed;
 	private boolean isCompleted;
 	private String doi;
 	private boolean isCertified;
@@ -86,8 +85,19 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private boolean hasLayout;
 	private boolean hasSample;
 	
+	// null means cx1. Valid values are cx and cx2.
+	private String cxFormat; 
+	
 //	private boolean cxFileSize;
 	
+	public String getCxFormat() {
+		return cxFormat;
+	}
+
+	public void setCxFormat(String cxFormat) {
+		this.cxFormat = cxFormat;
+	}
+
 	public NetworkSummary () {
 		super();
 

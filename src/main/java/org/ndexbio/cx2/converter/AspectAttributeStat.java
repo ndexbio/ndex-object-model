@@ -9,6 +9,8 @@ import org.ndexbio.cx2.aspect.element.core.CxNetworkAttribute;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
 import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
+import org.ndexbio.cxio.aspects.datamodels.AbstractAttributesAspectElement;
+import org.ndexbio.cxio.aspects.datamodels.AbstractElementAttributesAspectElement;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
@@ -16,6 +18,9 @@ import org.ndexbio.cxio.aspects.datamodels.NetworkAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.model.exceptions.NdexException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AspectAttributeStat {
 	
@@ -75,7 +80,10 @@ public class AspectAttributeStat {
 		AspectAttributeStatEntry e = attributes.get(attrName);
 		if ( e == null)
 			e = new AspectAttributeStatEntry();
-		e.addDatatype(ATTRIBUTE_DATA_TYPE.STRING);
+		String error = e.addDatatype(ATTRIBUTE_DATA_TYPE.STRING);
+		if ( error != null)
+			throw new NdexException ("Data type error in attribute " + attrName + " of aspect "+ aspectName +
+					 ": " + error);
 		if ( alias != null)
 			e.setAlias(alias);
 		if (value != null)
@@ -83,7 +91,7 @@ public class AspectAttributeStat {
 		attributes.put (attrName,e);
 	}
 
-	public void addNodeAttribute (NodeAttributesElement attr) throws NdexException {
+	public void addNodeAttribute (NodeAttributesElement attr) throws NdexException, JsonProcessingException {
 		String attrName = attr.getName();
 		
 		Map<String, AspectAttributeStatEntry> nodeAttributes = table.get(CxNode.ASPECT_NAME);
@@ -107,14 +115,17 @@ public class AspectAttributeStat {
 		}	
 		
 		ATTRIBUTE_DATA_TYPE t = attr.getDataType();
-		e.addDatatype(t);
+		String error = e.addDatatype(t);
+		if ( error != null) {
+			throw new NdexException (constructErrMsg(attr,error));
+		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t == ATTRIBUTE_DATA_TYPE.BOOLEAN) {
 			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
 			
 		}
 	}
 	
-	public void addNetworkAttribute (NetworkAttributesElement attr) throws NdexException {
+	public void addNetworkAttribute (NetworkAttributesElement attr) throws NdexException, JsonProcessingException {
 		String attrName = attr.getName();
 		
 		Map<String, AspectAttributeStatEntry> nodeAttributes = table.get(CxNetworkAttribute.ASPECT_NAME);
@@ -128,11 +139,14 @@ public class AspectAttributeStat {
 		if ( e != null ) 
 			throw new NdexException("Duplicated network attribute '" + attrName + "' found." );	
 		e = new AspectAttributeStatEntry ();
-		e.addDatatype(attr.getDataType());
+		String error = e.addDatatype(attr.getDataType());
+		if ( error != null) {
+			new NdexException (constructErrMsg(attr, error));
+		}
 		nodeAttributes.put(attrName, e);
 	}
 	
-	public void addEdgeAttribute (EdgeAttributesElement attr) throws NdexException {
+	public void addEdgeAttribute (EdgeAttributesElement attr) throws NdexException, JsonProcessingException {
 		String attrName = attr.getName();
 		
 		Map<String, AspectAttributeStatEntry> edgeAttributes = table.get(CxEdge.ASPECT_NAME);
@@ -153,11 +167,20 @@ public class AspectAttributeStat {
 			edgeAttributes.put(attrName, e);
 		}	
 		ATTRIBUTE_DATA_TYPE t = attr.getDataType();
-		e.addDatatype(t);
+		String error = e.addDatatype(t);
+		if ( error != null) {
+			throw new NdexException(constructErrMsg(attr,error) );
+		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t== ATTRIBUTE_DATA_TYPE.BOOLEAN ) {
 			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
 			
 		}
+	}
+	
+	private static String constructErrMsg(AbstractAttributesAspectElement e, String cause) throws JsonProcessingException {
+		ObjectMapper om = new ObjectMapper();
+		return  "Data error in " + e.getAspectName() + " object " + om.writeValueAsString(e) + 
+				". Cause: " + cause;
 	}
 	
 	public CxAttributeDeclaration createCxDeclaration() {
