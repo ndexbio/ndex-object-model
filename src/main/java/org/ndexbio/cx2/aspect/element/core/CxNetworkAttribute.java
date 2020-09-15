@@ -17,7 +17,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @JsonIgnoreProperties({ "v" })
 
-public class CxNetworkAttribute extends AttributeDeclaredAspect {
+public class CxNetworkAttribute extends AttributeDeclaredAspect<CxNetworkAttribute> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public final static String ASPECT_NAME = "networkAttributes";
 	
@@ -111,6 +116,12 @@ public class CxNetworkAttribute extends AttributeDeclaredAspect {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public int compareTo(CxNetworkAttribute o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

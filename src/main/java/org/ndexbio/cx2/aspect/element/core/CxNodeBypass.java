@@ -4,8 +4,12 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class CxNodeBypass extends BypassVisualProperties {
+public class CxNodeBypass extends BypassVisualProperties<CxNodeBypass> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String ASPECT_NAME = "nodeBypasses"; 
 	
 	@Override
@@ -20,6 +24,12 @@ public class CxNodeBypass extends BypassVisualProperties {
 		super();
 		this.setId(nodeId);
 		this.setVisualProperties(values);
+	}
+
+	@Override
+	public int compareTo(CxNodeBypass o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

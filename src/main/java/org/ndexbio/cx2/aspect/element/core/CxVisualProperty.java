@@ -13,7 +13,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class CxVisualProperty implements CxAspectElement {
+public class CxVisualProperty implements CxAspectElement<CxVisualProperty> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public static final String ASPECT_NAME = "visualProperties";
 
@@ -72,5 +77,11 @@ public class CxVisualProperty implements CxAspectElement {
 	@JsonIgnore
 	public boolean isEmpty() {
 		return defaultProps.isEmpty() && edgeMappings.isEmpty() && nodeMappings.isEmpty();
+	}
+
+	@Override
+	public int compareTo(CxVisualProperty o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class CxMetadata {
+public class CxMetadata implements Comparable<CxMetadata> {
 	
 	@JsonProperty("name")
 	private String name;
@@ -66,5 +66,52 @@ public class CxMetadata {
 		}
 		return result;
 	}
+	
+	@Override
+	public boolean equals(Object m2) {
+		if ( m2 instanceof CxMetadata) {
+			CxMetadata md2 = (CxMetadata)m2;
+			if ( name!= null && elementCount !=null && md2.getElementCount() !=null 
+					&& md2.getName() !=null )
+				return this.name.equals(md2.getName()) && elementCount.equals(md2.getElementCount());
+		}
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return (name != null) ? 
+			name.hashCode() : super.hashCode();
+	}
+
+	@Override
+	public int compareTo(CxMetadata o) {
+		String n2= o.getName();
+		Long c2 = o.getElementCount();
+		
+		if ( name == null ) {
+			if ( n2 == null) {
+				
+				if (elementCount == null ) {
+					return  c2 == null ? 0 : -1;
+				}
+				
+				return c2 == null ? 1: elementCount.compareTo(c2);
+			}
+			return  -1;
+		}
+		
+		if ( n2 == null)
+			return 1;
+		int r = name.compareTo(n2);
+		if ( r != 0)
+			return r;
+		
+		if ( c2 == null)
+			return 1;
+		
+		return elementCount.compareTo(c2);
+	}
+
 
 }

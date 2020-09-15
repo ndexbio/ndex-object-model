@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({ "id", "x","y","z" })
-public class CxNode extends AttributeDeclaredAspect  {
+public class CxNode extends AttributeDeclaredAspect<CxNode>  {
 	
 	public final static String ASPECT_NAME = "nodes";
 	
@@ -130,5 +130,11 @@ public class CxNode extends AttributeDeclaredAspect  {
 	@JsonIgnore
 	public String getNodeRepresents(Map<String, DeclarationEntry> attrDecls) {
 		return getStringAttr(attrDecls, REPRESENTS);
+	}
+
+	@Override
+	public int compareTo(CxNode o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

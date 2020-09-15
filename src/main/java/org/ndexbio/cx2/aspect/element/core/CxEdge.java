@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({ "id", "s","t" })
-public class CxEdge extends AttributeDeclaredAspect {
+public class CxEdge extends AttributeDeclaredAspect<CxEdge> {
 	
 	public static final String ASPECT_NAME= "edges";
 	
@@ -84,5 +84,12 @@ public class CxEdge extends AttributeDeclaredAspect {
 	public String getInteraction(Map<String, DeclarationEntry> attrDecls) {
 		return getStringAttr(attrDecls, INTERACTION);
 
+	}
+
+
+	@Override
+	public int compareTo(CxEdge o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

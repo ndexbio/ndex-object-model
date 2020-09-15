@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //@JsonSerialize(using = AttributeDeclarationSerializer.class)
 //@JsonDeserialize(using = AttributeDeclarationDeserializer.class)
-public class CxAttributeDeclaration implements CxAspectElement{
+public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclaration>{
 	
 	public final static String ASPECT_NAME = "attributeDeclarations";
 	
@@ -61,6 +61,12 @@ public class CxAttributeDeclaration implements CxAspectElement{
 			}
 		}
 		
+	}
+
+	@Override
+	public int compareTo(CxAttributeDeclaration o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

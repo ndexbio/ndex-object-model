@@ -12,9 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author jingchen
  *
  */
-public abstract class BypassVisualProperties implements CxAspectElement {
+public abstract class BypassVisualProperties<T extends BypassVisualProperties<?> > implements CxAspectElement<T> {
 
-    @JsonProperty ("id")
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@JsonProperty ("id")
 	private long id;
     
     @JsonProperty ("v")

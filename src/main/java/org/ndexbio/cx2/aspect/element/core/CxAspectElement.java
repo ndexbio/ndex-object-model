@@ -1,8 +1,9 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface CxAspectElement  {
+public interface CxAspectElement<T extends CxAspectElement<?>> extends Comparable<T>,Serializable{
 
 	public String getAspectName() ;
 	
