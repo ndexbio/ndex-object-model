@@ -13,6 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 //@JsonDeserialize(using = AttributeDeclarationDeserializer.class)
 public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclaration>{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public final static String ASPECT_NAME = "attributeDeclarations";
 	
 	/*
@@ -61,6 +66,10 @@ public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclar
 			}
 		}
 		
+	}
+	
+	public void removeAspectDeclaration(String aspectName) {
+		this.declarations.remove(aspectName);
 	}
 
 	@Override

@@ -16,6 +16,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "id", "s","t" })
 public class CxEdge extends AttributeDeclaredAspect<CxEdge> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final String ASPECT_NAME= "edges";
 	
 	public static final String INTERACTION ="interaction";

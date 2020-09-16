@@ -9,6 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class CxOpaqueAspectElement implements CxAspectElement<CxOpaqueAspectElement> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String aspectName;
 	
 	private Map<String, Object> elementObject = new HashMap<>();

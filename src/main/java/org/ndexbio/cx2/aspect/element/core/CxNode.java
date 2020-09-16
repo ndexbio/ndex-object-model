@@ -3,7 +3,6 @@ package org.ndexbio.cx2.aspect.element.core;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -18,6 +17,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "id", "x","y","z" })
 public class CxNode extends AttributeDeclaredAspect<CxNode>  {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public final static String ASPECT_NAME = "nodes";
 	
 	public final static String NAME = "name";
