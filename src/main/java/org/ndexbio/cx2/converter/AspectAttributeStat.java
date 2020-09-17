@@ -141,7 +141,7 @@ public class AspectAttributeStat {
 		e = new AspectAttributeStatEntry ();
 		String error = e.addDatatype(attr.getDataType());
 		if ( error != null) {
-			new NdexException (constructErrMsg(attr, error));
+			throw new NdexException (constructErrMsg(attr, error));
 		}
 		nodeAttributes.put(attrName, e);
 	}

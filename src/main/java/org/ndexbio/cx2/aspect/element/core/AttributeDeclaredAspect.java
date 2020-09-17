@@ -176,8 +176,8 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 		}
 		Object oldV = attributes.put(attrName, v);
 		if (oldV != null)
-			throw new NdexException("Duplicate node attribute on node id: " + cx1ElementAttribute.getPropertyOf() + ". Attribute name:"
-					+ cx1ElementAttribute.getName() + " has value " + oldV + " and " + cx1ElementAttribute.getValue());
+			throw new NdexException("Duplicate " + aspectName +" attribute on id: " + cx1ElementAttribute.getPropertyOf() + ". Attribute '"
+					+ cx1ElementAttribute.getName() + "' has value (" + oldV + ") and (" + cx1ElementAttribute.getValue() + ")");
 	}
 	
 	private static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
