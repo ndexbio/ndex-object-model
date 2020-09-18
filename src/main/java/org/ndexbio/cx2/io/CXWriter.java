@@ -35,7 +35,8 @@ public class CXWriter {
 	private static final int  FINISHED = 4;
 		
 	private static Charset charset = Charset.forName("UTF-8");
-	private static 	byte[] elmtDivider = ",\n".getBytes(charset);
+	private static 	byte[] elmtDivider = ",".getBytes(charset);
+	private static 	byte[] newline = "\n".getBytes(charset);
 
 	
 	private OutputStream out;
@@ -78,7 +79,7 @@ public class CXWriter {
 		
 		out.write(("[{\"CXVersion\":\"2.0\",\"hasFragments\":"+ hasFragments + "},").getBytes(charset));
 		out.flush();
-		finishedAspects = new TreeSet();
+		finishedAspects = new TreeSet<>();
 		
 		state = BEFORE_ASPECT;
 	}
@@ -96,6 +97,7 @@ public class CXWriter {
 		om.writeValue(out, metadata);
 		writeStr("}");
 		out.write(elmtDivider);
+		out.write(newline);
 		out.flush();
 		metadataCount ++;
 		
@@ -104,7 +106,7 @@ public class CXWriter {
 			state = POST_METATDATA;
 	}
 	
-	public void writeFullAspectFragment(List<? extends CxAspectElement> fragment) throws JsonGenerationException, JsonMappingException, IOException, NdexException {
+	public void writeFullAspectFragment(List<? extends CxAspectElement<?>> fragment) throws JsonGenerationException, JsonMappingException, IOException, NdexException {
 		if ( state == INIT)
 			init();
 		
@@ -113,12 +115,13 @@ public class CXWriter {
 		String aspectName = fragment.get(0).getAspectName();
 		checkAspectName(aspectName);
 		if ( fragment.size() > 0 ) {
-			Map<String,List<? extends CxAspectElement>> holder = new HashMap<>(1);
+			Map<String,List<? extends CxAspectElement<?>>> holder = new HashMap<>(1);
 			holder.put( aspectName, fragment);
 			//writeStr("{\"" + fragment.get(0).getAspectName() + "\":");
 			om.writeValue(out, holder);
 			//writeStr("}");
 			out.write(elmtDivider);
+			out.write(newline);
 			out.flush();
 		}
 	}
@@ -193,6 +196,7 @@ public class CXWriter {
 		
 		writeStr("]}");
 		out.write(elmtDivider);
+		out.write(newline);
 		out.flush();
 		
 		state = BEFORE_ASPECT;
@@ -225,7 +229,7 @@ public class CXWriter {
 		out.flush();
 	}
 	
-	public void writeElementInFragment(CxAspectElement element) throws NdexException, JsonGenerationException, JsonMappingException, IOException {
+	public void writeElementInFragment(CxAspectElement<?> element) throws NdexException, JsonGenerationException, JsonMappingException, IOException {
 		String aspect = element.getAspectName();
 		if ( state != ASPECT_STARTED)
 			throw new NdexException( "Aspect frament for " + aspect + " hasn't been started yet.");
@@ -236,6 +240,8 @@ public class CXWriter {
 		om.writeValue(out, element);
 		
 		currentElmtCounter++;
+		if ( currentElmtCounter % 500 == 0)
+			out.write(newline);
 	}
 	
 	

@@ -20,6 +20,7 @@ public class CX2AspectWriter<T extends CxAspectElement<?>> implements AutoClosea
 	private static final byte[] start = {'['};
 	private static final byte[] comma = {','};
 	private static final byte[] end = {']'};
+	private static final byte[] newline = {'\n'};
 	
 	@SuppressWarnings("resource")
 	public CX2AspectWriter(String aspectFileName) throws IOException {
@@ -54,6 +55,9 @@ public class CX2AspectWriter<T extends CxAspectElement<?>> implements AutoClosea
 			out.write(comma);
 		om.writeValue(out, e);
 		count++;
+		if ( count % 500 == 0 )
+			out.write(newline);
+			
 	}
 	
 	//public void flush() throws IOException { out.flush();}

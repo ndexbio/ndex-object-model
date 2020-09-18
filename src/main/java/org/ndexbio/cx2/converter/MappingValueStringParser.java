@@ -46,7 +46,7 @@ public class MappingValueStringParser {
 	            } else { 
 	              Matcher m = p.matcher(n); 
 	              if ( !m.matches()) 
-	                throw new IOException ("Failed to parse mapping string: "+ n + " in mapping: " + str); 
+	                throw new IOException ("Failed to parse mapping string '"+ n + "' in mapping " + str); 
 	 
 	              _data.put(m.group(1), m.group(4).replace(",,", ",")); 
 	            }  
