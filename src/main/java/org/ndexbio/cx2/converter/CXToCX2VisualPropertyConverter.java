@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.ndexbio.model.exceptions.NdexException;
+
 
 public class CXToCX2VisualPropertyConverter {
 	
@@ -266,26 +268,33 @@ public class CXToCX2VisualPropertyConverter {
 	}
 
 	private static Map<String,Object> convertNetworkProperties(Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>>  table,
-				Map<String,String> cx1Properties) {
+				Map<String,String> cx1Properties) throws NdexException {
 		Map<String,Object> result = new HashMap<>();
 		
 		for (Map.Entry<String, String> e : cx1Properties.entrySet()) {
 			Map.Entry<String,CXToCX2VisualPropertyCvtFunction> cvtrEntry = table.get(e.getKey());
 			if ( cvtrEntry != null) {
-				Object newValue = cvtrEntry.getValue().convert(e.getValue());
-				result.put(cvtrEntry.getKey(), newValue);
+				try {
+					Object newValue = cvtrEntry.getValue().convert(e.getValue());
+					result.put(cvtrEntry.getKey(), newValue);
+				} catch (NullPointerException e1) {
+					String errMsg = "NPE in mapping. Key: " + (e.getKey() == null? "": e.getKey()) +
+							". value: " + (e.getValue()== null? "": e.getValue()) + ".";
+					System.err.println (errMsg);
+					throw new NdexException(errMsg);
+				}
 			}
 		}
 		
 		return result;
 	}
 	
-	public Map<String,Object>  convertNetworkVPs (Map<String,String> cx1Properties ) {
+	public Map<String,Object>  convertNetworkVPs (Map<String,String> cx1Properties ) throws NdexException {
 		return convertNetworkProperties(networkCvtTable, cx1Properties);
 	}
     
 	
-	public Map<String,Object>  convertEdgeOrNodeVPs (Map<String,String> cx1Properties ) {
+	public Map<String,Object>  convertEdgeOrNodeVPs (Map<String,String> cx1Properties ) throws NdexException {
 		return convertNetworkProperties(nodeEdgeCvtTable, cx1Properties);
 
 	}
