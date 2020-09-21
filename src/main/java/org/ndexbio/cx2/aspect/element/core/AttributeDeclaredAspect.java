@@ -205,7 +205,8 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 	}
 
 	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
-		switch (t) {
+		try { 
+			switch (t) {
 		case BOOLEAN: 
 			return Boolean.valueOf( value);
 		case DOUBLE:
@@ -218,6 +219,9 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 			return value;
 		default: 
 			throw new NdexException ("Value " + value + " is not a single value type. It is " + t.toString());
+		}
+		} catch ( NumberFormatException e) {
+			throw new NumberFormatException ("Non numeric value '" + value + "' is declared as type " + t.toString() + ".");
 		}
 	}
 	
