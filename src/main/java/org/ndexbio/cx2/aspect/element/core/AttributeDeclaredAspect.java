@@ -177,7 +177,7 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 		Object oldV = attributes.put(attrName, v);
 		if (oldV != null)
 			throw new NdexException("Duplicate " + aspectName +" attribute on id: " + cx1ElementAttribute.getPropertyOf() + ". Attribute '"
-					+ cx1ElementAttribute.getName() + "' has value (" + oldV + ") and (" + cx1ElementAttribute.getValue() + ")");
+					+ cx1ElementAttribute.getName() + "' has value (" + oldV + ") and (" + cx1ElementAttribute.getValueString() + ")");
 	}
 	
 	private static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
@@ -205,23 +205,24 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 	}
 
 	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
-		try { 
+		try {
 			switch (t) {
-		case BOOLEAN: 
-			return Boolean.valueOf( value);
-		case DOUBLE:
-			return Double.valueOf(value);
-		case INTEGER:
-			return Integer.valueOf(value);
-		case LONG:
-			return Long.valueOf(value);
-		case STRING:
-			return value;
-		default: 
-			throw new NdexException ("Value " + value + " is not a single value type. It is " + t.toString());
-		}
-		} catch ( NumberFormatException e) {
-			throw new NumberFormatException ("Non numeric value '" + value + "' is declared as type " + t.toString() + ".");
+			case BOOLEAN:
+				return Boolean.valueOf(value);
+			case DOUBLE:
+				return Double.valueOf(value);
+			case INTEGER:
+				return Integer.valueOf(value);
+			case LONG:
+				return Long.valueOf(value);
+			case STRING:
+				return value;
+			default:
+				throw new NdexException("Value " + value + " is not a single value type. It is " + t.toString());
+			}
+		} catch (NumberFormatException e) {
+			throw new NumberFormatException(
+					"Non numeric value '" + value + "' is declared as type " + t.toString() + ".");
 		}
 	}
 	

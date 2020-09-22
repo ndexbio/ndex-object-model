@@ -89,5 +89,17 @@ public abstract class AbstractElementAttributesAspectElement extends AbstractAtt
         sb.append("\n");
         return sb.toString();
     }
+    
+    /**
+     * Get a string representation of the value. 
+     * @return
+     */
+    @JsonIgnore
+    public String getValueString() {
+    	if (isSingleValue())
+    		return getValue();
+    	
+    	return _values.toString();
+    }
 
 }
