@@ -14,8 +14,6 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
@@ -59,9 +57,9 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.PrintStream;
 
 
 /**
@@ -138,6 +136,24 @@ public class CXToCX2Converter {
 		System.out.println("Converting " + filePath + " to " +  newFileName);
 	}
 
+        
+        /**
+         * Prints any warnings encountered in {@code cRes} to {@code PrintStream}
+         * passed in
+         * 
+         */
+        private void outputAnyConverterUtilitiesWarnings(PrintStream outStream,
+                ConverterUtilitiesResult cRes){
+           if (cRes == null || cRes.hasWarnings() == false){
+               return;
+           } 
+           for (String s : cRes.getWarnings()){
+               if (s == null){
+                   continue;
+               }
+               outStream.println(s);
+           }
+        }
 	private void createReaders() {
 		_readers = new HashSet<>(23);
 
@@ -854,7 +870,11 @@ public class CXToCX2Converter {
 		            }
 		            
 		            Map<String,Object> mapEntry = new HashMap<>(2);
-		            mapEntry.put("v", ConverterUtilities.cvtStringValueToObj(t,k));
+                             ConverterUtilitiesResult cRes = ConverterUtilities.cvtStringValueToObj(t, k);
+                             
+                             outputAnyConverterUtilitiesWarnings(System.err, cRes);
+                             
+		            mapEntry.put("v", cRes.getResult());
 		            mapEntry.put("vp", vpConverter.getNewEdgeOrNodePropertyValue(vpName,v));
 		        	m.add(mapEntry);
 		            counter++;
@@ -898,11 +918,13 @@ public class CXToCX2Converter {
 		            Object GO = vpConverter.getNewEdgeOrNodePropertyValue(vpName,G);
 
 		            final String OV = sp.get("OV=" + counter);
-		            Object OVO = ConverterUtilities.cvtStringValueToObj(t, OV);
-		        
 		            if (OV == null) {
 		            	throw new NdexException("error: continuous mapping string is corruptted for " + defString);
-		            }
+		            } 
+                             ConverterUtilitiesResult cRes = ConverterUtilities.cvtStringValueToObj(t, OV);
+		            outputAnyConverterUtilitiesWarnings(System.err, cRes);
+                            
+		            Object OVO = cRes.getResult();
 		            
 		            if ( counter == 0 ) {  // min side
 		            	currentMapping.put("includeMin", Boolean.FALSE);
