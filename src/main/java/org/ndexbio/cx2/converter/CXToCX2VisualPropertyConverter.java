@@ -47,8 +47,18 @@ public class CXToCX2VisualPropertyConverter {
 	private static final CXToCX2VisualPropertyCvtFunction numberCvtr = 
 			 (strVal) -> Double.valueOf(strVal); 
 
-	private static final CXToCX2VisualPropertyCvtFunction intCvtr = 
-					 (strVal) -> Integer.valueOf(strVal); 
+	private static final CXToCX2VisualPropertyCvtFunction intCvtr = (String strVal) -> {
+		try {
+			return Integer.valueOf(strVal);
+
+		} catch (NumberFormatException e) {
+			try {
+				return Integer.valueOf(Double.valueOf(strVal).intValue());
+			} catch (NumberFormatException e2) {
+				throw new NdexException("Can't convert string " + strVal + " to number.");
+			}
+		}
+	};
 
 	private static final CXToCX2VisualPropertyCvtFunction opacityCvtr =
 			(strVal ) -> Double.valueOf(Double.valueOf(strVal).doubleValue()/255.0);
@@ -282,6 +292,9 @@ public class CXToCX2VisualPropertyConverter {
 							". value: " + (e.getValue()== null? "": e.getValue()) + ".";
 					System.err.println (errMsg);
 					throw new NdexException(errMsg);
+				} catch (NdexException en) {
+					throw new NdexException ("Failed to Convert visual property " + e.getKey() + 
+							". Cause: " + en.getMessage());
 				}
 			}
 		}
@@ -306,10 +319,11 @@ public class CXToCX2VisualPropertyConverter {
 		return null;
 	}
 	
-	public Object getNewEdgeOrNodePropertyValue (String oldPropertyName, String oldValue) {
+	public Object getNewEdgeOrNodePropertyValue (String oldPropertyName, String oldValue) throws NdexException {
 		Map.Entry<String,CXToCX2VisualPropertyCvtFunction> cvtr = nodeEdgeCvtTable.get(oldPropertyName);
-		if ( cvtr != null)
-			return cvtr.getValue().convert(oldValue);
+		if ( cvtr != null) {
+				return cvtr.getValue().convert(oldValue);
+		}	
 		return null;
 	}
 	
