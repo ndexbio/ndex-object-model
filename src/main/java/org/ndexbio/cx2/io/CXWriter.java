@@ -219,12 +219,12 @@ public class CXWriter {
 				
 		if ( aspectName.indexOf('"')!= -1)
 			throw new NdexException ("Having '\"' in aspect name is not allowed.");
-		writeStr("{\"" + aspectName + "\":[");
+		writeStr("{\"" + aspectName + "\":");
 
 		Path p = Paths.get(aspectElementArrayFilePath);
 		Files.copy(p, out);		
 		
-		writeStr("]}");
+		writeStr("}");
 		out.write(elmtDivider);
 		out.flush();
 	}
