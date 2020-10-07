@@ -175,9 +175,11 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 			}
 		}
 		Object oldV = attributes.put(attrName, v);
-		if (oldV != null)
-			throw new NdexException("Duplicate " + aspectName +" attribute on id: " + cx1ElementAttribute.getPropertyOf() + ". Attribute '"
+		if (oldV != null) {
+			if (!v.equals(oldV))
+				throw new NdexException("Duplicate " + aspectName +" attribute on id: " + cx1ElementAttribute.getPropertyOf() + ". Attribute '"
 					+ cx1ElementAttribute.getName() + "' has value (" + oldV + ") and (" + cx1ElementAttribute.getValueString() + ")");
+		}
 	}
 	
 	private static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
