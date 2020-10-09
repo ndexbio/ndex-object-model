@@ -36,17 +36,22 @@ public class MappingValueStringParser {
 		if (commaCount == 0){
 			return;
 		}
-		if (commaCount == 1){
-			splitStr.add(sb.toString());
-			sb.setLength(0);
-			return;
-		}
+		
+		// for every 2 consecutive commas output a single comma
+		// this is because the format uses double comma as an
+		// escape character for a single comma
 		for (int x = 0 ; x < (int)Math.floor((double)commaCount/2.0) ; x++){
 			sb.append(",");
 		}
+		
+		// we had an even number of commas so just return
 		if (commaCount % 2 == 0){
 			return;
 		}
+		
+		// we had an odd number of commas if we got here so
+		// take the current string, append it to the list
+		// and clear the StringBuilder buffer (sb)
 		splitStr.add(sb.toString());
 		sb.setLength(0);
 	}
@@ -103,7 +108,8 @@ public class MappingValueStringParser {
 			} else { 
 			  Matcher m = p.matcher(n); 
 			  if ( !m.matches()) 
-				throw new IOException ("Failed to parse mapping segment '"+ n + "' in mapping " + str + "."); 
+				throw new IOException ("Failed to parse mapping segment '"
+						+ n + "' in mapping " + str + "."); 
 
 			  _data.put(m.group(1), m.group(4)); 
 			}  
