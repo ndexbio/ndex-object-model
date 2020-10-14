@@ -124,9 +124,18 @@ public class AspectAttributeStat {
 			
 		}
 	}
-	
-	public void addNetworkAttribute (NetworkAttributesElement attr) throws NdexException, JsonProcessingException {
+
+	/**
+	 * 
+	 * @param attr
+	 * @return A warning message if network attribute name is duplicated. Returns null otherwise.
+	 * @throws NdexException
+	 * @throws JsonProcessingException
+	 */
+	public String addNetworkAttribute (NetworkAttributesElement attr) throws NdexException, JsonProcessingException {
 		String attrName = attr.getName();
+		
+		String warning = null;
 		
 		Map<String, AspectAttributeStatEntry> nodeAttributes = table.get(CxNetworkAttribute.ASPECT_NAME);
 		
@@ -137,13 +146,14 @@ public class AspectAttributeStat {
 
 		AspectAttributeStatEntry e = nodeAttributes.get(attrName);
 		if ( e != null ) 
-			throw new NdexException("Duplicated network attribute '" + attrName + "' found." );	
+			warning = "Duplicated network attribute '" + attrName + "' found.";	
 		e = new AspectAttributeStatEntry ();
 		String error = e.addDatatype(attr.getDataType());
 		if ( error != null) {
 			throw new NdexException (constructErrMsg(attr, error));
 		}
 		nodeAttributes.put(attrName, e);
+		return warning;
 	}
 	
 	public void addEdgeAttribute (EdgeAttributesElement attr) throws NdexException, JsonProcessingException {
