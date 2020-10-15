@@ -156,29 +156,40 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 	}
 
 	
-	protected void addCX1Attribute (AbstractElementAttributesAspectElement cx1ElementAttribute, CxAttributeDeclaration attrDeclarations, 
-			String aspectName) throws NdexException {
+	protected String addCX1Attribute(AbstractElementAttributesAspectElement cx1ElementAttribute,
+			CxAttributeDeclaration attrDeclarations, String aspectName) throws NdexException {
+		try {
+			Object v = convertAttributeValue(cx1ElementAttribute);
+			String attrName = cx1ElementAttribute.getName();
+			Map<String, DeclarationEntry> attributeDef = attrDeclarations.getDeclarations().get(aspectName);
+			if (attributeDef != null && attributeDef.containsKey(attrName)) {
+				DeclarationEntry decl = attributeDef.get(attrName);
+				if (decl.getDefaultValue() != null) {
+					Object defaultV = decl.getDefaultValue();
+					if (v.equals(defaultV))
+						return null;
+				}
 
-		Object v = convertAttributeValue(cx1ElementAttribute);
-		String attrName = cx1ElementAttribute.getName();
-		Map<String, DeclarationEntry> attributeDef = attrDeclarations.getDeclarations().get(aspectName);
-		if ( attributeDef != null && attributeDef.containsKey( attrName )) {
-			DeclarationEntry decl = attributeDef.get( attrName );
-			if ( decl.getDefaultValue() !=null) {
-				Object defaultV = decl.getDefaultValue();
-				if ( v.equals(defaultV))
-					return;
+				if (decl.getAlias() != null) {
+					attrName = decl.getAlias();
+				}
 			}
-			
-			if (decl.getAlias() !=null) {
-				attrName = decl.getAlias();
+			Object oldV = attributes.put(attrName, v);
+			if (oldV != null) {
+				if (!v.equals(oldV))
+					throw new NdexException("Duplicate " + aspectName + " attribute on id: "
+							+ cx1ElementAttribute.getPropertyOf() + ". Attribute '" + cx1ElementAttribute.getName()
+							+ "' has value (" + oldV + ") and (" + cx1ElementAttribute.getValueString() + ")");
 			}
-		}
-		Object oldV = attributes.put(attrName, v);
-		if (oldV != null) {
-			if (!v.equals(oldV))
-				throw new NdexException("Duplicate " + aspectName +" attribute on id: " + cx1ElementAttribute.getPropertyOf() + ". Attribute '"
-					+ cx1ElementAttribute.getName() + "' has value (" + oldV + ") and (" + cx1ElementAttribute.getValueString() + ")");
+			return null;
+		} catch (NumberFormatException e) {
+			if ( cx1ElementAttribute.isSingleValue() && cx1ElementAttribute.getValue().toLowerCase().equals("null")) {
+				String warningstr = "In '" + cx1ElementAttribute.getAspectName() + "' aspect, ignoring '" + 
+						cx1ElementAttribute.getValue() + "' on '" + 
+						cx1ElementAttribute.getName() + "' attribute with id '" + cx1ElementAttribute.getPropertyOf() + "'.";
+				return warningstr;
+			}	
+			throw e;
 		}
 	}
 	

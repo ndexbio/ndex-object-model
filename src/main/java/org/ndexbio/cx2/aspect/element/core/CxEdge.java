@@ -81,8 +81,8 @@ public class CxEdge extends AttributeDeclaredAspect<CxEdge> {
 	}
 
 	
-	public void addCX1EdgeAttribute(EdgeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
-		addCX1Attribute(elmt, decls, CxEdge.ASPECT_NAME);
+	public String addCX1EdgeAttribute(EdgeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
+		return addCX1Attribute(elmt, decls, CxEdge.ASPECT_NAME);
 	}
 	
 	@JsonIgnore

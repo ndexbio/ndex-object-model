@@ -115,8 +115,8 @@ public class CxNode extends AttributeDeclaredAspect<CxNode>  {
 	}
 
 	
-	public void addCX1NodeAttribute(NodeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
-		addCX1Attribute(elmt, decls, CxNode.ASPECT_NAME);
+	public String addCX1NodeAttribute(NodeAttributesElement elmt, CxAttributeDeclaration decls) throws NdexException {
+		return addCX1Attribute(elmt, decls, CxNode.ASPECT_NAME);
 	}
 	
 	

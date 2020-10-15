@@ -322,7 +322,13 @@ public class CXToCX2VisualPropertyConverter {
 	public Object getNewEdgeOrNodePropertyValue (String oldPropertyName, String oldValue) throws NdexException {
 		Map.Entry<String,CXToCX2VisualPropertyCvtFunction> cvtr = nodeEdgeCvtTable.get(oldPropertyName);
 		if ( cvtr != null) {
+			try {
 				return cvtr.getValue().convert(oldValue);
+			} catch ( NumberFormatException e) {
+				throw new NdexException ( "Visual property '" + oldPropertyName + "' has non-numeric value '" 
+			           + oldValue +"'.");
+			}
+			
 		}	
 		return null;
 	}
