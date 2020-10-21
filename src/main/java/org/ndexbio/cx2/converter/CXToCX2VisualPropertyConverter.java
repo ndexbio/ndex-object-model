@@ -34,7 +34,6 @@ public class CXToCX2VisualPropertyConverter {
 			"NODE_Y_LOCATION",
 			"NODE_Z_LOCATION",
 			
-			"EDGE_PAINT",
             "EDGE_SELECTED",
             "EDGE_SELECTED_PAINT",
 			"EDGE_TOOLTIP"			
