@@ -70,8 +70,7 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
      */
     public final static MetaDataCollection createInstanceFromJson(final String str) throws IOException {
         final ObjectMapper m = new ObjectMapper();
-        m.configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false);
-
+        m.configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false);        
         return m.readValue(str, MetaDataCollection.class);
     } 
 
@@ -165,16 +164,6 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
         }
         return null;
     }
-
-
-    /*
-     * This is to get the meta data as list of sorted maps (String to Object).
-     *
-     * @return a list of sorted maps (String to Object)
-     */
-   /* public final Collection<SortedMap<String, Object>> getMetaData() {
-        return _data;
-    }*/
 
     /**
      * This method returns the MetaDataElement with a given name
@@ -270,30 +259,7 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
         e.setIdCounter(c);
     }
 
-    /*
-     * Convenience method to set the last update value for the meta data element with
-     * a give name.
-     * If no such element exist, a new one will be created.
-     *
-     * @param name
-     * @param last_update
-     */
-   /* public final void setLastUpdate(final String name, final Long last_update) {
-        final MetaDataElement e = checkIfElementPresent(name);
-        e.setLastUpdate(last_update);
-    } */
 
-    /**
-     * This is used to set a property.
-     *
-     * @param name
-     * @param key
-     * @param value
-     */
-    public final void setProperty(final String name, final String key, final String value) {
-        final MetaDataElement e = checkIfElementPresent(name);
-        e.addProperty(key, value);
-    }
 
     /**
      * Convenience method to set the (corresponding aspect) version for the meta data element with
@@ -347,69 +313,7 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
         }
         return e;
     }
-    
-  /*  public void validate() throws IOException {
-    		for ( SortedMap<String, Object> e: _data) {
-    			// check name
-    			Object n = e.get(MetaDataElement.NAME);
-    			if ( n == null) {
-    				throw new IOException ("name attribute was missing in one of the metadata element.");
-    			} else if ( !(n instanceof String)){
-    				throw new IOException ("name attriubute has to be a string in metadata element , but it is " + n.getClass().getName() + " instead in this document.");
-    			}
-    			
-    			String name = (String)n;
-    			
-    			// check version 
-    			Object v = e.get(MetaDataElement.VERSION);
-    			if ( v == null) {
-    				throw new IOException ("Attribute version was missing in metadata element " + name);
-    			} else if ( !(n instanceof String)){
-    				throw new IOException ("attriubute version is not a string in metadata element " + name);
-    			}
 
-    			v = e.get(MetaDataElement.CONSISTENCY_GROUP);
-    			if ( v != null) {
-    				throw new IOException ("attriubute version is not a string in metadata element " + name);
-    			}
-    			
-    		}
-    } */
-
-    /*
-     * Return the contents as Object array.
-     *
-     * @return the contents as Object arra
-     */
-  /*  public final Object[] toArray() {
-        return _data.toArray();
-    } */
-
-    /*
-     * This is to get the meta data as list of MetaDataElements
-     *
-     * @return a list of MetaDataElements
-     */
-  /*  public final Collection<MetaDataElement> toCollection() {
-        final ArrayList<MetaDataElement> l = new ArrayList<>();
-        for (int i = 0; i < size(); i++) {
-            l.add(new MetaDataElement(_data.get(i)));
-        }
-        return l;
-    } */
-
-    /*
-     * Convenience method to set the consistency group for the meta data element with
-     * a give name.
-     * If no such element exist, a new one will be created.
-     *
-     * @param name
-     * @param c
-     */
-   /* public final void setConsistencyGroup(final String name, final Long c) {
-        final MetaDataElement e = checkIfElementPresent(name);
-        e.setConsistencyGroup(c);
-    } */
 
     /**
      * Convenience method to set the element count for the meta data element with
@@ -424,52 +328,6 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
         e.setElementCount(c);
     } 
 
-    /*  public final boolean addAt( int position, final MetaDataElement e) {
-    _data.add(position, e.getData());
-    return true;
-} */
-
-/*
- * Convenience method to create and add one meta data element.
- *
- * @param aspect_name
- * @param consistency_group
- * @param version
- * @param last_update
- * @param id_counter
- * @param element_count
- */
-/*    public final void addMetaDataElement(final String aspect_name, final Long consistency_group, final String version, final Long last_update, final Long id_counter, final Long element_count) {
-    final MetaDataElement e = new MetaDataElement();
-    e.setName(aspect_name);
-    e.setConsistencyGroup(consistency_group);
-    e.setVersion(version);
-    e.setLastUpdate(last_update);
-    e.setIdCounter(id_counter);
-    e.setElementCount(element_count);
-    add(e);
-} */
-
-/*
- * * Convenience method to create and add one meta data element.
- *
- * @param elements
- * @param consistency_group
- * @param version
- * @param last_update
- * @param id_counter
- */
-/* public final void addMetaDataElement(final List<AspectElement> elements, final Long consistency_group, final String version, final Long last_update, final Long id_counter) {
-    if ((elements != null) && !elements.isEmpty()) {
-        final MetaDataElement e = new MetaDataElement();
-        e.setName(elements.get(0).getAspectName());
-        e.setConsistencyGroup(consistency_group);
-        e.setVersion(version);
-        e.setIdCounter(id_counter);
-        e.setElementCount((long) elements.size());
-        add(e);
-    }
-} */
 
     
 }

@@ -47,6 +47,8 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 	public static final String STRING = ATTRIBUTE_DATA_TYPE.STRING.toString(); //  "string"; 
 	
 	private String _predicateString;
+	
+	// _value is a JSON string when _datatype is a list type.
 	private String _value;
 	private String _dataType;
 	private Long subNetworkId;
@@ -64,6 +66,14 @@ public class NdexPropertyValuePair implements Serializable /*extends NdexObject 
 		this._dataType = dataType;
 		validateDataType();
 	}
+	
+	public NdexPropertyValuePair (String propertyName, String value, ATTRIBUTE_DATA_TYPE dataType) {
+		this._predicateString = propertyName;
+		this._value = value;
+		this.subNetworkId = null;		
+		this._dataType = dataType.toString();
+	}
+	
 	
 	private void validateDataType() {
 	 ATTRIBUTE_DATA_TYPE.fromCxLabel(_dataType);	 

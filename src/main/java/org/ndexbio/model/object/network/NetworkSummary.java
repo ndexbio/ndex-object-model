@@ -77,7 +77,6 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	
 	private boolean isShowcase;
 
-//	private boolean isIndexed;
 	private boolean isCompleted;
 	private String doi;
 	private boolean isCertified;
@@ -86,8 +85,23 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	private boolean hasLayout;
 	private boolean hasSample;
 	
+	// null means cx1. Valid values are cx and cx2.
+	private String cxFormat; 
+	
+	private long cxFileSize;
+	
+	private long cx2FileSize;
+	
 //	private boolean cxFileSize;
 	
+	public String getCxFormat() {
+		return cxFormat;
+	}
+
+	public void setCxFormat(String cxFormat) {
+		this.cxFormat = cxFormat;
+	}
+
 	public NetworkSummary () {
 		super();
 
@@ -316,6 +330,22 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setHasSample(boolean hasSample) {
 		this.hasSample = hasSample;
+	}
+
+	public long getCxFileSize() {
+		return cxFileSize;
+	}
+
+	public void setCxFileSize(long cxFileSize) {
+		this.cxFileSize = cxFileSize;
+	}
+
+	public long getCx2FileSize() {
+		return cx2FileSize;
+	}
+
+	public void setCx2FileSize(long cx2FileSize) {
+		this.cx2FileSize = cx2FileSize;
 	}
 
 }

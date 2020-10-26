@@ -38,6 +38,7 @@ public class CXAspectWriter implements AutoCloseable{
 	    jwriter.configure(JsonGenerator.Feature.FLUSH_PASSED_TO_STREAM, false);
 		count = 0;
 		isClosed=false;
+		out.write(start);
 	}
 
 
@@ -54,9 +55,7 @@ public class CXAspectWriter implements AutoCloseable{
 
 	
 	public void writeCXElement(AspectElement e) throws IOException {
-		if ( count == 0 ) 
-			out.write(start);
-		else 
+		if ( count != 0 ) 
 			out.write(comma);
 		e.write(jwriter);
 		count++;

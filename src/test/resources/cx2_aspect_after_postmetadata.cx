@@ -1,0 +1,12 @@
+[{"hasFragments":false,"CXVersion":"2.0"},
+{"metaData":[{"name":"edges","elementCount":300},{"name":"nodes"},{"name":"networkAttributes","elementCount":1}]},
+{"networkAttributes":[{"organism":"homo sapiens","author":"Anton Kratz","name":"boost18Dec evidence network percentile rank score","description":"Red: physical PPI Blue: co-expression Green: co-essentiality Violet: co-abundance Score is percentile rank - transformed score of the random forest prediction. Source: evidence_nw_p_rank.tsv, https://github.com/antonkratz/evtype","version":"3.0.0"}]},
+{"nodes":[{"v":{"n":"WDR4"},"id":94913},
+{"v":{"n":"WDR48"},"id":94915},
+{"v":{"n":"WRAP53"},"id":94917}
+]},
+{"metaData":[{"name":"nodes","elementCount":13},{"name":"networkAttributes","elementCount":1}]},
+{"attributeDeclarations":[ {"nodes":{"name":{"a":"n"}},"edges":{"interaction":{"v":"interacts with","a":"i"},"evtype":{"v":"co-essentialty"},"percentile_rank_score":{"a":"p"}}}]},
+{"status":[{"success":true}]}]
+
+

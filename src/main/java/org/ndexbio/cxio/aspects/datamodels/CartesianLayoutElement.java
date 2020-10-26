@@ -66,6 +66,14 @@ public final class CartesianLayoutElement extends AbstractAspectElement {
     }
 
 
+    public CartesianLayoutElement(final Long node_id,  final Double x, final Double y, final Double z) {
+        _node = node_id;
+        _view = null;
+        _x = x;
+        _y = y;
+        _z = z;
+    }
+
 
     public CartesianLayoutElement(final Long node, final String x, final String y) {
         _node = node;

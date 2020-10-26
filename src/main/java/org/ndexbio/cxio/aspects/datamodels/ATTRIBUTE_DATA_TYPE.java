@@ -68,4 +68,27 @@ public enum ATTRIBUTE_DATA_TYPE {
     public  boolean isSingleValueType() {
     	return isSingleValueType;
     }
+    
+    
+    public  ATTRIBUTE_DATA_TYPE elementType() {
+    	if ( isSingleValueType )
+    		return null;
+    	
+        switch (_name) {
+        case "list_of_string":
+            return STRING;
+        case "list_of_double":
+        case "list_of_float":	
+            return DOUBLE;
+        case "list_of_integer":
+            return INTEGER;
+        case "list_of_long":
+            return LONG;
+        case "list_of_boolean":
+            return BOOLEAN;
+        default:
+            throw new IllegalStateException("data type " + _name + " is not supported in this version of CX.");
+        }
+    }
+
 }
