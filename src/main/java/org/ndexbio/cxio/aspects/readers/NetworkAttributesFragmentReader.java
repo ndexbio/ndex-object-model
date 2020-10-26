@@ -34,12 +34,12 @@ public final class NetworkAttributesFragmentReader extends AbstractFragmentReade
 
         if (ParserUtils.isArray(o, AbstractAttributesAspectElement.ATTR_VALUES)) {
             return new NetworkAttributesElement(ParserUtils.getTextValueAsLong(o, AbstractAttributesAspectElement.ATTR_SUBNETWORK),
-                                                ParserUtils.getTextValueRequired(o, AbstractAttributesAspectElement.ATTR_NAME),
+                                                ParserUtils.getTextValueNotNull(o, AbstractAttributesAspectElement.ATTR_NAME),
                                                 ParserUtils.getAsStringList(o, AbstractAttributesAspectElement.ATTR_VALUES),
                                                 type);
         }
         return new NetworkAttributesElement(ParserUtils.getTextValueAsLong(o, AbstractAttributesAspectElement.ATTR_SUBNETWORK),
-                                            ParserUtils.getTextValueRequired(o, AbstractAttributesAspectElement.ATTR_NAME),
+                                            ParserUtils.getTextValueNotNull(o, AbstractAttributesAspectElement.ATTR_NAME),
                                             ParserUtils.getTextValue(o, AbstractAttributesAspectElement.ATTR_VALUES),
                                             type);
 

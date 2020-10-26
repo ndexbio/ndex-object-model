@@ -33,7 +33,7 @@ public final class CyTableColumnFragmentReader extends AbstractFragmentReader {
         }
         return new CyTableColumnElement(ParserUtils.getTextValueAsLong(o, AbstractAttributesAspectElement.ATTR_SUBNETWORK),
                                         ParserUtils.getTextValueRequired(o, CyTableColumnElement.APPLIES_TO),
-                                        ParserUtils.getTextValueRequired(o, AbstractAttributesAspectElement.ATTR_NAME),
+                                        ParserUtils.getTextValueNotNull(o, AbstractAttributesAspectElement.ATTR_NAME),
                                         type);
     }
 }

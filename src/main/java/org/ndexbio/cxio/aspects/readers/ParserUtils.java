@@ -163,6 +163,17 @@ public final class ParserUtils {
         return s;
     }
 
+    public final static String getTextValueNotNull(final ObjectNode o, final String label) throws IOException {
+        String s = null;
+        if (o.has(label)) {
+            s = o.get(label).asText();
+        }
+        if (s == null) {
+            throw new IOException("malformed CX json: element '" + label + "' is missing in " + o.toString());
+        }
+        return s;
+    }
+    
     public final static Long getTextValueRequiredAsLong(final ObjectNode o, final String label) throws IOException {
         String s = null;
         if (o.has(label)) {

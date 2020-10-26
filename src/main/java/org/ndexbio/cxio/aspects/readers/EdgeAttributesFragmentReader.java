@@ -36,25 +36,25 @@ public final class EdgeAttributesFragmentReader extends AbstractFragmentReader {
             if (o.has(AbstractAttributesAspectElement.ATTR_SUBNETWORK)) {
                 return new EdgeAttributesElement(ParserUtils.getTextValueAsLong(o, AbstractAttributesAspectElement.ATTR_SUBNETWORK),
                                                  ParserUtils.getTextValueAsLong(o, AbstractElementAttributesAspectElement.ATTR_PROPERTY_OF),
-                                                 ParserUtils.getTextValueRequired(o, AbstractAttributesAspectElement.ATTR_NAME),
+                                                 ParserUtils.getTextValueNotNull(o, AbstractAttributesAspectElement.ATTR_NAME),
                                                  ParserUtils.getAsStringList(o, AbstractAttributesAspectElement.ATTR_VALUES),
                                                  type);
 
             }
 			return new EdgeAttributesElement(ParserUtils.getTextValueAsLong(o, AbstractElementAttributesAspectElement.ATTR_PROPERTY_OF),
-			                                 ParserUtils.getTextValueRequired(o, AbstractAttributesAspectElement.ATTR_NAME),
+			                                 ParserUtils.getTextValueNotNull(o, AbstractAttributesAspectElement.ATTR_NAME),
 			                                 ParserUtils.getAsStringList(o, AbstractAttributesAspectElement.ATTR_VALUES),
 			                                 type);
         }
         if (o.has(AbstractAttributesAspectElement.ATTR_SUBNETWORK)) {
             return new EdgeAttributesElement(ParserUtils.getTextValueAsLong(o, AbstractAttributesAspectElement.ATTR_SUBNETWORK),
                                              ParserUtils.getTextValueAsLong(o, AbstractElementAttributesAspectElement.ATTR_PROPERTY_OF),
-                                             ParserUtils.getTextValueRequired(o, AbstractAttributesAspectElement.ATTR_NAME),
+                                             ParserUtils.getTextValueNotNull(o, AbstractAttributesAspectElement.ATTR_NAME),
                                              ParserUtils.getTextValue(o, AbstractAttributesAspectElement.ATTR_VALUES),
                                              type);
         }
 		return new EdgeAttributesElement(ParserUtils.getTextValueAsLong(o, AbstractElementAttributesAspectElement.ATTR_PROPERTY_OF),
-		                                 ParserUtils.getTextValueRequired(o, AbstractAttributesAspectElement.ATTR_NAME),
+		                                 ParserUtils.getTextValueNotNull(o, AbstractAttributesAspectElement.ATTR_NAME),
 		                                 ParserUtils.getTextValue(o, AbstractAttributesAspectElement.ATTR_VALUES),
 		                                 type);
     }
