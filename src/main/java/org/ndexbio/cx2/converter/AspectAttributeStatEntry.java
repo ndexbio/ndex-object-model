@@ -39,13 +39,14 @@ public class AspectAttributeStatEntry {
 	}
 	
 	public void addValue (Object v) {
-		Long s1 = valueHolder.get(v);
+		return;
+		/*Long s1 = valueHolder.get(v);
 		if ( s1 == null ) {
 			if ( valueHolder.size() < distinctCount)
 				valueHolder.put(v, Long.valueOf(1));
 		} else {
 			valueHolder.put(v, s1.longValue() + 1);			
-		}
+		} */
 	}
 	
 	public ATTRIBUTE_DATA_TYPE getDataType () {return datatype;}
