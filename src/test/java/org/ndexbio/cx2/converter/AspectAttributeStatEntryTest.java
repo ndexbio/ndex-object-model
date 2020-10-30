@@ -52,13 +52,22 @@ public class AspectAttributeStatEntryTest {
 			e.addValue("foo");
 		}
 		
-		assertEquals("foo", e.getDefaultValue());
+		//should change this back in the future.
+		//assertEquals("foo", e.getDefaultValue());
+		
+		// for now when we turn of the default value
+		assertEquals(null, e.getDefaultValue());
 		
 		for ( int i = 0 ; i < 100 ; i ++  ) {
 			e.addValue("bar");
 		}
 		
-		assertEquals("bar", e.getDefaultValue());
+		//disable for now
+		//assertEquals("bar", e.getDefaultValue());
+		
+		//when function is disabled currently.
+		assertEquals(null, e.getDefaultValue());
+		
 	}
 
 }
