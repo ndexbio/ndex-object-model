@@ -15,12 +15,18 @@ public class AspectAttributeStatEntry {
 
 	Map<Object, Long> valueHolder;
 	
+	//Threshold for trying to create default values. If the distinct value 
+	// count is over this we will not try to create a default value for this field.
 	private final static int distinctCount = 30;
+	
+	// at the end this value should match with total node/edge count if a default value can be generated.
+	private long valueCount;
 	
 	public AspectAttributeStatEntry() { 
 		valueHolder = new HashMap<>(distinctCount);
 		datatype = null;
 		alias = null;
+		valueCount = 0;
 	} 
 	
 	/**
@@ -38,15 +44,21 @@ public class AspectAttributeStatEntry {
 		return null;
 	}
 	
-	public void addValue (Object v) {
-		return;
-		/*Long s1 = valueHolder.get(v);
+	protected void addValue (Object v) {
+	    
+		if ( valueHolder == null) // we no longer want to find default value for this field.
+	    	return;
+		
+		valueCount++;
+		Long s1 = valueHolder.get(v);
 		if ( s1 == null ) {
 			if ( valueHolder.size() < distinctCount)
 				valueHolder.put(v, Long.valueOf(1));
+			else
+				valueHolder = null;   // flag that we don't want to check the value any more.
 		} else {
 			valueHolder.put(v, s1.longValue() + 1);			
-		} */
+		} 
 	}
 	
 	public ATTRIBUTE_DATA_TYPE getDataType () {return datatype;}
@@ -60,7 +72,9 @@ public class AspectAttributeStatEntry {
 		this.alias = alias;
 	}
 	
-	public Object getDefaultValue () { 
+	protected Object getDefaultValue (long totalCount) {
+		if (totalCount != valueCount || valueHolder == null)
+			return null;
 		long c = 0;
 		Object result = null;
 		for ( Map.Entry<Object, Long>e : valueHolder.entrySet()) {

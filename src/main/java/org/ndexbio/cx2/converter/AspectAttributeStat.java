@@ -1,22 +1,31 @@
 package org.ndexbio.cx2.converter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
+import org.ndexbio.cx2.aspect.element.core.CxEdgeBypass;
+import org.ndexbio.cx2.aspect.element.core.CxMetadata;
 import org.ndexbio.cx2.aspect.element.core.CxNetworkAttribute;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
+import org.ndexbio.cx2.aspect.element.core.CxNodeBypass;
+import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
 import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
+import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.AbstractAttributesAspectElement;
-import org.ndexbio.cxio.aspects.datamodels.AbstractElementAttributesAspectElement;
+import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
 import org.ndexbio.cxio.aspects.datamodels.NetworkAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
+import org.ndexbio.cxio.metadata.MetaDataCollection;
+import org.ndexbio.cxio.metadata.MetaDataElement;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -34,6 +43,8 @@ public class AspectAttributeStat {
 	// number of node and edge visual property bypasses in the cyVisualProperties aspect. 
 	private int nodeBypassCount;
 	private int edgeBypassCount;
+	private long nodeCount;
+	private long edgeCount;
 	
 	public AspectAttributeStat() {
 		
@@ -43,10 +54,13 @@ public class AspectAttributeStat {
 		hasEdgeInteraction = false;
 		nodeBypassCount = 0;
 		edgeBypassCount = 0;
+		nodeCount = 0;
+		edgeCount = 0;
 	}
 	
 	
 	public void addNode (NodesElement n ) throws NdexException {
+		nodeCount++;
 		if ( ! hasNodeName) {
 			if (n.getNodeName() !=null ) {
 				addCX1ReservedAttr(CxNode.ASPECT_NAME, CxNode.NAME, "n",null);
@@ -62,6 +76,7 @@ public class AspectAttributeStat {
 	}
 	
 	public void addEdge (EdgesElement edge) throws NdexException {
+		edgeCount++;
 		if ( !hasEdgeInteraction) {
 			if ( edge.getInteraction() != null) {
 				addCX1ReservedAttr(CxEdge.ASPECT_NAME, CxEdge.INTERACTION, "i", edge.getInteraction());
@@ -137,14 +152,14 @@ public class AspectAttributeStat {
 		
 		String warning = null;
 		
-		Map<String, AspectAttributeStatEntry> nodeAttributes = table.get(CxNetworkAttribute.ASPECT_NAME);
+		Map<String, AspectAttributeStatEntry> attributes = table.get(CxNetworkAttribute.ASPECT_NAME);
 		
-		if ( nodeAttributes == null) {
-			nodeAttributes = new HashMap<>();
-			table.put(CxNetworkAttribute.ASPECT_NAME,nodeAttributes);
+		if ( attributes == null) {
+			attributes = new HashMap<>();
+			table.put(CxNetworkAttribute.ASPECT_NAME,attributes);
 		}	
 
-		AspectAttributeStatEntry e = nodeAttributes.get(attrName);
+		AspectAttributeStatEntry e = attributes.get(attrName);
 		if ( e != null ) 
 			warning = "Duplicated network attribute '" + attrName + "' found.";	
 		e = new AspectAttributeStatEntry ();
@@ -152,7 +167,7 @@ public class AspectAttributeStat {
 		if ( error != null) {
 			throw new NdexException (constructErrMsg(attr, error));
 		}
-		nodeAttributes.put(attrName, e);
+		attributes.put(attrName, e);
 		return warning;
 	}
 	
@@ -204,8 +219,17 @@ public class AspectAttributeStat {
 				e.setDataType(stat.getDataType());
 				if (stat.getAlias()!=null)
 					e.setAlias(stat.getAlias());
-				if ( stat.getDefaultValue()!=null)
-					e.setDefaultValue(stat.getDefaultValue());
+				
+				// try to get default values for node/edge attributes
+				if ( aspectName.equals(CxNode.ASPECT_NAME)) {
+					Object d = stat.getDefaultValue(nodeCount);
+					if ( d != null)
+						e.setDefaultValue(d);
+				} else if ( aspectName.equals(CxEdge.ASPECT_NAME)) {
+					Object d = stat.getDefaultValue(edgeCount);
+					if ( d != null)
+						e.setDefaultValue(d);
+				}
 				attrDecls.put(e2.getKey(), e);
 			}
 			declaration.add(aspectName, attrDecls);
@@ -227,5 +251,51 @@ public class AspectAttributeStat {
 	
 	public int getNodeBypassCount() {return this.nodeBypassCount;}
 	public int getEdgeBypassCount() {return this.edgeBypassCount;}
+	
+	
+	/* warning: this function can only be called after attrStats is initialized */
+	public List<CxMetadata> getCX2Metadata(MetaDataCollection  cx1Metadata, CxAttributeDeclaration attrDeclarations) {
+		List<CxMetadata> result = new ArrayList<>(cx1Metadata.size());
+				
+		MetaDataElement networkAttribute = cx1Metadata.getMetaDataElement(NetworkAttributesElement.ASPECT_NAME);
+		if ( networkAttribute != null ) {
+			result.add(new CxMetadata (CxNetworkAttribute.ASPECT_NAME, 1L));
+		}	
+
+		MetaDataElement vpM = cx1Metadata.getMetaDataElement( CyVisualPropertiesElement.ASPECT_NAME);
+		if ( vpM != null) {
+			result.add(new CxMetadata(CxVisualProperty.ASPECT_NAME, 1L));
+			
+			//addCx2 extra aspects
+			result.add(new CxMetadata(VisualEditorProperties.ASPECT_NAME, 1L));
+			
+			if (nodeBypassCount > 0) {
+				result.add(new CxMetadata(CxNodeBypass.ASPECT_NAME, nodeBypassCount));
+			}
+			
+			if (edgeBypassCount > 0) {
+				result.add(new CxMetadata(CxEdgeBypass.ASPECT_NAME, edgeBypassCount));
+			}
+		}
+		
+		if (!attrDeclarations.getDeclarations().isEmpty()) {
+			result.add(new CxMetadata(CxAttributeDeclaration.ASPECT_NAME,1L));
+		}
+		
+		for ( MetaDataElement e: cx1Metadata) {
+			String aspectName = e.getName();
+			if ( !aspectName.equals(NetworkAttributesElement.ASPECT_NAME) && 
+					!aspectName.equals(CyVisualPropertiesElement.ASPECT_NAME) &&
+					!aspectName.equals(NodeAttributesElement.ASPECT_NAME) &&
+					!aspectName.equals(EdgeAttributesElement.ASPECT_NAME) &&
+					!aspectName.equals(CartesianLayoutElement.ASPECT_NAME) ) {
+				result.add(new CxMetadata(e.getName(), e.getElementCount().longValue()));
+			}
+	
+		}
+		return result;
+
+	}
+
 
 }
