@@ -301,43 +301,43 @@ public class NiceCXCX2Writer {
 				wtr.endAspectFragment();
 		}
 						
-			if ( !vp.getNodeBypasses().isEmpty()) {
-				wtr.startAspectFragment(CxNodeBypass.ASPECT_NAME);
-				for ( CxNodeBypass e : vp.getNodeBypasses()) {
-					wtr.writeElementInFragment(e);
-				}
-				wtr.endAspectFragment();
+		if ( !vp.getNodeBypasses().isEmpty()) {
+			wtr.startAspectFragment(CxNodeBypass.ASPECT_NAME);
+			for ( CxNodeBypass e : vp.getNodeBypasses()) {
+				wtr.writeElementInFragment(e);
 			}
+			wtr.endAspectFragment();
+		}
 			
-			if ( !vp.getEdgeBypasses().isEmpty()) {
-				wtr.startAspectFragment(CxEdgeBypass.ASPECT_NAME);
-				for ( CxEdgeBypass e : vp.getEdgeBypasses()) {
-						wtr.writeElementInFragment(e);
-				}
-				
-				wtr.endAspectFragment();
+		if ( !vp.getEdgeBypasses().isEmpty()) {
+			wtr.startAspectFragment(CxEdgeBypass.ASPECT_NAME);
+			for ( CxEdgeBypass e : vp.getEdgeBypasses()) {
+				wtr.writeElementInFragment(e);
 			}
+				
+			wtr.endAspectFragment();
+		}
 			
 			// write visualDependencies
-			if ( visualDependencies.getProperties().isEmpty()) {
+		if ( !visualDependencies.getProperties().isEmpty()) {
 				wtr.startAspectFragment(VisualEditorProperties.ASPECT_NAME);
 				wtr.writeElementInFragment(visualDependencies);
 				wtr.endAspectFragment();
-			}			
+		}			
 			
-			//write possible opaque aspects
-			for ( CxMetadata m : cx2Metadata) {
-				String aspectName = m.getName();
-			    if (! Cx2Network.cx2SpecialAspects.contains(aspectName) && 
+		//write possible opaque aspects
+		for ( CxMetadata m : cx2Metadata) {
+			String aspectName = m.getName();
+			if (! Cx2Network.cx2SpecialAspects.contains(aspectName) && 
 					   !aspectName.equals(CxNode.ASPECT_NAME) && !aspectName.equals(CxEdge.ASPECT_NAME)
 					   && !aspectName.equals(CxVisualProperty.ASPECT_NAME)) {
-			    	if ( aspectName.equals(Provenance.ASPECT_NAME ) ) {
+			    if ( aspectName.equals(Provenance.ASPECT_NAME ) ) {
 						wtr.startAspectFragment(aspectName);
 						CxOpaqueAspectElement e = om.convertValue(niceCX.getProvenance(), CxOpaqueAspectElement.class);
 						e.setAspectName(aspectName);
 						wtr.writeElementInFragment(e);
 						wtr.endAspectFragment();
-			    	} else if ( aspectName.equals(CitationElement.ASPECT_NAME) ) {
+			    } else if ( aspectName.equals(CitationElement.ASPECT_NAME) ) {
 			    		wtr.startAspectFragment(aspectName);
 			    		for ( CitationElement citation : niceCX.getCitations().values()) {
 			    			CxOpaqueAspectElement e = om.convertValue(citation, CxOpaqueAspectElement.class);
@@ -346,7 +346,7 @@ public class NiceCXCX2Writer {
 			    		}
 						wtr.endAspectFragment();
 			    	
-			    	} else if ( niceCX.getOpaqueAspectTable().containsKey(aspectName)) {
+			    } else if ( niceCX.getOpaqueAspectTable().containsKey(aspectName)) {
 
 						wtr.startAspectFragment(aspectName);
 						for (AspectElement oe : niceCX.getOpaqueAspectTable().get(aspectName) ) {
@@ -356,11 +356,11 @@ public class NiceCXCX2Writer {
 							wtr.writeElementInFragment(e);
 						}
 						wtr.endAspectFragment();
-					} else 
+				} else 
 						throw new NdexException ("Aspect " + aspectName + " not found in the opaque aspect table.");
 					
-			   }
 			}
+		}
 			wtr.finish();
 		
 		
