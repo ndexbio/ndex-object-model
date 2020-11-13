@@ -4,10 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
+import org.ndexbio.cx2.aspect.element.core.Cx2Network;
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
 import org.ndexbio.cx2.aspect.element.core.CxEdgeBypass;
@@ -23,6 +24,7 @@ import org.ndexbio.cx2.converter.CX2VPHolder;
 import org.ndexbio.cx2.converter.CXToCX2Converter;
 import org.ndexbio.cx2.io.CXWriter;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
+import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
@@ -31,7 +33,10 @@ import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.cxio.core.interfaces.AspectElement;
 import org.ndexbio.cxio.misc.OpaqueElement;
+import org.ndexbio.model.cx.CitationElement;
+import org.ndexbio.model.cx.NamespacesElement;
 import org.ndexbio.model.cx.NiceCXNetwork;
+import org.ndexbio.model.cx.Provenance;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -42,11 +47,6 @@ public class NiceCXCX2Writer {
 	private CXWriter wtr;
 	
 	private List<String> warnings;
-	
-	public static final List<String> cx2SpecialAspects = Arrays.asList(
-			CxAttributeDeclaration.ASPECT_NAME,CxEdgeBypass.ASPECT_NAME,
-			CxNodeBypass.ASPECT_NAME, VisualEditorProperties.ASPECT_NAME,
-			CxNetworkAttribute.ASPECT_NAME);
 	
 	public NiceCXCX2Writer (OutputStream output) {
 		this.wtr = new CXWriter (output,false);
@@ -141,17 +141,9 @@ public class NiceCXCX2Writer {
 			
 		boolean hasAttributes = !attrDeclarations.getDeclarations().isEmpty();
 		
-		//write metadata first.
-		wtr.writeMetadata(cx2Metadata);
+		ObjectMapper om = new ObjectMapper();
 			
-		// write attributes declarations
-		if (hasAttributes) {
-			List<CxAttributeDeclaration> attrDecls = new ArrayList<>(1);
-			attrDecls.add(attrDeclarations);
-			wtr.writeFullAspectFragment(attrDecls);
-		} 
-			
-		//write network attributes
+		//prepare network attributes
 		CxNetworkAttribute cx2NetAttr = new CxNetworkAttribute();
 		for (NetworkAttributesElement netAttr : niceCX.getNetworkAttributes() ) {
 			try {
@@ -170,6 +162,26 @@ public class NiceCXCX2Writer {
 				throw new NdexException(errMsg);
 			}
 		}
+		
+		// merge the namespace aspect if it exists
+		NamespacesElement namespace = niceCX.getNamespaces();
+		if ( !namespace.isEmpty()) {
+			if ( cx2NetAttr.getAttributes().containsKey(NamespacesElement.ASPECT_NAME)) 
+				throw new NdexException ("Redundent @context is found in CX. It is defined as an network attribute and a seperate aspect.");
+			cx2NetAttr.add(NamespacesElement.ASPECT_NAME, om.writeValueAsString(namespace));
+		}
+		
+		//write metadata first.
+		wtr.writeMetadata(cx2Metadata);
+			
+		// write attributes declarations
+		if (hasAttributes) {
+			List<CxAttributeDeclaration> attrDecls = new ArrayList<>(1);
+			attrDecls.add(attrDeclarations);
+			wtr.writeFullAspectFragment(attrDecls);
+		}
+		
+		//write network attribute.
 		if ( !cx2NetAttr.getAttributes().isEmpty()) {
 			List<CxNetworkAttribute> netAttrs = new ArrayList<>(1);
 			netAttrs.add(cx2NetAttr);
@@ -178,6 +190,8 @@ public class NiceCXCX2Writer {
 			 
 		//write nodes
 		if( !niceCX.getNodes().isEmpty()) {
+			Map<Long, Collection<AspectElement> > coordinatesTable = niceCX.getNodeAssociatedAspect(CartesianLayoutElement.ASPECT_NAME);
+
 			wtr.startAspectFragment(CxNode.ASPECT_NAME);
 			for ( NodesElement cx1node : niceCX.getNodes().values()) {
 				Long nodeId = Long.valueOf(cx1node.getId());
@@ -212,6 +226,19 @@ public class NiceCXCX2Writer {
 							throw new NdexException (errMsg);
 						}
 					}
+				}
+				
+				//add coordinates to CX2Node
+				if ( coordinatesTable != null) {
+					Collection<AspectElement> coords = coordinatesTable.get(nodeId);
+					if (coords.size()!= 1)
+						throw new NdexException ("Node " + nodeId + " has " + coords.size() + " CartesianLayoutElement." );
+					for ( AspectElement e : coords) {
+						CartesianLayoutElement coord = (CartesianLayoutElement)e;
+						newNode.setX(coord.getX());
+						newNode.setY(coord.getY());
+						newNode.setZ(coord.getZ());
+					}	
 				}
 
 				wtr.writeElementInFragment(newNode);
@@ -296,23 +323,41 @@ public class NiceCXCX2Writer {
 				wtr.startAspectFragment(VisualEditorProperties.ASPECT_NAME);
 				wtr.writeElementInFragment(visualDependencies);
 				wtr.endAspectFragment();
-			}
-
+			}			
+			
 			//write possible opaque aspects
 			for ( CxMetadata m : cx2Metadata) {
 				String aspectName = m.getName();
-			    if (! cx2SpecialAspects.contains(aspectName) && 
+			    if (! Cx2Network.cx2SpecialAspects.contains(aspectName) && 
 					   !aspectName.equals(CxNode.ASPECT_NAME) && !aspectName.equals(CxEdge.ASPECT_NAME)
 					   && !aspectName.equals(CxVisualProperty.ASPECT_NAME)) {
-					wtr.startAspectFragment(aspectName);
-					ObjectMapper om = new ObjectMapper();
-					for (AspectElement oe : niceCX.getOpaqueAspectTable().get(aspectName) ) {
-						OpaqueElement elmt = (OpaqueElement)oe;
-						CxOpaqueAspectElement e = om.convertValue(elmt.getData(), CxOpaqueAspectElement.class);
+			    	if ( aspectName.equals(Provenance.ASPECT_NAME ) ) {
+						wtr.startAspectFragment(aspectName);
+						CxOpaqueAspectElement e = om.convertValue(niceCX.getProvenance(), CxOpaqueAspectElement.class);
 						e.setAspectName(aspectName);
 						wtr.writeElementInFragment(e);
-					}
-					wtr.endAspectFragment();
+						wtr.endAspectFragment();
+			    	} else if ( aspectName.equals(CitationElement.ASPECT_NAME) ) {
+			    		wtr.startAspectFragment(aspectName);
+			    		for ( CitationElement citation : niceCX.getCitations().values()) {
+			    			CxOpaqueAspectElement e = om.convertValue(citation, CxOpaqueAspectElement.class);
+			    			e.setAspectName(aspectName);
+			    			wtr.writeElementInFragment(e);
+			    		}
+						wtr.endAspectFragment();
+			    	
+			    	} else if ( niceCX.getOpaqueAspectTable().containsKey(aspectName)) {
+
+						wtr.startAspectFragment(aspectName);
+						for (AspectElement oe : niceCX.getOpaqueAspectTable().get(aspectName) ) {
+							OpaqueElement elmt = (OpaqueElement)oe;
+							CxOpaqueAspectElement e = om.convertValue(elmt.getData(), CxOpaqueAspectElement.class);
+							e.setAspectName(aspectName);
+							wtr.writeElementInFragment(e);
+						}
+						wtr.endAspectFragment();
+					} else 
+						throw new NdexException ("Aspect " + aspectName + " not found in the opaque aspect table.");
 					
 			   }
 			}
