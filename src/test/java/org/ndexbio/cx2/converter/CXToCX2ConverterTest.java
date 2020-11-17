@@ -69,7 +69,7 @@ public class CXToCX2ConverterTest {
 		Path resourceDirectory = Paths.get("src","test","resources");
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
-		CXToCX2Converter cvt2;
+		CXToCX2LargeFileConverter cvt2;
 
 		/* cvt2 = new CXToCX2Converter (
 				 "/Users/jingchen/temp/invalid_long_sample.cx",

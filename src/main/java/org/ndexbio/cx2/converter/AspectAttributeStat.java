@@ -26,6 +26,8 @@ import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
 import org.ndexbio.cxio.metadata.MetaDataCollection;
 import org.ndexbio.cxio.metadata.MetaDataElement;
+import org.ndexbio.model.cx.NamespacesElement;
+import org.ndexbio.model.cx.Provenance;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -135,7 +137,7 @@ public class AspectAttributeStat {
 			throw new NdexException (constructErrMsg(attr,error));
 		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t == ATTRIBUTE_DATA_TYPE.BOOLEAN) {
-			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
+			e.addValue(convertAttributeValue(attr));
 			
 		}
 	}
@@ -197,7 +199,7 @@ public class AspectAttributeStat {
 			throw new NdexException(constructErrMsg(attr,error) );
 		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t== ATTRIBUTE_DATA_TYPE.BOOLEAN ) {
-			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
+			e.addValue(convertAttributeValue(attr));
 			
 		}
 	}
@@ -288,7 +290,9 @@ public class AspectAttributeStat {
 					!aspectName.equals(CyVisualPropertiesElement.ASPECT_NAME) &&
 					!aspectName.equals(NodeAttributesElement.ASPECT_NAME) &&
 					!aspectName.equals(EdgeAttributesElement.ASPECT_NAME) &&
-					!aspectName.equals(CartesianLayoutElement.ASPECT_NAME) ) {
+					!aspectName.equals(CartesianLayoutElement.ASPECT_NAME) &&
+					!aspectName.equals(Provenance.ASPECT_NAME) &&
+					!aspectName.equals(NamespacesElement.ASPECT_NAME)) {
 				result.add(new CxMetadata(e.getName(), e.getElementCount().longValue()));
 			}
 	
@@ -296,6 +300,48 @@ public class AspectAttributeStat {
 		return result;
 
 	}
+
+	public static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
+		switch (attr.getDataType()) {
+		case BOOLEAN: 
+		case DOUBLE:
+		case INTEGER:
+		case LONG:
+		case STRING:
+			return convertSingleAttributeValue(attr.getDataType(), attr.getValue());
+		case LIST_OF_BOOLEAN:
+		case LIST_OF_DOUBLE:
+		case LIST_OF_INTEGER:
+		case LIST_OF_LONG:
+		case LIST_OF_STRING:	
+			List<String> ls = attr.getValues();
+			ArrayList<Object> result = new ArrayList<>(ls.size());
+			for ( String s : ls) {
+				result.add(convertSingleAttributeValue(attr.getDataType().elementType(), s));
+			}
+			return result;
+		default:
+			throw new NdexException ("Unsupported attribute data type found: " + attr.getDataType());
+		}
+	}
+	
+	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
+		switch (t) {
+		case BOOLEAN: 
+			return Boolean.valueOf( value);
+		case DOUBLE:
+			return Double.valueOf(value);
+		case INTEGER:
+			return Integer.valueOf(value);
+		case LONG:
+			return Long.valueOf(value);
+		case STRING:
+			return value;
+		default: 
+			throw new NdexException ("Value " + value + " is not a single value type. It is " + t.toString());
+		}
+	}
+	
 
 
 }

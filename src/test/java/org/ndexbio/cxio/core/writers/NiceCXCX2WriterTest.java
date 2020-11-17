@@ -29,7 +29,7 @@ public class NiceCXCX2WriterTest {
 	    }
 	    
 	    String tmpFileName = "tempwntsignaling.cx2";
-	    try (FileOutputStream out = new FileOutputStream ("tempwntsignaling.cx2") ) {
+	    try (FileOutputStream out = new FileOutputStream (tmpFileName) ) {
 	    	NiceCXCX2Writer cx2Writer = new  NiceCXCX2Writer (out);
 	    	cx2Writer.writeAsCX2(origNetwork);
 	    	fail("CX2 converter errror was not caught.");
@@ -61,6 +61,30 @@ public class NiceCXCX2WriterTest {
 	    	cx2Writer.writeAsCX2(origNetwork);
 	    }
 	    
+	    //TODO: validate the result
 	}
+	
+	@Test
+	public void test2() throws URISyntaxException, FileNotFoundException, IOException, NdexException {
+		
+		File origWntCX = new File(getClass().getClassLoader().getResource("wntsignaling_fixed.cx").toURI());
+	        
+		assertTrue(origWntCX.isFile());
+	    NiceCXNetworkReader reader = new NiceCXNetworkReader();
+	    NiceCXNetwork origNetwork = null;
+	    try (FileInputStream fis = new FileInputStream(origWntCX)){
+	            origNetwork = reader.readNiceCXNetwork(fis);
+	    }
+	    
+	    String tmpFileName = "tempwntsignaling_fixed.cx2";
+	    try (FileOutputStream out = new FileOutputStream (tmpFileName) ) {
+	    	NiceCXCX2Writer cx2Writer = new  NiceCXCX2Writer (out);
+	    	cx2Writer.writeAsCX2(origNetwork);
+	    } 
+	    
+	    //TODO: validate the result
+	    
+	}
+
 
 }

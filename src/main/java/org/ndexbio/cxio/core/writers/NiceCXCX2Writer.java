@@ -21,7 +21,7 @@ import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
 import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cx2.converter.AspectAttributeStat;
 import org.ndexbio.cx2.converter.CX2VPHolder;
-import org.ndexbio.cx2.converter.CXToCX2Converter;
+import org.ndexbio.cx2.converter.CXToCX2LargeFileConverter;
 import org.ndexbio.cx2.io.CXWriter;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
@@ -89,6 +89,11 @@ public class NiceCXCX2Writer {
 				addWarning(warning);
 		}
 		
+		//special handling of possible namespaces aspect
+		if (!niceCX.getNamespaces().isEmpty()) {
+			attributeStats.addNetworkAttribute(new NetworkAttributesElement(null, NamespacesElement.ASPECT_NAME, ""));
+		}
+		
 		//check node attributes
 		for ( Collection<NodeAttributesElement> nodeAttrs : niceCX.getNodeAttributes().values()) {
 			for ( NodeAttributesElement attr : nodeAttrs) {
@@ -147,7 +152,7 @@ public class NiceCXCX2Writer {
 		CxNetworkAttribute cx2NetAttr = new CxNetworkAttribute();
 		for (NetworkAttributesElement netAttr : niceCX.getNetworkAttributes() ) {
 			try {
-				Object attrValue = CXToCX2Converter.convertAttributeValue(netAttr);
+				Object attrValue = AspectAttributeStat.convertAttributeValue(netAttr);
 				Object oldV = cx2NetAttr.getAttributes().put(netAttr.getName(), attrValue);
 
 				if (oldV !=null && !attrValue.equals(oldV)) {
@@ -331,13 +336,7 @@ public class NiceCXCX2Writer {
 			if (! Cx2Network.cx2SpecialAspects.contains(aspectName) && 
 					   !aspectName.equals(CxNode.ASPECT_NAME) && !aspectName.equals(CxEdge.ASPECT_NAME)
 					   && !aspectName.equals(CxVisualProperty.ASPECT_NAME)) {
-			    if ( aspectName.equals(Provenance.ASPECT_NAME ) ) {
-						wtr.startAspectFragment(aspectName);
-						CxOpaqueAspectElement e = om.convertValue(niceCX.getProvenance(), CxOpaqueAspectElement.class);
-						e.setAspectName(aspectName);
-						wtr.writeElementInFragment(e);
-						wtr.endAspectFragment();
-			    } else if ( aspectName.equals(CitationElement.ASPECT_NAME) ) {
+			    if ( aspectName.equals(CitationElement.ASPECT_NAME) ) {
 			    		wtr.startAspectFragment(aspectName);
 			    		for ( CitationElement citation : niceCX.getCitations().values()) {
 			    			CxOpaqueAspectElement e = om.convertValue(citation, CxOpaqueAspectElement.class);
