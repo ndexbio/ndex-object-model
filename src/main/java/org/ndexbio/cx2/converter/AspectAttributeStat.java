@@ -47,6 +47,7 @@ public class AspectAttributeStat {
 	private int edgeBypassCount;
 	private long nodeCount;
 	private long edgeCount;
+	private boolean hasNamespacesAspect;
 	
 	public AspectAttributeStat() {
 		
@@ -58,6 +59,7 @@ public class AspectAttributeStat {
 		edgeBypassCount = 0;
 		nodeCount = 0;
 		edgeCount = 0;
+		hasNamespacesAspect = false;
 	}
 	
 	
@@ -210,7 +212,7 @@ public class AspectAttributeStat {
 				". Cause: " + cause;
 	}
 	
-	public CxAttributeDeclaration createCxDeclaration() {
+	public CxAttributeDeclaration createCxDeclaration() throws NdexException {
 		CxAttributeDeclaration declaration = new CxAttributeDeclaration(); 
 		for ( Map.Entry<String, Map<String, AspectAttributeStatEntry>> entry: table.entrySet()) {
 			String aspectName = entry.getKey();
@@ -235,6 +237,19 @@ public class AspectAttributeStat {
 				attrDecls.put(e2.getKey(), e);
 			}
 			declaration.add(aspectName, attrDecls);
+		}
+		
+		//add namespaces as a network attribute
+		if ( hasNamespacesAspect) {
+			Map<String,DeclarationEntry>  entries = declaration.getAttributesInAspect(CxNetworkAttribute.ASPECT_NAME);
+			if( entries == null) {
+				entries = new HashMap<>();
+			}
+			DeclarationEntry oldv = entries.put(NamespacesElement.ASPECT_NAME, 
+					new DeclarationEntry(ATTRIBUTE_DATA_TYPE.STRING,null,null));
+			if ( oldv != null) {
+				throw new NdexException ("Invalid CX data: '@context' is definded a network attribute and an aspect.");
+			}
 		}
 		
 		return declaration;
@@ -342,6 +357,6 @@ public class AspectAttributeStat {
 		}
 	}
 	
-
+   public void setHasNamespacesAspect() { this.hasNamespacesAspect = true;}
 
 }

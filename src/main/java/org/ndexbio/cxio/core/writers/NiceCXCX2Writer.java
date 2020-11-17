@@ -91,7 +91,7 @@ public class NiceCXCX2Writer {
 		
 		//special handling of possible namespaces aspect
 		if (!niceCX.getNamespaces().isEmpty()) {
-			attributeStats.addNetworkAttribute(new NetworkAttributesElement(null, NamespacesElement.ASPECT_NAME, ""));
+			attributeStats.setHasNamespacesAspect();
 		}
 		
 		//check node attributes
@@ -171,8 +171,8 @@ public class NiceCXCX2Writer {
 		// merge the namespace aspect if it exists
 		NamespacesElement namespace = niceCX.getNamespaces();
 		if ( !namespace.isEmpty()) {
-			if ( cx2NetAttr.getAttributes().containsKey(NamespacesElement.ASPECT_NAME)) 
-				throw new NdexException ("Redundent @context is found in CX. It is defined as an network attribute and a seperate aspect.");
+//			if ( cx2NetAttr.getAttributes().containsKey(NamespacesElement.ASPECT_NAME)) 
+//				throw new NdexException ("Redundent @context is found in CX. It is defined as an network attribute and a seperate aspect.");
 			cx2NetAttr.add(NamespacesElement.ASPECT_NAME, om.writeValueAsString(namespace));
 		}
 		
