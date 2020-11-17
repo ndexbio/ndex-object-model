@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 
+
 public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<?>> implements CxAspectElement<T>{
 
 	/**

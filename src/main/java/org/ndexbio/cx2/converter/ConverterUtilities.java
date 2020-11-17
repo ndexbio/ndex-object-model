@@ -26,14 +26,14 @@ public class ConverterUtilities {
 	 */
 	public static ConverterUtilitiesResult cvtStringValueToObj(final String cytoscapeDataType,
                 final String value) throws NdexException {
-	        if (cytoscapeDataType == null){
+		if (cytoscapeDataType == null){
                     throw new NdexException("Unsupported cy data type: <null>");
-                 }
+        }
                  if (value == null){
                      throw new NdexException("Unsupported cy data value: <null>");
                  }
                  
-                 if ( cytoscapeDataType.equals("string")) {
+        if ( cytoscapeDataType.equals("string")) {
 			return new ConverterUtilitiesResult(value, null);
 		}
                  try {

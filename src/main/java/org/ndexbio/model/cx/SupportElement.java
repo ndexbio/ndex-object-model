@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
+@Deprecated
 public class SupportElement extends NdexAspectElement{
 	
 	/**

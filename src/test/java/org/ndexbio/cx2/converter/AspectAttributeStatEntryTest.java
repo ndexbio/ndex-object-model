@@ -32,7 +32,7 @@ public class AspectAttributeStatEntryTest {
 	
 	
 	@Test
-	public void test2() throws NdexException {
+	public void test2() {
 		AspectAttributeStatEntry e = new AspectAttributeStatEntry();
 		assertNull(e.addDatatype(ATTRIBUTE_DATA_TYPE.STRING));
 		
@@ -46,27 +46,23 @@ public class AspectAttributeStatEntryTest {
 			
 		}
 		
-		assertNull( e.getDefaultValue());
+		assertNull( e.getDefaultValue(65));
 		
 		for ( int i = 0 ; i < 30 ; i ++  ) {
 			e.addValue("foo");
 		}
 		
-		//should change this back in the future.
-		//assertEquals("foo", e.getDefaultValue());
+		assertEquals("foo", e.getDefaultValue(30+25+40));
+		assertNull("foo", e.getDefaultValue(30+25+40+1));
 		
-		// for now when we turn of the default value
-		assertEquals(null, e.getDefaultValue());
 		
 		for ( int i = 0 ; i < 100 ; i ++  ) {
 			e.addValue("bar");
 		}
 		
-		//disable for now
-		//assertEquals("bar", e.getDefaultValue());
+		assertEquals("bar", e.getDefaultValue(100+30+25+40));
 		
-		//when function is disabled currently.
-		assertEquals(null, e.getDefaultValue());
+		assertNull("bar", e.getDefaultValue(100+30+25+40+1));
 		
 	}
 

@@ -30,6 +30,8 @@ public class NiceCXNetwork {
 	private Map<Long, NodesElement> nodes;
 	private Map<Long, EdgesElement> edges;
 	private Map<Long, CitationElement> citations;
+	
+	@Deprecated
 	private Map<Long, SupportElement> supports;
 	
 	private Map<Long, Collection<NodeAttributesElement>> nodeAttributes;
@@ -106,6 +108,7 @@ public class NiceCXNetwork {
 			edgeAttrs.add(edgeAttribute);
 	}
 	
+	@Deprecated
 	public void addSupport(SupportElement e) {
 		supports.put(Long.valueOf(e.getId()), e);
 	}
