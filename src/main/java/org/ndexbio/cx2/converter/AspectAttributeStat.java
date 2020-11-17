@@ -358,5 +358,6 @@ public class AspectAttributeStat {
 	}
 	
    public void setHasNamespacesAspect() { this.hasNamespacesAspect = true;}
+   public boolean hasNamespacesAspect() { return this.hasNamespacesAspect; }
 
 }
