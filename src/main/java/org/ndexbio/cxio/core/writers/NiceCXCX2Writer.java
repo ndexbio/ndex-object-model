@@ -21,7 +21,6 @@ import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
 import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cx2.converter.AspectAttributeStat;
 import org.ndexbio.cx2.converter.CX2VPHolder;
-import org.ndexbio.cx2.converter.CXToCX2LargeFileConverter;
 import org.ndexbio.cx2.io.CXWriter;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
@@ -44,6 +43,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class NiceCXCX2Writer {
 	
+	public static final String messagePrefix = "CX2-CONVERTER: ";
+	
 	private CXWriter wtr;
 	
 	private List<String> warnings;
@@ -55,7 +56,7 @@ public class NiceCXCX2Writer {
 	
 	private void addWarning(String warningStr) {
 		if (warnings.size() < 50 ) 
-			warnings.add(warningStr);
+			warnings.add(messagePrefix + warningStr);
 	}
 	
 	
