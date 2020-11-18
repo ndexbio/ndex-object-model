@@ -20,7 +20,7 @@ public abstract class BypassVisualProperties<T extends BypassVisualProperties<?>
 	private static final long serialVersionUID = 1L;
 
 	@JsonProperty ("id")
-	private long id;
+	private Long id;
     
     @JsonProperty ("v")
 	private Map<String, Object> visualProperties;
@@ -28,7 +28,7 @@ public abstract class BypassVisualProperties<T extends BypassVisualProperties<?>
     public BypassVisualProperties() { visualProperties = new HashMap<> (); } 
     
     @JsonIgnore
-    public void setId(long id) { this.id = id; }
+    public void setId(Long id) { this.id = id; }
     
     @JsonIgnore
     public void setVisualProperties ( Map<String,Object> properties) {
@@ -36,7 +36,7 @@ public abstract class BypassVisualProperties<T extends BypassVisualProperties<?>
     }
     
     @JsonIgnore
-    public long  getId() { return id;}
+    public Long getId() { return id;}
     
     @JsonIgnore
     public Map<String,Object> getVisualProperties () { return this.visualProperties;}
