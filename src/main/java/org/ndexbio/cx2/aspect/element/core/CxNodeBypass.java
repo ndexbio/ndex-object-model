@@ -20,7 +20,7 @@ public class CxNodeBypass extends BypassVisualProperties<CxNodeBypass> {
 	
 	public CxNodeBypass() {super();}
 	
-	public CxNodeBypass(long nodeId, Map<String,Object> values) { 
+	public CxNodeBypass(Long nodeId, Map<String,Object> values) { 
 		super();
 		this.setId(nodeId);
 		this.setVisualProperties(values);

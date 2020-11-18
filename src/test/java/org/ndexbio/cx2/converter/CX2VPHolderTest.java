@@ -39,20 +39,20 @@ public class CX2VPHolderTest {
         holder.setStyle(newVis);
         
         CxNodeBypass nodeByPass = new CxNodeBypass();
-        nodeByPass.setId(5);
+        nodeByPass.setId(5L);
         holder.setNodeBypasses(Arrays.asList(nodeByPass));
         
         CxEdgeBypass edgeByPass = new CxEdgeBypass();
-        edgeByPass.setId(6);
+        edgeByPass.setId(6L);
         holder.setEdgeBypasses(Arrays.asList(edgeByPass));
         
         CxVisualProperty resVis = holder.getStyle();
         assertTrue(resVis.getDefaultProps().getNetworkProperties().containsKey("hi"));
    
         
-        assertEquals(5, holder.getNodeBypasses().get(0).getId());
+        assertEquals(Long.valueOf(5L), holder.getNodeBypasses().get(0).getId());
         
-        assertEquals(6, holder.getEdgeBypasses().get(0).getId());
+        assertEquals(Long.valueOf(6L), holder.getEdgeBypasses().get(0).getId());
         
         
     }

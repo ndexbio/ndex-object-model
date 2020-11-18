@@ -16,12 +16,13 @@ import org.ndexbio.cx2.aspect.element.core.VisualPropertyMapping;
 import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.Mapping;
+import org.ndexbio.cxio.core.writers.NiceCXCX2Writer;
 import org.ndexbio.model.exceptions.NdexException;
 
 public class CX2VPHolder {
 	
 	
-	private List<String> warnings;
+//	private List<String> warnings;
 	
 	private static final int  maximumNumberWarningMessages = 50; 
 	
@@ -35,7 +36,7 @@ public class CX2VPHolder {
 		
 		setNodeBypasses(new ArrayList<>());
 		setEdgeBypasses(new ArrayList<>());  
-		warnings = new ArrayList<>(maximumNumberWarningMessages);
+//		warnings = new ArrayList<>(maximumNumberWarningMessages);
 	}
 
 	public CxVisualProperty getStyle() {
@@ -74,7 +75,7 @@ public class CX2VPHolder {
 		if (warningHolder.size() >= maximumNumberWarningMessages)
 			return;
 		
-		warningHolder.add(warningStr);		
+		warningHolder.add(NiceCXCX2Writer.messagePrefix + warningStr);		
 	}
 
 	private static void addWarning(List<String> warningHolder, final ConverterUtilitiesResult cRes) {
@@ -86,7 +87,7 @@ public class CX2VPHolder {
             return;
         }
         for (String warning : warnList) {
-            addWarning(warningHolder, warning);
+            addWarning(warningHolder, NiceCXCX2Writer.messagePrefix + warning);
         }
 	}
 	

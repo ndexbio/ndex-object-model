@@ -35,6 +35,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AspectAttributeStat {
 	
+	
 	private Map<String, Map<String, AspectAttributeStatEntry>> table;
 	
 	// internal state controls for performance.
