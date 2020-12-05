@@ -123,6 +123,26 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 	}
 	
 	
+	/**
+	 * Get the value of the given attribute. The value is evaluated based on the attribute declaration.
+	 * @param attributeName
+	 * @param decl
+	 * @return
+	 * @throws NdexException
+	 */
+	public Object getWelldoneAttributeValue(String attributeName, DeclarationEntry decl) throws NdexException {
+		Object rawValue =  
+				attributes.get( decl.getAlias()!=null ? decl.getAlias() : attributeName);
+		
+		if ( rawValue == null && decl.getDefaultValue() != null) 
+			rawValue = decl.getDefaultValue();
+		
+		if ( rawValue !=null)
+			rawValue = processAttributeValue(decl.getDataType(), rawValue);
+		
+		return rawValue;
+	}
+	
 	public static Object processAttributeValue (ATTRIBUTE_DATA_TYPE declaredType, Object value) throws NdexException {
 
 			if (declaredType == ATTRIBUTE_DATA_TYPE.INTEGER) {
