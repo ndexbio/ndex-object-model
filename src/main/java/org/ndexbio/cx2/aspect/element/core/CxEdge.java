@@ -1,8 +1,13 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
+import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -96,5 +101,33 @@ public class CxEdge extends AttributeDeclaredAspect<CxEdge> {
 	public int compareTo(CxEdge o) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public List<EdgeAttributesElement> getAttributesAsCX1List(Map<String, DeclarationEntry> attrDecls) {
+		List<EdgeAttributesElement> result = new ArrayList<>(this.attributes.size());
+		replaceShortenedName(attrDecls);
+		for ( Map.Entry<String, Object> entry : this.attributes.entrySet()) {
+			String attrName = entry.getKey();
+			if ( ! attrName.equals(INTERACTION)) {
+				DeclarationEntry d = attrDecls.get(attrName);
+				ATTRIBUTE_DATA_TYPE type = d.getDataType();
+				if ( type.isSingleValueType()) {
+					String vs = entry.getValue().toString();
+					result.add(new EdgeAttributesElement(null, id, attrName, entry.getValue().toString(), type ));
+				} else {
+					List<Object> vl = (List<Object>)entry.getValue();
+					result.add(
+							new EdgeAttributesElement(null,
+							id, attrName, 
+							vl.stream().map(n -> { return n.toString();}).collect(Collectors.toList()),type));
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	public EdgesElement getCX1Edge(Map<String, DeclarationEntry> attrDecls) {
+		return new EdgesElement ( id, source, target, getInteraction ( attrDecls));
 	}
 }

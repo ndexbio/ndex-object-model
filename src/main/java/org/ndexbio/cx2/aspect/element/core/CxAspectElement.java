@@ -3,6 +3,8 @@ package org.ndexbio.cx2.aspect.element.core;
 import java.io.Serializable;
 import java.util.List;
 
+import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
+
 public interface CxAspectElement<T extends CxAspectElement<?>> extends Comparable<T>,Serializable{
 
 	public String getAspectName() ;
@@ -31,4 +33,28 @@ public interface CxAspectElement<T extends CxAspectElement<?>> extends Comparabl
 		return false;	
 	}
 
+	
+	public static Class<? extends CxAspectElement<?>> getCxClassFromAspectName (String aspectName) {
+		switch (aspectName) {
+		case CxEdge.ASPECT_NAME: 
+			return CxEdge.class;
+		case CxNode.ASPECT_NAME:
+			return CxNode.class;
+		case CxAttributeDeclaration.ASPECT_NAME:
+			return CxAttributeDeclaration.class;
+		case CxNetworkAttribute.ASPECT_NAME:
+			return CxNetworkAttribute.class;
+		case CxVisualProperty.ASPECT_NAME:
+			return CxVisualProperty.class;
+		case CxNodeBypass.ASPECT_NAME:
+			return CxNodeBypass.class;
+		case CxEdgeBypass.ASPECT_NAME:
+			return CxEdgeBypass.class;
+		case VisualEditorProperties.ASPECT_NAME:
+			return VisualEditorProperties.class;
+		default:
+			return CxOpaqueAspectElement.class;
+		}
+		
+	}
 }
