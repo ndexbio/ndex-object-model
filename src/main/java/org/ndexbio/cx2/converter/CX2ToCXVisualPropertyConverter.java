@@ -235,4 +235,11 @@ public class CX2ToCXVisualPropertyConverter {
 	
 	public static CX2ToCXVisualPropertyConverter getInstance() { return instance;}
 	
+	
+	public interface CX2ToCXVisualPropertyCvtFunction {
+		public String convert(Object cx2Value);
+
+	}
+
+	
 }
