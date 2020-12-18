@@ -17,7 +17,7 @@ public class CX2ToCXVisualPropertyConverter {
 			 (value) -> value.toString(); 
 
 	private static final CX2ToCXVisualPropertyCvtFunction opacityCvtr =
-			(opacityVal ) -> Double.toString(((Number)opacityVal).doubleValue()*255.0);
+			(opacityVal ) -> Integer.toString( (int)Math.round((((Number)opacityVal).doubleValue()*255.0)));
 			
 	private static final CX2ToCXVisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 	{
@@ -78,7 +78,7 @@ public class CX2ToCXVisualPropertyConverter {
     	
        	//Network attributes:
     	
-    	addEntryToCvterTable( networkCvtTable, "NETWORK_BACKGROUND_COLOR","NETWORK_BACKGROUND_PAINT",defaultCvtr);
+    	addEntryToCvterTable( networkCvtTable,"NETWORK_BACKGROUND_PAINT", "NETWORK_BACKGROUND_COLOR",defaultCvtr);
 
     	// nodes
     	addEntry ( "NODE_BORDER_PAINT");
@@ -236,7 +236,7 @@ public class CX2ToCXVisualPropertyConverter {
 	public static CX2ToCXVisualPropertyConverter getInstance() { return instance;}
 	
 	
-	public interface CX2ToCXVisualPropertyCvtFunction {
+	protected interface CX2ToCXVisualPropertyCvtFunction {
 		public String convert(Object cx2Value);
 
 	}

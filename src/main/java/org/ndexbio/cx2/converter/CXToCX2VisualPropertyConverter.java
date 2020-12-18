@@ -336,4 +336,9 @@ public class CXToCX2VisualPropertyConverter {
 	public static CXToCX2VisualPropertyConverter getInstance() {
 		return instance;
 	}
+	
+	public interface CXToCX2VisualPropertyCvtFunction {
+		public Object convert(String cxValue) throws NdexException;
+
+	}
 }
