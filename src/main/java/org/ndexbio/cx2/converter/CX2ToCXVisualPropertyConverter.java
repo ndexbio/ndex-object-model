@@ -83,7 +83,7 @@ public class CX2ToCXVisualPropertyConverter {
     	// nodes
     	addEntry ( "NODE_BORDER_PAINT");
     	addEntry ("NODE_BORDER_LINE_TYPE", "NODE_BORDER_STROKE", nodeBorderTypeCvtr);
-    	addEntry ( "NODE_BORDER_TRANSPARENCY", opacityCvtr );
+    	addEntry ( "NODE_BORDER_OPACITY", "NODE_BORDER_TRANSPARENCY", opacityCvtr );
     	addEntry ( "NODE_BORDER_WIDTH");
 
     	addEntry ( "NODE_BACKGROUND_COLOR", "NODE_FILL_COLOR");
@@ -95,7 +95,7 @@ public class CX2ToCXVisualPropertyConverter {
     	
     	//TODO: implementing the mapping function.
     	addEntry ( "NODE_LABEL_POSITION" );
-    	addEntry ( "NODE_LABEL_TRANSPARENCY", opacityCvtr );
+    	addEntry ( "NODE_LABEL_OPACITY", "NODE_LABEL_TRANSPARENCY", opacityCvtr );
     	
        	addEntry ( "NODE_LABEL_WIDTH", "NODE_LABEL_MAX_WIDTH" );
     	addEntry ( "NODE_SELECTED" );
@@ -131,7 +131,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_COLOR"    );
     	addEntry ( "EDGE_LABEL_FONT_FACE");
     	addEntry ( "EDGE_LABEL_FONT_SIZE" );
-    	addEntry ( "EDGE_LABEL_TRANSPARENCY", opacityCvtr );
+    	addEntry ( "EDGE_LABEL_OPACITY", "EDGE_LABEL_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_MAX_WIDTH","EDGE_LABEL_WIDTH");
     	addEntry ( "EDGE_LINE_TYPE", edgeLineTypeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SHAPE", arrowShapeCvtr );

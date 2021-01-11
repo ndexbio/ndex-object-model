@@ -34,7 +34,8 @@ public class CX2ToCXVisualPropertyConverterTest {
 		nodeVPs.put("NODE_BORDER_PAINT", "#CCCCCC");
 		nodeVPs.put("NODE_BORDER_LINE_TYPE", "dotted");
 		nodeVPs.put("NODE_BORDER_WIDTH", 2.0);
-		nodeVPs.put("NODE_BORDER_TRANSPARENCY", 0.8);
+		nodeVPs.put("NODE_BORDER_OPACITY", 0.8);
+		nodeVPs.put("NODE_LABEL_OPACITY", 0.8);
 		nodeVPs.put("NODE_LABEL_FONT_FACE", "SansSerif,plain,12");
 		nodeVPs.put("NODE_LABEL_FONT_SIZE", 12);
 		
@@ -50,7 +51,7 @@ public class CX2ToCXVisualPropertyConverterTest {
 		nodeVPs.put("EDGE_SOURCE_ARROW_SIZE", 6.0);
 		nodeVPs.put("EDGE_TARGET_ARROW_SIZE", 3.0);
 		nodeVPs.put("EDGE_VISIBLE", true);
-		
+		nodeVPs.put("EDGE_LABEL_OPACITY",0.8);
 		
 		SortedMap<String, String> cxnodeVPs = converter.convertEdgeOrNodeVPs(nodeVPs);
 		
@@ -65,6 +66,7 @@ public class CX2ToCXVisualPropertyConverterTest {
 		assertEquals("204", cxnodeVPs.get("NODE_BORDER_TRANSPARENCY"));
 		assertEquals("SansSerif,plain,12", cxnodeVPs.get("NODE_LABEL_FONT_FACE"));
 		assertEquals("12", cxnodeVPs.get("NODE_LABEL_FONT_SIZE"));
+		assertEquals("204", cxnodeVPs.get("NODE_LABEL_TRANSPARENCY"));
 		
 
 		//edges
@@ -79,6 +81,8 @@ public class CX2ToCXVisualPropertyConverterTest {
 		assertEquals("6.0", cxnodeVPs.get("EDGE_SOURCE_ARROW_SIZE"));
 		assertEquals("3.0", cxnodeVPs.get("EDGE_TARGET_ARROW_SIZE"));
 		assertEquals("true", cxnodeVPs.get("EDGE_VISIBLE"));
+		assertEquals("204", cxnodeVPs.get("EDGE_LABEL_TRANSPARENCY"));
+		
 
 	}
 

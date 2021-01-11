@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.ndexbio.cx2.aspect.element.core.LabelPosition;
+import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
+import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.model.exceptions.NdexException;
 
 
@@ -20,15 +23,7 @@ public class CXToCX2VisualPropertyConverter {
 	protected static final List<String> cx1CarryOverVPNames = Arrays.asList(
 			"COMPOUND_NODE_PADDING",
 			"COMPOUND_NODE_SHAPE",
-			"NODE_CUSTOMGRAPHICS_1",
-			"NODE_CUSTOMGRAPHICS_2",
-			"NODE_CUSTOMGRAPHICS_3",
-			"NODE_CUSTOMGRAPHICS_4",
-			"NODE_CUSTOMGRAPHICS_5",
-			"NODE_CUSTOMGRAPHICS_6",
-			"NODE_CUSTOMGRAPHICS_7",
-			"NODE_CUSTOMGRAPHICS_8",
-			"NODE_CUSTOMGRAPHICS_9",
+	
 			"NODE_TOOLTIP",
 			"NODE_X_LOCATION",
 			"NODE_Y_LOCATION",
@@ -66,6 +61,13 @@ public class CXToCX2VisualPropertyConverter {
 			(strVal)  -> Boolean.valueOf(strVal);
 
 	private static final CXToCX2VisualPropertyCvtFunction stringCvtr = (strVal) -> strVal;
+	
+	private static final CXToCX2VisualPropertyCvtFunction nodeImageCvtr = 
+			(strVal) -> {
+			 if ( strVal.equals("org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"))
+				 return null;
+			 return strVal;
+			};
 	
 	private static final CXToCX2VisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 		{
@@ -154,9 +156,9 @@ public class CXToCX2VisualPropertyConverter {
 					case "OPEN_HALF_CIRCLE":	*/
 						return "triangle";	
 						
-					} };						
-	
+					} };					
 
+					
 	private static final CXToCX2VisualPropertyConverter instance = new CXToCX2VisualPropertyConverter();
 			
 	private CXToCX2VisualPropertyConverter () {
@@ -185,8 +187,8 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_LABEL_FONT_SIZE", intCvtr );
     	
     	//TODO: implementing the mapping function.
-    	addEntry ( "NODE_LABEL_POSITION" );
-    	addEntry ( "NODE_LABEL_TRANSPARENCY", opacityCvtr );
+    	addEntry ( "NODE_LABEL_POSITION", (positionStr) -> {return LabelPosition.createFromCX1Value(positionStr);} );
+    	addEntry ( "NODE_LABEL_TRANSPARENCY","NODE_LABEL_OPACITY", opacityCvtr );
     	
     	addEntry ( "NODE_LABEL_WIDTH", "NODE_LABEL_MAX_WIDTH",numberCvtr );
     	addEntry ( "NODE_SELECTED", booleanCvtr );
@@ -214,6 +216,15 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_TRANSPARENCY",    "NODE_BACKGROUND_OPACITY", opacityCvtr );
     	addEntry ( "NODE_VISIBLE", booleanCvtr );
     	
+    	for ( int i = 1 ; i < 10; i++) {
+        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i, "NODE_IMAGE_" + i, nodeImageCvtr );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, "NODE_IMAGE_" + i + "_SIZE",
+        			(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, "NODE_IMAGE_" + i + "_POSITION", 
+        			(positionStr) ->{ return ObjectPosition.createFromCX1Value(positionStr);} );    		
+    	}
+
+    	
     	// edges
     	
     	//TODO: handle edge_curved and edge_bend
@@ -221,7 +232,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_COLOR"    );
     	addEntry ( "EDGE_LABEL_FONT_FACE");
     	addEntry ( "EDGE_LABEL_FONT_SIZE", intCvtr );
-    	addEntry ( "EDGE_LABEL_TRANSPARENCY", opacityCvtr );
+    	addEntry ( "EDGE_LABEL_TRANSPARENCY", "EDGE_LABEL_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_WIDTH","EDGE_LABEL_MAX_WIDTH",numberCvtr );
     	addEntry ( "EDGE_LINE_TYPE", edgeLineTypeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SHAPE", arrowShapeCvtr );
@@ -276,7 +287,7 @@ public class CXToCX2VisualPropertyConverter {
 		nodeEdgeCvtTable.put(oldVP, cvtrEntry );
 	}
 
-	private static Map<String,Object> convertNetworkProperties(Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>>  table,
+	private static Map<String,Object> convertVisualProperties(Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>>  table,
 				Map<String,String> cx1Properties) throws NdexException {
 		Map<String,Object> result = new HashMap<>();
 		
@@ -285,6 +296,7 @@ public class CXToCX2VisualPropertyConverter {
 			if ( cvtrEntry != null) {
 				try {
 					Object newValue = cvtrEntry.getValue().convert(e.getValue());
+					if ( newValue != null)
 					result.put(cvtrEntry.getKey(), newValue);
 				} catch (NullPointerException e1) {
 					String errMsg = "NPE in mapping. Key: " + (e.getKey() == null? "": e.getKey()) +
@@ -302,12 +314,12 @@ public class CXToCX2VisualPropertyConverter {
 	}
 	
 	public Map<String,Object>  convertNetworkVPs (Map<String,String> cx1Properties ) throws NdexException {
-		return convertNetworkProperties(networkCvtTable, cx1Properties);
+		return convertVisualProperties(networkCvtTable, cx1Properties);
 	}
     
 	
 	public Map<String,Object>  convertEdgeOrNodeVPs (Map<String,String> cx1Properties ) throws NdexException {
-		return convertNetworkProperties(nodeEdgeCvtTable, cx1Properties);
+		return convertVisualProperties(nodeEdgeCvtTable, cx1Properties);
 
 	}
 	
