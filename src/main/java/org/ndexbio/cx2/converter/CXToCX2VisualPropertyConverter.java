@@ -62,6 +62,13 @@ public class CXToCX2VisualPropertyConverter {
 
 	private static final CXToCX2VisualPropertyCvtFunction stringCvtr = (strVal) -> strVal;
 	
+	private static final CXToCX2VisualPropertyCvtFunction fontFaceCvtr = (strVal) -> {
+		return FontFaceConverter.convertFont(strVal);
+	};
+	
+	private static final CXToCX2VisualPropertyCvtFunction visibilityCvtr = (strVal) ->
+		{return strVal.equals("true")? "element" : "none"; };
+	
 	private static final CXToCX2VisualPropertyCvtFunction nodeImageCvtr = 
 			(strVal) -> {
 			 if ( strVal.equals("org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"))
@@ -176,14 +183,14 @@ public class CXToCX2VisualPropertyConverter {
     	// nodes
     	addEntry ( "NODE_BORDER_PAINT" );
     	addEntry ("NODE_BORDER_STROKE", "NODE_BORDER_LINE_TYPE", nodeBorderTypeCvtr);
-    	addEntry ( "NODE_BORDER_TRANSPARENCY", opacityCvtr );
+    	addEntry ( "NODE_BORDER_TRANSPARENCY","NODE_BORDER_OPACITY", opacityCvtr );
     	addEntry ( "NODE_BORDER_WIDTH", numberCvtr );
     	 	
     	addEntry ( "NODE_FILL_COLOR", "NODE_BACKGROUND_COLOR", stringCvtr );
     	addEntry ( "NODE_HEIGHT",  numberCvtr	 );
     	addEntry ( "NODE_LABEL");
     	addEntry ( "NODE_LABEL_COLOR"    );
-    	addEntry ( "NODE_LABEL_FONT_FACE");
+    	addEntry ( "NODE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "NODE_LABEL_FONT_SIZE", intCvtr );
     	
     	//TODO: implementing the mapping function.
@@ -214,7 +221,7 @@ public class CXToCX2VisualPropertyConverter {
     			);
     	addEntry ( "NODE_WIDTH",      "NODE_WIDTH", numberCvtr );
     	addEntry ( "NODE_TRANSPARENCY",    "NODE_BACKGROUND_OPACITY", opacityCvtr );
-    	addEntry ( "NODE_VISIBLE", booleanCvtr );
+    	addEntry ( "NODE_VISIBLE", visibilityCvtr );
     	
     	for ( int i = 1 ; i < 10; i++) {
         	addEntry ( "NODE_CUSTOMGRAPHICS_" + i, "NODE_IMAGE_" + i, nodeImageCvtr );    		
@@ -230,7 +237,7 @@ public class CXToCX2VisualPropertyConverter {
     	//TODO: handle edge_curved and edge_bend
     	addEntry ( "EDGE_LABEL");
     	addEntry ( "EDGE_LABEL_COLOR"    );
-    	addEntry ( "EDGE_LABEL_FONT_FACE");
+    	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE", intCvtr );
     	addEntry ( "EDGE_LABEL_TRANSPARENCY", "EDGE_LABEL_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_WIDTH","EDGE_LABEL_MAX_WIDTH",numberCvtr );
@@ -247,7 +254,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_TARGET_ARROW_UNSELECTED_PAINT", "EDGE_TARGET_ARROW_COLOR", stringCvtr);
     	addEntry ( "EDGE_TRANSPARENCY", "EDGE_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH", "EDGE_WIDTH", numberCvtr );
-    	addEntry ( "EDGE_VISIBLE", booleanCvtr );
+    	addEntry ( "EDGE_VISIBLE", visibilityCvtr );
 
     	// these are non-portable Cytoscape styles that we just carry over. Cytoscape visual properties
     	// that are not in this list or the list above are excluded from the cx2 visual styles.
