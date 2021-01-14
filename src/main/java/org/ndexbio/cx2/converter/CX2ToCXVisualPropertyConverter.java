@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
+
 public class CX2ToCXVisualPropertyConverter {
 	
 	
@@ -209,13 +211,13 @@ public class CX2ToCXVisualPropertyConverter {
 		return result;
 	}
 	
-	public SortedMap<String,String>  convertNetworkVPs (Map<String,Object> cx1Properties ) {
-		return convertNetworkProperties(networkCvtTable, cx1Properties);
+	public SortedMap<String,String>  convertNetworkVPs (Map<String,Object> cx2Properties ) {
+		return convertNetworkProperties(networkCvtTable, cx2Properties);
 	}
     
 	
-	public SortedMap<String,String>  convertEdgeOrNodeVPs (Map<String,Object> cx1Properties ) {
-		return convertNetworkProperties(nodeEdgeCvtTable, cx1Properties);
+	public SortedMap<String,String>  convertEdgeOrNodeVPs (VisualPropertyTable cx2Properties ) {
+		return convertNetworkProperties(nodeEdgeCvtTable, cx2Properties.getVisualProperties());
 
 	}
 	

@@ -2,7 +2,6 @@ package org.ndexbio.cx2.converter;
 
 import java.util.AbstractMap;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -10,6 +9,7 @@ import java.util.TreeMap;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
 import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
 import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
+import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.model.exceptions.NdexException;
 
 
@@ -294,9 +294,9 @@ public class CXToCX2VisualPropertyConverter {
 		nodeEdgeCvtTable.put(oldVP, cvtrEntry );
 	}
 
-	private static Map<String,Object> convertVisualProperties(Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>>  table,
+	private static VisualPropertyTable convertVisualProperties(Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>>  table,
 				Map<String,String> cx1Properties) throws NdexException {
-		Map<String,Object> result = new HashMap<>();
+		VisualPropertyTable result = new VisualPropertyTable();
 		
 		for (Map.Entry<String, String> e : cx1Properties.entrySet()) {
 			Map.Entry<String,CXToCX2VisualPropertyCvtFunction> cvtrEntry = table.get(e.getKey());
@@ -304,7 +304,7 @@ public class CXToCX2VisualPropertyConverter {
 				try {
 					Object newValue = cvtrEntry.getValue().convert(e.getValue());
 					if ( newValue != null)
-					result.put(cvtrEntry.getKey(), newValue);
+					result.getVisualProperties().put(cvtrEntry.getKey(), newValue);
 				} catch (NullPointerException e1) {
 					String errMsg = "NPE in mapping. Key: " + (e.getKey() == null? "": e.getKey()) +
 							". value: " + (e.getValue()== null? "": e.getValue()) + ".";
@@ -321,11 +321,11 @@ public class CXToCX2VisualPropertyConverter {
 	}
 	
 	public Map<String,Object>  convertNetworkVPs (Map<String,String> cx1Properties ) throws NdexException {
-		return convertVisualProperties(networkCvtTable, cx1Properties);
+		return convertVisualProperties(networkCvtTable, cx1Properties).getVisualProperties();
 	}
     
 	
-	public Map<String,Object>  convertEdgeOrNodeVPs (Map<String,String> cx1Properties ) throws NdexException {
+	public VisualPropertyTable convertEdgeOrNodeVPs (Map<String,String> cx1Properties ) throws NdexException {
 		return convertVisualProperties(nodeEdgeCvtTable, cx1Properties);
 
 	}

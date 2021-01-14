@@ -1,5 +1,7 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -91,13 +93,36 @@ public class ObjectPosition {
 	public static ObjectPosition createFromCX1Value(String cx1Value) {
 		ObjectPosition result = new ObjectPosition();
 		String[] values = cx1Value.split(",");
-		
-		result.setAnchorFromCX1(values[0]);
-		result.setAlignmentFromCX1(values[1]);		
-		result.setMarginsFromCX1(values[3], values[4]);
+		populateFromCX1Values(result,values);
 		return result;
 	}
 
+
+	protected static void populateFromCX1Values(ObjectPosition postion, String[] values) {
+		
+		postion.setAnchorFromCX1(values[0]);
+		postion.setAlignmentFromCX1(values[1]);		
+		postion.setMarginsFromCX1(values[3], values[4]);
+	}
+
+	
+	public static ObjectPosition createFromMap(Map<String,Object> m) {
+		
+		ObjectPosition result = new ObjectPosition();
+		populateFromMap(result,m);
+		return result;
+		
+	}
+	
+	protected static void populateFromMap(ObjectPosition p, Map<String,Object>m) {
+		
+		p.setHorizontalAlign(HorizontalAlignment.valueOf((String)m.get("HORIZONTAL_ALIGN")));
+		p.setVerticalAlign(VerticalAlignment.valueOf((String)m.get("VERTICAL_ALIGN")));
+		p.setHorizontalAnchor(HorizontalAlignment.valueOf((String)m.get("HORIZONTAL_ANCHOR")));
+		p.setVerticalAnchor(VerticalAlignment.valueOf((String)m.get("VERTICAL_ANCHOR")));	
+		p.setMarginX(((Number)m.get("MARGIN_X")).floatValue());
+		p.setMarginY(((Number)m.get("MARGIN_Y")).floatValue());
+	}
 	
 	/* only for createFromCX1Value function. Be careful when using 
 	 * this function in other places because it assumes other attributes have 

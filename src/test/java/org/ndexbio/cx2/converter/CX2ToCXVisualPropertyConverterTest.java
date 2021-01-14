@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
 import org.junit.Test;
+import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 
 public class CX2ToCXVisualPropertyConverterTest {
 
@@ -23,7 +24,9 @@ public class CX2ToCXVisualPropertyConverterTest {
 		assertEquals(1, cx1NetVPs.size());
 		assertEquals("#FFFFFF", cx1NetVPs.get("NETWORK_BACKGROUND_COLOR"));
 		
-		Map<String,Object> nodeVPs = new HashMap<>();
+		VisualPropertyTable nodeVPTable = new VisualPropertyTable();
+		
+		Map<String,Object> nodeVPs = nodeVPTable.getVisualProperties();
 		
 		nodeVPs.put("NODE_SHAPE", "ellipse");
 		nodeVPs.put("NODE_BACKGROUND_COLOR", "#00EEFF");
@@ -53,7 +56,7 @@ public class CX2ToCXVisualPropertyConverterTest {
 		nodeVPs.put("EDGE_VISIBLE", true);
 		nodeVPs.put("EDGE_LABEL_OPACITY",0.8);
 		
-		SortedMap<String, String> cxnodeVPs = converter.convertEdgeOrNodeVPs(nodeVPs);
+		SortedMap<String, String> cxnodeVPs = converter.convertEdgeOrNodeVPs(nodeVPTable);
 		
 		assertEquals("#00EEFF", cxnodeVPs.get("NODE_FILL_COLOR"));
 		assertEquals("20.2", cxnodeVPs.get("NODE_WIDTH"));

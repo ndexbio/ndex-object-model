@@ -1,5 +1,7 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,12 +37,19 @@ public class LabelPosition extends ObjectPosition {
 		LabelPosition result = new LabelPosition();
 		String[] values = cx1Value.split(",");
 		
-		result.setAnchorFromCX1(values[0]);
-		result.setAlignmentFromCX1(values[1]);
+		ObjectPosition.populateFromCX1Values(result, values);
 		result.setJustificationFromCX1(values[2]);
-		
-		result.setMarginsFromCX1(values[3], values[4]);
 		return result;
+	}
+	
+	public static LabelPosition createFromMap(Map<String,Object> m) {
+		
+		LabelPosition result = new LabelPosition();
+		populateFromMap(result, m);
+		
+		result.setJustification(HorizontalAlignment.valueOf((String)m.get("JUSTIFICATION")));
+		return result;
+		
 	}
 	
 	private void setJustificationFromCX1(String c) {
