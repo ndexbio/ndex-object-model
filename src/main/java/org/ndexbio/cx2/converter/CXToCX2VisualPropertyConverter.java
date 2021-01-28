@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.ndexbio.cx2.aspect.element.core.EdgeBendPoint;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
 import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
 import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
@@ -15,7 +18,10 @@ import org.ndexbio.model.exceptions.NdexException;
 
 public class CXToCX2VisualPropertyConverter {
 	
-	
+	public interface CXToCX2VisualPropertyCvtFunction {
+		public Object convert(String cxValue) throws NdexException;
+
+	}	
 	
 	/* These node or edge visual properties are not part of the cx2 portable styles, we just carry them over to cx2, and it is up to the 
 	 * application to decide whether supporting them.
@@ -33,7 +39,13 @@ public class CXToCX2VisualPropertyConverter {
             "EDGE_SELECTED_PAINT",
 			"EDGE_TOOLTIP"			
 			);
-		
+	
+	/* These properties will be held in a table and then get converted at the very end.
+	 * 
+	 */
+	protected static final List<String> specialVPNames = Arrays.asList(
+			"EDGE_BEND", "EDGE_CURVED");
+	
 	
 	private Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>> networkCvtTable; 
 	private Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>> nodeEdgeCvtTable; 
@@ -41,7 +53,7 @@ public class CXToCX2VisualPropertyConverter {
 	private static final CXToCX2VisualPropertyCvtFunction numberCvtr = 
 			 (strVal) -> Double.valueOf(strVal); 
 
-	private static final CXToCX2VisualPropertyCvtFunction intCvtr = (String strVal) -> {
+	private static final CXToCX2VisualPropertyCvtFunction intCvtr = (strVal) -> {
 		try {
 			return Integer.valueOf(strVal);
 
@@ -76,6 +88,12 @@ public class CXToCX2VisualPropertyConverter {
 			 return strVal;
 			};
 	
+	private static final CXToCX2VisualPropertyCvtFunction edgeBendCvtr = (strVal) -> {
+		return strVal == null ? null :
+			(Stream.of(strVal.split("\\|")).map(arg0 -> EdgeBendPoint.createFromCX1String(arg0)).collect(Collectors.toList()));
+	
+		};
+			
 	private static final CXToCX2VisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 		{
 			switch ( cytoscapeLineType ) { 
@@ -255,6 +273,10 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_TRANSPARENCY", "EDGE_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH", "EDGE_WIDTH", numberCvtr );
     	addEntry ( "EDGE_VISIBLE", visibilityCvtr );
+    	addEntry ( "EDGE_SELECTED", booleanCvtr );
+    	addEntry ( "EDGE_CURVED", booleanCvtr );
+    	addEntry ( "EDGE_BEND", "EDGE_CONTROL_POINTS", edgeBendCvtr );
+    	
 
     	// these are non-portable Cytoscape styles that we just carry over. Cytoscape visual properties
     	// that are not in this list or the list above are excluded from the cx2 visual styles.
@@ -297,6 +319,7 @@ public class CXToCX2VisualPropertyConverter {
 	private static VisualPropertyTable convertVisualProperties(Map<String, Map.Entry<String,CXToCX2VisualPropertyCvtFunction>>  table,
 				Map<String,String> cx1Properties) throws NdexException {
 		VisualPropertyTable result = new VisualPropertyTable();
+		
 		
 		for (Map.Entry<String, String> e : cx1Properties.entrySet()) {
 			Map.Entry<String,CXToCX2VisualPropertyCvtFunction> cvtrEntry = table.get(e.getKey());
@@ -351,13 +374,28 @@ public class CXToCX2VisualPropertyConverter {
 		return null;
 	}
 	
+	/*
+	private static void cvtEdgeBendNCurve (String edgeBend, String edgeCurve, VisualPropertyTable resultHolder) {
+		if ( edgeCurve != null) { 
+			boolean curved = Boolean.parseBoolean(edgeCurve);
+			CurveStyle curvestyle = curved ? 
+					edgeBend == null ? 
+						CurveStyle.BEZIER : CurveStyle.UNBUNDLED_BEZIER
+					: edgeBend == null ? 
+						CurveStyle.STRAIGHT	: CurveStyle.SEGMENTS;
+
+			EdgeBendPoint[] bendPoints = edgeBend == null ? null :
+				Stream.of(edgeBend.split("\\|")).map(arg0 -> EdgeBendPoint.createFromCX1String(arg0)).toArray(EdgeBendPoint[]::new);
+
+			resultHolder.getVisualProperties().put("EDGE_CURVE_STYLE", curvestyle);
+			if ( bendPoints != null) {
+				resultHolder.getVisualProperties().put("EDGE_BEND", bendPoints);
+			}
+		}
+	} */
 	
 	public static CXToCX2VisualPropertyConverter getInstance() {
 		return instance;
 	}
 	
-	public interface CXToCX2VisualPropertyCvtFunction {
-		public Object convert(String cxValue) throws NdexException;
-
-	}
 }
