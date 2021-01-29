@@ -1,7 +1,9 @@
 package org.ndexbio.cx2.aspect.element.core;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -28,9 +30,19 @@ public class VisualPropertyTable {
 				visualProperties.put(key,LabelPosition.createFromMap((Map<String,Object>)e));
 			} else if ( key.matches(imagePositionPattern)) {
 				visualProperties.put(key, ObjectPosition.createFromMap((Map<String,Object>)e));
-			}
+			} else 
+				visualProperties.put(key, e);
+		} else if ( e instanceof List<?>) {
+			if ( key.equals("EDGE_CONTROL_POINTS")) {
+				List<Map<String,Object>> rawPoints = (List<Map<String,Object>>)e;
+				visualProperties.put(key, 
+						rawPoints.stream()
+						.map(p -> { return EdgeControlPoint.createFromMap(p);})
+						.collect(Collectors.toList()));
+			} else
+				visualProperties.put(key, e);
 		} else 
-		    visualProperties.put(key,e);
+		   visualProperties.put(key,e);
 	}
 
 	public VisualPropertyTable() {

@@ -8,7 +8,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.ndexbio.cx2.aspect.element.core.EdgeBendPoint;
+import org.ndexbio.cx2.aspect.element.core.EdgeControlPoint;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
 import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
 import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
@@ -90,7 +90,7 @@ public class CXToCX2VisualPropertyConverter {
 	
 	private static final CXToCX2VisualPropertyCvtFunction edgeBendCvtr = (strVal) -> {
 		return strVal == null ? null :
-			(Stream.of(strVal.split("\\|")).map(arg0 -> EdgeBendPoint.createFromCX1String(arg0)).collect(Collectors.toList()));
+			(Stream.of(strVal.split("\\|")).map(arg0 -> EdgeControlPoint.createFromCX1String(arg0)).collect(Collectors.toList()));
 	
 		};
 			
