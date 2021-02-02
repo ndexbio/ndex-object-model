@@ -13,6 +13,7 @@ import org.ndexbio.cx2.aspect.element.core.LabelPosition;
 import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
 import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
+import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.model.exceptions.NdexException;
 
 
@@ -199,8 +200,8 @@ public class CXToCX2VisualPropertyConverter {
 
     	// these are the visual properties that are in the portable styles.
     	// nodes
-    	addEntry ( "NODE_BORDER_PAINT" );
-    	addEntry ("NODE_BORDER_STROKE", "NODE_BORDER_LINE_TYPE", nodeBorderTypeCvtr);
+    	addEntry ( "NODE_BORDER_PAINT", "NODE_BORDER_COLOR",stringCvtr );
+    	addEntry ("NODE_BORDER_STROKE", "NODE_BORDER_STYLE", nodeBorderTypeCvtr);
     	addEntry ( "NODE_BORDER_TRANSPARENCY","NODE_BORDER_OPACITY", opacityCvtr );
     	addEntry ( "NODE_BORDER_WIDTH", numberCvtr );
     	 	
@@ -344,6 +345,7 @@ public class CXToCX2VisualPropertyConverter {
 	}
 	
 	public Map<String,Object>  convertNetworkVPs (Map<String,String> cx1Properties ) throws NdexException {
+		
 		return convertVisualProperties(networkCvtTable, cx1Properties).getVisualProperties();
 	}
     

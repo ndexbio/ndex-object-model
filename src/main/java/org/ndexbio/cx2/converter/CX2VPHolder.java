@@ -92,6 +92,18 @@ public class CX2VPHolder {
         }
 	}
 	
+	
+	private static void processEditorProperties(Map<String,String> cx1Properties, VisualEditorProperties visualDependencies) {
+		for (Map.Entry<String,String> entry: cx1Properties.entrySet()) {
+			String propName = entry.getKey();
+			if ( propName.equals("NETWORK_CENTER_X_LOCATION") ||
+					propName.equals("NETWORK_CENTER_X_LOCATION") || 
+					propName.equals("NETWORK_SCALE_FACTOR")) {
+				visualDependencies.getProperties().put(propName, 
+						Float.valueOf(entry.getValue()));
+			} 
+		}
+	}
 
 	public void addVisuaProperty(CyVisualPropertiesElement elmt,
 			   VisualEditorProperties visualDependencies, List<String> warningHolder) throws NdexException, IOException {
@@ -100,6 +112,7 @@ public class CX2VPHolder {
 		    
 		CXToCX2VisualPropertyConverter vpConverter = CXToCX2VisualPropertyConverter.getInstance();
 	    if ( po.equals("network")) {
+				processEditorProperties(elmt.getProperties(), visualDependencies);
 
 	    		style.getDefaultProps().setNetworkProperties(vpConverter.convertNetworkVPs(elmt.getProperties()));
 	    } else if( po.equals("nodes:default")) {
