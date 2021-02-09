@@ -240,7 +240,7 @@ public class CXToCX2VisualPropertyConverter {
     			);
     	addEntry ( "NODE_WIDTH",      "NODE_WIDTH", numberCvtr );
     	addEntry ( "NODE_TRANSPARENCY",    "NODE_BACKGROUND_OPACITY", opacityCvtr );
-    	addEntry ( "NODE_VISIBLE", visibilityCvtr );
+    	addEntry ( "NODE_VISIBLE", "NODE_VISIBILITY", visibilityCvtr );
     	
     	for ( int i = 1 ; i < 10; i++) {
         	addEntry ( "NODE_CUSTOMGRAPHICS_" + i, "NODE_IMAGE_" + i, nodeImageCvtr );    		
@@ -260,7 +260,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_FONT_SIZE", intCvtr );
     	addEntry ( "EDGE_LABEL_TRANSPARENCY", "EDGE_LABEL_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_WIDTH","EDGE_LABEL_MAX_WIDTH",numberCvtr );
-    	addEntry ( "EDGE_LINE_TYPE", edgeLineTypeCvtr );
+    	addEntry ( "EDGE_LINE_TYPE", "EDGE_LINE_STYLE", edgeLineTypeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SIZE", numberCvtr );
     	addEntry ( "EDGE_TARGET_ARROW_SHAPE", arrowShapeCvtr );
@@ -273,7 +273,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_TARGET_ARROW_UNSELECTED_PAINT", "EDGE_TARGET_ARROW_COLOR", stringCvtr);
     	addEntry ( "EDGE_TRANSPARENCY", "EDGE_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH", "EDGE_WIDTH", numberCvtr );
-    	addEntry ( "EDGE_VISIBLE", visibilityCvtr );
+    	addEntry ( "EDGE_VISIBLE", "EDGE_VISIBILITY", visibilityCvtr );
     	addEntry ( "EDGE_SELECTED", booleanCvtr );
     	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_BEND", "EDGE_CONTROL_POINTS", edgeBendCvtr );

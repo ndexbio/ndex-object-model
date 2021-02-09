@@ -97,7 +97,7 @@ public class CX2VPHolder {
 		for (Map.Entry<String,String> entry: cx1Properties.entrySet()) {
 			String propName = entry.getKey();
 			if ( propName.equals("NETWORK_CENTER_X_LOCATION") ||
-					propName.equals("NETWORK_CENTER_X_LOCATION") || 
+					propName.equals("NETWORK_CENTER_Y_LOCATION") || 
 					propName.equals("NETWORK_SCALE_FACTOR")) {
 				visualDependencies.getProperties().put(propName, 
 						Float.valueOf(entry.getValue()));
