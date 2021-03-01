@@ -85,6 +85,13 @@ public class ObjectPosition {
 		marginY = 0;
 	}
 
+	
+	public String toCX1String() {
+		
+		// create anchor first, alignment second, and then write out the marginX and Y
+		return createCX1AnchorValue() + "," + createCX1AlignmentValue() + ",c," + marginX + "," + marginY;
+		 
+	}
 	/**
 	 * Create an LabelPosition object from cx1 value. 
 	 * @param cx1Value a serialized cx1 value string like this "SE,NW,l,0.00,27.00" 
@@ -97,6 +104,32 @@ public class ObjectPosition {
 		return result;
 	}
 
+	
+	protected String createCX1AnchorValue() {
+		if ( verticalAnchor == VerticalAlignment.center) {
+			return horizontalAlignmentToCX1(this.horizontalAnchor);
+		} 
+		
+		String result = verticalAlignmentToCX1(verticalAnchor);
+		if ( horizontalAnchor == HorizontalAlignment.center)
+			return result;
+		 
+		return result + horizontalAlignmentToCX1(horizontalAnchor);
+		
+	}
+	
+	protected String createCX1AlignmentValue() {
+		if ( verticalAlign == VerticalAlignment.center) {
+			return horizontalAlignmentToCX1(this.horizontalAlign);
+		} 
+		
+		String result = verticalAlignmentToCX1(verticalAlign);
+		if ( horizontalAlign == HorizontalAlignment.center)
+			return result;
+		 
+		return result + horizontalAlignmentToCX1(horizontalAlign);
+		
+	}
 
 	protected static void populateFromCX1Values(ObjectPosition postion, String[] values) {
 		
@@ -104,7 +137,6 @@ public class ObjectPosition {
 		postion.setAlignmentFromCX1(values[1]);		
 		postion.setMarginsFromCX1(values[3], values[4]);
 	}
-
 	
 	public static ObjectPosition createFromMap(Map<String,Object> m) {
 		
@@ -189,6 +221,24 @@ public class ObjectPosition {
 		}
 
 	}
+	
+	private static String horizontalAlignmentToCX1 (HorizontalAlignment a) {
+		if ( a == HorizontalAlignment.center )
+			return "C";
+		if ( a == HorizontalAlignment.left)
+			return "W";
+		return "E";
+	}
+	
+	private static String verticalAlignmentToCX1 (VerticalAlignment a) {
+		if ( a == VerticalAlignment.center)
+			return "C";
+		if ( a == VerticalAlignment.top)
+			return "N";
+		return "S";
+	}
+
+
 	
 	protected void setMarginsFromCX1(String x,String y) {
 		marginX = Float.parseFloat(x);

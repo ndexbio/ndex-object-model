@@ -52,6 +52,26 @@ public class LabelPosition extends ObjectPosition {
 		
 	}
 	
+	@Override
+	public String toCX1String() {
+		
+		// create anchor first, alignment second, and then write out the marginX and Y
+		return createCX1AnchorValue() + "," + createCX1AlignmentValue() + ","
+				+ justificationToCX1() + "," + getMarginX() + "," + getMarginY();
+		 
+	}
+
+	private String justificationToCX1() {
+		switch (justification) {
+		case center:
+			return "c";
+		case left:
+			return "l";
+		default:
+			return "r";
+		}
+	}
+	
 	private void setJustificationFromCX1(String c) {
 		switch ( c ) {
 		case "c":

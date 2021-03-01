@@ -36,6 +36,11 @@ public class EdgeControlPoint {
 	
 	}
 	
+	
+	public String toCX1String () {
+		return sin + "," + cos + "," + ratio;
+	}
+	
 	public static EdgeControlPoint createFromMap(Map<String,Object> m)  {
 		return new EdgeControlPoint(
 				((Number)m.get(SIN)).doubleValue(),

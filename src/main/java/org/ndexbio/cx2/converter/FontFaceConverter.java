@@ -50,9 +50,9 @@ public class FontFaceConverter {
 			"dialoginput", "monospace" // Java Logical Font
 			);
 	
-	static final String BOLD = "bold";
-	static final String ITALIC = "italic";
-	static final String BOLD_ITALIC = "bolditalic";
+	private static final String BOLD = "bold";
+	private static final String ITALIC = "italic";
+	private static final String BOLD_ITALIC = "bolditalic";
 	
 	static final String PORTABLE_SERIF_FONT = "serif";
 	static final String PORTABLE_SANS_SERIF_FONT = "sans-serif";
@@ -99,6 +99,20 @@ public class FontFaceConverter {
 			fontFamily = PORTABLE_SANS_SERIF_FONT;
 		}
 		return new FontFace(fontFamily, fontStyle, fontWeight);
+	}
+	
+	
+	public static String convertToCX1String(FontFace font) {
+		String result = font.getFamily() ;
+		if (font.getWeight().equals(FontFace.BOLD)) {
+			if ( font.getStyle().equals(FontFace.ITALIC)) {
+				result += " Bold Italic";
+			} else
+				result += " Bold";
+		} else if ( font.getStyle().equals(FontFace.ITALIC)) {
+			result += " Italic";
+		}
+		return result;
 	}
 
 	public static void main(String[] args) throws JsonProcessingException {

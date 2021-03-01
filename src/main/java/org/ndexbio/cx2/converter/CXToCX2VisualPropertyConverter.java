@@ -212,7 +212,6 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "NODE_LABEL_FONT_SIZE", intCvtr );
     	
-    	//TODO: implementing the mapping function.
     	addEntry ( "NODE_LABEL_POSITION", (positionStr) -> {return LabelPosition.createFromCX1Value(positionStr);} );
     	addEntry ( "NODE_LABEL_TRANSPARENCY","NODE_LABEL_OPACITY", opacityCvtr );
     	

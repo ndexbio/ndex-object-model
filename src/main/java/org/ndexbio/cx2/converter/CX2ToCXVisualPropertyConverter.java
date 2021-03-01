@@ -4,9 +4,16 @@ import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
+import org.ndexbio.cx2.aspect.element.core.EdgeControlPoint;
+import org.ndexbio.cx2.aspect.element.core.FontFace;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
+import org.ndexbio.cx2.aspect.element.core.LabelPosition;
+import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
+import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 
 public class CX2ToCXVisualPropertyConverter {
 	
@@ -69,7 +76,10 @@ public class CX2ToCXVisualPropertyConverter {
 				
 			} };						
 
-		
+	private static final CX2ToCXVisualPropertyCvtFunction fontFaceCvtr = (fontFace) -> 
+	{
+		return FontFaceConverter.convertToCX1String((FontFace)fontFace) + ",plain,12";
+	};
 	
 	private CX2ToCXVisualPropertyConverter () {
     	networkCvtTable = new HashMap<>(100);
@@ -80,11 +90,11 @@ public class CX2ToCXVisualPropertyConverter {
     	
        	//Network attributes:
     	
-    	addEntryToCvterTable( networkCvtTable,"NETWORK_BACKGROUND_PAINT", "NETWORK_BACKGROUND_COLOR",defaultCvtr);
+    	addEntryToCvterTable( networkCvtTable,"NETWORK_BACKGROUND_COLOR", "NETWORK_BACKGROUND_PAINT",defaultCvtr);
 
     	// nodes
-    	addEntry ( "NODE_BORDER_PAINT");
-    	addEntry ("NODE_BORDER_LINE_TYPE", "NODE_BORDER_STROKE", nodeBorderTypeCvtr);
+    	addEntry ( "NODE_BORDER_COLOR","NODE_BORDER_PAINT");
+    	addEntry ("NODE_BORDER_STYLE", "NODE_BORDER_STROKE", nodeBorderTypeCvtr);
     	addEntry ( "NODE_BORDER_OPACITY", "NODE_BORDER_TRANSPARENCY", opacityCvtr );
     	addEntry ( "NODE_BORDER_WIDTH");
 
@@ -92,14 +102,16 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "NODE_HEIGHT");
     	addEntry ( "NODE_LABEL" );
     	addEntry ( "NODE_LABEL_COLOR"    );
-    	addEntry ( "NODE_LABEL_FONT_FACE");
+    	addEntry ( "NODE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "NODE_LABEL_FONT_SIZE" );
     	
     	//TODO: implementing the mapping function.
-    	addEntry ( "NODE_LABEL_POSITION" );
+    	addEntry ( "NODE_LABEL_POSITION" , (labelPosition) -> {
+    		return ((LabelPosition)labelPosition).toCX1String();
+    	});
     	addEntry ( "NODE_LABEL_OPACITY", "NODE_LABEL_TRANSPARENCY", opacityCvtr );
     	
-       	addEntry ( "NODE_LABEL_WIDTH", "NODE_LABEL_MAX_WIDTH" );
+       	addEntry ( "NODE_LABEL_MAX_WIDTH", "NODE_LABEL_WIDTH");
     	addEntry ( "NODE_SELECTED" );
     	addEntry ( "NODE_SELECTED_PAINT" );
    	
@@ -125,17 +137,29 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "NODE_WIDTH");
     	addEntry ( "NODE_SIZE");
     	addEntry ( "NODE_BACKGROUND_OPACITY", "NODE_TRANSPARENCY",    opacityCvtr );
-    	addEntry ( "NODE_VISIBLE");
+    	addEntry (  "NODE_VISIBILITY", "NODE_VISIBLE");
+    	
+    	for ( int i = 1 ; i < 10; i++) {
+        	addEntry ( "NODE_IMAGE_" + i, "NODE_CUSTOMGRAPHICS_" + i);    		
+        	addEntry ( ("NODE_IMAGE_" + i + "_SIZE"), 
+        			   ("NODE_CUSTOMGRAPHICS_SIZE_" + i) , 
+        			   (sizeObj) ->
+        					{ return ((NodeImageSize)sizeObj).toCX1String();} 
+        			);    		
+        	addEntry ( "NODE_IMAGE_" + i + "_POSITION", "NODE_CUSTOMGRAPHICS_POSITION_" + i,  
+        			(position) -> { return ((ObjectPosition)position).toCX1String(); } );    		
+    	}
+
     	    	
     	// edges
     	
     	addEntry ( "EDGE_LABEL");
     	addEntry ( "EDGE_LABEL_COLOR"    );
-    	addEntry ( "EDGE_LABEL_FONT_FACE");
+    	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE" );
     	addEntry ( "EDGE_LABEL_OPACITY", "EDGE_LABEL_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_MAX_WIDTH","EDGE_LABEL_WIDTH");
-    	addEntry ( "EDGE_LINE_TYPE", edgeLineTypeCvtr );
+    	addEntry ( "EDGE_LINE_STYLE", "EDGE_LINE_TYPE", edgeLineTypeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SIZE" );
     	addEntry ( "EDGE_TARGET_ARROW_SHAPE", arrowShapeCvtr );
@@ -147,10 +171,16 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "EDGE_TARGET_ARROW_COLOR", "EDGE_TARGET_ARROW_UNSELECTED_PAINT");
     	addEntry ( "EDGE_OPACITY", "EDGE_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH" );
-    	addEntry ( "EDGE_PAINT");
-    	addEntry ( "EDGE_VISIBLE");
+    	//addEntry ( "EDGE_PAINT");
+    	addEntry ( "EDGE_VISIBILITY", "EDGE_VISIBLE");
     	
-    	
+    	addEntry ( "EDGE_SELECTED" );
+    	addEntry ( "EDGE_CURVED" );
+    	addEntry ( "EDGE_CONTROL_POINTS", "EDGE_BEND",  (controlPointList) -> { return String.join("|",
+    			( (List<EdgeControlPoint> )controlPointList).stream()
+    			.map( e -> e.toCX1String()).collect(Collectors.toList()) ); }
+    	);
+
     	for ( String n : CXToCX2VisualPropertyConverter.cx1CarryOverVPNames) {
     		addEntry ( n);
     	}
@@ -160,11 +190,11 @@ public class CX2ToCXVisualPropertyConverter {
     
 	private static final CX2ToCXVisualPropertyConverter instance = new CX2ToCXVisualPropertyConverter();
 
-	private static void addEntryToCvterTable (Map<String, Map.Entry<String, CX2ToCXVisualPropertyCvtFunction>> table, String oldVP, String newVP,
+	private static void addEntryToCvterTable (Map<String, Map.Entry<String, CX2ToCXVisualPropertyCvtFunction>> table, String cx2VP, String cxVP,
 			CX2ToCXVisualPropertyCvtFunction cvt) { 
-		AbstractMap.Entry<String, CX2ToCXVisualPropertyCvtFunction> cvtrEntry= new AbstractMap.SimpleImmutableEntry<>(newVP, cvt);
+		AbstractMap.Entry<String, CX2ToCXVisualPropertyCvtFunction> cvtrEntry= new AbstractMap.SimpleImmutableEntry<>(cxVP, cvt);
 		
-		table.put(oldVP, cvtrEntry );
+		table.put(cx2VP, cvtrEntry );
 	}
     
 	// adding an entry to the nodeEdge converter table

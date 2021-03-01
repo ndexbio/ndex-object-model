@@ -32,5 +32,11 @@ public class NodeImageSize {
 		result.setHeight(s);
 		result.setWidth(s);
 		return result;
+	}
+	
+	public String toCX1String() {
+		;
+		return (width+height)/2 +"";
 	} 
+
 }
