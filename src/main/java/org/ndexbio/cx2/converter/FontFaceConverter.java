@@ -103,7 +103,7 @@ public class FontFaceConverter {
 	
 	
 	public static String convertToCX1String(FontFace font) {
-		String result = font.getFamily() ;
+		String result = font.getFamily();
 		if (font.getWeight().equals(FontFace.BOLD)) {
 			if ( font.getStyle().equals(FontFace.ITALIC)) {
 				result += " Bold Italic";
