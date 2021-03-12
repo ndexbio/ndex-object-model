@@ -25,6 +25,7 @@ import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
 import org.ndexbio.cx2.aspect.element.core.MappingDefinition;
 import org.ndexbio.cx2.aspect.element.core.VPMappingType;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyMapping;
+import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.AbstractAttributesAspectElement;
 import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
@@ -768,11 +769,11 @@ public class CXToCX2LargeFileConverter {
     		CxNodeBypass nodebp = new CxNodeBypass(elmt.getApplies_to().longValue(), 
     				vpConverter.convertEdgeOrNodeVPs(elmt.getProperties()));
     		
-    		if ( !nodebp.getVisualProperties().isEmpty())
+    		if ( !nodebp.getVisualProperties().getVisualProperties().isEmpty())
     			nodeBypasses.add(nodebp);
     	} else {  // edge bypasses
-    		Map<String,Object> v = vpConverter.convertEdgeOrNodeVPs(elmt.getProperties());
-    		if ( !v.isEmpty()) {
+    		VisualPropertyTable v = vpConverter.convertEdgeOrNodeVPs(elmt.getProperties());
+    		if ( !v.getVisualProperties().isEmpty()) {
     			CxEdgeBypass edgebp = new CxEdgeBypass();
     			edgebp.setId(elmt.getApplies_to().longValue());
     			edgebp.setVisualProperties(v);

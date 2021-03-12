@@ -13,6 +13,7 @@ import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
 import org.ndexbio.cx2.aspect.element.core.MappingDefinition;
 import org.ndexbio.cx2.aspect.element.core.VPMappingType;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyMapping;
+import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.Mapping;
@@ -91,6 +92,18 @@ public class CX2VPHolder {
         }
 	}
 	
+	
+	private static void processEditorProperties(Map<String,String> cx1Properties, VisualEditorProperties visualDependencies) {
+		for (Map.Entry<String,String> entry: cx1Properties.entrySet()) {
+			String propName = entry.getKey();
+			if ( propName.equals("NETWORK_CENTER_X_LOCATION") ||
+					propName.equals("NETWORK_CENTER_Y_LOCATION") || 
+					propName.equals("NETWORK_SCALE_FACTOR")) {
+				visualDependencies.getProperties().put(propName, 
+						Float.valueOf(entry.getValue()));
+			} 
+		}
+	}
 
 	public void addVisuaProperty(CyVisualPropertiesElement elmt,
 			   VisualEditorProperties visualDependencies, List<String> warningHolder) throws NdexException, IOException {
@@ -99,6 +112,7 @@ public class CX2VPHolder {
 		    
 		CXToCX2VisualPropertyConverter vpConverter = CXToCX2VisualPropertyConverter.getInstance();
 	    if ( po.equals("network")) {
+				processEditorProperties(elmt.getProperties(), visualDependencies);
 
 	    		style.getDefaultProps().setNetworkProperties(vpConverter.convertNetworkVPs(elmt.getProperties()));
 	    } else if( po.equals("nodes:default")) {
@@ -193,11 +207,11 @@ public class CX2VPHolder {
 	    		CxNodeBypass nodebp = new CxNodeBypass(elmt.getApplies_to().longValue(), 
 	    				vpConverter.convertEdgeOrNodeVPs(elmt.getProperties()));
 	    		
-	    		if ( !nodebp.getVisualProperties().isEmpty())
+	    		if ( !nodebp.getVisualProperties().getVisualProperties().isEmpty())
 	    			nodeBypasses.add(nodebp);
 	    	} else if ( po.equals("edges")) {  // edge bypasses
-	    		Map<String,Object> v = vpConverter.convertEdgeOrNodeVPs(elmt.getProperties());
-	    		if ( !v.isEmpty()) {
+	    		VisualPropertyTable v = vpConverter.convertEdgeOrNodeVPs(elmt.getProperties());
+	    		if ( !v.getVisualProperties().isEmpty()) {
 	    			CxEdgeBypass edgebp = new CxEdgeBypass();
 	    			edgebp.setId(elmt.getApplies_to().longValue());
 	    			edgebp.setVisualProperties(v);

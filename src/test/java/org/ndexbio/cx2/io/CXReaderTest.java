@@ -73,8 +73,8 @@ public class CXReaderTest {
 					CxVisualProperty vp = (CxVisualProperty) elmt;
 					DefaultVisualProperties dvp = vp.getDefaultProps();
 					assertEquals ( 1, dvp.getNetworkProperties().size());
-					assertEquals (7, dvp.getNodeProperties().size());
-					assertEquals ( 2, dvp.getEdgeProperties().size());
+					assertEquals (7, dvp.getNodeProperties().getVisualProperties().size());
+					assertEquals ( 2, dvp.getEdgeProperties().getVisualProperties().size());
 					assertEquals ( 2, vp.getEdgeMappings().size());
 					assertEquals ( 1, vp.getNodeMappings().size());
 					
