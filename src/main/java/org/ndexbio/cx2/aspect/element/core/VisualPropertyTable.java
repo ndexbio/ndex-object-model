@@ -13,7 +13,7 @@ public class VisualPropertyTable {
 	
 	private Map<String, Object> visualProperties;
 	
-	private static final String imagePositionPattern = "^NODE_IMAGE_[0-9]+_POSITION$";
+	public static final String imagePositionPattern = "^NODE_IMAGE_[0-9]+_POSITION$";
 	
 	@JsonAnyGetter
 	public Map<String, Object> getVisualProperties() {
