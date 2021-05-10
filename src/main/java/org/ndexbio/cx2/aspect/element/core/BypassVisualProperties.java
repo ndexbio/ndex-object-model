@@ -1,7 +1,5 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,24 +18,24 @@ public abstract class BypassVisualProperties<T extends BypassVisualProperties<?>
 	private static final long serialVersionUID = 1L;
 
 	@JsonProperty ("id")
-	private long id;
+	private Long id;
     
     @JsonProperty ("v")
-	private Map<String, Object> visualProperties;
+	private VisualPropertyTable visualProperties;
 	
-    public BypassVisualProperties() { visualProperties = new HashMap<> (); } 
+    public BypassVisualProperties() { visualProperties = new VisualPropertyTable (); } 
     
     @JsonIgnore
-    public void setId(long id) { this.id = id; }
+    public void setId(Long id) { this.id = id; }
     
     @JsonIgnore
-    public void setVisualProperties ( Map<String,Object> properties) {
+    public void setVisualProperties ( VisualPropertyTable properties) {
     	this.visualProperties = properties;
     }
     
     @JsonIgnore
-    public long  getId() { return id;}
+    public Long getId() { return id;}
     
     @JsonIgnore
-    public Map<String,Object> getVisualProperties () { return this.visualProperties;}
+    public VisualPropertyTable getVisualProperties () { return this.visualProperties;}
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.ndexbio.cx2.aspect.element.core.CxAspectElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -26,6 +27,7 @@ public class VisualEditorProperties implements CxAspectElement<VisualEditorPrope
 	public VisualEditorProperties() { setProperties(new HashMap<>());}
 	
 	@Override
+	@JsonIgnore
 	public String getAspectName() {
 		return ASPECT_NAME;
 	}

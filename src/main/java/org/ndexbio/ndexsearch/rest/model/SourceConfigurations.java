@@ -36,12 +36,17 @@ public class SourceConfigurations {
         this._sources = _sources;
     }
     
-    
+    /**
+	 * Examines all sources set via setSources() method for the first SourceConfiguration
+	 * where getName() matches the name passed in
+	 * @param name Name of SourceConfiguration to return
+	 * @return 
+	 */
     public SourceConfiguration getSourceConfigurationByName (String name) {
     	if ( _sources == null || name == null ) return null;
-    	
+			
 		for ( SourceConfiguration conf : _sources) {
-			if (conf.getName().contentEquals(name) ) {
+			if (conf.getName() != null && conf.getName().contentEquals(name) ) {
 				return conf;
 			}
 		}

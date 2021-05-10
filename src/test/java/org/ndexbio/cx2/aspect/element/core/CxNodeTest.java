@@ -111,4 +111,20 @@ public class CxNodeTest {
 		CxNode n2 = om.readerFor(CxNode.class).readValue(s1);
 				
 		n2.validate();
-	}}
+	}
+
+    @Test 
+    public void test4() throws JsonMappingException, JsonProcessingException, NdexException {
+        String s1 = "{\"id\":12,\"x\":null, \"v\":{\"n\":null, \"ab\": 33, \"about\": \"something\"}}";
+		ObjectMapper om = new ObjectMapper();
+        CxNode n2 = om.readerFor(CxNode.class).readValue(s1);
+        
+        assertEquals ( Long.valueOf(12L), n2.getId());
+        
+        n2.validate();
+        
+        String s2 = om.writeValueAsString(n2);
+        System.out.println (s2);
+        
+    }
+} 

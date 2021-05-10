@@ -81,6 +81,8 @@ public class NiceCXNetworkWriter implements INiceCXNetworkWriter {
         } 
     }
 
+    
+    
     /**
      * Writes out @context aspect
      * @param network

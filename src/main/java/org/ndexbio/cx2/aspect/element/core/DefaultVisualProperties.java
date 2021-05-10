@@ -16,28 +16,28 @@ public class DefaultVisualProperties {
 	
 	
 	@JsonProperty("edge")
-	private Map<String, Object> edgeProperties;
+	private VisualPropertyTable edgeProperties;
 	
 	
 	@JsonProperty( "network")
 	private Map<String,Object> networkProperties;
 	
 	@JsonProperty("node")
-	private Map<String,Object> nodeProperties;
+	private VisualPropertyTable nodeProperties;
 	
 	public DefaultVisualProperties () {
-		this.edgeProperties = new HashMap<>();
-		this.nodeProperties = new HashMap<>();
+		this.edgeProperties = new VisualPropertyTable();
+		this.nodeProperties = new VisualPropertyTable();
 		this.networkProperties = new HashMap<>();	
 	}
 
 	@JsonIgnore
-	public Map<String, Object> getEdgeProperties() {
+	public VisualPropertyTable getEdgeProperties() {
 		return edgeProperties;
 	}
 
 	@JsonIgnore
-	public void setEdgeProperties(Map<String, Object> edgeProperties) {
+	public void setEdgeProperties(VisualPropertyTable edgeProperties) {
 		this.edgeProperties = edgeProperties;
 	}
 
@@ -52,18 +52,20 @@ public class DefaultVisualProperties {
 	}
 
 	@JsonIgnore
-	public Map<String, Object> getNodeProperties() {
+	public VisualPropertyTable getNodeProperties() {
 		return nodeProperties;
 	}
 
 	@JsonIgnore
-	public void setNodeProperties(Map<String, Object> nodeProperties) {
+	public void setNodeProperties(VisualPropertyTable nodeProperties) {
 		this.nodeProperties = nodeProperties;
 	}
 	
 	@JsonIgnore
 	public boolean isEmpty() {
-		return networkProperties.isEmpty() && nodeProperties.isEmpty() && edgeProperties.isEmpty();
+		return networkProperties.isEmpty() && 
+				nodeProperties.getVisualProperties().isEmpty() && 
+				edgeProperties.getVisualProperties().isEmpty();
 	}
 
 }

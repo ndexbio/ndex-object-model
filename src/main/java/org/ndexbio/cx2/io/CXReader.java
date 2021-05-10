@@ -18,6 +18,7 @@ import org.ndexbio.cx2.aspect.element.core.CxMetadata;
 import org.ndexbio.cx2.aspect.element.core.CxNetworkAttribute;
 import org.ndexbio.cx2.aspect.element.core.CxOpaqueAspectElement;
 import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
+import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cxio.misc.Status;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -28,7 +29,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class CXReader implements Iterable<CxAspectElement> {
+public class CXReader implements Iterable<CxAspectElement<?>> {
 	
 	private final static int START = 0;
 	private final static int AFTER_HEADER = 1;
@@ -41,7 +42,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 	public final static String metadataAspectName = "metaData";
 	
 	private Map<String, CxMetadata> metadataTable;
-    private CxAspectElement        _current;
+    private CxAspectElement<?>        _current;
     private int metadataAspectCount ;
 
 	//private CxAttributeDeclaration attrDeclarations;
@@ -51,11 +52,11 @@ public class CXReader implements Iterable<CxAspectElement> {
     private ObjectMapper  om;
     private int state;
     private String currentAspect; 
-    private Class<? extends CxAspectElement> currentAspectClass;
+    private Class<? extends CxAspectElement<?>> currentAspectClass;
     private Map<String, Long> elementCounterTable;
     
     
-    private  Map<String, Class<? extends CxAspectElement>> aspectTable;
+    private  Map<String, Class<? extends CxAspectElement<?>>> aspectTable;
 
     
 	public CXReader (InputStream input) throws JsonParseException, IOException {
@@ -81,6 +82,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 	    aspectTable.put(CxVisualProperty.ASPECT_NAME,CxVisualProperty.class);
 	    aspectTable.put(CxEdgeBypass.ASPECT_NAME, CxEdgeBypass.class);
 	    aspectTable.put(CxNodeBypass.ASPECT_NAME, CxNodeBypass.class);
+	    aspectTable.put(VisualEditorProperties.ASPECT_NAME, VisualEditorProperties.class);
 	    
 	    elementCounterTable = new TreeMap<>();
 	}
@@ -176,8 +178,8 @@ public class CXReader implements Iterable<CxAspectElement> {
 
 
 	@Override
-	public Iterator<CxAspectElement> iterator() {
-		 final Iterator<CxAspectElement> it = new Iterator<CxAspectElement>() {
+	public Iterator<CxAspectElement<?>> iterator() {
+		 final Iterator<CxAspectElement<?>> it = new Iterator<CxAspectElement<?>>() {
 
 	            @Override
 	            public boolean hasNext() {
@@ -190,7 +192,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 	            }
 
 	            @Override
-	            public CxAspectElement next() {
+	            public CxAspectElement<?> next() {
 	                    return CXReader.this.getNext();  
 	            }
 
@@ -202,9 +204,9 @@ public class CXReader implements Iterable<CxAspectElement> {
 	        return it;
 	}
 	
-    private final CxAspectElement getNext() {
+    private final CxAspectElement<?> getNext() {
     	if ( _current != null) {
-    		CxAspectElement result = _current;
+    		CxAspectElement<?> result = _current;
     		_current = null;
     		countElement(result);
     		return result;
@@ -303,7 +305,7 @@ public class CXReader implements Iterable<CxAspectElement> {
 					+ jp.getCurrentLocation().getColumnNr();
 	}
 	
-	private void countElement(CxAspectElement result) {
+	private void countElement(CxAspectElement<?> result) {
 		Long cnt = this.elementCounterTable.get(result.getAspectName());
 		if ( cnt == null)
 			this.elementCounterTable.put(result.getAspectName(), Long.valueOf(1L));

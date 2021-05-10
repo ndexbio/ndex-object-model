@@ -1,28 +1,40 @@
 package org.ndexbio.cx2.converter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
+import org.ndexbio.cx2.aspect.element.core.CxEdgeBypass;
+import org.ndexbio.cx2.aspect.element.core.CxMetadata;
 import org.ndexbio.cx2.aspect.element.core.CxNetworkAttribute;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
+import org.ndexbio.cx2.aspect.element.core.CxNodeBypass;
+import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
 import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
+import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.AbstractAttributesAspectElement;
-import org.ndexbio.cxio.aspects.datamodels.AbstractElementAttributesAspectElement;
+import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgesElement;
 import org.ndexbio.cxio.aspects.datamodels.NetworkAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodeAttributesElement;
 import org.ndexbio.cxio.aspects.datamodels.NodesElement;
+import org.ndexbio.cxio.metadata.MetaDataCollection;
+import org.ndexbio.cxio.metadata.MetaDataElement;
+import org.ndexbio.model.cx.NamespacesElement;
+import org.ndexbio.model.cx.Provenance;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AspectAttributeStat {
+	
 	
 	private Map<String, Map<String, AspectAttributeStatEntry>> table;
 	
@@ -34,6 +46,9 @@ public class AspectAttributeStat {
 	// number of node and edge visual property bypasses in the cyVisualProperties aspect. 
 	private int nodeBypassCount;
 	private int edgeBypassCount;
+	private long nodeCount;
+	private long edgeCount;
+	private boolean hasNamespacesAspect;
 	
 	public AspectAttributeStat() {
 		
@@ -43,10 +58,14 @@ public class AspectAttributeStat {
 		hasEdgeInteraction = false;
 		nodeBypassCount = 0;
 		edgeBypassCount = 0;
+		nodeCount = 0;
+		edgeCount = 0;
+		hasNamespacesAspect = false;
 	}
 	
 	
 	public void addNode (NodesElement n ) throws NdexException {
+		nodeCount++;
 		if ( ! hasNodeName) {
 			if (n.getNodeName() !=null ) {
 				addCX1ReservedAttr(CxNode.ASPECT_NAME, CxNode.NAME, "n",null);
@@ -62,6 +81,7 @@ public class AspectAttributeStat {
 	}
 	
 	public void addEdge (EdgesElement edge) throws NdexException {
+		edgeCount++;
 		if ( !hasEdgeInteraction) {
 			if ( edge.getInteraction() != null) {
 				addCX1ReservedAttr(CxEdge.ASPECT_NAME, CxEdge.INTERACTION, "i", edge.getInteraction());
@@ -120,7 +140,7 @@ public class AspectAttributeStat {
 			throw new NdexException (constructErrMsg(attr,error));
 		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t == ATTRIBUTE_DATA_TYPE.BOOLEAN) {
-			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
+			e.addValue(convertAttributeValue(attr));
 			
 		}
 	}
@@ -137,14 +157,14 @@ public class AspectAttributeStat {
 		
 		String warning = null;
 		
-		Map<String, AspectAttributeStatEntry> nodeAttributes = table.get(CxNetworkAttribute.ASPECT_NAME);
+		Map<String, AspectAttributeStatEntry> attributes = table.get(CxNetworkAttribute.ASPECT_NAME);
 		
-		if ( nodeAttributes == null) {
-			nodeAttributes = new HashMap<>();
-			table.put(CxNetworkAttribute.ASPECT_NAME,nodeAttributes);
+		if ( attributes == null) {
+			attributes = new HashMap<>();
+			table.put(CxNetworkAttribute.ASPECT_NAME,attributes);
 		}	
 
-		AspectAttributeStatEntry e = nodeAttributes.get(attrName);
+		AspectAttributeStatEntry e = attributes.get(attrName);
 		if ( e != null ) 
 			warning = "Duplicated network attribute '" + attrName + "' found.";	
 		e = new AspectAttributeStatEntry ();
@@ -152,7 +172,7 @@ public class AspectAttributeStat {
 		if ( error != null) {
 			throw new NdexException (constructErrMsg(attr, error));
 		}
-		nodeAttributes.put(attrName, e);
+		attributes.put(attrName, e);
 		return warning;
 	}
 	
@@ -182,7 +202,7 @@ public class AspectAttributeStat {
 			throw new NdexException(constructErrMsg(attr,error) );
 		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t== ATTRIBUTE_DATA_TYPE.BOOLEAN ) {
-			e.addValue(CXToCX2Converter.convertAttributeValue(attr));
+			e.addValue(convertAttributeValue(attr));
 			
 		}
 	}
@@ -193,7 +213,7 @@ public class AspectAttributeStat {
 				". Cause: " + cause;
 	}
 	
-	public CxAttributeDeclaration createCxDeclaration() {
+	public CxAttributeDeclaration createCxDeclaration() throws NdexException {
 		CxAttributeDeclaration declaration = new CxAttributeDeclaration(); 
 		for ( Map.Entry<String, Map<String, AspectAttributeStatEntry>> entry: table.entrySet()) {
 			String aspectName = entry.getKey();
@@ -204,11 +224,33 @@ public class AspectAttributeStat {
 				e.setDataType(stat.getDataType());
 				if (stat.getAlias()!=null)
 					e.setAlias(stat.getAlias());
-				if ( stat.getDefaultValue()!=null)
-					e.setDefaultValue(stat.getDefaultValue());
+				
+				// try to get default values for node/edge attributes
+				if ( aspectName.equals(CxNode.ASPECT_NAME)) {
+					Object d = stat.getDefaultValue(nodeCount);
+					if ( d != null)
+						e.setDefaultValue(d);
+				} else if ( aspectName.equals(CxEdge.ASPECT_NAME)) {
+					Object d = stat.getDefaultValue(edgeCount);
+					if ( d != null)
+						e.setDefaultValue(d);
+				}
 				attrDecls.put(e2.getKey(), e);
 			}
 			declaration.add(aspectName, attrDecls);
+		}
+		
+		//add namespaces as a network attribute
+		if ( hasNamespacesAspect) {
+			Map<String,DeclarationEntry>  entries = declaration.getAttributesInAspect(CxNetworkAttribute.ASPECT_NAME);
+			if( entries == null) {
+				entries = new HashMap<>();
+			}
+			DeclarationEntry oldv = entries.put(NamespacesElement.ASPECT_NAME, 
+					new DeclarationEntry(ATTRIBUTE_DATA_TYPE.STRING,null,null));
+			if ( oldv != null) {
+				throw new NdexException ("Invalid CX data: '@context' is definded a network attribute and an aspect.");
+			}
 		}
 		
 		return declaration;
@@ -227,5 +269,96 @@ public class AspectAttributeStat {
 	
 	public int getNodeBypassCount() {return this.nodeBypassCount;}
 	public int getEdgeBypassCount() {return this.edgeBypassCount;}
+	
+	
+	/* warning: this function can only be called after attrStats is initialized */
+	public List<CxMetadata> getCX2Metadata(MetaDataCollection  cx1Metadata, CxAttributeDeclaration attrDeclarations) {
+		List<CxMetadata> result = new ArrayList<>(cx1Metadata.size());
+				
+		MetaDataElement networkAttribute = cx1Metadata.getMetaDataElement(NetworkAttributesElement.ASPECT_NAME);
+		if ( networkAttribute != null ) {
+			result.add(new CxMetadata (CxNetworkAttribute.ASPECT_NAME, 1L));
+		}	
+
+		MetaDataElement vpM = cx1Metadata.getMetaDataElement( CyVisualPropertiesElement.ASPECT_NAME);
+		if ( vpM != null) {
+			result.add(new CxMetadata(CxVisualProperty.ASPECT_NAME, 1L));
+			
+			//addCx2 extra aspects
+			result.add(new CxMetadata(VisualEditorProperties.ASPECT_NAME, 1L));
+			
+			if (nodeBypassCount > 0) {
+				result.add(new CxMetadata(CxNodeBypass.ASPECT_NAME, nodeBypassCount));
+			}
+			
+			if (edgeBypassCount > 0) {
+				result.add(new CxMetadata(CxEdgeBypass.ASPECT_NAME, edgeBypassCount));
+			}
+		}
+		
+		if (!attrDeclarations.getDeclarations().isEmpty()) {
+			result.add(new CxMetadata(CxAttributeDeclaration.ASPECT_NAME,1L));
+		}
+		
+		for ( MetaDataElement e: cx1Metadata) {
+			String aspectName = e.getName();
+			if ( !aspectName.equals(NetworkAttributesElement.ASPECT_NAME) && 
+					!aspectName.equals(CyVisualPropertiesElement.ASPECT_NAME) &&
+					!aspectName.equals(NodeAttributesElement.ASPECT_NAME) &&
+					!aspectName.equals(EdgeAttributesElement.ASPECT_NAME) &&
+					!aspectName.equals(CartesianLayoutElement.ASPECT_NAME) &&
+					!aspectName.equals(Provenance.ASPECT_NAME) &&
+					!aspectName.equals(NamespacesElement.ASPECT_NAME)) {
+				result.add(new CxMetadata(e.getName(), e.getElementCount().longValue()));
+			}
+	
+		}
+		return result;
+
+	}
+
+	public static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
+		switch (attr.getDataType()) {
+		case BOOLEAN: 
+		case DOUBLE:
+		case INTEGER:
+		case LONG:
+		case STRING:
+			return convertSingleAttributeValue(attr.getDataType(), attr.getValue());
+		case LIST_OF_BOOLEAN:
+		case LIST_OF_DOUBLE:
+		case LIST_OF_INTEGER:
+		case LIST_OF_LONG:
+		case LIST_OF_STRING:	
+			List<String> ls = attr.getValues();
+			ArrayList<Object> result = new ArrayList<>(ls.size());
+			for ( String s : ls) {
+				result.add(convertSingleAttributeValue(attr.getDataType().elementType(), s));
+			}
+			return result;
+		default:
+			throw new NdexException ("Unsupported attribute data type found: " + attr.getDataType());
+		}
+	}
+	
+	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
+		switch (t) {
+		case BOOLEAN: 
+			return Boolean.valueOf( value);
+		case DOUBLE:
+			return Double.valueOf(value);
+		case INTEGER:
+			return Integer.valueOf(value);
+		case LONG:
+			return Long.valueOf(value);
+		case STRING:
+			return value;
+		default: 
+			throw new NdexException ("Value " + value + " is not a single value type. It is " + t.toString());
+		}
+	}
+	
+   public void setHasNamespacesAspect() { this.hasNamespacesAspect = true;}
+   public boolean hasNamespacesAspect() { return this.hasNamespacesAspect; }
 
 }
