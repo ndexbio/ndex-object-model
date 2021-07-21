@@ -111,6 +111,7 @@ public class CX2ToCXVisualPropertyConverter {
     	});
     	addEntry ( "NODE_LABEL_OPACITY", "NODE_LABEL_TRANSPARENCY", opacityCvtr );
     	
+    	addEntry ( "NODE_LABEL_ROTATION");
        	addEntry ( "NODE_LABEL_MAX_WIDTH", "NODE_LABEL_WIDTH");
     	addEntry ( "NODE_SELECTED" );
     	addEntry ( "NODE_SELECTED_PAINT" );

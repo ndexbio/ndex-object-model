@@ -1,8 +1,5 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -15,7 +12,6 @@ import java.util.TreeMap;
 
 import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cx2.io.CXReader;
-import org.ndexbio.cxio.core.interfaces.AspectElement;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;

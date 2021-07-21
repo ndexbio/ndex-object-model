@@ -213,6 +213,8 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_LABEL_FONT_SIZE", intCvtr );
     	
     	addEntry ( "NODE_LABEL_POSITION", (positionStr) -> {return LabelPosition.createFromCX1Value(positionStr);} );
+    	addEntry ( "NODE_LABEL_ROTATION",  numberCvtr);
+    	
     	addEntry ( "NODE_LABEL_TRANSPARENCY","NODE_LABEL_OPACITY", opacityCvtr );
     	
     	addEntry ( "NODE_LABEL_WIDTH", "NODE_LABEL_MAX_WIDTH",numberCvtr );

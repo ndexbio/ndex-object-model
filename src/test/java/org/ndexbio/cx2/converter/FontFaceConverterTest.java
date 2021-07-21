@@ -17,6 +17,7 @@ public class FontFaceConverterTest {
 		assertEquals ( FontFace.PORTABLE_SANS_SERIF_FONT, f.getFamily());
 		assertEquals ( FontFace.ITALIC, f.getStyle());
 		assertEquals (FontFace.NORMAL, f.getWeight());
+		assertEquals (testFontString, f.getName());
 		
 		testFontString = "Bookman Old Style Bold";
 	    f = FontFaceConverter.convertFont(testFontString);

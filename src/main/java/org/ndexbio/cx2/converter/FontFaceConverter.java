@@ -98,11 +98,16 @@ public class FontFaceConverter {
 		} else {
 			fontFamily = PORTABLE_SANS_SERIF_FONT;
 		}
-		return new FontFace(fontFamily, fontStyle, fontWeight);
+		FontFace result = new FontFace(fontFamily, fontStyle, fontWeight);
+		result.setName(fontString);
+		return result;
 	}
 	
 	
 	public static String convertToCX1String(FontFace font) {
+		if ( font.getName()!=null && font.getName().length()>0)
+			return font.getName();
+		
 		String result = font.getFamily();
 		if (font.getWeight().equals(FontFace.BOLD)) {
 			if ( font.getStyle().equals(FontFace.ITALIC)) {
