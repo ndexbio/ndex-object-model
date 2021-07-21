@@ -99,7 +99,7 @@ public class FontFaceConverter {
 			fontFamily = PORTABLE_SANS_SERIF_FONT;
 		}
 		FontFace result = new FontFace(fontFamily, fontStyle, fontWeight);
-		result.setName(fontString);
+		result.setName(fontString.split(",")[0]);
 		return result;
 	}
 	
