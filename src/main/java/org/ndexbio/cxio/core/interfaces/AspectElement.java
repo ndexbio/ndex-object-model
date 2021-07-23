@@ -1,5 +1,6 @@
 package org.ndexbio.cxio.core.interfaces;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -18,6 +19,7 @@ public interface AspectElement extends Comparable<AspectElement>,Serializable {
      *
      * @return the name of the aspect
      */
+	@JsonIgnore()
     public String getAspectName();
     
     public abstract void write(JsonWriter out) throws IOException ;
