@@ -13,7 +13,6 @@ import org.ndexbio.cx2.aspect.element.core.LabelPosition;
 import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
 import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
-import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.model.exceptions.NdexException;
 
 
@@ -278,8 +277,9 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_SELECTED", booleanCvtr );
     	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_BEND", "EDGE_CONTROL_POINTS", edgeBendCvtr );
+    	addEntry ( "EDGE_Z_ORDER", numberCvtr );
     	
-
+    	
     	// these are non-portable Cytoscape styles that we just carry over. Cytoscape visual properties
     	// that are not in this list or the list above are excluded from the cx2 visual styles.
     	for(String n: cx1CarryOverVPNames) {

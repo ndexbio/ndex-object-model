@@ -181,6 +181,7 @@ public class CX2ToCXVisualPropertyConverter {
     			( (List<EdgeControlPoint> )controlPointList).stream()
     			.map( e -> e.toCX1String()).collect(Collectors.toList()) ); }
     	);
+    	addEntry ( "EDGE_Z_ORDER");
 
     	for ( String n : CXToCX2VisualPropertyConverter.cx1CarryOverVPNames) {
     		addEntry ( n);
