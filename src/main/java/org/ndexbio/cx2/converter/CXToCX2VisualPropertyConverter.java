@@ -265,6 +265,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_SOURCE_ARROW_SIZE", numberCvtr );
     	addEntry ( "EDGE_TARGET_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_TARGET_ARROW_SIZE", numberCvtr );
+    	
 
     	
     	//addEntry ( "EDGE_PAINT", "EDGE_LINE_COLOR", stringCvtr);
@@ -278,6 +279,8 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_BEND", "EDGE_CONTROL_POINTS", edgeBendCvtr );
     	addEntry ( "EDGE_Z_ORDER", numberCvtr );
+    	addEntry ( "EDGE_STACKING_DENSITY", numberCvtr );
+    	addEntry ( "EDGE_STACKING" );
     	
     	
     	// these are non-portable Cytoscape styles that we just carry over. Cytoscape visual properties

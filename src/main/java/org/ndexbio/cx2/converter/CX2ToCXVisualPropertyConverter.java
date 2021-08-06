@@ -182,6 +182,9 @@ public class CX2ToCXVisualPropertyConverter {
     			.map( e -> e.toCX1String()).collect(Collectors.toList()) ); }
     	);
     	addEntry ( "EDGE_Z_ORDER");
+    	addEntry ( "EDGE_STACKING_DENSITY");
+    	addEntry ( "EDGE_STACKING" );
+
 
     	for ( String n : CXToCX2VisualPropertyConverter.cx1CarryOverVPNames) {
     		addEntry ( n);
