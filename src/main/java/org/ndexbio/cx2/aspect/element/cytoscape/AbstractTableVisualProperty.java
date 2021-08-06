@@ -36,6 +36,17 @@ public abstract class AbstractTableVisualProperty {
 	private Map<DefaultTableType, Map<String, Map<String,TableColumnVisualStyle>>> tableStyles;
 
 	
+	@JsonProperty("s")
+	private Long subnetId;
+	
+	public Long getSubnetId() {
+		return subnetId;
+	}
+
+	public void setSubnetId(Long subnetId) {
+		this.subnetId = subnetId;
+	}
+
 	public AbstractTableVisualProperty() {
 		tableStyles = new HashMap<>();
 		
