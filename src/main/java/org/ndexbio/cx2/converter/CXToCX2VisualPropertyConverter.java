@@ -258,6 +258,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_COLOR"    );
     	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE", intCvtr );
+    	addEntry ( "EDGE_LABEL_ROTATION",  numberCvtr);
     	addEntry ( "EDGE_LABEL_TRANSPARENCY", "EDGE_LABEL_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_WIDTH","EDGE_LABEL_MAX_WIDTH",numberCvtr );
     	addEntry ( "EDGE_LINE_TYPE", "EDGE_LINE_STYLE", edgeLineTypeCvtr );
@@ -281,7 +282,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_Z_ORDER", numberCvtr );
     	addEntry ( "EDGE_STACKING_DENSITY", numberCvtr );
     	addEntry ( "EDGE_STACKING" );
-    	
+
     	
     	// these are non-portable Cytoscape styles that we just carry over. Cytoscape visual properties
     	// that are not in this list or the list above are excluded from the cx2 visual styles.
