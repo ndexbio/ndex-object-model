@@ -3,9 +3,12 @@ package org.ndexbio.cx2.aspect.element.core;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 
 public class FontFace {
 	
@@ -26,6 +29,17 @@ public class FontFace {
 	@JsonProperty("FONT_WEIGHT")
 	private String weight;
 	
+	@JsonProperty("FONT_NAME")
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public FontFace() {
 		family = PORTABLE_SANS_SERIF_FONT;
 		style = NORMAL;
@@ -37,7 +51,14 @@ public class FontFace {
 		this.style = style;
 		this.weight = weight;
 	}
-	
+
+	public FontFace(String family, String name, String style, String weight) {
+		this.family = family;
+		this.style = style;
+		this.weight = weight;
+		this.name = name;
+	}
+
 	public static FontFace createFromMap(Map<String,String> m ) {
 		FontFace result = new FontFace();
 		String s = m.get("FONT_FAMILY");
@@ -45,6 +66,7 @@ public class FontFace {
 		result.setFamily(s);
 		result.setStyle(m.get("FONT_STYLE"));
 		result.setWeight(m.get("FONT_WEIGHT"));
+		result.setName(m.get("FONT_NAME"));
 		return result;
 		
 	}

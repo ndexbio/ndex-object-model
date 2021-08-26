@@ -17,7 +17,17 @@ public class FontFaceConverterTest {
 		assertEquals ( FontFace.PORTABLE_SANS_SERIF_FONT, f.getFamily());
 		assertEquals ( FontFace.ITALIC, f.getStyle());
 		assertEquals (FontFace.NORMAL, f.getWeight());
+		assertEquals (testFontString, f.getName());
+
 		
+		testFontString = "Dialog,plain,10";
+		f = FontFaceConverter.convertFont(testFontString);
+		
+		assertEquals ( FontFace.PORTABLE_SANS_SERIF_FONT, f.getFamily());
+		assertEquals ( FontFace.NORMAL, f.getStyle());
+		assertEquals (FontFace.NORMAL, f.getWeight());
+		assertEquals ("Dialog", f.getName());
+
 		testFontString = "Bookman Old Style Bold";
 	    f = FontFaceConverter.convertFont(testFontString);
 		

@@ -13,7 +13,6 @@ import org.ndexbio.cx2.aspect.element.core.LabelPosition;
 import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
 import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
-import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.model.exceptions.NdexException;
 
 
@@ -213,6 +212,8 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_LABEL_FONT_SIZE", intCvtr );
     	
     	addEntry ( "NODE_LABEL_POSITION", (positionStr) -> {return LabelPosition.createFromCX1Value(positionStr);} );
+    	addEntry ( "NODE_LABEL_ROTATION",  numberCvtr);
+    	
     	addEntry ( "NODE_LABEL_TRANSPARENCY","NODE_LABEL_OPACITY", opacityCvtr );
     	
     	addEntry ( "NODE_LABEL_WIDTH", "NODE_LABEL_MAX_WIDTH",numberCvtr );
@@ -257,6 +258,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_COLOR"    );
     	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE", intCvtr );
+    	addEntry ( "EDGE_LABEL_ROTATION",  numberCvtr);
     	addEntry ( "EDGE_LABEL_TRANSPARENCY", "EDGE_LABEL_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_WIDTH","EDGE_LABEL_MAX_WIDTH",numberCvtr );
     	addEntry ( "EDGE_LINE_TYPE", "EDGE_LINE_STYLE", edgeLineTypeCvtr );
@@ -264,6 +266,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_SOURCE_ARROW_SIZE", numberCvtr );
     	addEntry ( "EDGE_TARGET_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_TARGET_ARROW_SIZE", numberCvtr );
+    	
 
     	
     	//addEntry ( "EDGE_PAINT", "EDGE_LINE_COLOR", stringCvtr);
@@ -276,8 +279,11 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_SELECTED", booleanCvtr );
     	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_BEND", "EDGE_CONTROL_POINTS", edgeBendCvtr );
-    	
+    	addEntry ( "EDGE_Z_ORDER", numberCvtr );
+    	addEntry ( "EDGE_STACKING_DENSITY", numberCvtr );
+    	addEntry ( "EDGE_STACKING" );
 
+    	
     	// these are non-portable Cytoscape styles that we just carry over. Cytoscape visual properties
     	// that are not in this list or the list above are excluded from the cx2 visual styles.
     	for(String n: cx1CarryOverVPNames) {

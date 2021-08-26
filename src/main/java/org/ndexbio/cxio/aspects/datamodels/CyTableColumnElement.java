@@ -1,5 +1,6 @@
 package org.ndexbio.cxio.aspects.datamodels;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.IOException;
 
 import org.ndexbio.cxio.util.JsonWriter;
@@ -12,6 +13,8 @@ public class CyTableColumnElement extends AbstractAttributesAspectElement {
 	private static final long serialVersionUID = 1766588560652332381L;
 	public final static String ASPECT_NAME = "cyTableColumn";
     public final static String APPLIES_TO  = "applies_to";
+	
+	@JsonProperty(CyTableColumnElement.APPLIES_TO)
     private final String       _applies_to;
 
     @Override
@@ -35,6 +38,7 @@ public class CyTableColumnElement extends AbstractAttributesAspectElement {
         _values = null;
     }
 
+	@JsonProperty(CyTableColumnElement.APPLIES_TO)
     public final String getAppliesTo() {
         return _applies_to;
     }

@@ -111,6 +111,7 @@ public class CX2ToCXVisualPropertyConverter {
     	});
     	addEntry ( "NODE_LABEL_OPACITY", "NODE_LABEL_TRANSPARENCY", opacityCvtr );
     	
+    	addEntry ( "NODE_LABEL_ROTATION");
        	addEntry ( "NODE_LABEL_MAX_WIDTH", "NODE_LABEL_WIDTH");
     	addEntry ( "NODE_SELECTED" );
     	addEntry ( "NODE_SELECTED_PAINT" );
@@ -157,6 +158,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_COLOR"    );
     	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE" );
+    	addEntry ( "EDGE_LABEL_ROTATION");
     	addEntry ( "EDGE_LABEL_OPACITY", "EDGE_LABEL_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_MAX_WIDTH","EDGE_LABEL_WIDTH");
     	addEntry ( "EDGE_LINE_STYLE", "EDGE_LINE_TYPE", edgeLineTypeCvtr );
@@ -180,6 +182,10 @@ public class CX2ToCXVisualPropertyConverter {
     			( (List<EdgeControlPoint> )controlPointList).stream()
     			.map( e -> e.toCX1String()).collect(Collectors.toList()) ); }
     	);
+    	addEntry ( "EDGE_Z_ORDER");
+    	addEntry ( "EDGE_STACKING_DENSITY");
+    	addEntry ( "EDGE_STACKING" );
+
 
     	for ( String n : CXToCX2VisualPropertyConverter.cx1CarryOverVPNames) {
     		addEntry ( n);
