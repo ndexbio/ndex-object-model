@@ -31,8 +31,6 @@ public class NiceCXNetwork {
 	private Map<Long, EdgesElement> edges;
 	private Map<Long, CitationElement> citations;
 	
-	@Deprecated
-	private Map<Long, SupportElement> supports;
 	
 	private Map<Long, Collection<NodeAttributesElement>> nodeAttributes;
 	private Map<Long, Collection<EdgeAttributesElement>> edgeAttributes;
@@ -53,7 +51,6 @@ public class NiceCXNetwork {
 		nodes = new HashMap<>();
 		edges = new HashMap<>();
 		citations = new HashMap<>();
-		supports = new HashMap<>();
 		
 		nodeAttributes = new HashMap<> ();
 		edgeAttributes = new HashMap<> ();
@@ -109,19 +106,15 @@ public class NiceCXNetwork {
 	}
 	
 	@Deprecated
-	public void addSupport(SupportElement e) {
-		supports.put(Long.valueOf(e.getId()), e);
-	}
-	
 	public void addCitation(CitationElement e) {
 		citations.put(Long.valueOf(e.getId()),e);
 	}
 	
-	public void removeCitation(long i) {
+/*	public void removeCitation(long i) {
 		citations.remove(Long.valueOf(i));
-	}
+	} */
 	
-	public Map<Long, CitationElement> getCitations() {
+public Map<Long, CitationElement> getCitations() {
 		return citations;
 	}
 	
