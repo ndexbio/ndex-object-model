@@ -229,6 +229,33 @@ public class CXWriter {
 		out.flush();
 	}
 	
+	
+	/**
+	 * 
+	 * @param aspectName
+	 * @param JSONString  A String that was serialized from a list of objects, which is a serialized version of an aspect fragment
+	 * @throws NdexException
+	 * @throws IOException
+	 */
+	public void writeAspectFromJSONString (String aspectName, String JSONString) throws NdexException, IOException {
+		
+		if ( state == INIT)
+			init();
+		
+		if ( state != BEFORE_ASPECT ) 
+			throw new NdexException ("Starting new aspect fragment for " + aspectName + " is not allowed here.");
+				
+		if ( aspectName.indexOf('"')!= -1)
+			throw new NdexException ("Having '\"' in aspect name is not allowed.");
+		writeStr("{\"" + aspectName + "\":");
+
+		writeStr(JSONString);
+		
+		writeStr("}");
+		out.write(elmtDivider);
+		out.flush();
+	}
+	
 	public void writeElementInFragment(CxAspectElement<?> element) throws NdexException, JsonGenerationException, JsonMappingException, IOException {
 		String aspect = element.getAspectName();
 		if ( state != ASPECT_STARTED)
