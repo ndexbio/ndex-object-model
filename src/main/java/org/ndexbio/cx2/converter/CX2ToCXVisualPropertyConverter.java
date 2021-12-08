@@ -81,6 +81,11 @@ public class CX2ToCXVisualPropertyConverter {
 		return FontFaceConverter.convertToCX1String((FontFace)fontFace) + ",plain,12";
 	};
 	
+	private static final CX2ToCXVisualPropertyCvtFunction visibilityCvtr = (visibilityString) -> 
+	{
+		return visibilityString.equals("element") ? "true" : "false";
+	};
+	
 	private CX2ToCXVisualPropertyConverter () {
     	networkCvtTable = new HashMap<>(100);
     	nodeEdgeCvtTable = new HashMap<>(100);
@@ -138,7 +143,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "NODE_WIDTH");
     	addEntry ( "NODE_SIZE");
     	addEntry ( "NODE_BACKGROUND_OPACITY", "NODE_TRANSPARENCY",    opacityCvtr );
-    	addEntry (  "NODE_VISIBILITY", "NODE_VISIBLE");
+    	addEntry (  "NODE_VISIBILITY", "NODE_VISIBLE", visibilityCvtr);
     	
     	for ( int i = 1 ; i < 10; i++) {
         	addEntry ( "NODE_IMAGE_" + i, "NODE_CUSTOMGRAPHICS_" + i);    		
@@ -158,6 +163,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_COLOR"    );
     	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE" );
+    	addEntry ( "EDGE_LABEL_ROTATION");
     	addEntry ( "EDGE_LABEL_OPACITY", "EDGE_LABEL_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_MAX_WIDTH","EDGE_LABEL_WIDTH");
     	addEntry ( "EDGE_LINE_STYLE", "EDGE_LINE_TYPE", edgeLineTypeCvtr );
@@ -173,7 +179,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "EDGE_OPACITY", "EDGE_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH" );
     	//addEntry ( "EDGE_PAINT");
-    	addEntry ( "EDGE_VISIBILITY", "EDGE_VISIBLE");
+    	addEntry ( "EDGE_VISIBILITY", "EDGE_VISIBLE", visibilityCvtr);
     	
     	addEntry ( "EDGE_SELECTED" );
     	addEntry ( "EDGE_CURVED" );
@@ -181,6 +187,10 @@ public class CX2ToCXVisualPropertyConverter {
     			( (List<EdgeControlPoint> )controlPointList).stream()
     			.map( e -> e.toCX1String()).collect(Collectors.toList()) ); }
     	);
+    	addEntry ( "EDGE_Z_ORDER");
+    	addEntry ( "EDGE_STACKING_DENSITY");
+    	addEntry ( "EDGE_STACKING" );
+
 
     	for ( String n : CXToCX2VisualPropertyConverter.cx1CarryOverVPNames) {
     		addEntry ( n);

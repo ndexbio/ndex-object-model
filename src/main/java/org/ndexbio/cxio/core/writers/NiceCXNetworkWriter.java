@@ -15,6 +15,7 @@ import org.ndexbio.cxio.core.interfaces.INiceCXNetworkWriter;
 import org.ndexbio.cxio.core.NdexCXNetworkWriter;
 import org.ndexbio.cxio.core.interfaces.AspectElement;
 import org.ndexbio.cxio.metadata.MetaDataCollection;
+import org.ndexbio.model.cx.CitationElement;
 import org.ndexbio.model.cx.NamespacesElement;
 import org.ndexbio.model.cx.NiceCXNetwork;
 import org.ndexbio.model.cx.Provenance;
@@ -75,6 +76,7 @@ public class NiceCXNetworkWriter implements INiceCXNetworkWriter {
             writeEdgesAspect(network);
             writeEdgeAttributes(network);
             writeEdgeAssociatedAttributes(network);
+            writeCitationAspect(network);
             _writer.end(true, "");
         } catch(IOException io){
             
@@ -222,7 +224,21 @@ public class NiceCXNetworkWriter implements INiceCXNetworkWriter {
         writeAspect(network, EdgesElement.ASPECT_NAME,
                   (Collection<AspectElement>)(Object)network.getEdges().values());
     }
+
     
+    /**
+     * Writes Citation aspect
+     * @param network
+     * @throws IOException
+     * @throws JsonProcessingException 
+     */
+    private void writeCitationAspect(final NiceCXNetwork network) 
+            throws IOException, JsonProcessingException{
+        
+        writeAspect(network, CitationElement.ASPECT_NAME,
+                  (Collection<AspectElement>)(Object)network.getCitations().values());
+    }
+
     /**
      * Writes EdgeAttributes aspect
      * @param network
