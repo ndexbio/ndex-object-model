@@ -1,7 +1,5 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class CxNodeBypass extends BypassVisualProperties<CxNodeBypass> {
