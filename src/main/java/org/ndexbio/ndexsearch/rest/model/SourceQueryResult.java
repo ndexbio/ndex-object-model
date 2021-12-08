@@ -1,5 +1,6 @@
 package org.ndexbio.ndexsearch.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -8,6 +9,7 @@ import java.util.TreeMap;
  *
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SourceQueryResult {
     private String _networkUUID;
     private String _description;

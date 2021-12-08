@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.ndexbio.ndexsearch.rest.model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
@@ -11,6 +7,7 @@ import java.util.List;
  * Represents status of the server
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ServerStatus {
     
     

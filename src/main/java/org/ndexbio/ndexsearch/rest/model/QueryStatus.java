@@ -1,11 +1,13 @@
 package org.ndexbio.ndexsearch.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 /**
  *
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class QueryStatus {
     
     public static final String SUBMITTED_STATUS = "submitted";
