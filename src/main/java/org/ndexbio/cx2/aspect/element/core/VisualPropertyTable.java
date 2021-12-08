@@ -56,4 +56,8 @@ public class VisualPropertyTable {
 		return visualProperties.get(visualPropertyName);
 	}
 	
+	@JsonIgnore()
+	public void setVisualProperties(Map<String,Object> props) {
+		this.visualProperties = props;
+	}
 }

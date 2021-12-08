@@ -21,6 +21,11 @@ public class MappingDefinition {
 	private String attributeName;
 	
     public MappingDefinition() {this.mapppingList = new ArrayList<>();}
+    
+    public MappingDefinition(String attributeName) {
+    	this.attributeName = attributeName;
+    	this.mapppingList = new ArrayList<>();
+    }
  	
 	public List<Map<String, Object>> getMapppingList() {
 		return mapppingList;
