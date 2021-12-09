@@ -18,6 +18,7 @@ public class SourceQueryResult {
     private int _percentOverlap;
     private int _nodes;
     private int _edges;
+	private int _totalGeneCount;
     private int _rank;
     private Set<String> _hitGenes;
     private Map<String,Object> _details;
@@ -92,6 +93,14 @@ public class SourceQueryResult {
         this._hitGenes = _hitGenes;
     }
 
+	public int getTotalGeneCount() {
+		return _totalGeneCount;
+	}
+
+	public void setTotalGeneCount(int _totalGeneCount) {
+		this._totalGeneCount = _totalGeneCount;
+	}
+	
 	public Map<String,Object> getDetails() {
 		return _details;
 	}
