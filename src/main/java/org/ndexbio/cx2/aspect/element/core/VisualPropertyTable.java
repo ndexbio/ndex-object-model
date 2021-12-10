@@ -17,6 +17,9 @@ public class VisualPropertyTable {
 	
 	public static final String imagePositionPattern = "^NODE_IMAGE_[0-9]+_POSITION$";
 	
+	public static final String imageSizePattern = "^NODE_IMAGE_[0-9]+_SIZE$";
+
+	
 	@JsonAnyGetter
 	public Map<String, Object> getVisualProperties() {
 		return visualProperties;
@@ -32,7 +35,9 @@ public class VisualPropertyTable {
 				visualProperties.put(key,LabelPosition.createFromLabelPositionMap((Map<String,Object>)e));
 			} else if ( key.matches(imagePositionPattern)) {
 				visualProperties.put(key, ObjectPosition.createFromMap((Map<String,Object>)e));
-			} else 
+			} else if ( key.matches(imageSizePattern))
+				visualProperties.put(key, NodeImageSize.createFromMap((Map<String,Object>)e));			
+			else	
 				visualProperties.put(key, e);
 		} else if ( e instanceof List<?>) {
 			if ( key.equals("EDGE_CONTROL_POINTS")) {
