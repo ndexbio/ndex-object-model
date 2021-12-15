@@ -1,5 +1,6 @@
 package org.ndexbio.ndexsearch.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.UUID;
 
 /**
@@ -7,6 +8,7 @@ import java.util.UUID;
  * 
  * @author dotasek
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SourceConfiguration {
     
     
