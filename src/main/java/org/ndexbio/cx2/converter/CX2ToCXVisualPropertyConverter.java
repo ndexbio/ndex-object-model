@@ -268,6 +268,14 @@ public class CX2ToCXVisualPropertyConverter {
 			return cvtr.getKey();
 		return null;
 	}
+
+	public String getCx1NetworkPropertyName (String cx2VPName) {
+		Map.Entry<String,CX2ToCXVisualPropertyCvtFunction> cvtr = networkCvtTable.get(cx2VPName);
+		if ( cvtr != null)
+			return cvtr.getKey();
+		return null;
+	}
+
 	
 	public String getCx1EdgeOrNodePropertyValue (String cx2VPName, Object oldValue) {
 		Map.Entry<String,CX2ToCXVisualPropertyCvtFunction> cvtr = nodeEdgeCvtTable.get(cx2VPName);
