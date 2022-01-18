@@ -20,6 +20,9 @@ public class VisualEditorProperties implements CxAspectElement<VisualEditorPrope
 	private static final long serialVersionUID = 1L;
 
 	public static final String ASPECT_NAME = "visualEditorProperties";
+	
+	public static final String ARROW_COLOR_MATCHES_EDGES ="arrowColorMatchesEdge";
+	public static final String NODE_SIZE_LOCKED = "nodeSizeLocked";
 
 	@JsonProperty("properties")
 	private Map<String, Object> properties;
