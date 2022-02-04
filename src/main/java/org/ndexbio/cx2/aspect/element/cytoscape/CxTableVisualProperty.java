@@ -10,6 +10,9 @@ public class CxTableVisualProperty extends AbstractTableVisualProperty implement
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public CxTableVisualProperty() {
+	}
+	
 	public CxTableVisualProperty (CyTableVisualPropertiesElement tableStyle) {
 		setSubnetId(tableStyle.getSubnetId());
 		this.setTableStyles(tableStyle.getTableStyles());
