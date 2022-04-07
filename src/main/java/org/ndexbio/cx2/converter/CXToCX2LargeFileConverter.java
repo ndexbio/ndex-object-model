@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,7 +28,6 @@ import org.ndexbio.cx2.aspect.element.core.VPMappingType;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyMapping;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
-import org.ndexbio.cxio.aspects.datamodels.AbstractAttributesAspectElement;
 import org.ndexbio.cxio.aspects.datamodels.CartesianLayoutElement;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
@@ -60,7 +60,6 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.PrintStream;
 
 
 /**

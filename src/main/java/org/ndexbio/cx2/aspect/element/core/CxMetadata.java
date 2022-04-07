@@ -36,6 +36,11 @@ public class CxMetadata implements Comparable<CxMetadata> {
 		
 	}
 	
+	public CxMetadata (String aspect) {
+		this.name = aspect;
+		this.elementCount= null;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -381,6 +381,33 @@ public class CXToCX2VisualPropertyConverter {
 		return null;
 	}
 	
+	/**
+	 * Update the 3 edge color related VPs with the value in EDGE_UNSELECTED_PAINT, and then remove EDGE_UNSELECTED_PAINT
+	 *  from the table. This is a supporting function when arrowColorMatchesEdge flag is set in CX.
+	 * @param edgeVPTable the cx1 visual property table to be modified.
+	 */
+	public static void cvtCx1EdgeColor(Map<String,String> edgeVPTable) {
+	 	String v = edgeVPTable.remove("EDGE_UNSELECTED_PAINT");
+    	if ( v!=null) { 
+    		edgeVPTable.put("EDGE_SOURCE_ARROW_UNSELECTED_PAINT", v);
+    		edgeVPTable.put("EDGE_STROKE_UNSELECTED_PAINT", v);
+    		edgeVPTable.put("EDGE_TARGET_ARROW_UNSELECTED_PAINT", v);
+    	}	
+	}
+	
+	/**
+	 * Converting NODE_SIZE to NODE_WIDTH and NODE_HEIGHT. Supporting function when nodeSizeLocked is set in CX.
+	 * @param nodeVPTable
+	 */
+	public static void cvtCx1NodeSize(Map<String,String> nodeVPTable) {
+		String v = nodeVPTable.remove("NODE_SIZE");
+    	if ( v!=null) { 
+    		nodeVPTable.put("NODE_WIDTH", v);
+    		nodeVPTable.put("NODE_HEIGHT",v);
+    	}	
+	}
+	
+	
 	/*
 	private static void cvtEdgeBendNCurve (String edgeBend, String edgeCurve, VisualPropertyTable resultHolder) {
 		if ( edgeCurve != null) { 

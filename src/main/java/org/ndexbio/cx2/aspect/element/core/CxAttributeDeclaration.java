@@ -2,6 +2,7 @@ package org.ndexbio.cx2.aspect.element.core;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -33,11 +34,28 @@ public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclar
 		return declarations;
 	}
 	
+	
+	/**
+	 * 
+	 * @param key aspectName
+	 * @param e   Attribute declaration
+	 */
 	@JsonAnySetter
-	public void add(String key, Map<String,DeclarationEntry> e) {
-		this.declarations.put(key, e);
+	public void add(String aspectName, Map<String,DeclarationEntry> attributes) {
+		this.declarations.put(aspectName, attributes);
 	}
 
+	
+	@JsonIgnore
+	public void addAttributeDeclaration(String aspectName, String attributeName, DeclarationEntry declaration) {
+		Map<String, DeclarationEntry> aspectAttributes = declarations.get(aspectName);
+		if ( aspectAttributes == null) {
+			aspectAttributes = new TreeMap<>();
+			declarations.put(aspectName, aspectAttributes);
+		}
+		aspectAttributes.put(attributeName, declaration);
+	}
+	
 
 	@Override
 	@JsonIgnore

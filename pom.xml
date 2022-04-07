@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ndexbio</groupId>
 	<artifactId>ndex-object-model</artifactId>
-	<version>2.5.2</version>
+	<version>2.5.3</version>
 	<name>NDEx Java Object Model</name>
 	<description>Java object model for applications that access NDEx</description>
 	<inceptionYear>2013</inceptionYear>
@@ -13,12 +13,12 @@
 		<repository>
 			<id>cytoscape_releases</id>
 			<name>Cytoscape Releases</name>
-			<url>http://nrnb-nexus.ucsd.edu/repository/cytoscape_releases/</url>
+			<url>https://nrnb-nexus.ucsd.edu/repository/cytoscape_releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>cytoscape_snapshots</id>
 			<name>Cytoscape Snapshots</name>
-			<url>http://nrnb-nexus.ucsd.edu/repository/cytoscape_snapshots/</url>
+			<url>https://nrnb-nexus.ucsd.edu/repository/cytoscape_snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 

@@ -1,5 +1,6 @@
 package org.ndexbio.ndexsearch.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -8,6 +9,7 @@ import java.util.TreeMap;
  *
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SourceQueryResult {
     private String _networkUUID;
     private String _description;
@@ -16,6 +18,7 @@ public class SourceQueryResult {
     private int _percentOverlap;
     private int _nodes;
     private int _edges;
+	private int _totalGeneCount;
     private int _rank;
     private Set<String> _hitGenes;
     private Map<String,Object> _details;
@@ -90,6 +93,14 @@ public class SourceQueryResult {
         this._hitGenes = _hitGenes;
     }
 
+	public int getTotalGeneCount() {
+		return _totalGeneCount;
+	}
+
+	public void setTotalGeneCount(int _totalGeneCount) {
+		this._totalGeneCount = _totalGeneCount;
+	}
+	
 	public Map<String,Object> getDetails() {
 		return _details;
 	}

@@ -18,6 +18,8 @@ import org.ndexbio.cx2.aspect.element.core.CxMetadata;
 import org.ndexbio.cx2.aspect.element.core.CxNetworkAttribute;
 import org.ndexbio.cx2.aspect.element.core.CxOpaqueAspectElement;
 import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
+import org.ndexbio.cx2.aspect.element.cytoscape.AbstractTableVisualProperty;
+import org.ndexbio.cx2.aspect.element.cytoscape.CxTableVisualProperty;
 import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cxio.misc.Status;
 
@@ -83,6 +85,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 	    aspectTable.put(CxEdgeBypass.ASPECT_NAME, CxEdgeBypass.class);
 	    aspectTable.put(CxNodeBypass.ASPECT_NAME, CxNodeBypass.class);
 	    aspectTable.put(VisualEditorProperties.ASPECT_NAME, VisualEditorProperties.class);
+	    aspectTable.put(CxTableVisualProperty.ASPECT_NAME, CxTableVisualProperty.class );
 	    
 	    elementCounterTable = new TreeMap<>();
 	}

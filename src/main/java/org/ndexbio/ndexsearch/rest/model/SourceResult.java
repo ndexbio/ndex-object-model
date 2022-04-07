@@ -1,5 +1,6 @@
 package org.ndexbio.ndexsearch.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 /**
@@ -8,6 +9,7 @@ import java.util.List;
  * 
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SourceResult {
     
     public static final String ENRICHMENT_SERVICE = "enrichment";

@@ -81,6 +81,11 @@ public class CX2ToCXVisualPropertyConverter {
 		return FontFaceConverter.convertToCX1String((FontFace)fontFace) + ",plain,12";
 	};
 	
+	private static final CX2ToCXVisualPropertyCvtFunction visibilityCvtr = (visibilityString) -> 
+	{
+		return visibilityString.equals("element") ? "true" : "false";
+	};
+	
 	private CX2ToCXVisualPropertyConverter () {
     	networkCvtTable = new HashMap<>(100);
     	nodeEdgeCvtTable = new HashMap<>(100);
@@ -138,7 +143,7 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "NODE_WIDTH");
     	addEntry ( "NODE_SIZE");
     	addEntry ( "NODE_BACKGROUND_OPACITY", "NODE_TRANSPARENCY",    opacityCvtr );
-    	addEntry (  "NODE_VISIBILITY", "NODE_VISIBLE");
+    	addEntry (  "NODE_VISIBILITY", "NODE_VISIBLE", visibilityCvtr);
     	
     	for ( int i = 1 ; i < 10; i++) {
         	addEntry ( "NODE_IMAGE_" + i, "NODE_CUSTOMGRAPHICS_" + i);    		
@@ -173,8 +178,8 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "EDGE_TARGET_ARROW_COLOR", "EDGE_TARGET_ARROW_UNSELECTED_PAINT");
     	addEntry ( "EDGE_OPACITY", "EDGE_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH" );
-    	//addEntry ( "EDGE_PAINT");
-    	addEntry ( "EDGE_VISIBILITY", "EDGE_VISIBLE");
+    	addEntry ( "EDGE_PAINT");
+    	addEntry ( "EDGE_VISIBILITY", "EDGE_VISIBLE", visibilityCvtr);
     	
     	addEntry ( "EDGE_SELECTED" );
     	addEntry ( "EDGE_CURVED" );
@@ -263,6 +268,14 @@ public class CX2ToCXVisualPropertyConverter {
 			return cvtr.getKey();
 		return null;
 	}
+
+	public String getCx1NetworkPropertyName (String cx2VPName) {
+		Map.Entry<String,CX2ToCXVisualPropertyCvtFunction> cvtr = networkCvtTable.get(cx2VPName);
+		if ( cvtr != null)
+			return cvtr.getKey();
+		return null;
+	}
+
 	
 	public String getCx1EdgeOrNodePropertyValue (String cx2VPName, Object oldValue) {
 		Map.Entry<String,CX2ToCXVisualPropertyCvtFunction> cvtr = nodeEdgeCvtTable.get(cx2VPName);

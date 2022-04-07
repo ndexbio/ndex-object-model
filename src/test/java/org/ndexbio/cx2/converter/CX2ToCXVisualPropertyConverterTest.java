@@ -34,7 +34,7 @@ public class CX2ToCXVisualPropertyConverterTest {
 		nodeVPs.put("NODE_WIDTH",20.2);
 		nodeVPs.put("NODE_HEIGHT", 29.3);
 		nodeVPs.put("NODE_BACKGROUND_OPACITY", 0.8);
-		nodeVPs.put("NODE_VISIBILITY", true);
+		nodeVPs.put("NODE_VISIBILITY", "element");
 		nodeVPs.put("NODE_BORDER_COLOR", "#CCCCCC");
 		nodeVPs.put("NODE_BORDER_STYLE", "dotted");
 		nodeVPs.put("NODE_BORDER_WIDTH", 2.0);
@@ -57,7 +57,7 @@ public class CX2ToCXVisualPropertyConverterTest {
 		nodeVPs.put("EDGE_TARGET_ARROW_COLOR", "#EEAA88");
 		nodeVPs.put("EDGE_SOURCE_ARROW_SIZE", 6.0);
 		nodeVPs.put("EDGE_TARGET_ARROW_SIZE", 3.0);
-		nodeVPs.put("EDGE_VISIBILITY", true);
+		nodeVPs.put("EDGE_VISIBILITY", "element");
 		nodeVPs.put("EDGE_LABEL_OPACITY",0.8);
 		
 		SortedMap<String, String> cxnodeVPs = converter.convertEdgeOrNodeVPs(nodeVPTable);

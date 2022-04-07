@@ -1,5 +1,6 @@
 package org.ndexbio.ndexsearch.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 /**
@@ -7,6 +8,7 @@ import java.util.List;
  * be queried by this search
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SourceResults {
     
     private List<SourceResult> _results;

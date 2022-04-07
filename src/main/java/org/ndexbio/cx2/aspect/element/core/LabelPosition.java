@@ -2,6 +2,8 @@ package org.ndexbio.cx2.aspect.element.core;
 
 import java.util.Map;
 
+import org.ndexbio.model.exceptions.NdexException;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,7 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LabelPosition extends ObjectPosition {
 	
-	@JsonProperty("JUSTIFICATION")	
+	public static final String JUSTIFICATION = "JUSTIFICATION";
+	
+	@JsonProperty(JUSTIFICATION)	
 	private HorizontalAlignment justification;
 	
 	public HorizontalAlignment getJustification() {
@@ -42,12 +46,16 @@ public class LabelPosition extends ObjectPosition {
 		return result;
 	}
 	
-	public static LabelPosition createFromMap(Map<String,Object> m) {
+	public static LabelPosition createFromLabelPositionMap(Map<String,Object> m) throws NdexException {
 		
 		LabelPosition result = new LabelPosition();
 		populateFromMap(result, m);
 		
-		result.setJustification(HorizontalAlignment.valueOf((String)m.get("JUSTIFICATION")));
+		String j = (String)m.get(JUSTIFICATION);
+		if ( j == null) {
+			throw new NdexException("Attribute " + JUSTIFICATION + " is missing in label position object.");
+		} 
+		result.setJustification(HorizontalAlignment.valueOf(j));
 		return result;
 		
 	}
