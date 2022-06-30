@@ -13,6 +13,8 @@ public class NetworkInfo {
 	private String _name;
 	private String _url;
 	private String _imageUrl;
+	private String _legendUrl;
+	
 	private int _geneCount;
 	private int _nodeCount;
 	private int _edgeCount;
@@ -147,5 +149,13 @@ public class NetworkInfo {
 	 */
 	public void setEdgeCount(int _edgeCount) {
 		this._edgeCount = _edgeCount;
+	}
+
+	public String getLegendUrl() {
+		return _legendUrl;
+	}
+
+	public void setLegendUrl(String _legendUrl) {
+		this._legendUrl = _legendUrl;
 	}
 }
