@@ -15,6 +15,7 @@ public class DatabaseResult {
     private String _name;
     private String _numberOfNetworks;
     private String _imageURL;
+    private String _legendURL;
     private List<NetworkInfo> _networks;
     private String _url;
     
@@ -73,4 +74,12 @@ public class DatabaseResult {
     public void setNumberOfNetworks(String _numberOfNetworks) {
     	this._numberOfNetworks = _numberOfNetworks;
     }
+
+	public String getLegendURL() {
+		return _legendURL;
+	}
+
+	public void setLegendURL(String _legendURL) {
+		this._legendURL = _legendURL;
+	}
 }

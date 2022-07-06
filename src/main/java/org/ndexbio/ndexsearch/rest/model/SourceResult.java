@@ -16,6 +16,8 @@ public class SourceResult {
     public static final String KEYWORD_SERVICE = "keyword";
     public static final String INTERACTOME_PPI_SERVICE = "interactome-ppi";
     public static final String INTERACTOME_GENEASSOCIATION_SERVICE = "interactome-association";
+	public static final String PATHWAYFIGURES_SERVICE = "pathwayfigures";
+	public static final String INDRA_SERVICE = "indra";
     
     private String _uuid;
     private String _description;

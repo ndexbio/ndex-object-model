@@ -14,6 +14,7 @@ public class SourceQueryResult {
     private String _networkUUID;
     private String _description;
     private String _imageURL;
+    private String _legendURL;
     private String _url;
     private int _percentOverlap;
     private int _nodes;
@@ -115,5 +116,13 @@ public class SourceQueryResult {
 
 	public void setUrl(String _url) {
 		this._url = _url;
+	}
+
+	public String getLegendURL() {
+		return _legendURL;
+	}
+
+	public void setLegendURL(String _legendURL) {
+		this._legendURL = _legendURL;
 	}
 }
