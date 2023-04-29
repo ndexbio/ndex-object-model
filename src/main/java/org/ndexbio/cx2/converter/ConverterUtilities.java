@@ -1,10 +1,18 @@
 package org.ndexbio.cx2.converter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.model.exceptions.NdexException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConverterUtilities {
     
@@ -89,5 +97,44 @@ public class ConverterUtilities {
                    + mappingString);
     }
 
+    /**
+     * Convert a string value in a NDExPropertyValuePair to an object that specified in the type parameter
+     * @param type
+     * @param value
+     * @return
+     * @throws NdexException 
+     * @throws JsonProcessingException 
+     * @throws JsonMappingException 
+     */
+    public static Object cvtPropPairStringValueToObj(ATTRIBUTE_DATA_TYPE type, String value) throws NdexException, JsonMappingException, JsonProcessingException {
+    	if( value == null || type == ATTRIBUTE_DATA_TYPE.STRING)
+    		return value;
+    	    	
+    	
+    	if(type.isSingleValueType()) {
+    		switch (type) {
+    		case LONG:
+    			return Long.valueOf(value);
+    		case DOUBLE: 
+    			return Double.valueOf(value);	
+    		case BOOLEAN:
+    			return Boolean.valueOf(value);
+    		case INTEGER:
+    			return Integer.valueOf(value);
+    		default: 
+    			throw new NdexException("Unexpected single value type " + type + " encountered when converting string to object.");
+    		}
+    	} else {
+    		ATTRIBUTE_DATA_TYPE et = type.elementType();
+        	ObjectMapper om = new ObjectMapper();
+        	List<String> strList = om.readValue(value, new TypeReference<List<String>>(){});
+    		List<Object> result = new ArrayList<>(strList.size());
+    		for (String vStr: strList ) {
+    			result.add(cvtPropPairStringValueToObj(et,vStr));
+    		}
+    		return result;
+    	}
+    	
+    }
 
 }
