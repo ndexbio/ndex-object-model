@@ -50,11 +50,13 @@ public class NetworkProperties {
  
 	@JsonIgnore
 	public void setProperty(String key, String type, Object value) {
-		
-		Map<String, Object> v = new TreeMap<>();
-		v.put("t", type);
-		v.put("v", value);
-		add(key, v);
+		if ( value != null) {
+ 		
+			Map<String, Object> v = new TreeMap<>();
+			v.put("t", type);
+			v.put("v", value);
+			add(key, v);
+		}
 		
 	}
 }

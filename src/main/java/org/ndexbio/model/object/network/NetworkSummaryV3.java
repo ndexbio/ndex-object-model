@@ -32,8 +32,6 @@ package org.ndexbio.model.object.network;
 
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -52,17 +50,18 @@ public class NetworkSummaryV3  {
 	private UUID uuid; 
 	private Timestamp creationTime;
 	private Timestamp modificationTime;
+	private String updatedBy;
 	
-	//private String _description;
-    private int _edgeCount;
+	private String description;
+    private Integer _edgeCount;
     private VisibilityType _visibility;
-    //private String _name;
-    private int _nodeCount;
+    private String name;
+    private Integer _nodeCount;
     private String _owner;
     
     private UUID ownerUUID;
     
-    private boolean isReadOnly;
+    private Boolean isReadOnly;
     
 	//private String _version;
 
@@ -73,26 +72,25 @@ public class NetworkSummaryV3  {
 	private NetworkProperties _properties;
 	
 	private String errorMessage;
-	private boolean isValid;
+	//private Boolean isValid;
 	private List<String> warnings;
 	
-	private boolean isShowcase;
+	private Boolean isShowcase;
 
-	private boolean isCompleted;
+	private Boolean isCompleted;
 	private String doi;
-	private boolean isCertified;
+	private Boolean isCertified;
 	private NetworkIndexLevel indexLevel;
 	
-	private boolean hasLayout;
-	private boolean hasSample;
+	private Boolean hasLayout;
+	private Boolean hasSample;
 	
 	// null means cx1. Valid values are cx and cx2.
 	private String cxFormat; 
 	
-	private long cxFileSize;
+	private Long cxFileSize;
 	
-	private long cx2FileSize;
-	
+	private Long cx2FileSize;
 	
 	public String getCxFormat() {
 		return cxFormat;
@@ -103,29 +101,18 @@ public class NetworkSummaryV3  {
 	}
 
 	public NetworkSummaryV3 () {
-		super();
-
-        _edgeCount = 0;
-        _nodeCount = 0;
-        
-        _properties = new NetworkProperties();
-        this.subnetworkIds = new HashSet<>();
-        isReadOnly = false;
-        warnings = new LinkedList<>();
-        indexLevel=NetworkIndexLevel.NONE;
-
 	}
 
  
     
-    public int getEdgeCount()
+    public Integer getEdgeCount()
     {
         return _edgeCount;
     }
 
     public void setEdgeCount(int edgeCount)
     {
-        _edgeCount = edgeCount;
+        _edgeCount = Integer.valueOf(edgeCount);
     }
 	
 	
@@ -138,25 +125,25 @@ public class NetworkSummaryV3  {
 		this._visibility = visibility;
 	}
 
-    public boolean getIsReadOnly()
+    public Boolean getIsReadOnly()
     {
         return isReadOnly;
     }
     
     public void setIsReadOnly(boolean isReadOnly)
     {
-        this.isReadOnly = isReadOnly;
+        this.isReadOnly = Boolean.valueOf(isReadOnly);
     }
 
 
-    public int getNodeCount()
+    public Integer getNodeCount()
     {
         return _nodeCount;
     }
 
     public void setNodeCount(int nodeCount)
     {
-        _nodeCount = nodeCount;
+        _nodeCount = Integer.valueOf(nodeCount);
     }
 
 	public NetworkProperties getProperties() {
@@ -199,14 +186,14 @@ public class NetworkSummaryV3  {
 		this.errorMessage = errorMessage;
 	}
 
-	public boolean getIsValid() {
+/*	public Boolean getIsValid() {
 		return isValid;
 	}
 
 	public void setIsValid(boolean isValid) {
-		this.isValid = isValid;
+		this.isValid = Boolean.valueOf(isValid);
 	}
-
+*/
 	public List<String> getWarnings() {
 		return warnings;
 	}
@@ -215,12 +202,12 @@ public class NetworkSummaryV3  {
 		this.warnings = warnings;
 	}
 
-	public boolean getIsShowcase() {
+	public Boolean getIsShowcase() {
 		return isShowcase;
 	}
 
 	public void setIsShowcase(boolean displayInHomePage) {
-		this.isShowcase = displayInHomePage;
+		this.isShowcase = Boolean.valueOf(displayInHomePage);
 	}
 /*
 	public boolean isIndexed() {
@@ -231,12 +218,12 @@ public class NetworkSummaryV3  {
 		this.isIndexed = isIndexed;
 	}
 */
-	public boolean isCompleted() {
+	public Boolean isCompleted() {
 		return isCompleted;
 	}
 
 	public void setCompleted(boolean isCompleted) {
-		this.isCompleted = isCompleted;
+		this.isCompleted = Boolean.valueOf(isCompleted);
 	}
 
 	public String getDoi() {
@@ -247,12 +234,12 @@ public class NetworkSummaryV3  {
 		this.doi = doi;
 	}
 
-	public boolean getIsCertified() {
+	public Boolean getIsCertified() {
 		return isCertified;
 	}
 
 	public void setIsCertified(boolean certified) {
-		this.isCertified = certified;
+		this.isCertified = Boolean.valueOf(certified);
 	}
 
 	public NetworkIndexLevel getIndexLevel() {
@@ -263,36 +250,36 @@ public class NetworkSummaryV3  {
 		this.indexLevel = solrIndexLevel;
 	}
 
-	public boolean getHasLayout() {
+	public Boolean getHasLayout() {
 		return hasLayout;
 	}
 
 	public void setHasLayout(boolean hasLayout) {
-		this.hasLayout = hasLayout;
+		this.hasLayout = Boolean.valueOf(hasLayout);
 	}
 
-	public boolean getHasSample() {
+	public Boolean getHasSample() {
 		return hasSample;
 	}
 
 	public void setHasSample(boolean hasSample) {
-		this.hasSample = hasSample;
+		this.hasSample = Boolean.valueOf(hasSample);
 	}
 
-	public long getCxFileSize() {
+	public Long getCxFileSize() {
 		return cxFileSize;
 	}
 
 	public void setCxFileSize(long cxFileSize) {
-		this.cxFileSize = cxFileSize;
+		this.cxFileSize = Long.valueOf(cxFileSize);
 	}
 
-	public long getCx2FileSize() {
+	public Long getCx2FileSize() {
 		return cx2FileSize;
 	}
 
 	public void setCx2FileSize(long cx2FileSize) {
-		this.cx2FileSize = cx2FileSize;
+		this.cx2FileSize = Long.valueOf(cx2FileSize);
 	}
 
 	public UUID getUuid() {
@@ -318,5 +305,30 @@ public class NetworkSummaryV3  {
 	public void setModificationTime(Timestamp modificationTime) {
 		this.modificationTime = modificationTime;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 
 }

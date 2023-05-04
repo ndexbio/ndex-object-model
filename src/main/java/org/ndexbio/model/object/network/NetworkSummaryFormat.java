@@ -9,23 +9,19 @@ package org.ndexbio.model.object.network;
 public enum NetworkSummaryFormat {
 
 	/**
-	 * The NDEx update status of the network, which includes UUID, lastModificationTime and lastModifiedBy (to be added).
+	 * The NDEx update status of the network, which includes UUID, lastModificationTime and updatedBy.
 	 */
 	UPDATE,
 	
 	/**
-	 * Return the stats of the network manage by NDEx server. Which includes 
-	 * UUID,
-	 * lastModificationTime
-	 * lastModifiedBy
+	 * Return the network name, description and all the NDEx stats of 
 	 */
-	NDEXONLY,
+	COMPACT,
 	
 	/**
-	 * Network attributes on the network.
+	 * Additional properties that are not included in the COMPACT format. 
 	 */
 	PROPERTIES, 
-	
 	/**
 	 * Return the full record.
 	 */
