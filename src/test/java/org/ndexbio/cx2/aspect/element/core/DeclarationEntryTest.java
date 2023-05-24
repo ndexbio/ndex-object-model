@@ -65,6 +65,21 @@ public class DeclarationEntryTest {
 		
 		
 	}
+
+	@Test
+	public void testNaN() {
+		DeclarationEntry e = new DeclarationEntry ();
+		e.setDataType(ATTRIBUTE_DATA_TYPE.DOUBLE);
+		e.setDefaultValue(Double.NaN);
+		System.out.println("Double.NaN is: " + e.getDefaultValue());
+		assertTrue(((Double)e.getDefaultValue()).isNaN());
+		
+		e.setDefaultValue(Double.NEGATIVE_INFINITY);
+		assertTrue(((Double)e.getDefaultValue()).isInfinite());
+		System.out.println("Double.NEGATIVE_INFINITY is: " + e.getDefaultValue());
+		
+	}
+	
 	
 	@Test (expected = NdexException.class) 
 	public void testDeserialization1() throws NdexException, IOException {

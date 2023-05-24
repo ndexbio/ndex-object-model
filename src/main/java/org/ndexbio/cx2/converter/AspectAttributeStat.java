@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ndexbio.cx2.aspect.element.core.AttributeDeclaredAspect;
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
 import org.ndexbio.cx2.aspect.element.core.CxEdgeBypass;
@@ -140,7 +141,7 @@ public class AspectAttributeStat {
 			throw new NdexException (constructErrMsg(attr,error));
 		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t == ATTRIBUTE_DATA_TYPE.BOOLEAN) {
-			e.addValue(convertAttributeValue(attr));
+			e.addValue(AttributeDeclaredAspect.convertAttributeValue(attr,null));
 			
 		}
 	}
@@ -202,7 +203,7 @@ public class AspectAttributeStat {
 			throw new NdexException(constructErrMsg(attr,error) );
 		}
 		if ( t == ATTRIBUTE_DATA_TYPE.STRING || t== ATTRIBUTE_DATA_TYPE.BOOLEAN ) {
-			e.addValue(convertAttributeValue(attr));
+			e.addValue(AttributeDeclaredAspect.convertAttributeValue(attr,null));
 			
 		}
 	}
@@ -317,14 +318,14 @@ public class AspectAttributeStat {
 
 	}
 
-	public static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
+/*	public static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
 		switch (attr.getDataType()) {
 		case BOOLEAN: 
 		case DOUBLE:
 		case INTEGER:
 		case LONG:
 		case STRING:
-			return convertSingleAttributeValue(attr.getDataType(), attr.getValue());
+			return AttributeDeclaredAspect.convertSingleAttributeValue(attr.getDataType(), attr.getValue());
 		case LIST_OF_BOOLEAN:
 		case LIST_OF_DOUBLE:
 		case LIST_OF_INTEGER:
@@ -333,20 +334,24 @@ public class AspectAttributeStat {
 			List<String> ls = attr.getValues();
 			ArrayList<Object> result = new ArrayList<>(ls.size());
 			for ( String s : ls) {
-				result.add(convertSingleAttributeValue(attr.getDataType().elementType(), s));
+				result.add(AttributeDeclaredAspect.convertSingleAttributeValue(attr.getDataType().elementType(), s));
 			}
 			return result;
 		default:
 			throw new NdexException ("Unsupported attribute data type found: " + attr.getDataType());
 		}
-	}
+	} */
 	
-	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
+/*	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
 		switch (t) {
 		case BOOLEAN: 
 			return Boolean.valueOf( value);
-		case DOUBLE:
-			return Double.valueOf(value);
+		case DOUBLE:{
+			Double v = Double.valueOf(value);
+			if ( v.isNaN() || v.isInfinite())
+				return null;
+			return v;
+		}	
 		case INTEGER:
 			return Integer.valueOf(value);
 		case LONG:
@@ -356,7 +361,7 @@ public class AspectAttributeStat {
 		default: 
 			throw new NdexException ("Value " + value + " is not a single value type. It is " + t.toString());
 		}
-	}
+	} */
 	
    public void setHasNamespacesAspect() { this.hasNamespacesAspect = true;}
    public boolean hasNamespacesAspect() { return this.hasNamespacesAspect; }

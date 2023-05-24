@@ -180,7 +180,8 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 	protected String addCX1Attribute(AbstractElementAttributesAspectElement cx1ElementAttribute,
 			CxAttributeDeclaration attrDeclarations, String aspectName) throws NdexException {
 		try {
-			Object v = convertAttributeValue(cx1ElementAttribute);
+			List<String> warnings = new ArrayList<> ();
+			Object v = convertAttributeValue(cx1ElementAttribute,warnings);
 			String attrName = cx1ElementAttribute.getName();
 			Map<String, DeclarationEntry> attributeDef = attrDeclarations.getDeclarations().get(aspectName);
 			if (attributeDef != null && attributeDef.containsKey(attrName)) {
@@ -202,7 +203,9 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 							+ cx1ElementAttribute.getPropertyOf() + ". Attribute '" + cx1ElementAttribute.getName()
 							+ "' has value (" + oldV + ") and (" + cx1ElementAttribute.getValueString() + ")");
 			}
-			return null;
+			if (warnings.isEmpty())
+				return null;
+			return warnings.get(0) +"(of attribute " + attrName + " in aspect "+ cx1ElementAttribute.getAspectName() + ")" ;
 		} catch (NumberFormatException e) {
 			if ( cx1ElementAttribute.isSingleValue() && cx1ElementAttribute.getValue().toLowerCase().equals("null")) {
 				String warningstr = "In '" + cx1ElementAttribute.getAspectName() + "' aspect, ignoring '" + 
@@ -214,14 +217,14 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 		}
 	}
 	
-	private static Object convertAttributeValue(AbstractAttributesAspectElement attr) throws NdexException {
+	public static Object convertAttributeValue(AbstractAttributesAspectElement attr, List<String> warningHolder ) throws NdexException {
 		switch (attr.getDataType()) {
 		case BOOLEAN: 
 		case DOUBLE:
 		case INTEGER:
 		case LONG:
 		case STRING:
-			return convertSingleAttributeValue(attr.getDataType(), attr.getValue());
+			return convertSingleAttributeValue(attr.getDataType(), attr.getValue(),warningHolder);
 		case LIST_OF_BOOLEAN:
 		case LIST_OF_DOUBLE:
 		case LIST_OF_INTEGER:
@@ -230,7 +233,7 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 			List<String> ls = attr.getValues();
 			ArrayList<Object> result = new ArrayList<>(ls.size());
 			for ( String s : ls) {
-				result.add(convertSingleAttributeValue(attr.getDataType().elementType(), s));
+				result.add(convertSingleAttributeValue(attr.getDataType().elementType(), s, warningHolder));
 			}
 			return result;
 		default:
@@ -238,13 +241,19 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 		}
 	}
 
-	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value) throws NdexException {
+	private static Object convertSingleAttributeValue(ATTRIBUTE_DATA_TYPE t, String value, List<String> warningHolder) throws NdexException {
 		try {
 			switch (t) {
 			case BOOLEAN:
 				return Boolean.valueOf(value);
-			case DOUBLE:
+			case DOUBLE: {
+				Double v = Double.valueOf(value);
+				if ( v.isNaN() || v.isInfinite()) {
+					warningHolder.add(value + " is not a supported double value in CX2. It is converted to null.");
+					return null;
+				}	
 				return Double.valueOf(value);
+			}	
 			case INTEGER:
 				return Integer.valueOf(value);
 			case LONG:
@@ -259,6 +268,7 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 					"Non numeric value '" + value + "' is declared as type " + t.toString() + ".");
 		}
 	}
+	
 	
 	protected String getStringAttr(Map<String, DeclarationEntry> attrDecls, String attrName) {
 		if ( attrDecls == null )
