@@ -14,6 +14,7 @@ import java.util.TreeSet;
 
 import org.ndexbio.cx2.aspect.element.core.CxAspectElement;
 import org.ndexbio.cx2.aspect.element.core.CxMetadata;
+import org.ndexbio.cxio.core.interfaces.AspectElement;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -56,6 +57,25 @@ public class CXWriter {
 	
 	private int currentElmtCounter; // counter for the current aspect fragment.
 	
+	/**
+	 * Writer class for writing a network to an output stream in CX2 format. 
+	 * Typical sequence of writing CX2 data using this class is:
+	 *   w = new CXWriter(s,true);
+	 *   w.writMetadata(metadata);
+	 *   startAspectFragment(AttributeDelcaration.ASPECT_NAME)
+	 *   writeElementInFragment(element1);
+	 *   endAspectFragment();
+	 *   startAspectFragment(CxNode.ASPECT_NAME);
+	 *   writeElementInFragment(node1);
+	 *   writeElementInFragment(node2);
+	 *   ...
+	 *   endAspectFragment();
+	 *   ...
+	 *   finish();
+	 *   
+	 * @param s
+	 * @param hasFragments
+	 */
 	public CXWriter (OutputStream s, boolean hasFragments) {
 		this.out = s;
 		
@@ -149,6 +169,14 @@ public class CXWriter {
 		out.flush();
 	}
 	
+	/**
+	 * Print the error message in the output stream and stop the writer. No more data can be written to the stream after calling this function.
+	 * @param errorMsg
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws NdexException
+	 */
 	public void printError(String errorMsg) throws JsonGenerationException, JsonMappingException, IOException, NdexException {
 		if ( state == FINISHED) 
 			throw new NdexException("CX stream is already finished.");
@@ -270,6 +298,22 @@ public class CXWriter {
 		if ( currentElmtCounter % 500 == 0)
 			out.write(newline);
 	}
+
+	public void writeCx1ElementInFragment(AspectElement element) throws NdexException, JsonGenerationException, JsonMappingException, IOException {
+		String aspect = element.getAspectName();
+		if ( state != ASPECT_STARTED)
+			throw new NdexException( "Aspect frament for " + aspect + " hasn't been started yet.");
 	
+		if ( currentElmtCounter != 0)
+			out.write(elmtDivider);
+		
+		om.writeValue(out, element);
+		
+		currentElmtCounter++;
+		if ( currentElmtCounter % 500 == 0)
+			out.write(newline);
+	}
+	
+
 	
 }
