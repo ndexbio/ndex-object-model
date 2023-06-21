@@ -141,4 +141,11 @@ public class CxNode extends AttributeDeclaredAspect<CxNode>  {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public void removeCoordinates() {
+		x = null;
+		y = null;
+		z = null;
+				
+	}
 }
