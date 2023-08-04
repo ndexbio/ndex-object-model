@@ -116,8 +116,13 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 			
 			if ( updateValue)
 				entry.setValue(processAttributeValue(t, entry.getValue()));
-			else 
-				processAttributeValue(t, entry.getValue());
+			else {
+				try { 
+					processAttributeValue(t, entry.getValue());
+				} catch (ClassCastException e) {
+					throw new NdexException ("Value " + entry.getValue() + " on attribute " + entry.getKey() + " can not be cast to " + t);
+				}
+			}	
 		}
 		
 	}
@@ -143,39 +148,39 @@ public abstract class AttributeDeclaredAspect<T extends AttributeDeclaredAspect<
 		return rawValue;
 	}
 	
-	public static Object processAttributeValue (ATTRIBUTE_DATA_TYPE declaredType, Object value) throws NdexException {
+	public static Object processAttributeValue(ATTRIBUTE_DATA_TYPE declaredType, Object value) throws NdexException {
+		if (value == null)
+			return value;
 
-			if (declaredType == ATTRIBUTE_DATA_TYPE.INTEGER) {
-				return (value instanceof Integer) ? value : Integer.valueOf(((Number)value).intValue());
-			} else if ( declaredType == ATTRIBUTE_DATA_TYPE.LONG) {
-				return (value instanceof Long) ? value : Long.valueOf(((Number)value).longValue());
-			} else if (declaredType == ATTRIBUTE_DATA_TYPE.BOOLEAN) {
-				if ( value instanceof Boolean)
-					return value;
-				throw new NdexException ("Value " + value + " is not a boolean type.") ;
-		    } else if (declaredType == ATTRIBUTE_DATA_TYPE.DOUBLE) {
-				return (value instanceof Double) ? value : Double.valueOf(((Number)value).doubleValue());
-		    } else if (declaredType == ATTRIBUTE_DATA_TYPE.STRING) {
-		    	if (value instanceof String)
-		    		return value;
-		    	throw new NdexException("Value " + value + " is not a string.");
-		    } else {
-				if (value instanceof List<?>) {
-					return ((List<?>)value).stream().map(n -> {
-						try {
-							return processAttributeValue ( declaredType.elementType(),n);
-						} catch (NdexException e) {
-							throw new RuntimeException ("Incorrect data type found in list: "  + e.getMessage());
-						}
-					})
-							.collect(Collectors.toList());
-				} 
-				
-				throw new RuntimeException ("Value " + value.toString() + " is not consistent the declared type " + declaredType 
-							+ ".");
-			} 
+		if (declaredType == ATTRIBUTE_DATA_TYPE.INTEGER) {
+			return (value instanceof Integer) ? value : Integer.valueOf(((Number) value).intValue());
+		} else if (declaredType == ATTRIBUTE_DATA_TYPE.LONG) {
+			return (value instanceof Long) ? value : Long.valueOf(((Number) value).longValue());
+		} else if (declaredType == ATTRIBUTE_DATA_TYPE.BOOLEAN) {
+			if (value instanceof Boolean)
+				return value;
+			throw new NdexException("Value " + value + " is not a boolean type.");
+		} else if (declaredType == ATTRIBUTE_DATA_TYPE.DOUBLE) {
+			return (value instanceof Double) ? value : Double.valueOf(((Number) value).doubleValue());
+		} else if (declaredType == ATTRIBUTE_DATA_TYPE.STRING) {
+			if (value instanceof String)
+				return value;
+			throw new NdexException("Value " + value + " is not a string.");
+		} else {
+			if (value instanceof List<?>) {
+				return ((List<?>) value).stream().map(n -> {
+					try {
+						return processAttributeValue(declaredType.elementType(), n);
+					} catch (NdexException e) {
+						throw new RuntimeException("Incorrect data type found in list: " + e.getMessage());
+					}
+				}).collect(Collectors.toList());
+			}
+
+			throw new RuntimeException(
+					"Value " + value.toString() + " is not consistent the declared type " + declaredType + ".");
+		}
 	}
-
 	
 	protected String addCX1Attribute(AbstractElementAttributesAspectElement cx1ElementAttribute,
 			CxAttributeDeclaration attrDeclarations, String aspectName) throws NdexException {
