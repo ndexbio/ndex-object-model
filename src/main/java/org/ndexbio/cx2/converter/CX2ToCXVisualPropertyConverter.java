@@ -156,6 +156,9 @@ public class CX2ToCXVisualPropertyConverter {
         			(position) -> { return ((ObjectPosition)position).toCX1String(); } );    		
     	}
 
+     	addEntry("NODE_X_LOCATION");
+    	addEntry("NODE_Y_LOCATION");
+    	addEntry("NODE_Z_LOCATION");
     	    	
     	// edges
     	
