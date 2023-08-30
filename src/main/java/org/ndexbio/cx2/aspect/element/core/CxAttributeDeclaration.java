@@ -50,6 +50,10 @@ public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclar
 				if (d.getDefaultValue() !=null) 
 					throw new NdexException ("Declaring default value '"+ d.getDefaultValue()+ "' on network attribute '" + e.getKey() 
 					   + "' is not allowed according to CX2 specification." );
+				if ( d.getAlias()!=null) {
+					throw new NdexException ("Declaring an alias for network attribute '" + e.getKey() 
+					   + "' is not allowed according to CX2 specification." );
+				}
 			}
 		}
 		this.declarations.put(aspectName, attributes);
@@ -87,9 +91,14 @@ public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclar
 				add ( entry.getKey(), entry.getValue());
 			} else {
 				for ( Map.Entry<String, DeclarationEntry> newDeclaration : entry.getValue().entrySet()) {
-					if ( entry.getKey().equals(CxNetworkAttribute.ASPECT_NAME) && newDeclaration.getValue().getDefaultValue()!=null) {
-						throw new NdexException ("Declaring default value '"+ newDeclaration.getValue().getDefaultValue()+ "' on network attribute '" 
+					if ( entry.getKey().equals(CxNetworkAttribute.ASPECT_NAME)) {
+						if ( newDeclaration.getValue().getDefaultValue()!=null)
+							throw new NdexException ("Declaring default value '"+ newDeclaration.getValue().getDefaultValue()+ "' on network attribute '" 
 					        + newDeclaration.getKey() + "' is not allowed according to CX2 specification." );
+						if ( newDeclaration.getValue().getAlias()!=null) {
+							throw new NdexException ("Declaring an alias for network attribute '" + newDeclaration.getKey() 
+							   + "' is not allowed according to CX2 specification." );
+						}
 					}
 					DeclarationEntry oldValue = decls.put ( newDeclaration.getKey(), newDeclaration.getValue());
 					if (oldValue != null) 
