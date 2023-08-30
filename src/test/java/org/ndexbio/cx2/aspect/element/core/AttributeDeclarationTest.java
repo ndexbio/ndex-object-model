@@ -130,7 +130,7 @@ public class AttributeDeclarationTest {
 			ad.add(CxNetworkAttribute.ASPECT_NAME, m);
 			fail("Expected NdexException to be thrown.");
 		} catch (NdexException e) {
-			assertEquals("Declaring an alias on network attribute 'name' is not allowed according to CX2 specification.",e.getMessage());
+			assertEquals("Declaring an alias for network attribute 'name' is not allowed according to CX2 specification.",e.getMessage());
 		}	    
 	}	
 
