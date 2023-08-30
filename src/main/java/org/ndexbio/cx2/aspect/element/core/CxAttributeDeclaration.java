@@ -39,9 +39,19 @@ public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclar
 	 * 
 	 * @param key aspectName
 	 * @param e   Attribute declaration
+	 * @throws NdexException 
 	 */
 	@JsonAnySetter
-	public void add(String aspectName, Map<String,DeclarationEntry> attributes) {
+	public void add(String aspectName, Map<String,DeclarationEntry> attributes) throws NdexException {
+		// check if default value was declared in network attribute declaration
+		if ( aspectName.equals(CxNetworkAttribute.ASPECT_NAME)) {
+			for ( Map.Entry<String,DeclarationEntry> e : attributes.entrySet()) {
+				DeclarationEntry d = e.getValue();
+				if (d.getDefaultValue() !=null) 
+					throw new NdexException ("Declaring default value '"+ d.getDefaultValue()+ "' on network attribute '" + e.getKey() 
+					   + "' is not allowed according to CX2 specification." );
+			}
+		}
 		this.declarations.put(aspectName, attributes);
 	}
 
@@ -72,10 +82,15 @@ public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclar
 	public void addNewDeclarations(CxAttributeDeclaration newDeclarations) throws NdexException {
 		for ( Map.Entry<String, Map<String, DeclarationEntry>> entry : newDeclarations.getDeclarations().entrySet()) {
 			Map<String,DeclarationEntry> decls = getAttributesInAspect(entry.getKey());
+			
 			if ( decls == null) {
 				add ( entry.getKey(), entry.getValue());
 			} else {
-				for ( Map.Entry<String, DeclarationEntry> newDeclaration : entry.getValue().entrySet()) {						
+				for ( Map.Entry<String, DeclarationEntry> newDeclaration : entry.getValue().entrySet()) {
+					if ( entry.getKey().equals(CxNetworkAttribute.ASPECT_NAME) && newDeclaration.getValue().getDefaultValue()!=null) {
+						throw new NdexException ("Declaring default value '"+ newDeclaration.getValue().getDefaultValue()+ "' on network attribute '" 
+					        + newDeclaration.getKey() + "' is not allowed according to CX2 specification." );
+					}
 					DeclarationEntry oldValue = decls.put ( newDeclaration.getKey(), newDeclaration.getValue());
 					if (oldValue != null) 
 						throw new NdexException ("Atribute " + newDeclaration.getKey() + " in aspect " +
