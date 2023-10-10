@@ -166,7 +166,8 @@ public class ConverterUtilitiesTest {
     
     @Test
     public void testgetPassThroughMappingAttributeValidString() throws NdexException {
-         String res = ConverterUtilities.getPassThroughMappingAttribute("COL=hello,T=something");
-         assertEquals("hello", res);
+         String[] res = ConverterUtilities.getPassThroughMappingAttribute("COL=hello,T=something");
+         assertEquals("hello", res[0]);
+         assertEquals("something", res[1]);
     }
 }

@@ -825,8 +825,9 @@ public class CXToCX2LargeFileConverter {
 			mappingObj.setMappingDef(defObj);
 			String defString = entry.getValue().getDefinition();
 			if ( mappingType.equals("PASSTHROUGH")) {
-				String mappingAttrName = ConverterUtilities.getPassThroughMappingAttribute(defString); 
-				defObj.setAttributeName(mappingAttrName);
+				String[] m = ConverterUtilities.getPassThroughMappingAttribute(defString); 
+				defObj.setAttributeName(m[0]);
+				defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(m[1]));
 			} else if (mappingType.equals("DISCRETE")) {
 				List<Map<String,Object>> m = new ArrayList<> ();
 				MappingValueStringParser sp = new MappingValueStringParser(defString);	
@@ -856,6 +857,7 @@ public class CXToCX2LargeFileConverter {
 		        }
 		        
 				defObj.setAttributeName(col);
+				defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(t));
 				defObj.setMapppingList(m);
 
 			} else {  //continuous mapping
@@ -937,6 +939,7 @@ public class CXToCX2LargeFileConverter {
 		        
 		        // add the list
 		    	defObj.setAttributeName(col);
+				defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(t));
 				defObj.setMapppingList(m);
 			}
 			v2NodeMappings.put(newVPName, mappingObj);

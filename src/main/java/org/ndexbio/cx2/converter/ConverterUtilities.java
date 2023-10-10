@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConverterUtilities {
     
-        protected static final Pattern passThruPattern = Pattern.compile("^COL=(.*),T=.*$");
+        protected static final Pattern passThruPattern = Pattern.compile("^COL=(.*),T=(.*)$");
 	
 	/** 
           * Convert a cytoscape string VP value into a CX2 VP object value using
@@ -80,18 +80,21 @@ public class ConverterUtilities {
 	}
 
 	/**
-	 * Get the column name of a pass through mapping.
+	 * Get the column name and type of a pass through mapping in an array, first one is the name. Second element is the type.
 	 * @param mappingString
 	 * @return
 	 * @throws NdexException
 	 */
-    public static String getPassThroughMappingAttribute(final String mappingString) throws NdexException {
+    public static String[] getPassThroughMappingAttribute(final String mappingString) throws NdexException {
             if (mappingString == null){
                 throw new NdexException("Mapping string for Passthrough mapping is null");
             }
            Matcher m = ConverterUtilities.passThruPattern.matcher(mappingString);
            if ( m.matches() ) {
-                   return  m.group(1);
+        	   String[] r = new String[2];
+        	   r[0] = m.group(1);
+        	   r[1] = m.group(2);
+                   return  r;
            }
            throw new NdexException("Malformed mapping string for Passthrough mapping: "
                    + mappingString);

@@ -301,7 +301,7 @@ public class NiceCXCX2Writer {
 			
 			
 		// write visualProperites
-		CX2VPHolder vp = readVisualProperties(niceCX, visualDependencies,warnings);
+		CX2VPHolder vp = readVisualProperties(niceCX, visualDependencies,warnings, attrDeclarations);
 						
 		if ( !vp.getStyle().isEmpty()) {
 				wtr.startAspectFragment(CxVisualProperty.ASPECT_NAME);
@@ -371,12 +371,12 @@ public class NiceCXCX2Writer {
 	}
 	
 	private static CX2VPHolder readVisualProperties(NiceCXNetwork niceCX, VisualEditorProperties visualDependencies,
-			List<String> warningHolder) throws JsonProcessingException, IOException, NdexException {
+			List<String> warningHolder, CxAttributeDeclaration attrDeclarations) throws JsonProcessingException, IOException, NdexException {
 		CX2VPHolder holder = new CX2VPHolder ();
 		
 		if ( niceCX.getOpaqueAspectTable().get(CyVisualPropertiesElement.ASPECT_NAME) != null) {
 			for ( AspectElement elmt : niceCX.getOpaqueAspectTable().get(CyVisualPropertiesElement.ASPECT_NAME)) {
-				holder.addVisuaProperty((CyVisualPropertiesElement)elmt, visualDependencies, warningHolder);
+				holder.addVisuaProperty((CyVisualPropertiesElement)elmt, visualDependencies, warningHolder, attrDeclarations);
 			}
 		}
 		return holder;
