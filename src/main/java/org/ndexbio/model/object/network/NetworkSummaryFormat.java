@@ -14,12 +14,13 @@ public enum NetworkSummaryFormat {
 	UPDATE,
 	
 	/**
-	 * Return the network name, description and all the NDEx stats of 
+	 * Return the network name, description and all the NDEx stats of a network. 
+	 * Additional properties are not included in the COMPACT format. 
 	 */
 	COMPACT,
 	
 	/**
-	 * Additional properties that are not included in the COMPACT format. 
+	 * Returns only UUID, last modification time, name, description and all properties.
 	 */
 	PROPERTIES, 
 	/**
