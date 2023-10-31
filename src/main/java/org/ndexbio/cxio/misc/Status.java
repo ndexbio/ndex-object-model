@@ -72,7 +72,11 @@ public final class Status implements Serializable {
 
     @JsonIgnore
     public final boolean isSuccess() {
-        return ((Boolean) _data.get(0).get(SUCCESS)).booleanValue();
+    	
+    	Object f = _data.get(0).get(SUCCESS);
+    	if( f == null || (!(f instanceof Boolean)))
+    		return false;
+        return ((Boolean) f).booleanValue();
     }
 
     public final void toJson(final JsonWriter w) throws IOException {

@@ -56,6 +56,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
     private String currentAspect; 
     private Class<? extends CxAspectElement<?>> currentAspectClass;
     private Map<String, Long> elementCounterTable;
+    private String warning;
     
     
     private  Map<String, Class<? extends CxAspectElement<?>>> aspectTable;
@@ -90,6 +91,9 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 	    elementCounterTable = new TreeMap<>();
 	}
 	
+	public String getWarning() {
+		return warning;
+	}
 	
 	private void verifyHeader() throws IOException {
 		JsonToken token = jp.nextToken();
@@ -240,9 +244,11 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 				        	throw new IOException ("Aspect 'status' should have one element in it.");
 					if (_status == null)
 						throw new IOException("Malformed Status object at " + getPosition());
-					if (_status.getError() != null && _status.getError().length() > 0)
+					if (!_status.isSuccess())
 						throw new IOException(
 								"Error status received in CX document. Error message: " + _status.getError());
+					if ( _status.getError()!=null && _status.getError().length()>0)
+						warning = _status.getError();
 					state = END;
 				} else if (metadataAspectCount ==2 ) {
 					throw new IOException("Only " + Status.NAME
