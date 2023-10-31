@@ -261,12 +261,12 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 				
 			} else if (state == AFTER_HEADER)  { 
 		    	if (token != JsonToken.START_OBJECT) {
-					throw parsingError("Expecting '{'");
+					throw parsingError("Anticipated the beginning of an object ('{') but found '" + token.asString() + "' instead");
 				}
 		    	state = ASPECT_FRAGMENT;
 		    } else if (state == ELEMENT_LIST_START) {
 				if (token != JsonToken.START_ARRAY)
-					throw new IOException("Expect start of arry at: " + getPosition());
+					throw new IOException("Expected the start of an array ('[') at: " + getPosition());
 				state = IN_ELEMENT_LIST;
 			} else if (state == IN_ELEMENT_LIST) {
 				if (token == JsonToken.START_OBJECT) {
@@ -311,7 +311,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 	
 	private String getPosition() {
 	    	return " at line: " + jp.getCurrentLocation().getLineNr() + ", column: "
-					+ jp.getCurrentLocation().getColumnNr();
+					+ (jp.getCurrentLocation().getColumnNr()-1);
 	}
 	
 	private void countElement(CxAspectElement<?> result) {
