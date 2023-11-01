@@ -403,7 +403,10 @@ public class CX2VPHolder {
 			    	addWarning(warningHolder, newVPName + " " + mappingObj.getType() + " mapping references nonexistent attribute '" + def.getAttributeName() 
 			    	   + "' in " + aspectName + ".");
 			    else if ( t0 != def.getAttributeType()) {
-			    	throw new NdexException ("Data type error on '" + def.getAttributeName() + "' attribute: declared as " + def.getAttributeType() +
+			    	if ((!t0.isSingleValueType()) && t0.elementType() == def.getAttributeType() ) { // handle list as a special case.
+			    			def.setAttributeType(t0);
+			    	} else 
+			    		throw new NdexException ("Data type error on '" + def.getAttributeName() + "' attribute: declared as " + def.getAttributeType() +
 			    			" in visual style mapping (" + newVPName + ") but found as " + t0 + " in the attribute value."); 
 			    }
 				v2Mappings.put(newVPName, mappingObj);
