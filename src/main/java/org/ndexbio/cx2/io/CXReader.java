@@ -108,7 +108,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 		Map<String, Object> r = om.readValue(jp, typeRef);
 		
 		if ( r.get("CXVersion") == null)
-			throw new  IllegalStateException("illegal cx format: expected to CX version object in the first element, but has: " + jp.getCurrentToken().asString());
+			throw new  IllegalStateException("Illegal cx format: expected to CX version object in the first element, but has: " + jp.getCurrentToken().asString());
 			
 	}
 	
@@ -194,7 +194,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 	                    return CXReader.this.hasNext();
 	                }
 	                catch (final IOException e) {
-	                	throw new RuntimeException("Error parsing element in CX stream: " + e.getMessage(),e);
+	                	throw new RuntimeException("Error parsing element in CX stream: " + e.getMessage().replace('`', '\''),e);
 	                } 
 	            }
 
@@ -261,7 +261,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 				
 			} else if (state == AFTER_HEADER)  { 
 		    	if (token != JsonToken.START_OBJECT) {
-					throw parsingError("Anticipated the beginning of an object ('{') but found '" + token.asString() + "' instead");
+					throw parsingError("Anticipated the beginning of an aspect or object ('{') but found '" + token.asString() + "' instead");
 				}
 		    	state = ASPECT_FRAGMENT;
 		    } else if (state == ELEMENT_LIST_START) {
@@ -284,12 +284,12 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 				}
 			} else if (state == ELEMENT_LIST_END) {
 				if (token != JsonToken.END_OBJECT)
-					throw new IOException("End of Object expected at " + getPosition());
+					throw new IOException("End of aspect or object ('}') expected at " + getPosition());
 				state = AFTER_HEADER;
 			} else if (state == START) {
 				if (token == JsonToken.END_ARRAY) { // End of Aspect fragment list.
 					if (_status == null)
-						throw parsingError("CX document ends without a Status object defined");
+						throw parsingError("CX document ends without a 'status' aspect defined");
 					break;
 				}
 				
