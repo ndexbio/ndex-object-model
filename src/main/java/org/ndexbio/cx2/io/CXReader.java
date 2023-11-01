@@ -194,7 +194,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 	                    return CXReader.this.hasNext();
 	                }
 	                catch (final IOException e) {
-	                	throw new RuntimeException("Error parsing element in CX stream: " + e.getMessage().replace('`', '\''),e);
+	                	throw new RuntimeException("Error parsing element in CX stream: " + e.getMessage(),e);
 	                } 
 	            }
 
