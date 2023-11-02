@@ -8,8 +8,6 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.ndexbio.cx2.aspect.element.core.CxAspectElement;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -23,8 +21,10 @@ public class AspectIterator<E> implements Iterator<E>, Closeable {
 	private Iterator<E> it;
 	
 	
-	public AspectIterator (String networkId, String aspectName, Class<E> cls, String pathPrefix) throws JsonProcessingException, IOException {
-		String fname = pathPrefix + networkId + "/aspects/"+ aspectName;
+
+	
+	public AspectIterator (String fileFullPath, Class<E> cls) throws JsonProcessingException, IOException {
+		String fname = fileFullPath;
 		java.nio.file.Path aspectFile = Paths.get(fname);
 		if ( Files.exists(aspectFile)) { 
 			 inputStream = new FileInputStream(fname) ;
@@ -36,6 +36,11 @@ public class AspectIterator<E> implements Iterator<E>, Closeable {
 			inputStream = null;
 		
 		
+	}
+	
+	public AspectIterator (String networkId, String aspectName, Class<E> cls, String pathPrefix) throws JsonProcessingException, IOException {		
+		this ( pathPrefix + networkId + "/aspects/"+ aspectName, cls);
+	
 	}
 	
 	public AspectIterator (FileInputStream in, Class<E> cls) throws JsonProcessingException, IOException {

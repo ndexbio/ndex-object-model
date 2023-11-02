@@ -3,6 +3,7 @@ package org.ndexbio.cx2.aspect.element.core;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,11 +30,20 @@ public class MappingDefinitionTest {
 		assertEquals(2,md2.getMapppingList().size());
 		assertEquals(1, md2.getMapppingList().get(0).get("v"));
 		assertEquals("#FF9999", md2.getMapppingList().get(1).get("vp"));
+		assertNull(md2.getAttributeType());
 		
 		String s1 = om.writeValueAsString(md2);
 		System.out.println(s1);
 		assertEquals(s, s1);
 		
+		
+		md2.setAttributeType(ATTRIBUTE_DATA_TYPE.LONG);
+		
+		String s2 = om.writeValueAsString(md2);
+		System.out.println(s2);
+		
+		md = om.readValue(s2, MappingDefinition.class);
+		assertEquals(md.getAttributeType(), ATTRIBUTE_DATA_TYPE.LONG);
 	}
 
 }

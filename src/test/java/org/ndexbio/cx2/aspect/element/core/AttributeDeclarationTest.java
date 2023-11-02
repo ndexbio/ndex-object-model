@@ -1,6 +1,7 @@
 package org.ndexbio.cx2.aspect.element.core;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -92,6 +93,45 @@ public class AttributeDeclarationTest {
 		
 		//TODO: test duplicated entry
 	    
+	}	
+	
+	@Test
+	public void test3() throws NdexException {
+		
+		CxAttributeDeclaration ad = new CxAttributeDeclaration();
+		DeclarationEntry de = new DeclarationEntry();
+		de.setDataType(ATTRIBUTE_DATA_TYPE.LONG);
+		de.setDefaultValue(Long.valueOf(22l));
+		
+		//Map<String, DeclarationEntry> rec = new HashMap<>();
+		Map<String, DeclarationEntry> m = new HashMap<>();
+		m.put("name", de);
+		try {
+			ad.add(CxNetworkAttribute.ASPECT_NAME, m);
+			fail("Expected NdexException to be thrown.");
+		} catch (NdexException e) {
+			assertEquals("Declaring default value '22' on network attribute 'name' is not allowed according to CX2 specification.",e.getMessage());
+		}	    
+	}	
+
+	
+	@Test
+	public void test4() throws NdexException {
+		
+		CxAttributeDeclaration ad = new CxAttributeDeclaration();
+		DeclarationEntry de = new DeclarationEntry();
+		de.setAlias("t");
+		de.setDataType(ATTRIBUTE_DATA_TYPE.LONG);
+		
+		//Map<String, DeclarationEntry> rec = new HashMap<>();
+		Map<String, DeclarationEntry> m = new HashMap<>();
+		m.put("name", de);
+		try {
+			ad.add(CxNetworkAttribute.ASPECT_NAME, m);
+			fail("Expected NdexException to be thrown.");
+		} catch (NdexException e) {
+			assertEquals("Declaring an alias for network attribute 'name' is not allowed according to CX2 specification.",e.getMessage());
+		}	    
 	}	
 
 }

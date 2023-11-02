@@ -127,4 +127,21 @@ public class CxNodeTest {
         System.out.println (s2);
         
     }
+    
+    @Test
+    public void test5() {
+    	CxNode n = new CxNode();
+		
+		n.setId(12L);
+		n.setX(11.0);
+        n.setY(22.0);
+        n.setZ(0.0);
+        
+        n.removeCoordinates();
+        
+        assertNull(n.getX());
+        assertNull(n.getY());
+        assertNull(n.getZ());
+        
+    }
 } 

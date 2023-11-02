@@ -2,10 +2,6 @@ package org.ndexbio.cx2.io;
 
 import java.util.Iterator;
 import java.util.Map;
-import java.util.function.Consumer;
-
-import org.ndexbio.cx2.aspect.element.core.CxEdge;
-import org.ndexbio.cx2.aspect.element.core.CxNode;
 
 import com.fasterxml.jackson.core.JsonParser;
 

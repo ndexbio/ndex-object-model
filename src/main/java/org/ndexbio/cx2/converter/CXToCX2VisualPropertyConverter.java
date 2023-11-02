@@ -31,9 +31,9 @@ public class CXToCX2VisualPropertyConverter {
 			"COMPOUND_NODE_SHAPE",
 	
 			"NODE_TOOLTIP",
-			"NODE_X_LOCATION",
+	/*		"NODE_X_LOCATION",
 			"NODE_Y_LOCATION",
-			"NODE_Z_LOCATION",
+			"NODE_Z_LOCATION", */
 			
             "EDGE_SELECTED",
             "EDGE_SELECTED_PAINT",
@@ -250,6 +250,9 @@ public class CXToCX2VisualPropertyConverter {
         			(positionStr) ->{ return ObjectPosition.createFromCX1Value(positionStr);} );    		
     	}
 
+    	addEntry("NODE_X_LOCATION",numberCvtr);
+    	addEntry("NODE_Y_LOCATION",numberCvtr);
+    	addEntry("NODE_Z_LOCATION",numberCvtr);
     	
     	// edges
     	

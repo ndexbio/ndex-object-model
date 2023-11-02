@@ -56,6 +56,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
     private String currentAspect; 
     private Class<? extends CxAspectElement<?>> currentAspectClass;
     private Map<String, Long> elementCounterTable;
+    private String warning;
     
     
     private  Map<String, Class<? extends CxAspectElement<?>>> aspectTable;
@@ -90,6 +91,9 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 	    elementCounterTable = new TreeMap<>();
 	}
 	
+	public String getWarning() {
+		return warning;
+	}
 	
 	private void verifyHeader() throws IOException {
 		JsonToken token = jp.nextToken();
@@ -104,7 +108,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 		Map<String, Object> r = om.readValue(jp, typeRef);
 		
 		if ( r.get("CXVersion") == null)
-			throw new  IllegalStateException("illegal cx format: expected to CX version object in the first element, but has: " + jp.getCurrentToken().asString());
+			throw new  IllegalStateException("Illegal cx format: expected to CX version object in the first element, but has: " + jp.getCurrentToken().asString());
 			
 	}
 	
@@ -240,9 +244,11 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 				        	throw new IOException ("Aspect 'status' should have one element in it.");
 					if (_status == null)
 						throw new IOException("Malformed Status object at " + getPosition());
-					if (_status.getError() != null && _status.getError().length() > 0)
+					if (!_status.isSuccess())
 						throw new IOException(
 								"Error status received in CX document. Error message: " + _status.getError());
+					if ( _status.getError()!=null && _status.getError().length()>0)
+						warning = _status.getError();
 					state = END;
 				} else if (metadataAspectCount ==2 ) {
 					throw new IOException("Only " + Status.NAME
@@ -255,12 +261,12 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 				
 			} else if (state == AFTER_HEADER)  { 
 		    	if (token != JsonToken.START_OBJECT) {
-					throw parsingError("Expecting '{'");
+					throw parsingError("Anticipated the beginning of an aspect or object ('{') but found '" + token.asString() + "' instead");
 				}
 		    	state = ASPECT_FRAGMENT;
 		    } else if (state == ELEMENT_LIST_START) {
 				if (token != JsonToken.START_ARRAY)
-					throw new IOException("Expect start of arry at: " + getPosition());
+					throw new IOException("Expected the start of an array ('[') at: " + getPosition());
 				state = IN_ELEMENT_LIST;
 			} else if (state == IN_ELEMENT_LIST) {
 				if (token == JsonToken.START_OBJECT) {
@@ -278,12 +284,12 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 				}
 			} else if (state == ELEMENT_LIST_END) {
 				if (token != JsonToken.END_OBJECT)
-					throw new IOException("End of Object expected at " + getPosition());
+					throw new IOException("End of aspect or object ('}') expected at " + getPosition());
 				state = AFTER_HEADER;
 			} else if (state == START) {
 				if (token == JsonToken.END_ARRAY) { // End of Aspect fragment list.
 					if (_status == null)
-						throw parsingError("CX document ends without a Status object defined");
+						throw parsingError("CX document ends without a 'status' aspect defined");
 					break;
 				}
 				
@@ -305,7 +311,7 @@ public class CXReader implements Iterable<CxAspectElement<?>> {
 	
 	private String getPosition() {
 	    	return " at line: " + jp.getCurrentLocation().getLineNr() + ", column: "
-					+ jp.getCurrentLocation().getColumnNr();
+					+ (jp.getCurrentLocation().getColumnNr()-1);
 	}
 	
 	private void countElement(CxAspectElement<?> result) {

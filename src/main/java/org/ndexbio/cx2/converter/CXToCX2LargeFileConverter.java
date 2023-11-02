@@ -16,6 +16,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import org.ndexbio.cx2.aspect.element.core.AttributeDeclaredAspect;
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
 import org.ndexbio.cx2.aspect.element.core.CxEdgeBypass;
@@ -360,7 +361,7 @@ public class CXToCX2LargeFileConverter {
 						NodeAttributesElement attr = (NodeAttributesElement) elmt;
 						if ( attr.getName().equals("name") || attr.getName().equals("represents"))
 							throw new NdexException ("Node attribute " + attr.getName() + " is not allowed in CX spec.");
-						attributeStats.addNodeAttribute(attr);
+						attributeStats.addNodeAttribute(attr);							
 						break;
 					case NetworkAttributesElement.ASPECT_NAME: // network attributes
 						NetworkAttributesElement netAttr = (NetworkAttributesElement)elmt;
@@ -383,6 +384,15 @@ public class CXToCX2LargeFileConverter {
 		}
 	}
 	
+	private static void printWarnings(List<String> warnings) {
+		if (!warnings.isEmpty()) {
+			for ( String warning: warnings) {
+				System.err.println("Warning: "+ warning);
+			}
+			warnings.clear();
+		}
+		
+	}
 
 	private Map<Long, Map<String, Object>> readNodes() throws NdexException, IOException {
 
@@ -394,6 +404,7 @@ public class CXToCX2LargeFileConverter {
 				CxElementReader2 r = new CxElementReader2(in, _readers, true);
 
 				metadata = r.getPreMetaData();
+				List<String> warnings = new ArrayList<>();
 
 				for (AspectElement elmt : r) {
 					switch (elmt.getAspectName()) {
@@ -416,7 +427,8 @@ public class CXToCX2LargeFileConverter {
 					case NetworkAttributesElement.ASPECT_NAME: // network attributes
 						//TODO: handles collections
 						NetworkAttributesElement netAttr = (NetworkAttributesElement)elmt;
-						Object attrValue = AspectAttributeStat.convertAttributeValue(netAttr);
+						Object attrValue = AttributeDeclaredAspect.convertAttributeValue(netAttr,warnings);
+						printWarnings(warnings);
 						Object oldV = netAttributes.put(netAttr.getName(), attrValue);
 						if ( oldV !=null)
 							throw new NdexException("Duplicated network attribute name found: " + netAttr.getName());
@@ -566,7 +578,10 @@ public class CXToCX2LargeFileConverter {
 			newNode.put("v", nodeAttr);
 		}
 
-		Object v = AspectAttributeStat.convertAttributeValue(elmt);
+		List<String> warnings = new ArrayList<>();
+		
+		Object v = AttributeDeclaredAspect.convertAttributeValue(elmt,warnings);
+		printWarnings(warnings);
 		String attrName = elmt.getName();
 		Map<String, DeclarationEntry> nodeAttributeDef = attrDeclarations.getDeclarations().get(CxNode.ASPECT_NAME);
 		if ( nodeAttributeDef != null && 
@@ -810,8 +825,9 @@ public class CXToCX2LargeFileConverter {
 			mappingObj.setMappingDef(defObj);
 			String defString = entry.getValue().getDefinition();
 			if ( mappingType.equals("PASSTHROUGH")) {
-				String mappingAttrName = ConverterUtilities.getPassThroughMappingAttribute(defString); 
-				defObj.setAttributeName(mappingAttrName);
+				String[] m = ConverterUtilities.getPassThroughMappingAttribute(defString); 
+				defObj.setAttributeName(m[0]);
+				defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(m[1]));
 			} else if (mappingType.equals("DISCRETE")) {
 				List<Map<String,Object>> m = new ArrayList<> ();
 				MappingValueStringParser sp = new MappingValueStringParser(defString);	
@@ -841,6 +857,7 @@ public class CXToCX2LargeFileConverter {
 		        }
 		        
 				defObj.setAttributeName(col);
+				defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(t));
 				defObj.setMapppingList(m);
 
 			} else {  //continuous mapping
@@ -922,6 +939,7 @@ public class CXToCX2LargeFileConverter {
 		        
 		        // add the list
 		    	defObj.setAttributeName(col);
+				defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(t));
 				defObj.setMapppingList(m);
 			}
 			v2NodeMappings.put(newVPName, mappingObj);
@@ -1069,8 +1087,10 @@ public class CXToCX2LargeFileConverter {
 	private void addEdgeAttributes(Map<Long,EdgesElement> edgeTable, FileOutputStream out, ObjectMapper mapper, 
 			EdgeAttributesElement elmt,  Map<String, Object> resultHolder, Set<Long> processedId)
 			throws NdexException, JsonGenerationException, JsonMappingException, IOException {
-
-		Object v = AspectAttributeStat.convertAttributeValue(elmt);
+		
+		List<String> warnings = new ArrayList<>();
+		Object v = AttributeDeclaredAspect.convertAttributeValue(elmt,warnings);
+		printWarnings(warnings);
 		String attrName = elmt.getName();
 		Map<String, DeclarationEntry> edgeAttributeDef = attrDeclarations.getDeclarations().get(CxEdge.ASPECT_NAME);
 		if (edgeAttributeDef.containsKey(attrName )) {

@@ -30,6 +30,8 @@
  */
 package org.ndexbio.model.object;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -39,8 +41,17 @@ public class SimplePathQuery extends SimpleQuery {
 	private int _edgeLimit;
 	private boolean errorWhenLimitIsOver;
 	private boolean directOnly;
+	private List<Long> nodeIds;
 	
 	
+	public List<Long> getNodeIds() {
+		return nodeIds;
+	}
+
+	public void setNodeIds(List<Long> nodeIds) {
+		this.nodeIds = nodeIds;
+	}
+
 	public void setSearchDepth(int searchDepth) {
 		_searchDepth = searchDepth;
 	}

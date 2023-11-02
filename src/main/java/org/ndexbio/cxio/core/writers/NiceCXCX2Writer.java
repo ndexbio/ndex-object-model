@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.ndexbio.cx2.aspect.element.core.AttributeDeclaredAspect;
 import org.ndexbio.cx2.aspect.element.core.Cx2Network;
 import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
 import org.ndexbio.cx2.aspect.element.core.CxEdge;
@@ -58,7 +59,6 @@ public class NiceCXCX2Writer {
 		if (warnings.size() < 50 ) 
 			warnings.add(messagePrefix + warningStr);
 	}
-	
 	
 	private AspectAttributeStat analyzeAttributes(NiceCXNetwork niceCX) throws NdexException, IOException {
 		
@@ -114,6 +114,7 @@ public class NiceCXCX2Writer {
 		}
 		
 		//check edge attributes
+		List<String> warnings = new ArrayList<>();
 		for ( Collection<EdgeAttributesElement> edgeAttrs : niceCX.getEdgeAttributes().values()) {
 			for ( EdgeAttributesElement e : edgeAttrs) {
 				if (  (e.getName().equals(CxEdge.INTERACTION) && (!foundEdgeInteractionAttr))) {
@@ -126,7 +127,7 @@ public class NiceCXCX2Writer {
 				attributeStats.addEdgeAttribute(e);
 			}
 		}
-		
+		warnings.stream().forEach((x) -> addWarning(x));
 		//check node and edge bypass count
 		for ( AspectElement a : niceCX.getOpaqueAspectTable().get(CyVisualPropertiesElement.ASPECT_NAME)) {
 				attributeStats.addCyVisualPropertiesElement((CyVisualPropertiesElement)a);
@@ -150,10 +151,11 @@ public class NiceCXCX2Writer {
 		ObjectMapper om = new ObjectMapper();
 			
 		//prepare network attributes
+		List<String> warnings = new ArrayList<>();
 		CxNetworkAttribute cx2NetAttr = new CxNetworkAttribute();
 		for (NetworkAttributesElement netAttr : niceCX.getNetworkAttributes() ) {
 			try {
-				Object attrValue = AspectAttributeStat.convertAttributeValue(netAttr);
+				Object attrValue = AttributeDeclaredAspect.convertAttributeValue(netAttr,warnings);
 				Object oldV = cx2NetAttr.getAttributes().put(netAttr.getName(), attrValue);
 
 				if (oldV !=null && !attrValue.equals(oldV)) {
@@ -168,7 +170,7 @@ public class NiceCXCX2Writer {
 				throw new NdexException(errMsg);
 			}
 		}
-		
+		warnings.stream().forEach( (x) -> addWarning(x));
 		// merge the namespace aspect if it exists
 		NamespacesElement namespace = niceCX.getNamespaces();
 		if ( !namespace.isEmpty()) {
@@ -299,7 +301,7 @@ public class NiceCXCX2Writer {
 			
 			
 		// write visualProperites
-		CX2VPHolder vp = readVisualProperties(niceCX, visualDependencies,warnings);
+		CX2VPHolder vp = readVisualProperties(niceCX, visualDependencies,warnings, attrDeclarations);
 						
 		if ( !vp.getStyle().isEmpty()) {
 				wtr.startAspectFragment(CxVisualProperty.ASPECT_NAME);
@@ -369,12 +371,12 @@ public class NiceCXCX2Writer {
 	}
 	
 	private static CX2VPHolder readVisualProperties(NiceCXNetwork niceCX, VisualEditorProperties visualDependencies,
-			List<String> warningHolder) throws JsonProcessingException, IOException, NdexException {
+			List<String> warningHolder, CxAttributeDeclaration attrDeclarations) throws JsonProcessingException, IOException, NdexException {
 		CX2VPHolder holder = new CX2VPHolder ();
 		
 		if ( niceCX.getOpaqueAspectTable().get(CyVisualPropertiesElement.ASPECT_NAME) != null) {
 			for ( AspectElement elmt : niceCX.getOpaqueAspectTable().get(CyVisualPropertiesElement.ASPECT_NAME)) {
-				holder.addVisuaProperty((CyVisualPropertiesElement)elmt, visualDependencies, warningHolder);
+				holder.addVisuaProperty((CyVisualPropertiesElement)elmt, visualDependencies, warningHolder, attrDeclarations);
 			}
 		}
 		return holder;

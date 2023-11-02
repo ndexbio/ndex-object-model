@@ -7,14 +7,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 
+import org.ndexbio.cx2.aspect.element.core.CxAttributeDeclaration;
+import org.ndexbio.cx2.aspect.element.core.CxEdge;
 import org.ndexbio.cx2.aspect.element.core.CxEdgeBypass;
+import org.ndexbio.cx2.aspect.element.core.CxNode;
 import org.ndexbio.cx2.aspect.element.core.CxNodeBypass;
 import org.ndexbio.cx2.aspect.element.core.CxVisualProperty;
+import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
 import org.ndexbio.cx2.aspect.element.core.MappingDefinition;
 import org.ndexbio.cx2.aspect.element.core.VPMappingType;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyMapping;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
+import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.Mapping;
 import org.ndexbio.cxio.core.writers.NiceCXCX2Writer;
@@ -106,7 +111,7 @@ public class CX2VPHolder {
 	}
 
 	public void addVisuaProperty(CyVisualPropertiesElement elmt,
-			   VisualEditorProperties visualDependencies, List<String> warningHolder) throws NdexException, IOException {
+			   VisualEditorProperties visualDependencies, List<String> warningHolder, CxAttributeDeclaration attrDeclarations) throws NdexException, IOException {
 	    	
 		String po = elmt.getProperties_of();
 		    
@@ -149,7 +154,7 @@ public class CX2VPHolder {
 	    		}
 	    		
 	    		if ( nodeMappings != null && !nodeMappings.isEmpty()) {
-	    			processMappingEntry(nodeMappings, style.getNodeMappings(),warningHolder);
+	    			processMappingEntry(nodeMappings, style.getNodeMappings(),warningHolder, attrDeclarations);
 	    		}
 	    		
 	    } else if ( po.equals("edges:default")) {
@@ -188,7 +193,7 @@ public class CX2VPHolder {
 	    		}	
 	    		
 	    		if ( edgeMappings != null && !edgeMappings.isEmpty()) {
-	    			processMappingEntry(edgeMappings, style.getEdgeMappings(),warningHolder);
+	    			processMappingEntry(edgeMappings, style.getEdgeMappings(),warningHolder, attrDeclarations);
 	    		}
 	    		
 	    	} else if ( po.equals("nodes")) {  //node bypasses
@@ -225,18 +230,18 @@ public class CX2VPHolder {
 	
 	/**
 	 * 
-	 * @param nodeMappings
-	 * @param v2NodeMappings
+	 * @param cx1Mappings
+	 * @param v2Mappings
 	 * @return A list of String that contains warnings from the conversion.
 	 * @throws NdexException
 	 * @throws IOException
 	 */
-	private static void processMappingEntry(SortedMap<String, Mapping> nodeMappings,
-			Map<String, VisualPropertyMapping> v2NodeMappings, List<String> warningHolder) throws NdexException, IOException {
+	private static void processMappingEntry(SortedMap<String, Mapping> cx1Mappings,
+			Map<String, VisualPropertyMapping> v2Mappings, List<String> warningHolder, CxAttributeDeclaration attrDeclarations) throws NdexException, IOException {
 		
 		CXToCX2VisualPropertyConverter vpConverter = CXToCX2VisualPropertyConverter.getInstance();
 		
-		for (Map.Entry<String, Mapping> entry : nodeMappings.entrySet()) {
+		for (Map.Entry<String, Mapping> entry : cx1Mappings.entrySet()) {
 			String vpName = entry.getKey();
 			String newVPName = vpConverter.getNewEdgeOrNodeProperty(vpName);
 			if (newVPName == null)
@@ -254,8 +259,9 @@ public class CX2VPHolder {
 			String defString = entry.getValue().getDefinition();
 			try {
 				if (mappingType.equals("PASSTHROUGH")) {
-					String mappingAttrName = ConverterUtilities.getPassThroughMappingAttribute(defString);
-					defObj.setAttributeName(mappingAttrName);
+					String[] nameNType = ConverterUtilities.getPassThroughMappingAttribute(defString);
+					defObj.setAttributeName(nameNType[0]);
+					defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(nameNType[1]));
 				} else if (mappingType.equals("DISCRETE")) {
 					List<Map<String, Object>> m = new ArrayList<>();
 					try {
@@ -288,6 +294,7 @@ public class CX2VPHolder {
 						}
 
 						defObj.setAttributeName(col);
+						defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(t));
 						defObj.setMapppingList(m);
 					} catch (IOException e) {
 						addWarning( warningHolder,
@@ -302,7 +309,7 @@ public class CX2VPHolder {
 					MappingValueStringParser sp = new MappingValueStringParser(defString);
 					String col = sp.get("COL");
 					
-					//String t = sp.get("T");
+					String t = sp.get("T");
 
 					Object min = null;
 					Boolean includeMin = null;
@@ -378,6 +385,7 @@ public class CX2VPHolder {
 
 					// add the list
 					defObj.setAttributeName(col);
+					defObj.setAttributeType(ATTRIBUTE_DATA_TYPE.fromCxLabel(t));
 					defObj.setMapppingList(m);
 				}
 			} catch (NdexException e) {
@@ -385,9 +393,36 @@ public class CX2VPHolder {
 						"Can't converter " + mappingType + " mapping on " + vpName + ". Cause: " + e.getMessage());
 			}
 			if ( mappingObj.getType() == VPMappingType.PASSTHROUGH || 
-					mappingObj.getMappingDef().getMapppingList().size()>0)
-			   v2NodeMappings.put(newVPName, mappingObj);
+					mappingObj.getMappingDef().getMapppingList().size()>0) {
+			    MappingDefinition def = mappingObj.getMappingDef();
+			    
+			    String aspectName = newVPName.startsWith("NODE_")? CxNode.ASPECT_NAME: CxEdge.ASPECT_NAME;
+			    
+			    ATTRIBUTE_DATA_TYPE t0 = getDelcaredAttributeType(attrDeclarations, aspectName , def.getAttributeName());
+			    if ( t0 == null)
+			    	addWarning(warningHolder, newVPName + " " + mappingObj.getType() + " mapping references nonexistent attribute '" + def.getAttributeName() 
+			    	   + "' in " + aspectName + ".");
+			    else if ( t0 != def.getAttributeType()) {
+			    	if ((!t0.isSingleValueType()) && t0.elementType() == def.getAttributeType() ) { // handle list as a special case.
+			    			def.setAttributeType(t0);
+			    	} else 
+			    		throw new NdexException ("Data type error on '" + def.getAttributeName() + "' attribute: declared as " + def.getAttributeType() +
+			    			" in visual style mapping (" + newVPName + ") but found as " + t0 + " in the attribute value."); 
+			    }
+				v2Mappings.put(newVPName, mappingObj);
+			}   
 		}
 	}
+	
+	private static ATTRIBUTE_DATA_TYPE getDelcaredAttributeType ( CxAttributeDeclaration attrDeclarations, String aspectName, String attrName) {
+		Map<String,DeclarationEntry> n = attrDeclarations.getAttributesInAspect(aspectName);
+		if ( n != null ) {
+			DeclarationEntry e = n.get(attrName);
+			if (e != null)
+				return e.getDataType();
+		}		
+		return null;
+	}
+	
 
 }
