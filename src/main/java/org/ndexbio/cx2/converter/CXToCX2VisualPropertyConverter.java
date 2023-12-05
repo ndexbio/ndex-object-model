@@ -264,6 +264,7 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_LABEL_ROTATION",  numberCvtr);
     	addEntry ( "EDGE_LABEL_TRANSPARENCY", "EDGE_LABEL_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_WIDTH","EDGE_LABEL_MAX_WIDTH",numberCvtr );
+    	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_LINE_TYPE", "EDGE_LINE_STYLE", edgeLineTypeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SIZE", numberCvtr );
@@ -272,7 +273,7 @@ public class CXToCX2VisualPropertyConverter {
     	
 
     	
-    	//addEntry ( "EDGE_PAINT", "EDGE_LINE_COLOR", stringCvtr);
+    	//addEntry ( "EDGE_UNSELECTED_PAINT");
     	addEntry ( "EDGE_STROKE_UNSELECTED_PAINT", "EDGE_LINE_COLOR", stringCvtr);
     	addEntry ( "EDGE_SOURCE_ARROW_UNSELECTED_PAINT", "EDGE_SOURCE_ARROW_COLOR", stringCvtr);
     	addEntry ( "EDGE_TARGET_ARROW_UNSELECTED_PAINT", "EDGE_TARGET_ARROW_COLOR", stringCvtr);
@@ -280,7 +281,6 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_WIDTH", "EDGE_WIDTH", numberCvtr );
     	addEntry ( "EDGE_VISIBLE", "EDGE_VISIBILITY", visibilityCvtr );
     	addEntry ( "EDGE_SELECTED", booleanCvtr );
-    	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_BEND", "EDGE_CONTROL_POINTS", edgeBendCvtr );
     	addEntry ( "EDGE_Z_ORDER", numberCvtr );
     	addEntry ( "EDGE_STACKING_DENSITY", numberCvtr );
