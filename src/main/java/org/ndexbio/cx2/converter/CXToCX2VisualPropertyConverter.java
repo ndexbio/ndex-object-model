@@ -272,11 +272,12 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_TARGET_ARROW_SIZE", numberCvtr );
     	
 
-    	
-    	//addEntry ( "EDGE_UNSELECTED_PAINT");
+       	addEntry ( "EDGE_STROKE_SELECTED_PAINT");
     	addEntry ( "EDGE_STROKE_UNSELECTED_PAINT", "EDGE_LINE_COLOR", stringCvtr);
     	addEntry ( "EDGE_SOURCE_ARROW_UNSELECTED_PAINT", "EDGE_SOURCE_ARROW_COLOR", stringCvtr);
+    	addEntry ( "EDGE_SOURCE_ARROW_SELECTED_PAINT");
     	addEntry ( "EDGE_TARGET_ARROW_UNSELECTED_PAINT", "EDGE_TARGET_ARROW_COLOR", stringCvtr);
+    	addEntry ( "EDGE_TARGET_ARROW_SELECTED_PAINT");
     	addEntry ( "EDGE_TRANSPARENCY", "EDGE_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH", "EDGE_WIDTH", numberCvtr );
     	addEntry ( "EDGE_VISIBLE", "EDGE_VISIBILITY", visibilityCvtr );

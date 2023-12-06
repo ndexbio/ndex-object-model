@@ -175,10 +175,13 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry ( "EDGE_TARGET_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_TARGET_ARROW_SIZE");
     	
-    	
+       	addEntry ( "EDGE_STROKE_SELECTED_PAINT");
+
     	addEntry ( "EDGE_LINE_COLOR", "EDGE_STROKE_UNSELECTED_PAINT");
     	addEntry ( "EDGE_SOURCE_ARROW_COLOR", "EDGE_SOURCE_ARROW_UNSELECTED_PAINT");
     	addEntry ( "EDGE_TARGET_ARROW_COLOR", "EDGE_TARGET_ARROW_UNSELECTED_PAINT");
+    	addEntry ( "EDGE_SOURCE_ARROW_SELECTED_PAINT");
+    	addEntry ( "EDGE_TARGET_ARROW_SELECTED_PAINT");
     	addEntry ( "EDGE_OPACITY", "EDGE_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH" );
     	addEntry ( "EDGE_VISIBILITY", "EDGE_VISIBLE", visibilityCvtr);
