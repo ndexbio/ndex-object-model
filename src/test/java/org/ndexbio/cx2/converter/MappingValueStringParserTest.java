@@ -1,10 +1,14 @@
 package org.ndexbio.cx2.converter;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.io.IOException;
 import java.util.List;
-import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *
@@ -83,9 +87,9 @@ public class MappingValueStringParserTest {
 		assertEquals(6, res.size());
 		assertEquals("COL=STRING style", res.get(0));
 		assertEquals("T=string", res.get(1));
-		assertTrue("K=0=0", res.get(2).startsWith("K=0=string:data:image/png;base64,i"));
+		assertTrue(res.get(2).startsWith("K=0=string:data:image/png;base64,i"), "K=0=0");
 		assertEquals("V=0=org.cytoscape.ding.customgraphics.bitmap.URLImageCustomGraphics,13,Arabidopsis_thaliana_NL.png,bitmap image", res.get(3));
-		assertTrue("K=1=1", res.get(4).startsWith("K=1=string:data:image/png;base64,iV"));
+		assertTrue( res.get(4).startsWith("K=1=string:data:image/png;base64,iV"), "K=1=1");
 		assertEquals("V=1=org.cytoscape.ding.customgraphics.bitmap.URLImageCustomGraphics,41,file:/Users/dexter/dexter%20headshot%20torrey%20pines%20beach.png,bitmap image", res.get(5));
 	}
 		

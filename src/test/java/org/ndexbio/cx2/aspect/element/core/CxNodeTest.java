@@ -1,13 +1,17 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.model.exceptions.NdexException;
@@ -104,13 +108,16 @@ public class CxNodeTest {
 		}
 	}
 
-	@Test (expected = NdexException.class)
+	@Test  // (expected = NdexException.class)
 	public void test3() throws JsonMappingException, JsonProcessingException, NdexException {
+		 assertThrows(NdexException.class, () ->
+		 {
 		String s1 = "{\"x\": 22, \"id\":23 }";
 		ObjectMapper om = new ObjectMapper();
 		CxNode n2 = om.readerFor(CxNode.class).readValue(s1);
 				
 		n2.validate();
+		 });	
 	}
 
     @Test 

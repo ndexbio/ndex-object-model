@@ -1,11 +1,12 @@
 package org.ndexbio.cx2.io;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.ndexbio.cx2.aspect.element.core.CxNode;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

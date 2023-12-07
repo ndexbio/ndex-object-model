@@ -1,8 +1,10 @@
 package org.ndexbio.cx2.converter;
 
-import static org.junit.Assert.*;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import org.junit.jupiter.api.Test;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -53,7 +55,7 @@ public class AspectAttributeStatEntryTest {
 		}
 		
 		assertEquals("foo", e.getDefaultValue(30+25+40));
-		assertNull("foo", e.getDefaultValue(30+25+40+1));
+		assertNull( e.getDefaultValue(30+25+40+1),"foo");
 		
 		
 		for ( int i = 0 ; i < 100 ; i ++  ) {
@@ -62,7 +64,7 @@ public class AspectAttributeStatEntryTest {
 		
 		assertEquals("bar", e.getDefaultValue(100+30+25+40));
 		
-		assertNull("bar", e.getDefaultValue(100+30+25+40+1));
+		assertNull( e.getDefaultValue(100+30+25+40+1),"bar");
 		
 	}
 

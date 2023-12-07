@@ -1,8 +1,9 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import static org.junit.Assert.*;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +15,10 @@ public class LabelPositionTest {
 		String CX1Value = "SE,NW,l,-5.00,27.00";
 		LabelPosition p = LabelPosition.createFromCX1Value(CX1Value);
 		
+	    String out2 = p.toCX1String();
+	    System.out.println ( out2);
+	    assertEquals(out2, "SE,NW,l,-5.0,27.0");
+	    
 		assertEquals(HorizontalAlignment.left, p.getHorizontalAlign());
 		assertEquals(HorizontalAlignment.left, p.getJustification());
 		assertEquals(HorizontalAlignment.right, p.getHorizontalAnchor());
@@ -41,6 +46,7 @@ public class LabelPositionTest {
 	    
 	    
 	    assertEquals(p.getMarginX(), p2.getMarginX(), 0.000001);
+	    	    
 	}
 
 }

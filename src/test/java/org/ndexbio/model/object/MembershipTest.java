@@ -30,15 +30,16 @@
  */
 package org.ndexbio.model.object;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.ndexbio.model.cx.SupportElement;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -50,7 +51,7 @@ public class MembershipTest {
 
 	static ObjectMapper mapper;
 	
-	 @BeforeClass
+    @BeforeAll
 	 public static void setup() {
 		 mapper = new ObjectMapper(); // create once, reuse
 	 }

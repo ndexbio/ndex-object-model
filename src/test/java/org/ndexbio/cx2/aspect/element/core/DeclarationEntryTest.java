@@ -1,10 +1,13 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.ndexbio.cx2.aspect.element.core.DeclarationEntry;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.model.exceptions.NdexException;
@@ -81,16 +84,18 @@ public class DeclarationEntryTest {
 	}
 	
 	
-	@Test (expected = NdexException.class) 
+	@Test //(expected = NdexException.class) 
 	public void testDeserialization1() throws NdexException, IOException {
 
-		ObjectMapper om = new ObjectMapper();
+		assertThrows(NdexException.class, () -> {
+			ObjectMapper om = new ObjectMapper();
 
-		String s1 = "{\"v\": [2,3.3]}";
-		
-		DeclarationEntry e = om.readerFor(DeclarationEntry.class).readValue(s1);
+			String s1 = "{\"v\": [2,3.3]}";
 
-		e.processValue();
+			DeclarationEntry e = om.readerFor(DeclarationEntry.class).readValue(s1);
+
+			e.processValue();
+		});
 	}
 
 }

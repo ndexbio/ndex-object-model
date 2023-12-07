@@ -9,6 +9,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import org.ndexbio.cx2.aspect.element.core.EdgeControlPoint;
+import org.ndexbio.cx2.aspect.element.core.EdgeLabelPosition;
 import org.ndexbio.cx2.aspect.element.core.FontFace;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
@@ -41,6 +42,24 @@ public class CX2ToCXVisualPropertyConverter {
 			return "EQUAL_DASH";
 		} };
 		
+	private static final CX2ToCXVisualPropertyCvtFunction nodeShapeTypeCvtr =	
+		(nodeShape) -> {
+			String nodeShapeStr = (String)nodeShape; 
+			switch (nodeShapeStr ) { 
+		case "ellipse":
+		case "triangle":
+		case "rectangle":
+		case "parallelogram":
+		case "diamond":	
+		case "hexagon":
+		case "octagon":	
+		case "vee":	
+			return nodeShapeStr.toUpperCase();
+		case "round-rectangle":	
+			return "ROUND_RECTANGLE";
+		default: 
+			return nodeShapeStr;
+		} };
 		
 		private static final CX2ToCXVisualPropertyCvtFunction edgeLineTypeCvtr = (cytoscapeLineType) ->
 		{
@@ -99,7 +118,7 @@ public class CX2ToCXVisualPropertyConverter {
 
     	// nodes
     	addEntry ( "NODE_BORDER_COLOR","NODE_BORDER_PAINT");
-    	addEntry ("NODE_BORDER_STYLE", "NODE_BORDER_STROKE", nodeBorderTypeCvtr);
+    	addEntry ( "NODE_BORDER_STYLE", "NODE_BORDER_STROKE", nodeBorderTypeCvtr);
     	addEntry ( "NODE_BORDER_OPACITY", "NODE_BORDER_TRANSPARENCY", opacityCvtr );
     	addEntry ( "NODE_BORDER_WIDTH");
 
@@ -118,28 +137,14 @@ public class CX2ToCXVisualPropertyConverter {
     	
     	addEntry ( "NODE_LABEL_ROTATION");
        	addEntry ( "NODE_LABEL_MAX_WIDTH", "NODE_LABEL_WIDTH");
+       	
+       	addEntry ( "NODE_LABEL_BACKGROUND_COLOR");
+       	addEntry ( "NODE_LABEL_BACKGROUND_SHAPE", nodeShapeTypeCvtr);
+       	addEntry ( "NODE_LABEL_BACKGROUND_OPACITY","NODE_LABEL_BACKGROUND_TRANSPARENCY",opacityCvtr);		
     	addEntry ( "NODE_SELECTED" );
     	addEntry ( "NODE_SELECTED_PAINT" );
    	
-    	addEntry ( "NODE_SHAPE",      "NODE_SHAPE", 
-    				(nodeShape) -> {
-    					String nodeShapeStr = (String)nodeShape; 
-    					switch (nodeShapeStr ) { 
-    				case "ellipse":
-    				case "triangle":
-    				case "rectangle":
-    				case "parallelogram":
-    				case "diamond":	
-    				case "hexagon":
-    				case "octagon":	
-    				case "vee":	
-    					return nodeShapeStr.toUpperCase();
-    				case "round-rectangle":	
-    					return "ROUND_RECTANGLE";
-    				default: 
-    					return nodeShapeStr;
-    				} }
-    			);
+    	addEntry ( "NODE_SHAPE",nodeShapeTypeCvtr);
     	addEntry ( "NODE_WIDTH");
     	addEntry ( "NODE_SIZE");
     	addEntry ( "NODE_BACKGROUND_OPACITY", "NODE_TRANSPARENCY",    opacityCvtr );
@@ -164,11 +169,19 @@ public class CX2ToCXVisualPropertyConverter {
     	
     	addEntry ( "EDGE_LABEL");
     	addEntry ( "EDGE_LABEL_COLOR"    );
+    	addEntry ( "EDGE_LABEL_AUTOROTATE");
     	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE" );
     	addEntry ( "EDGE_LABEL_ROTATION");
     	addEntry ( "EDGE_LABEL_OPACITY", "EDGE_LABEL_TRANSPARENCY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_MAX_WIDTH","EDGE_LABEL_WIDTH");
+    	
+      	addEntry ( "EDGE_LABEL_BACKGROUND_COLOR");
+       	addEntry ( "EDGE_LABEL_BACKGROUND_SHAPE", nodeShapeTypeCvtr);
+       	addEntry ( "EDGE_LABEL_BACKGROUND_OPACITY","EDGE_LABEL_BACKGROUND_TRANSPARENCY",opacityCvtr);	
+    	addEntry ( "EDGE_LABEL_POSITION",
+    			( strVal) -> {return ((EdgeLabelPosition)strVal).toCX1String();});
+       	
     	addEntry ( "EDGE_LINE_STYLE", "EDGE_LINE_TYPE", edgeLineTypeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SIZE" );
@@ -201,7 +214,6 @@ public class CX2ToCXVisualPropertyConverter {
     	for ( String n : CXToCX2VisualPropertyConverter.cx1CarryOverVPNames) {
     		addEntry ( n);
     	}
- 
     	
     }
     
