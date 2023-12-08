@@ -46,6 +46,45 @@ public class MappingDefinitionTest {
 		
 		md = om.readValue(s2, MappingDefinition.class);
 		assertEquals(md.getAttributeType(), ATTRIBUTE_DATA_TYPE.LONG);
+		
+		
+		s = " {\"map\": [\n"
+				+ "                                {\n"
+				+ "                                    \"v\": \"phenotype\",\n"
+				+ "                                    \"vp\": \"round-rectangle\"\n"
+				+ "                                },\n"
+				+ "                                {\n"
+				+ "                                    \"v\": \"antibody\",\n"
+				+ "                                    \"vp\": \"vee\"\n"
+				+ "                                },\n"
+				+ "                                {\n"
+				+ "                                    \"v\": \"disease\",\n"
+				+ "                                    \"vp\": \"hexagon\"\n"
+				+ "                                },\n"
+				+ "                                {\n"
+				+ "                                    \"v\": \"rna\",\n"
+				+ "                                    \"vp\": \"rectangle\"\n"
+				+ "                                },\n"
+				+ "                                {\n"
+				+ "                                    \"v\": \"gene\",\n"
+				+ "                                    \"vp\": \"round-rectangle\"\n"
+				+ "                                }, {\n"
+				+ "                                    \"v\": \"chemical\",\n"
+				+ "                                    \"vp\": \"ellipse\"\n"
+				+ "                                }],\n"
+				+ "                            \"attribute\": \"type\",\n"
+				+ "                            \"type\": \"string\"\n"
+				+ "                        }";
+		
+		
+		md2 = om.readValue(s, MappingDefinition.class);
+
+		assertEquals("type", md2.getAttributeName());
+		assertEquals(6,md2.getMapppingList().size());
+		assertEquals("phenotype", md2.getMapppingList().get(0).get("v"));
+		
+		
+		
 	}
 
 }

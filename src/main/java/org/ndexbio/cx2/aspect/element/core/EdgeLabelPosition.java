@@ -1,20 +1,27 @@
 package org.ndexbio.cx2.aspect.element.core;
 
+import java.util.Map;
+
+import org.ndexbio.model.exceptions.NdexException;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(Include.NON_NULL)
 
-public class EdgeLabelPosition implements CX1ValueSeerializable{
+public class EdgeLabelPosition implements ComplexVPValue{
 		
 	@JsonProperty(LabelPosition.JUSTIFICATION)	
 	private HorizontalAlignment justification;
 	
-	@JsonProperty("edgeAnchor")
+	public final static String EDGE_ANCHOR = "EDGE_ANCHOR";  
+	public final static String LABEL_ANCHOR = "LABEL_ANCHOR";
+	
+	@JsonProperty(EDGE_ANCHOR)
 	private String edgeAnchorPoints;
 	
-	@JsonProperty("labelAnchor")
+	@JsonProperty(LABEL_ANCHOR)
 	private String labelAnchorPoints;
 
 	@JsonProperty(ObjectPosition.MARGIN_X)
@@ -96,5 +103,21 @@ public class EdgeLabelPosition implements CX1ValueSeerializable{
 	public void setLabelAnchorPoints(String labelAnchor) {
 		this.labelAnchorPoints = labelAnchor;
 	}
+	
+	public static EdgeLabelPosition createFromMap(Map<String,Object> m){
+		
+		EdgeLabelPosition result = new EdgeLabelPosition();
+		
+		result.setMarginX(((Number)m.get("MARGIN_X")).floatValue());
+		result.setMarginY(((Number)m.get("MARGIN_Y")).floatValue());
+		result.setJustification(HorizontalAlignment.valueOf((String)m.get(LabelPosition.JUSTIFICATION)));
+		result.setEdgeAnchorPoints((String)m.get(EDGE_ANCHOR));
+		result.setLabelAnchorPoints((String)m.get(LABEL_ANCHOR));
+		
+		return result;
+		
+	}
+
+	
 	
 }

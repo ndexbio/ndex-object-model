@@ -22,6 +22,15 @@ public class MappingDefinition {
 	@JsonProperty("attribute")
 	private String attributeName;
 	
+	
+	// Attribute "vp" stores the visual property value in a mapping list entry 
+	public static final String vp = "vp";
+	// Attribute "v" stores the data value in a mapping list entry
+	public static final String v = "v";
+	
+	public static final String maxVPValue = "maxVPValue";
+	public static final String minVPValue = "minVPValue";
+	
 	/**
 	 * Data type of the attribute. This value can be omitted if the attribute is defined in the Attribute declaration.
 	 * We are adding this to support the use case of storing a mapping that is on a non-exists data column. When we convert it to cx1

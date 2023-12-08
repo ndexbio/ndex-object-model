@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(Include.NON_NULL)
 
-public class LabelPosition extends ObjectPosition implements CX1ValueSeerializable{
+public class LabelPosition extends ObjectPosition implements ComplexVPValue{
 	
 	public static final String JUSTIFICATION = "JUSTIFICATION";
 	

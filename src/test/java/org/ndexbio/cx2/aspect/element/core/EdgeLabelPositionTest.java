@@ -2,6 +2,9 @@ package org.ndexbio.cx2.aspect.element.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 public class EdgeLabelPositionTest {
@@ -31,5 +34,20 @@ public class EdgeLabelPositionTest {
 		        assertEquals(expectedCX1String, edgeLabelPosition.toCX1String(), "CX1 string representation should match");
 		    }
 
+		    @Test
+		    public void testCreateFromMap() {
+		        Map<String, Object> map = new HashMap<>();
+		        map.put(LabelPosition.JUSTIFICATION, HorizontalAlignment.left.name());
+		        map.put(EdgeLabelPosition.EDGE_ANCHOR, "SE");
+		        map.put(EdgeLabelPosition.LABEL_ANCHOR, "NW");
+		        map.put(ObjectPosition.MARGIN_X, 1.5f);
+		        map.put(ObjectPosition.MARGIN_Y, 3.2f);
+		        EdgeLabelPosition edgeLabelPosition = EdgeLabelPosition.createFromMap(map);
+		        assertEquals(HorizontalAlignment.left, edgeLabelPosition.getJustification());
+		        assertEquals("SE", edgeLabelPosition.getEdgeAnchorPoints());
+		        assertEquals("NW", edgeLabelPosition.getLabelAnchorPoints());
+		        assertEquals(1.5f, edgeLabelPosition.getMarginX(), 0.001f);
+		        assertEquals(3.2f, edgeLabelPosition.getMarginY(), 0.001f);
+		    }
 
 }
