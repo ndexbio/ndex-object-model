@@ -32,9 +32,6 @@ public class CXToCX2VisualPropertyConverter {
 			"COMPOUND_NODE_SHAPE",
 	
 			"NODE_TOOLTIP",
-	/*		"NODE_X_LOCATION",
-			"NODE_Y_LOCATION",
-			"NODE_Z_LOCATION", */
 			
             "EDGE_SELECTED",
             "EDGE_SELECTED_PAINT",
