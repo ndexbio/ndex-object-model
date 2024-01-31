@@ -30,7 +30,7 @@ public class GraphicsPosition extends CyObjectPosition implements ComplexVPValue
 	}
 
 	/**
-	 * Create an LabelPosition object from cx1 value. 
+	 * Create an GraphicsPosition object from cx1 value. 
 	 * @param cx1Value a serialized cx1 value string like this "SE,NW,l,0.00,27.00" 
 	 * @return
 	 */

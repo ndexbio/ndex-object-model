@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
+import org.ndexbio.cx2.aspect.element.core.GraphicsPosition;
+import org.ndexbio.cx2.aspect.element.core.HorizontalAlignment;
 import org.ndexbio.model.exceptions.NdexException;
 
 class CXToCX2VisualPropertyConverterTest {
@@ -32,6 +34,11 @@ class CXToCX2VisualPropertyConverterTest {
 	    	assertEquals("NODE_CUSTOMGRAPHICS_1",converter.getNewEdgeOrNodeProperty("NODE_CUSTOMGRAPHICS_1"));
 	    	assertEquals("NODE_CUSTOMGRAPHICS_9",converter.getNewEdgeOrNodeProperty("NODE_CUSTOMGRAPHICS_9"));
 	    	
+
+	    	assertEquals("NODE_CUSTOMGRAPHICS_POSITION_1",converter.getNewEdgeOrNodeProperty("NODE_CUSTOMGRAPHICS_POSITION_1"));
+	    	assertEquals("NODE_CUSTOMGRAPHICS_POSITION_9",converter.getNewEdgeOrNodeProperty("NODE_CUSTOMGRAPHICS_POSITION_9"));
+
+	    	
 	    }
 
 	    @Test
@@ -49,6 +56,14 @@ class CXToCX2VisualPropertyConverterTest {
 	    	assertEquals(0.0, ((List)cg.getProperties().get("cy_gradientFractions")).get(0));
 	    	assertEquals(1.0, ((List)cg.getProperties().get("cy_gradientFractions")).get(1));
 	    	
+	    	Object p1 = converter.getNewEdgeOrNodePropertyValue("NODE_CUSTOMGRAPHICS_POSITION_1", "SE,NW,l,0.00,27.00");
+	    	assertTrue(p1 instanceof GraphicsPosition);
+	    	GraphicsPosition gp = (GraphicsPosition) p1;
+	    	assertEquals("SE", gp.getEntityAnchorPoints());
+	    	assertEquals("NW", gp.getGraphicsAnchorPoints());
+	    	assertEquals(HorizontalAlignment.left, gp.getJustification());
+	    	assertEquals(0.0, gp.getMarginX());
+	    	assertEquals(27.0, gp.getMarginY());
 	    }
 
 	    // Additional tests for other methods and edge cases

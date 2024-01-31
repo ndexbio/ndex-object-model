@@ -1,6 +1,7 @@
 package org.ndexbio.cx2.converter;
 
 import java.util.AbstractMap;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
@@ -13,9 +14,8 @@ import org.ndexbio.cx2.aspect.element.core.EdgeLabelPosition;
 import org.ndexbio.cx2.aspect.element.core.FontFace;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
-import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
-import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
+import org.ndexbio.cx2.aspect.element.core.GraphicsPosition;
 
 public class CX2ToCXVisualPropertyConverter {
 	
@@ -159,8 +159,8 @@ public class CX2ToCXVisualPropertyConverter {
         		/*	   (sizeObj) ->
         					{ return ((NodeImageSize)sizeObj).toCX1String();} */
         			);    		
-        	addEntry ( "NODE_IMAGE_" + i + "_POSITION", "NODE_CUSTOMGRAPHICS_POSITION_" + i,  
-        			(position) -> { return ((ObjectPosition)position).toCX1String(); } );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i,  
+        			(position) -> { return ((GraphicsPosition)position).toCX1String(); } );    		
     	}
 
      	addEntry("NODE_X_LOCATION");

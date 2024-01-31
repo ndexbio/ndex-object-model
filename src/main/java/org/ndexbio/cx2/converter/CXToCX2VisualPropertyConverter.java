@@ -11,9 +11,8 @@ import java.util.stream.Stream;
 import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
 import org.ndexbio.cx2.aspect.element.core.EdgeControlPoint;
 import org.ndexbio.cx2.aspect.element.core.EdgeLabelPosition;
+import org.ndexbio.cx2.aspect.element.core.GraphicsPosition;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
-import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
-import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -255,8 +254,8 @@ public class CXToCX2VisualPropertyConverter {
         	addEntry ( "NODE_CUSTOMGRAPHICS_" + i,  nodeImageCvtr );    		
         	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, numberCvtr);
         		//	(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
-        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, "NODE_IMAGE_" + i + "_POSITION", 
-        			(positionStr) ->{ return ObjectPosition.createFromCX1Value(positionStr);} );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, 
+        			(positionStr) ->{ return GraphicsPosition.createFromCX1Value(positionStr);} );    		
     	}
 
     	addEntry("NODE_X_LOCATION",numberCvtr);

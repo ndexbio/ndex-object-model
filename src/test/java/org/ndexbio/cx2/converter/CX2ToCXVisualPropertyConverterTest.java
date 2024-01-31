@@ -11,6 +11,7 @@ import java.util.SortedMap;
 import org.junit.jupiter.api.Test;
 import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
 import org.ndexbio.cx2.aspect.element.core.FontFace;
+import org.ndexbio.cx2.aspect.element.core.GraphicsPosition;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -80,8 +81,18 @@ public class CX2ToCXVisualPropertyConverterTest {
 		CustomGraphics c = mapper.readValue(jsonStr, CustomGraphics.class);
 		nodeVPs.put("NODE_CUSTOMGRAPHICS_1", c);
 		
+		nodeVPs.put("NODE_CUSTOMGRAPHICS_SIZE_1", 23.1);
+		
+		GraphicsPosition p1 = mapper.readValue("{\"MARGIN_X\":1.5,\"JUSTIFICATION\":\"left\",\"GRAPHICS_ANCHOR\":\"NW\",\"ENTITY_ANCHOR\":\"SE\",\"MARGIN_Y\":3.2}\n"
+				, GraphicsPosition.class);
+		nodeVPs.put("NODE_CUSTOMGRAPHICS_POSITION_9", p1);
+		
+		
+		//convert visual properties to CX1 format.
 		
 		SortedMap<String, String> cxnodeVPs = converter.convertEdgeOrNodeVPs(nodeVPTable);
+		
+		//nodes
 				
 		assertEquals("#00EEFF", cxnodeVPs.get("NODE_FILL_COLOR"));
 		assertEquals("20.2", cxnodeVPs.get("NODE_WIDTH"));
@@ -98,6 +109,8 @@ public class CX2ToCXVisualPropertyConverterTest {
 		assertTrue(cxnodeVPs.get("NODE_CUSTOMGRAPHICS_1").startsWith("org.cytoscape.BarChart:"));
 		String s0 = "org.cytoscape.BarChart:{\"cy_range\":[-1.232,1.022],\"cy_showRangeAxis\":true,\"cy_axisLabelFontSize\":2,\"cy_showRangeZeroBaseline\":true,\"cy_colorScheme\":\"Set3 colors\",\"cy_colors\":[\"#8DD3C7\",\"#FFFFB3\",\"#BEBADA\"],\"cy_itemLabelFontSize\":4,\"cy_showDomainAxis\":true,\"cy_axisColor\":\"#238443\",\"cy_axisWidth\":0.5,\"cy_autoRange\":true,\"cy_borderColor\":\"#CB181D\",\"cy_borderWidth\":0.5,\"cy_dataColumns\":[\"gal1RGexp\",\"gal4RGexp\",\"gal80Rexp\"],\"cy_domainLabelPosition\":\"DOWN_45\",\"cy_showItemLabels\":true}";
 		assertEquals(s0, cxnodeVPs.get("NODE_CUSTOMGRAPHICS_1"));
+		assertEquals("23.1", cxnodeVPs.get("NODE_CUSTOMGRAPHICS_SIZE_1"));
+		assertEquals("SE,NW,l,1.5,3.2", cxnodeVPs.get("NODE_CUSTOMGRAPHICS_POSITION_9"));
 
 		//edges
 		assertEquals("3.0", cxnodeVPs.get("EDGE_WIDTH"));
