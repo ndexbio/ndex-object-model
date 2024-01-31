@@ -41,7 +41,7 @@ class CustomGraphicsTest {
 		assertEquals (cg1, cg);
 		
         String s2 = om.writeValueAsString(cg);	
-        System.out.println(s2);
+        System.out.println("JSON string of a custom graphics obj: "+s2);
         
         CustomGraphics cg2 = om.readValue(s2, CustomGraphics.class);
         assertEquals (cg2, cg);

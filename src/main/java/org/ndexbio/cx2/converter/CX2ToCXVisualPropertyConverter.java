@@ -15,6 +15,7 @@ import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
 import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
 import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
+import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
 
 public class CX2ToCXVisualPropertyConverter {
 	
@@ -151,11 +152,12 @@ public class CX2ToCXVisualPropertyConverter {
     	addEntry (  "NODE_VISIBILITY", "NODE_VISIBLE", visibilityCvtr);
     	
     	for ( int i = 1 ; i < 10; i++) {
-        	addEntry ( "NODE_IMAGE_" + i, "NODE_CUSTOMGRAPHICS_" + i);    		
-        	addEntry ( ("NODE_IMAGE_" + i + "_SIZE"), 
-        			   ("NODE_CUSTOMGRAPHICS_SIZE_" + i) , 
-        			   (sizeObj) ->
-        					{ return ((NodeImageSize)sizeObj).toCX1String();} 
+        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i, 
+        			(customGraphics) -> { return ((CustomGraphics)customGraphics).toCX1String();});
+        	
+        	addEntry ( ("NODE_CUSTOMGRAPHICS_SIZE_" + i)  
+        		/*	   (sizeObj) ->
+        					{ return ((NodeImageSize)sizeObj).toCX1String();} */
         			);    		
         	addEntry ( "NODE_IMAGE_" + i + "_POSITION", "NODE_CUSTOMGRAPHICS_POSITION_" + i,  
         			(position) -> { return ((ObjectPosition)position).toCX1String(); } );    		

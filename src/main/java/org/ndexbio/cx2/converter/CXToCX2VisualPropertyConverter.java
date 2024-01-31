@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
 import org.ndexbio.cx2.aspect.element.core.EdgeControlPoint;
 import org.ndexbio.cx2.aspect.element.core.EdgeLabelPosition;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
@@ -81,16 +82,19 @@ public class CXToCX2VisualPropertyConverter {
 	
 	private static final CXToCX2VisualPropertyCvtFunction nodeImageCvtr = 
 			(strVal) -> {
-			 if ( strVal.equals("org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"))
+			 if ( strVal.startsWith("org.cytoscape.ding.customgraphics.NullCustomGraphics,"))
 				 return null;
-			 return strVal;
+			 
+			 return CustomGraphics.createFromCX1Value(strVal);
 			};
-	
+			
 	private static final CXToCX2VisualPropertyCvtFunction edgeBendCvtr = (strVal) -> {
 		return strVal == null ? null :
 			(Stream.of(strVal.split("\\|")).map(arg0 -> EdgeControlPoint.createFromCX1String(arg0)).collect(Collectors.toList()));
 	
 		};
+		
+		
 			
 	private static final CXToCX2VisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 		{
@@ -248,9 +252,9 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_VISIBLE", "NODE_VISIBILITY", visibilityCvtr );
     	
     	for ( int i = 1 ; i < 10; i++) {
-        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i, "NODE_IMAGE_" + i, nodeImageCvtr );    		
-        	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, "NODE_IMAGE_" + i + "_SIZE",
-        			(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i,  nodeImageCvtr );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, numberCvtr);
+        		//	(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
         	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, "NODE_IMAGE_" + i + "_POSITION", 
         			(positionStr) ->{ return ObjectPosition.createFromCX1Value(positionStr);} );    		
     	}
