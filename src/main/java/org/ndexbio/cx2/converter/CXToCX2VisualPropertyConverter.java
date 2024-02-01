@@ -81,7 +81,8 @@ public class CXToCX2VisualPropertyConverter {
 	
 	private static final CXToCX2VisualPropertyCvtFunction nodeImageCvtr = 
 			(strVal) -> {
-			 if ( strVal.startsWith("org.cytoscape.ding.customgraphics.NullCustomGraphics,"))
+			 if ( strVal.startsWith("org.cytoscape.ding.customgraphics.NullCustomGraphics,") ||
+					 strVal.startsWith("org.cytoscape.cg.model.NullCustomGraphics,"))
 				 return null;
 			 
 			 return CustomGraphics.createFromCX1Value(strVal);

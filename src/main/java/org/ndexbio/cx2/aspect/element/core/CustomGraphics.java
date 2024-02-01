@@ -29,16 +29,20 @@ public class CustomGraphics implements ComplexVPValue {
 	private static final String URL = "url";
 	private static final String TAG = "tag";
 	
+	private static final String NAME = "name";
+	private static final String TYPE = "type";
+	private static final String PROPERTIES = "properties";
+	
 	//type of the custom graphics. Can be image or chart
-	@JsonProperty("type")
+	@JsonProperty(TYPE)
 	private String type;
 	
 	// fully qualified name of the custom graphics.
-	@JsonProperty("name")
+	@JsonProperty(NAME)
 	private String fullName;
 	
 	// properties of the custom graphics.
-	@JsonProperty("properties")
+	@JsonProperty(PROPERTIES)
     @JsonDeserialize(using = CustomPropertiesDeserializer.class)
 	private Map<String,Object> properties;
 	
@@ -131,7 +135,7 @@ public class CustomGraphics implements ComplexVPValue {
 	            ObjectMapper mapper = new ObjectMapper();
 	            Map<String, Object> properties = mapper.readValue(p, new TypeReference<Map<String, Object>>() {});
 
-	            properties.computeIfPresent("id", (key, value) -> {
+	            properties.computeIfPresent(ID, (key, value) -> {
                     if (value instanceof Integer) {
                         return ((Integer) value).longValue();
                     }
@@ -141,21 +145,18 @@ public class CustomGraphics implements ComplexVPValue {
 	            return properties;
 	        }
 	    }
-	/*
-	 * 
+	
 	public static CustomGraphics createFromMap(Map<String,Object> m){
 		
 		CustomGraphics result = new CustomGraphics();
 		
-		result.setType((String)m.get("type"));
-		result.setFullName(m.get("name").toString());
+		result.setType((String)m.get(TYPE));
+		result.setFullName(m.get(NAME).toString());
 		
-		result.populateFromMap(m);
-		result.setEdgeAnchorPoints((String)m.get(EDGE_ANCHOR));
-		result.setLabelAnchorPoints((String)m.get(LABEL_ANCHOR));
-		
+		result.setProperties((Map<String,Object>)m.get(PROPERTIES));
+
 		return result;
 		
-	} */
+	} 
 
 }
