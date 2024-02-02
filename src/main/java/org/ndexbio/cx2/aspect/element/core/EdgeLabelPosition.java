@@ -2,19 +2,14 @@ package org.ndexbio.cx2.aspect.element.core;
 
 import java.util.Map;
 
-import org.ndexbio.model.exceptions.NdexException;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(Include.NON_NULL)
 
-public class EdgeLabelPosition implements ComplexVPValue{
+public class EdgeLabelPosition extends CyObjectPosition implements ComplexVPValue{
 		
-	@JsonProperty(LabelPosition.JUSTIFICATION)	
-	private HorizontalAlignment justification;
-	
 	public final static String EDGE_ANCHOR = "EDGE_ANCHOR";  
 	public final static String LABEL_ANCHOR = "LABEL_ANCHOR";
 	
@@ -24,40 +19,9 @@ public class EdgeLabelPosition implements ComplexVPValue{
 	@JsonProperty(LABEL_ANCHOR)
 	private String labelAnchorPoints;
 
-	@JsonProperty(ObjectPosition.MARGIN_X)
-	private float marginX;
-	
-	public float getMarginX() {
-		return marginX;
-	}
-
-	public void setMarginX(float marginX) {
-		this.marginX = marginX;
-	}
-
-	@JsonProperty(ObjectPosition.MARGIN_Y)
-	private float marginY;
-	
-	public float getMarginY() {
-		return marginY;
-	}
-
-	public void setMarginY(float marginY) {
-		this.marginY = marginY;
-	}
-
-	public HorizontalAlignment getJustification() {
-		return justification;
-	}
-
-	public void setJustification(HorizontalAlignment justification) {
-		this.justification = justification;
-	}
-
  
 	public EdgeLabelPosition() {
 		super();
-		justification = HorizontalAlignment.center;
 		edgeAnchorPoints = "C";
 		labelAnchorPoints = "C";
 	}
@@ -74,19 +38,18 @@ public class EdgeLabelPosition implements ComplexVPValue{
 		result.setEdgeAnchorPoints(values[0]);
 		result.setLabelAnchorPoints(values[1]);
 		result.setJustification(HorizontalAlignment.fromCX1(values[2]));
-		result.marginX = Float.parseFloat(values[3]);
-		result.marginY = Float.parseFloat(values[4]);
+		result.setMarginX(Float.parseFloat(values[3]));
+		result.setMarginY(Float.parseFloat(values[4]));
 		return result;
 	}
 	
+	@Override
 	public String toCX1String() {
 		
 		// create anchor first, alignment second, and then write out the marginX and Y
-		return edgeAnchorPoints+ "," + labelAnchorPoints + ","
-				+ justification.toCX1() + "," + marginX + "," + marginY;
+		return edgeAnchorPoints+ "," + labelAnchorPoints + "," + creatPartialCX1ValueString();
 		 
 	}
-
 
 	public String getEdgeAnchorPoints() {
 		return edgeAnchorPoints;
@@ -108,9 +71,7 @@ public class EdgeLabelPosition implements ComplexVPValue{
 		
 		EdgeLabelPosition result = new EdgeLabelPosition();
 		
-		result.setMarginX(((Number)m.get("MARGIN_X")).floatValue());
-		result.setMarginY(((Number)m.get("MARGIN_Y")).floatValue());
-		result.setJustification(HorizontalAlignment.valueOf((String)m.get(LabelPosition.JUSTIFICATION)));
+		result.populateFromMap(m);
 		result.setEdgeAnchorPoints((String)m.get(EDGE_ANCHOR));
 		result.setLabelAnchorPoints((String)m.get(LABEL_ANCHOR));
 		

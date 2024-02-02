@@ -19,6 +19,10 @@ public class VisualPropertyTable {
 	
 	public static final String imageSizePattern = "^NODE_IMAGE_[0-9]+_SIZE$";
 
+
+	public static final String graphicsPositionPattern = "^NODE_CUSTOMGRAPHICS_POSITION_[0-9]$";
+	public static final String customGraphicsPattern = "^NODE_CUSTOMGRAPHICS_[0-9]$";
+
 	
 	@JsonAnyGetter
 	public Map<String, Object> getVisualProperties() {
@@ -39,6 +43,11 @@ public class VisualPropertyTable {
 				return NodeImageSize.createFromMap((Map<String,Object>)e);			
 			else if (vpName.equals("EDGE_LABEL_POSITION"))
 				return EdgeLabelPosition.createFromMap((Map<String,Object>)e);
+			else if (vpName.matches(graphicsPositionPattern)) {
+				return GraphicsPosition.createFromMap((Map<String,Object>)e);
+			} else if (vpName.matches(customGraphicsPattern)) {
+				return CustomGraphics.createFromMap((Map<String, Object>) e);
+			}
 			else	
 				return e;
 		} else if ( e instanceof List<?>) {

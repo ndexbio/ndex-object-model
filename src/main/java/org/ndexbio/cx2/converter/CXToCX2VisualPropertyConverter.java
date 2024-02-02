@@ -8,11 +8,11 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
 import org.ndexbio.cx2.aspect.element.core.EdgeControlPoint;
 import org.ndexbio.cx2.aspect.element.core.EdgeLabelPosition;
+import org.ndexbio.cx2.aspect.element.core.GraphicsPosition;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
-import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
-import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -32,9 +32,6 @@ public class CXToCX2VisualPropertyConverter {
 			"COMPOUND_NODE_SHAPE",
 	
 			"NODE_TOOLTIP",
-	/*		"NODE_X_LOCATION",
-			"NODE_Y_LOCATION",
-			"NODE_Z_LOCATION", */
 			
             "EDGE_SELECTED",
             "EDGE_SELECTED_PAINT",
@@ -84,16 +81,20 @@ public class CXToCX2VisualPropertyConverter {
 	
 	private static final CXToCX2VisualPropertyCvtFunction nodeImageCvtr = 
 			(strVal) -> {
-			 if ( strVal.equals("org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"))
+			 if ( strVal.startsWith("org.cytoscape.ding.customgraphics.NullCustomGraphics,") ||
+					 strVal.startsWith("org.cytoscape.cg.model.NullCustomGraphics,"))
 				 return null;
-			 return strVal;
+			 
+			 return CustomGraphics.createFromCX1Value(strVal);
 			};
-	
+			
 	private static final CXToCX2VisualPropertyCvtFunction edgeBendCvtr = (strVal) -> {
 		return strVal == null ? null :
 			(Stream.of(strVal.split("\\|")).map(arg0 -> EdgeControlPoint.createFromCX1String(arg0)).collect(Collectors.toList()));
 	
 		};
+		
+		
 			
 	private static final CXToCX2VisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 		{
@@ -251,11 +252,11 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_VISIBLE", "NODE_VISIBILITY", visibilityCvtr );
     	
     	for ( int i = 1 ; i < 10; i++) {
-        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i, "NODE_IMAGE_" + i, nodeImageCvtr );    		
-        	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, "NODE_IMAGE_" + i + "_SIZE",
-        			(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
-        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, "NODE_IMAGE_" + i + "_POSITION", 
-        			(positionStr) ->{ return ObjectPosition.createFromCX1Value(positionStr);} );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i,  nodeImageCvtr );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, numberCvtr);
+        		//	(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, 
+        			(positionStr) ->{ return GraphicsPosition.createFromCX1Value(positionStr);} );    		
     	}
 
     	addEntry("NODE_X_LOCATION",numberCvtr);
