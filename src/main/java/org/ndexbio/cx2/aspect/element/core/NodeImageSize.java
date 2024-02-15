@@ -6,6 +6,7 @@ import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Deprecated
 public class NodeImageSize {
 	
 	private static final String HEIGHT="HEIGHT";

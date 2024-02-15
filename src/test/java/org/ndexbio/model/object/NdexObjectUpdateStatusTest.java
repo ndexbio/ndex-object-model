@@ -1,14 +1,16 @@
 package org.ndexbio.model.object;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Timestamp;
 import java.util.UUID;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +20,7 @@ public class NdexObjectUpdateStatusTest {
 
 	static ObjectMapper mapper;
 	
-	 @BeforeClass
+	 @BeforeAll
 	 public static void setup() {
 		 mapper = new ObjectMapper(); // create once, reuse
 	 }

@@ -1,8 +1,8 @@
 package org.cxio.aspects.datamodels;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 
 public class ATTRIBUTE_DATA_TYPETest {

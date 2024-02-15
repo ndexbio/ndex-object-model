@@ -8,10 +8,11 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.ndexbio.cx2.aspect.element.core.CustomGraphics;
 import org.ndexbio.cx2.aspect.element.core.EdgeControlPoint;
+import org.ndexbio.cx2.aspect.element.core.EdgeLabelPosition;
+import org.ndexbio.cx2.aspect.element.core.GraphicsPosition;
 import org.ndexbio.cx2.aspect.element.core.LabelPosition;
-import org.ndexbio.cx2.aspect.element.core.NodeImageSize;
-import org.ndexbio.cx2.aspect.element.core.ObjectPosition;
 import org.ndexbio.cx2.aspect.element.core.VisualPropertyTable;
 import org.ndexbio.model.exceptions.NdexException;
 
@@ -31,9 +32,6 @@ public class CXToCX2VisualPropertyConverter {
 			"COMPOUND_NODE_SHAPE",
 	
 			"NODE_TOOLTIP",
-	/*		"NODE_X_LOCATION",
-			"NODE_Y_LOCATION",
-			"NODE_Z_LOCATION", */
 			
             "EDGE_SELECTED",
             "EDGE_SELECTED_PAINT",
@@ -83,16 +81,20 @@ public class CXToCX2VisualPropertyConverter {
 	
 	private static final CXToCX2VisualPropertyCvtFunction nodeImageCvtr = 
 			(strVal) -> {
-			 if ( strVal.equals("org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"))
+			 if ( strVal.startsWith("org.cytoscape.ding.customgraphics.NullCustomGraphics,") ||
+					 strVal.startsWith("org.cytoscape.cg.model.NullCustomGraphics,"))
 				 return null;
-			 return strVal;
+			 
+			 return CustomGraphics.createFromCX1Value(strVal);
 			};
-	
+			
 	private static final CXToCX2VisualPropertyCvtFunction edgeBendCvtr = (strVal) -> {
 		return strVal == null ? null :
 			(Stream.of(strVal.split("\\|")).map(arg0 -> EdgeControlPoint.createFromCX1String(arg0)).collect(Collectors.toList()));
 	
 		};
+		
+		
 			
 	private static final CXToCX2VisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 		{
@@ -119,6 +121,24 @@ public class CXToCX2VisualPropertyConverter {
 				*/
 				return "dashed";
 			} };
+			
+	private static final CXToCX2VisualPropertyCvtFunction nodeShapeTypeCvtr	=	
+			(nodeShapeStr) -> {
+				switch (nodeShapeStr ) { 
+					case "ELLIPSE":
+					case "TRIANGLE":
+					case "RECTANGLE":
+					case "PARALLELOGRAM":
+					case "DIAMOND":	
+					case "HEXAGON":
+					case "OCTAGON":	
+					case "VEE":	
+						return nodeShapeStr.toLowerCase();
+					case "ROUND_RECTANGLE":	
+						return "round-rectangle";
+					default: 
+						return nodeShapeStr;
+				} };
     
 			
 			private static final CXToCX2VisualPropertyCvtFunction edgeLineTypeCvtr = (cytoscapeLineType) ->
@@ -217,37 +237,26 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "NODE_LABEL_TRANSPARENCY","NODE_LABEL_OPACITY", opacityCvtr );
     	
     	addEntry ( "NODE_LABEL_WIDTH", "NODE_LABEL_MAX_WIDTH",numberCvtr );
+    	
+       	addEntry ( "NODE_LABEL_BACKGROUND_COLOR");
+       	addEntry ( "NODE_LABEL_BACKGROUND_SHAPE" , nodeShapeTypeCvtr);
+       	addEntry ( "NODE_LABEL_BACKGROUND_TRANSPARENCY","NODE_LABEL_BACKGROUND_OPACITY", opacityCvtr);		
+       	
     	addEntry ( "NODE_SELECTED", booleanCvtr );
     	addEntry ( "NODE_SELECTED_PAINT" );
 
-    	addEntry ( "NODE_SHAPE",      "NODE_SHAPE", 
-    				(nodeShapeStr) -> {
-    					switch (nodeShapeStr ) { 
-    				case "ELLIPSE":
-    				case "TRIANGLE":
-    				case "RECTANGLE":
-    				case "PARALLELOGRAM":
-    				case "DIAMOND":	
-    				case "HEXAGON":
-    				case "OCTAGON":	
-    				case "VEE":	
-    					return nodeShapeStr.toLowerCase();
-    				case "ROUND_RECTANGLE":	
-    					return "round-rectangle";
-    				default: 
-    					return nodeShapeStr;
-    				} }
-    			);
+    	addEntry ( "NODE_SHAPE",      "NODE_SHAPE", nodeShapeTypeCvtr);
+    				
     	addEntry ( "NODE_WIDTH",      "NODE_WIDTH", numberCvtr );
     	addEntry ( "NODE_TRANSPARENCY",    "NODE_BACKGROUND_OPACITY", opacityCvtr );
     	addEntry ( "NODE_VISIBLE", "NODE_VISIBILITY", visibilityCvtr );
     	
     	for ( int i = 1 ; i < 10; i++) {
-        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i, "NODE_IMAGE_" + i, nodeImageCvtr );    		
-        	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, "NODE_IMAGE_" + i + "_SIZE",
-        			(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
-        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, "NODE_IMAGE_" + i + "_POSITION", 
-        			(positionStr) ->{ return ObjectPosition.createFromCX1Value(positionStr);} );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_" + i,  nodeImageCvtr );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_SIZE_" + i, numberCvtr);
+        		//	(strVal) -> {return NodeImageSize.createFromCX1Str(strVal);} );    		
+        	addEntry ( "NODE_CUSTOMGRAPHICS_POSITION_" + i, 
+        			(positionStr) ->{ return GraphicsPosition.createFromCX1Value(positionStr);} );    		
     	}
 
     	addEntry("NODE_X_LOCATION",numberCvtr);
@@ -258,12 +267,21 @@ public class CXToCX2VisualPropertyConverter {
     	
     	//TODO: handle edge_curved and edge_bend
     	addEntry ( "EDGE_LABEL");
+    	addEntry ( "EDGE_LABEL_AUTOROTATE", booleanCvtr);
     	addEntry ( "EDGE_LABEL_COLOR"    );
     	addEntry ( "EDGE_LABEL_FONT_FACE", fontFaceCvtr);
     	addEntry ( "EDGE_LABEL_FONT_SIZE", intCvtr );
     	addEntry ( "EDGE_LABEL_ROTATION",  numberCvtr);
     	addEntry ( "EDGE_LABEL_TRANSPARENCY", "EDGE_LABEL_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_LABEL_WIDTH","EDGE_LABEL_MAX_WIDTH",numberCvtr );
+    	
+       	addEntry ( "EDGE_LABEL_BACKGROUND_COLOR");
+       	addEntry ( "EDGE_LABEL_BACKGROUND_SHAPE", nodeShapeTypeCvtr);
+       	addEntry ( "EDGE_LABEL_BACKGROUND_TRANSPARENCY","EDGE_LABEL_BACKGROUND_OPACITY", opacityCvtr);	
+    	addEntry ( "EDGE_LABEL_POSITION",
+    			(strVal) -> {return EdgeLabelPosition.createFromCX1Value(strVal);});
+    	
+    	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_LINE_TYPE", "EDGE_LINE_STYLE", edgeLineTypeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SHAPE", arrowShapeCvtr );
     	addEntry ( "EDGE_SOURCE_ARROW_SIZE", numberCvtr );
@@ -271,16 +289,16 @@ public class CXToCX2VisualPropertyConverter {
     	addEntry ( "EDGE_TARGET_ARROW_SIZE", numberCvtr );
     	
 
-    	
-    	//addEntry ( "EDGE_PAINT", "EDGE_LINE_COLOR", stringCvtr);
+       	addEntry ( "EDGE_STROKE_SELECTED_PAINT");
     	addEntry ( "EDGE_STROKE_UNSELECTED_PAINT", "EDGE_LINE_COLOR", stringCvtr);
     	addEntry ( "EDGE_SOURCE_ARROW_UNSELECTED_PAINT", "EDGE_SOURCE_ARROW_COLOR", stringCvtr);
+    	addEntry ( "EDGE_SOURCE_ARROW_SELECTED_PAINT");
     	addEntry ( "EDGE_TARGET_ARROW_UNSELECTED_PAINT", "EDGE_TARGET_ARROW_COLOR", stringCvtr);
+    	addEntry ( "EDGE_TARGET_ARROW_SELECTED_PAINT");
     	addEntry ( "EDGE_TRANSPARENCY", "EDGE_OPACITY", opacityCvtr );
     	addEntry ( "EDGE_WIDTH", "EDGE_WIDTH", numberCvtr );
     	addEntry ( "EDGE_VISIBLE", "EDGE_VISIBILITY", visibilityCvtr );
     	addEntry ( "EDGE_SELECTED", booleanCvtr );
-    	addEntry ( "EDGE_CURVED", booleanCvtr );
     	addEntry ( "EDGE_BEND", "EDGE_CONTROL_POINTS", edgeBendCvtr );
     	addEntry ( "EDGE_Z_ORDER", numberCvtr );
     	addEntry ( "EDGE_STACKING_DENSITY", numberCvtr );

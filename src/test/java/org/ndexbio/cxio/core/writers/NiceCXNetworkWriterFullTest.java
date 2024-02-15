@@ -1,15 +1,20 @@
 package org.ndexbio.cxio.core.writers;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import org.junit.Rule;
-import org.junit.rules.TemporaryFolder;
+import java.nio.file.Path;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.ndexbio.cxio.aspects.datamodels.ATTRIBUTE_DATA_TYPE;
 import org.ndexbio.cxio.aspects.datamodels.CyVisualPropertiesElement;
 import org.ndexbio.cxio.aspects.datamodels.EdgeAttributesElement;
@@ -28,8 +33,8 @@ import org.ndexbio.model.exceptions.NdexException;
  */
 public class NiceCXNetworkWriterFullTest  {
     
-    @Rule
-    public TemporaryFolder _folder = new TemporaryFolder();
+	 @TempDir
+	    Path tempDir;
     
     @Test
     public void testNullWriterAndNetwork() throws NdexException {
@@ -212,8 +217,10 @@ public class NiceCXNetworkWriterFullTest  {
             origNetwork = reader.readNiceCXNetwork(fis);
         }
         
-        File tempFolder = _folder.newFolder();
-        File tempCXOut = new File(tempFolder + File.separator + "wntOut.cx");
+        
+       // File tempFolder = _folder.newFolder();
+        File tempCXOut =  tempDir.resolve("wntOut.cx").toFile(); // new File(tempFolder + File.separator + "wntOut.cx");
+        
         try {
             try (FileOutputStream fos = new FileOutputStream(tempCXOut)){
                 NiceCXNetworkWriter writer = new NiceCXNetworkWriter(fos, false);
@@ -264,7 +271,6 @@ public class NiceCXNetworkWriterFullTest  {
             fail("Unexpected exception: " + ne.getMessage());
         }
         finally {
-            tempFolder.delete();
             tempCXOut.delete();
         }
     }

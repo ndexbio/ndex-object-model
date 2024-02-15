@@ -1,10 +1,10 @@
 package org.ndexbio.cx2.aspect.element.core;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.ndexbio.cxio.misc.OpaqueElement;
 
 import com.fasterxml.jackson.core.JsonProcessingException;

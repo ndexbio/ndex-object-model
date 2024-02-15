@@ -1,12 +1,10 @@
 package org.ndexbio.cx2.converter;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.ndexbio.model.exceptions.NdexException;
 
 import com.fasterxml.jackson.core.JsonParseException;

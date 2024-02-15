@@ -10,6 +10,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ObjectPosition {
 	
+	public static final String MARGIN_X = "MARGIN_X";
+	public static final String MARGIN_Y = "MARGIN_Y";
+	
 	public HorizontalAlignment getHorizontalAlign() {
 		return horizontalAlign;
 	}
@@ -70,10 +73,10 @@ public class ObjectPosition {
 	@JsonProperty("VERTICAL_ANCHOR")
 	private VerticalAlignment verticalAnchor;
 	
-	@JsonProperty("MARGIN_X")
+	@JsonProperty(MARGIN_X)
 	private float marginX;
 	
-	@JsonProperty("MARGIN_Y")
+	@JsonProperty(MARGIN_Y)
 	private float marginY;
  
 	public ObjectPosition() {

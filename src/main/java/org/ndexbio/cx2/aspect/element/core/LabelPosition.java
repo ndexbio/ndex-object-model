@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(Include.NON_NULL)
 
-public class LabelPosition extends ObjectPosition {
+public class LabelPosition extends ObjectPosition implements ComplexVPValue{
 	
 	public static final String JUSTIFICATION = "JUSTIFICATION";
 	
@@ -42,7 +42,7 @@ public class LabelPosition extends ObjectPosition {
 		String[] values = cx1Value.split(",");
 		
 		ObjectPosition.populateFromCX1Values(result, values);
-		result.setJustificationFromCX1(values[2]);
+		result.setJustification(HorizontalAlignment.fromCX1(values[2]));
 		return result;
 	}
 	
@@ -63,37 +63,10 @@ public class LabelPosition extends ObjectPosition {
 	@Override
 	public String toCX1String() {
 		
-		// create anchor first, alignment second, and then write out the marginX and Y
+		// create anchors first, alignment second, and then write out the marginX and Y
 		return createCX1AnchorValue() + "," + createCX1AlignmentValue() + ","
-				+ justificationToCX1() + "," + getMarginX() + "," + getMarginY();
+				+ justification.toCX1() + "," + getMarginX() + "," + getMarginY();
 		 
-	}
-
-	private String justificationToCX1() {
-		switch (justification) {
-		case center:
-			return "c";
-		case left:
-			return "l";
-		default:
-			return "r";
-		}
-	}
-	
-	private void setJustificationFromCX1(String c) {
-		switch ( c ) {
-		case "c":
-			break;
-		case "l":
-			justification = HorizontalAlignment.left;
-			break;
-		case "r":
-			justification = HorizontalAlignment.right;
-			break;
-		default: 
-			break;
-		}
-
 	}
 	
 }

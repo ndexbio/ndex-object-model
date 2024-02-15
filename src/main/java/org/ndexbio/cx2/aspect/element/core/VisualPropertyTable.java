@@ -19,37 +19,54 @@ public class VisualPropertyTable {
 	
 	public static final String imageSizePattern = "^NODE_IMAGE_[0-9]+_SIZE$";
 
+
+	public static final String graphicsPositionPattern = "^NODE_CUSTOMGRAPHICS_POSITION_[0-9]$";
+	public static final String customGraphicsPattern = "^NODE_CUSTOMGRAPHICS_[0-9]$";
+
 	
 	@JsonAnyGetter
 	public Map<String, Object> getVisualProperties() {
 		return visualProperties;
 	}
 	
+	
+	public static Object castVPValue(String vpName, Object e) throws NdexException {
+		if 	( e instanceof Map<?,?>) {
+			if (vpName.equals("EDGE_LABEL_FONT_FACE") ||
+					vpName.equals("NODE_LABEL_FONT_FACE")) {
+				return FontFace.createFromMap((Map<String,String>)e);
+			} else if ( vpName.equals("NODE_LABEL_POSITION")) {
+				return LabelPosition.createFromLabelPositionMap((Map<String,Object>)e);
+			} else if ( vpName.matches(imagePositionPattern)) {
+				return ObjectPosition.createFromMap((Map<String,Object>)e);
+			} else if ( vpName.matches(imageSizePattern))
+				return NodeImageSize.createFromMap((Map<String,Object>)e);			
+			else if (vpName.equals("EDGE_LABEL_POSITION"))
+				return EdgeLabelPosition.createFromMap((Map<String,Object>)e);
+			else if (vpName.matches(graphicsPositionPattern)) {
+				return GraphicsPosition.createFromMap((Map<String,Object>)e);
+			} else if (vpName.matches(customGraphicsPattern)) {
+				return CustomGraphics.createFromMap((Map<String, Object>) e);
+			}
+			else	
+				return e;
+		} else if ( e instanceof List<?>) {
+			if ( vpName.equals("EDGE_CONTROL_POINTS")) {
+				List<Map<String,Object>> rawPoints = (List<Map<String,Object>>)e;
+				return  rawPoints.stream()
+						.map(p -> { return EdgeControlPoint.createFromMap(p);})
+						.collect(Collectors.toList());
+			} else
+				return e;
+		} else 
+		   return e;
+	}
+	
+	
+
 	@JsonAnySetter
 	public void addRaw(String key, Object e) throws NdexException {
-		if 	( e instanceof Map<?,?>) {
-			if (key.equals("EDGE_LABEL_FONT_FACE") ||
-					key.equals("NODE_LABEL_FONT_FACE")) {
-				visualProperties.put(key, FontFace.createFromMap((Map<String,String>)e));
-			} else if ( key.equals("NODE_LABEL_POSITION")) {
-				visualProperties.put(key,LabelPosition.createFromLabelPositionMap((Map<String,Object>)e));
-			} else if ( key.matches(imagePositionPattern)) {
-				visualProperties.put(key, ObjectPosition.createFromMap((Map<String,Object>)e));
-			} else if ( key.matches(imageSizePattern))
-				visualProperties.put(key, NodeImageSize.createFromMap((Map<String,Object>)e));			
-			else	
-				visualProperties.put(key, e);
-		} else if ( e instanceof List<?>) {
-			if ( key.equals("EDGE_CONTROL_POINTS")) {
-				List<Map<String,Object>> rawPoints = (List<Map<String,Object>>)e;
-				visualProperties.put(key, 
-						rawPoints.stream()
-						.map(p -> { return EdgeControlPoint.createFromMap(p);})
-						.collect(Collectors.toList()));
-			} else
-				visualProperties.put(key, e);
-		} else 
-		   visualProperties.put(key,e);
+		   visualProperties.put(key,castVPValue(key,e));
 	}
 
 	public VisualPropertyTable() {

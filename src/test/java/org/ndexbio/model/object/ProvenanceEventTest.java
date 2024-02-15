@@ -30,14 +30,15 @@
  */
 package org.ndexbio.model.object;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -47,8 +48,8 @@ public class ProvenanceEventTest {
 
 	static ObjectMapper mapper;
 	
-	 @BeforeClass
-	 public static void setup() {
+	 @BeforeAll
+	 static void setup() {
 		 mapper = new ObjectMapper(); // create once, reuse
 	 }
 

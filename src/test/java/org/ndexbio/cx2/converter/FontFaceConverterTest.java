@@ -1,8 +1,9 @@
 package org.ndexbio.cx2.converter;
 
-import static org.junit.Assert.*;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 import org.ndexbio.cx2.aspect.element.core.FontFace;
 
 public class FontFaceConverterTest {

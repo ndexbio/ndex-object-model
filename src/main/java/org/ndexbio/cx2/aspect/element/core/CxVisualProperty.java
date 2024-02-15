@@ -3,6 +3,9 @@ package org.ndexbio.cx2.aspect.element.core;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.NotImplementedException;
+import org.ndexbio.model.exceptions.NdexException;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -82,6 +85,37 @@ public class CxVisualProperty implements CxAspectElement<CxVisualProperty> {
 	@Override
 	public int compareTo(CxVisualProperty o) {
 		// TODO Auto-generated method stub
-		return 0;
+		 throw new NotImplementedException();
+	}
+	
+	/**
+	 * Cast raw types such as maps creaated from Json String into proper VP values 
+	 * @throws NdexException 
+	 */
+	public void evaluate() throws NdexException {
+		for (Map.Entry<String,VisualPropertyMapping> mapping: nodeMappings.entrySet()) {
+			String vpName = mapping.getKey();
+			VisualPropertyMapping m = mapping.getValue();
+			if ( m.getType()==VPMappingType.DISCRETE) {
+				for ( Map<String,Object> entry : m.getMappingDef().getMapppingList()) {
+					cook ( vpName, MappingDefinition.vp, entry);
+				}
+				
+			} else { // continuous maping
+				for ( Map<String,Object> entry : m.getMappingDef().getMapppingList()) {
+					cook(vpName, MappingDefinition.maxVPValue, entry);
+					cook(vpName, MappingDefinition.minVPValue, entry);
+				}				
+			}
+		}
+		
+	}
+	
+	private static void cook(String vpName, String key, Map<String,Object> entry) throws NdexException {
+		Object v = entry.get(key);
+		if ( v !=null ) {
+			Object newVp = VisualPropertyTable.castVPValue(vpName, v);
+			entry.put(key, newVp);
+		}
 	}
 }
