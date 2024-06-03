@@ -36,4 +36,41 @@ public class SourceResultsTest {
 		assertEquals(1, sr.getResults().size());
 		assertEquals("res", sr.getResults().get(0).getName());
 	}
+	
+	@Test
+	public void testCopyConstructor(){
+		SourceResults sr = new SourceResults(null);
+		assertNull(sr.getResults());
+		
+		//make a copy
+		SourceResults copySR = new SourceResults(sr);
+		SourceResult sRes = new SourceResult();
+		sRes.setName("res");
+		sr.setResults(Arrays.asList(sRes));
+		assertEquals(1, sr.getResults().size());
+		assertEquals("res", sr.getResults().get(0).getName());
+		
+		DatabaseResult dr = new DatabaseResult();
+		dr.setName("dr");
+		
+		NetworkInfo niOne = new NetworkInfo();
+		niOne.setName("one");
+		NetworkInfo niTwo = new NetworkInfo();
+		niTwo.setName("two");
+		
+		dr.setNetworks(Arrays.asList(niOne, niTwo));
+		sRes.setDatabases(Arrays.asList(dr));
+		sRes.setName("name");
+		
+		assertNull(copySR.getResults());
+		
+		SourceResults copyTwoSR = new SourceResults(sr);
+		assertEquals(1, copyTwoSR.getResults().size());
+		assertEquals(2, copyTwoSR.getResults().get(0).getDatabases().get(0).getNetworks().size());
+		
+		SourceResults copyThreeSR = new SourceResults(sr, true);
+		assertEquals(1, copyThreeSR.getResults().size());
+		assertEquals(null, copyThreeSR.getResults().get(0).getDatabases().get(0).getNetworks());
+
+	}
 }

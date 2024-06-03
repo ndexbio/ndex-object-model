@@ -1,6 +1,7 @@
 package org.ndexbio.ndexsearch.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ public class SourceResult {
     public static final String INTERACTOME_GENEASSOCIATION_SERVICE = "interactome-association";
 	public static final String PATHWAYFIGURES_SERVICE = "pathwayfigures";
 	public static final String INDRA_SERVICE = "indra";
+	public static final String CCMI_SERVICE = "ccmi";
     
     private String _uuid;
     private String _description;
@@ -28,7 +30,48 @@ public class SourceResult {
     private String _version;
     private List<DatabaseResult> _databases;
     
+	/**
+	 * Constructor
+	 */
+	public SourceResult(){
+		
+	}
+	
+	/**
+	 * Performs deep copy of SourceResult passed in
+	 * @param sr 
+	 */
+	public SourceResult(SourceResult sr){
+		this(sr, false);
+	}
 
+	/**
+	 * Performs deep copy of SourceResult with option to skip
+	 * copy of Networks within DatabaseResult object
+	 * 
+	 * @param sr
+	 * @param skipNetworks 
+	 */
+	public SourceResult(SourceResult sr, boolean skipNetworks){
+		if (sr == null){
+			return;
+		}
+		_uuid = sr.getUuid();
+		_description = sr.getDescription();
+		_name = sr.getName();
+		_numberOfNetworks = sr.getNumberOfNetworks();
+		_status = sr.getStatus();
+		_endPoint = sr.getEndPoint();
+		_version = sr.getVersion();
+		if (sr.getDatabases() == null){
+			return;
+		}
+		_databases = new ArrayList<>();
+		for (DatabaseResult dr : sr.getDatabases()){
+			_databases.add(new DatabaseResult(dr, skipNetworks));
+		}
+	}
+	
     /**
      * Gets identifier of source
      * @return UUID as string

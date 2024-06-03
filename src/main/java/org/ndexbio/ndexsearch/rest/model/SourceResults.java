@@ -1,6 +1,7 @@
 package org.ndexbio.ndexsearch.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,32 @@ public class SourceResults {
     public SourceResults(){
         this(null);
     }
-    
+    /**
+	 * Copy constructor that performs deep copy
+	 * @param sr 
+	 */
+	public SourceResults(SourceResults sr){
+		this(sr, false);
+	}
+	
+	/**
+	 * Copy constructor that performs a deep copy with option
+	 * of omitting networks contained within DatabaseResult objects
+	 * @param sr
+	 * @param skipNetworks If true, skip copy of networks within DatabaseResult
+	 *                     objects
+	 */
+	public SourceResults(SourceResults sr, boolean skipNetworks){
+		if (sr == null){
+			return;
+		}
+		if (sr.getResults() != null){
+			_results = new ArrayList<>();
+			for (SourceResult sResult : sr.getResults()){
+				_results.add(new SourceResult(sResult, skipNetworks));
+			}
+		}
+	}
     /**
      * Performs a shallow copy of {@link org.ndexbio.ndexsearch.rest.model.InternalSourceResults}
      * passed in via {@code isr} parameter
