@@ -32,9 +32,11 @@ public class QueryStatus {
     }
     
     /**
-     * Creates new {@link #EnrichmentQueryStatus} object setting {@link #getStartTime() }
+     * Creates new {@link #QueryStatus} object setting {@link #getStartTime() }
      * to {@code startTime} passed into this method.
-     * @param startTime Current time in milliseconds, usually set with value from {@link java.lang.System.currentTimeMillis()}
+	 * 
+     * @param startTime Current time in milliseconds, usually set with value 
+	 *                  from {@link java.lang.System#currentTimeMillis }
      */
     public QueryStatus(long startTime){
         _startTime = startTime;
