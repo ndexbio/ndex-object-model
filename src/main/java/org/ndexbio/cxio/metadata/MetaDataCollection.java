@@ -101,7 +101,6 @@ public final class MetaDataCollection implements Serializable, Iterable<MetaData
      * @param elements
      * @param consistency_group
      * @param version
-     * @param last_update
      * @param id_counter
      */
     public final void addMetaDataElement(final List<AspectElement> elements, final long consistency_group, final String version, final long id_counter) {

@@ -37,8 +37,8 @@ public class CxAttributeDeclaration implements CxAspectElement<CxAttributeDeclar
 	
 	/**
 	 * 
-	 * @param key aspectName
-	 * @param e   Attribute declaration
+	 * @param aspectName
+	 * @param attributes
 	 * @throws NdexException 
 	 */
 	@JsonAnySetter

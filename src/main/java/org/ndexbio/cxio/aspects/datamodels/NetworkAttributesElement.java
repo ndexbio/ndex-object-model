@@ -115,7 +115,7 @@ public final class NetworkAttributesElement extends AbstractAttributesAspectElem
      *  Value is a JSON string of _values field.
      * @param subnetwork
      * @param name
-     * @param values
+     * @param serializedValue
      * @param type
      * @return
      * @throws IOException

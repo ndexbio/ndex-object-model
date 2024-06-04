@@ -232,8 +232,9 @@ public class CXWriter {
 	
 	/**
 	 * Write the aspect from a file. The File object should point to a file that is a json array of aspect elements.
+	 * 
 	 * @param aspectName
-	 * @param aspectElementArrayFile
+	 * @param aspectElementArrayFilePath
 	 * @throws IOException 
 	 * @throws NdexException 
 	 */

@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- *
+ * Represents networks for a given database
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)

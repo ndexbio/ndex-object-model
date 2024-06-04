@@ -169,7 +169,7 @@ public class MetaDataElement {
     /**
      * Convenience method to set the name (of the corresponding aspect).
      *
-     * @param name the name (of the corresponding aspect)
+     * @param elementName the name (of the corresponding aspect)
      */
     public final void setName(final String elementName) {
     		if ( elementName == null)

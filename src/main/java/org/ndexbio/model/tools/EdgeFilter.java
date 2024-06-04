@@ -36,11 +36,10 @@ public class EdgeFilter {
 	
 	/**
 	 * 
-	 * @param networkId
-	 * @param criteria
+	 * @param criterion
 	 * @param limit
-	 * @param returnTopN when this parameter is true, return topN based on the filtering criteria, when it is false, 
-	 * return the firstN edges.
+	 * @param orderby
+	 * @param cx2AspectDir
 	 * @throws IOException 
 	 * @throws JsonMappingException 
 	 * @throws JsonParseException 
