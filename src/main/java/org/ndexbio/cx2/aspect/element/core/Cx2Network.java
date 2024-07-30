@@ -14,7 +14,6 @@ import org.ndexbio.cx2.aspect.element.cytoscape.VisualEditorProperties;
 import org.ndexbio.cx2.io.CXReader;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Cx2Network {
 	
@@ -92,10 +91,20 @@ public class Cx2Network {
 		
 	}
 
+	/**
+	 * Loads CX2 from InputStream passed in
+	 * 
+	 * @param in 
+	 * @throws JsonParseException If there is a JSON parsing error
+	 * @throws IOException If there is an IO error or if {@code in} is {@code null} 
+	 */
 	public Cx2Network (InputStream in) throws JsonParseException, IOException {
+		this();
+		if (in == null){
+			throw new IOException("InputStream cannot be null");
+		}
 		CXReader reader = new CXReader (in);
 		
-		ObjectMapper om = new ObjectMapper();
 		
 		for (CxAspectElement<?> elmt : reader) {
 				switch (elmt.getAspectName()) {
