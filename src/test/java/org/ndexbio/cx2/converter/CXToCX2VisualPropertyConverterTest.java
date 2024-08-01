@@ -2,7 +2,9 @@ package org.ndexbio.cx2.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,7 +66,45 @@ class CXToCX2VisualPropertyConverterTest {
 	    	assertEquals(HorizontalAlignment.left, gp.getJustification());
 	    	assertEquals(0.0, gp.getMarginX());
 	    	assertEquals(27.0, gp.getMarginY());
+	    	
+	    	
 	    }
 
+	    @Test
+	    void testConvertEdgeArrowShapeValues() throws NdexException {
+			// Prepare a sample input map for edge arrow shape values
+	    	Map<String, String> edgeArrowShapeValues = new HashMap<>();
+	    	edgeArrowShapeValues.put("ARROW", "arrow");
+	    	edgeArrowShapeValues.put("ARROW_SHORT", "triangle");
+	    	edgeArrowShapeValues.put("CIRCLE", "circle");
+	    	edgeArrowShapeValues.put("CROSS_DELTA", "triangle-cross");
+	    	edgeArrowShapeValues.put("CROSS_OPEN_DELTA", "cross_open_delta");
+	    	edgeArrowShapeValues.put("DELTA", "triangle");
+	    	edgeArrowShapeValues.put("DELTA_SHORT_1", "triangle");
+	    	edgeArrowShapeValues.put("DELTA_SHORT_2", "triangle");
+	    	edgeArrowShapeValues.put("DIAMOND", "diamond");
+	    	edgeArrowShapeValues.put("DIAMOND_SHORT_1", "diamond");
+	    	edgeArrowShapeValues.put("DIAMOND_SHORT_2", "diamond");
+	    	edgeArrowShapeValues.put("HALF_BOTTOM", "triangle");
+	    	edgeArrowShapeValues.put("HALF_CIRCLE", "triangle");
+	    	edgeArrowShapeValues.put("HALF_TOP", "triangle");
+	    	edgeArrowShapeValues.put("NONE", "none");
+	    	edgeArrowShapeValues.put("OPEN_CIRCLE", "open_circle");
+	    	edgeArrowShapeValues.put("OPEN_DELTA", "open_delta");
+	    	edgeArrowShapeValues.put("OPEN_DIAMOND", "open_diamond");
+	    	edgeArrowShapeValues.put("OPEN_HALF_CIRCLE", "triangle");
+	    	edgeArrowShapeValues.put("OPEN_SQUARE", "open_square");
+	    	edgeArrowShapeValues.put("SQUARE", "square");
+	    	edgeArrowShapeValues.put("T", "tee");
+	    	
+	    	String vpName = "EDGE_TARGET_ARROW_SHAPE";
+	    	
+			// Call the convertEdgeArrowShapeValues method
+			// Assert the expected
+			for (Map.Entry<String, String> entry : edgeArrowShapeValues.entrySet()) {
+				assertEquals(entry.getValue(), converter.getNewEdgeOrNodePropertyValue(vpName, entry.getKey()));
+			}
+	    	
+	    }
 	    // Additional tests for other methods and edge cases
 }
