@@ -128,5 +128,28 @@ public class CX2ToCXVisualPropertyConverterTest {
 		
 
 	}
+	
+	@Test
+	public void EdgeArrowShapeConverterTest() {
+		String vpName = "EDGE_SOURCE_ARROW_SHAPE";
+		Map<String,Object> edgeArrowShapeMap = new HashMap<>();
+		edgeArrowShapeMap.put("none", "NONE");
+		edgeArrowShapeMap.put("triangle", "DELTA");
+		edgeArrowShapeMap.put("circle", "CIRCLE");
+		edgeArrowShapeMap.put("diamond", "DIAMOND");
+		edgeArrowShapeMap.put("square", "SQUARE");
+		edgeArrowShapeMap.put("arrow", "ARROW");
+		edgeArrowShapeMap.put("tee", "T");
+		edgeArrowShapeMap.put("triangle-cross", "CROSS_DELTA");
+		edgeArrowShapeMap.put("cross_open_delta", "CROSS_OPEN_DELTA");
+		edgeArrowShapeMap.put("open_circle", "OPEN_CIRCLE");
+		edgeArrowShapeMap.put("open_delta", "OPEN_DELTA");
+		edgeArrowShapeMap.put("open_square", "OPEN_SQUARE");
+		edgeArrowShapeMap.put("open_diamond", "OPEN_DIAMOND");
+
+		edgeArrowShapeMap.forEach((k, v) -> {
+			assertEquals(v, CX2ToCXVisualPropertyConverter.getInstance().getCx1EdgeOrNodePropertyValue(vpName,k));
+		});
+	}
 
 }

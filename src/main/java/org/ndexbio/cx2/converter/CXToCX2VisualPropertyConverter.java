@@ -170,26 +170,25 @@ public class CXToCX2VisualPropertyConverter {
 				{
 					switch ( cytoscapeArrowShape ) { 
 					case "NONE":
-						return "none";					
+					case "ARROW": // this is a common value in Cytoscape, so we keep it.
 					case "CIRCLE":
-					case "OPEN_CIRCLE":
-						return "circle";
-					case "CROSS_DELTA":
-					case "CROSS_OPEN_DELTA":
-						return "triangle-cross";
 					case "DIAMOND":
+					case "OPEN_CIRCLE":
+					case "CROSS_OPEN_DELTA":
+					case "OPEN_DIAMOND":	
+					case "OPEN_SQUARE":
+					case "OPEN_DELTA":
+					case "SQUARE":
+						return cytoscapeArrowShape.toLowerCase();
+					case "CROSS_DELTA":
+						return "triangle-cross";
 					case "DIAMOND_SHORT_1":
 					case "DIAMOND_SHORT_2":
-					case "OPEN_DIAMOND":	
 						return "diamond";
-					case "OPEN_SQUARE":
-					case "SQUARE":
-						return "square";
 					case "T":
 						return "tee";
 					default:
 						/* covers these cases
-					case "ARROW":
 					case "ARROW_SHORT":
 					case "DELTA":
 					case "DELTA_SHORT_1":
@@ -197,7 +196,6 @@ public class CXToCX2VisualPropertyConverter {
 					case "HALF_BOTTOM":
 					case "HALF_CIRCLE":
 					case "HALF_TOP":
-					case "OPEN_DELTA":
 					case "OPEN_HALF_CIRCLE":	*/
 						return "triangle";	
 						
