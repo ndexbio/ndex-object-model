@@ -79,20 +79,26 @@ public class CX2ToCXVisualPropertyConverter {
 		private static final CX2ToCXVisualPropertyCvtFunction arrowShapeCvtr = (cytoscapeArrowShape) ->
 		{
 			switch ( cytoscapeArrowShape.toString() ) { 
-			case "none":
-				return "NONE";					
-			case "circle CIRCLE":
-				return "CIRCLE";
+		
 			case "triangle-cross":
 				return "CROSS_DELTA";
-			case "diamond":	
-				return "DIAMOND";
-			case "square":
-				return "SQUARE";
 			case "tee":
 				return "T";
+			case "triangle":
+				return "DELTA";
+			case "arrow":
+			case "circle":
+			case "cross_open_delta":
+			case "diamond":
+			case "none":
+			case "open_circle":
+			case "open_delta":
+			case "open_diamond":
+			case "open_square":
+			case "square":
+				return cytoscapeArrowShape.toString().toUpperCase(); 
 			default:
-				return "ARROW";	
+				throw new IllegalArgumentException("Unknown arrow shape: " + cytoscapeArrowShape);	
 				
 			} };						
 
@@ -297,10 +303,10 @@ public class CX2ToCXVisualPropertyConverter {
 	}
 
 	
-	public String getCx1EdgeOrNodePropertyValue (String cx2VPName, Object oldValue) {
+	public String getCx1EdgeOrNodePropertyValue (String cx2VPName, Object cx2Value) {
 		Map.Entry<String,CX2ToCXVisualPropertyCvtFunction> cvtr = nodeEdgeCvtTable.get(cx2VPName);
 		if ( cvtr != null)
-			return cvtr.getValue().convert(oldValue);
+			return cvtr.getValue().convert(cx2Value);
 		return null;
 	}
 	

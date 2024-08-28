@@ -69,8 +69,8 @@ public final class CxElementReader2 implements Iterable<AspectElement> {
      * This creates a new CxElementReader with all AspectFragmentReaders implemented in this library already added.
      *
      * @param input the input object to parse
-     * @param read_anonymous_aspect_fragments to enable reading of anonymous aspect fragments
-     * @return a CxElementReader
+     * @param aspect_readers
+	 * @param compatibleToOldCytoscapeAspect
      * @throws IOException
      */
     public CxElementReader2 (InputStream input, Set<AspectFragmentReader> aspect_readers, boolean compatibleToOldCytoscapeAspect) throws IOException {

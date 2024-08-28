@@ -50,7 +50,7 @@ public final class CxioUtil {
      * This returns the values of AttributesAspectElement e as String in the form '"value"' for single values and in
      * the form '["value1","value2",...]' for list values. Null value are return as 'null'.
      *
-     * @param a AttributesAspectElement
+     * @param e
      * @return value(s) as String
      * @throws JsonProcessingException 
      */

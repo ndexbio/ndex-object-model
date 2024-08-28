@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ndexbio</groupId>
 	<artifactId>ndex-object-model</artifactId>
-	<version>2.5.6</version>
+	<version>2.5.7-SNAPSHOT</version>
 	<name>NDEx Java Object Model</name>
 	<description>Java object model for applications that access NDEx</description>
 	<inceptionYear>2013</inceptionYear>
@@ -22,6 +22,17 @@
 		</snapshotRepository>
 	</distributionManagement>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${junitVersion}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<!-- 3rd party libraries -->
 		<dependency>
@@ -43,19 +54,17 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.easymock</groupId>
 			<artifactId>easymock</artifactId>
-			<version>4.0.2</version>
+			<version>5.3.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -199,8 +208,9 @@
 	</reporting>
 
 	<properties>
-		<jackson.version>2.14.3</jackson.version>
+		<jackson.version>2.17.1</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<swagger.version>2.0.0</swagger.version>
+		<swagger.version>2.2.21</swagger.version>
+		<junitVersion>5.10.2</junitVersion>
 	</properties>
 </project>

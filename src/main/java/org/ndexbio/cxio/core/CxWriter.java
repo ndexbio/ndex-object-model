@@ -149,8 +149,6 @@ public final class CxWriter {
     /**
      * This method is to be called at the beginning of writing to a stream.
      *
-     *
-     * @param long_number a Long for verification purposes
      * @throws IOException
      */
     public void start() throws IOException {

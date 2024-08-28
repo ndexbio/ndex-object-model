@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
- *
+ * Represents a query result against a source
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)

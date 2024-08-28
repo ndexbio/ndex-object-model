@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- *
+ * Represents a list of query results against a sources
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
