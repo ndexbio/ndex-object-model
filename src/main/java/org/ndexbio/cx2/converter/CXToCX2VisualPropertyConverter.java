@@ -99,105 +99,48 @@ public class CXToCX2VisualPropertyConverter {
 	private static final CXToCX2VisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 		{
 			switch ( cytoscapeLineType ) { 
-			case "SOLID":
-			case "SINEWAVE":
-			case "CONTIGUOUS_ARROW":
-			case "ZIGZAG":
-				return "solid";
-			case "DASH_DOT":
+			case "LONG_DASH":
+				return "dashed";
 			case "DOT":
 				return "dotted";
 			case "PARALLEL_LINES":
 				return "double";
 			default:
-				/* these cytoscape line types are in this case
-			case "BACKWARD_SLASH":
-			case "LONG_DASH":
-			case "EQUAL_DASH":
-			case "FORWARD_SLASH":
-			case "MARQUEE_DASH":
-			case "SEPARATE_ARROW":
-			case "VERTICAL_SLASH":
-				*/
-				return "dashed";
+				return cytoscapeLineType.toLowerCase();
 			} };
 			
 	private static final CXToCX2VisualPropertyCvtFunction nodeShapeTypeCvtr	=	
 			(nodeShapeStr) -> {
 				switch (nodeShapeStr ) { 
-					case "ELLIPSE":
-					case "TRIANGLE":
-					case "RECTANGLE":
-					case "PARALLELOGRAM":
-					case "DIAMOND":	
-					case "HEXAGON":
-					case "OCTAGON":	
-					case "VEE":	
-						return nodeShapeStr.toLowerCase();
 					case "ROUND_RECTANGLE":	
 						return "round-rectangle";
 					default: 
-						return nodeShapeStr;
+						return nodeShapeStr.toLowerCase();
 				} };
     
 			
 			private static final CXToCX2VisualPropertyCvtFunction edgeLineTypeCvtr = (cytoscapeLineType) ->
 			{
 				switch ( cytoscapeLineType ) { 
-				case "SOLID":
-				case "SINEWAVE":
-				case "CONTIGUOUS_ARROW":
-				case "PARALLEL_LINES":
-				case "ZIGZAG":
-					return "solid";
-				case "DASH_DOT":
+				case "LONG_DASH":
+					return "dashed";
 				case "DOT":
 					return "dotted";
 				default:
-					/* these cytoscape line types are in this case
-				case "BACKWARD_SLASH":
-				case "LONG_DASH":
-				case "EQUAL_DASH":
-				case "FORWARD_SLASH":
-				case "MARQUEE_DASH":
-				case "SEPARATE_ARROW":
-				case "VERTICAL_SLASH":
-					*/
-					return "dashed";
+					return cytoscapeLineType.toLowerCase();
 				} };		
 				
 			private static final CXToCX2VisualPropertyCvtFunction arrowShapeCvtr = (cytoscapeArrowShape) ->
 				{
 					switch ( cytoscapeArrowShape ) { 
-					case "NONE":
-					case "ARROW": // this is a common value in Cytoscape, so we keep it.
-					case "CIRCLE":
-					case "DIAMOND":
-					case "OPEN_CIRCLE":
-					case "CROSS_OPEN_DELTA":
-					case "OPEN_DIAMOND":	
-					case "OPEN_SQUARE":
-					case "OPEN_DELTA":
-					case "SQUARE":
-						return cytoscapeArrowShape.toLowerCase();
+					case "DELTA":
+						return "triangle";	
 					case "CROSS_DELTA":
 						return "triangle-cross";
-					case "DIAMOND_SHORT_1":
-					case "DIAMOND_SHORT_2":
-						return "diamond";
 					case "T":
 						return "tee";
 					default:
-						/* covers these cases
-					case "ARROW_SHORT":
-					case "DELTA":
-					case "DELTA_SHORT_1":
-					case "DELTA_SHORT_2":
-					case "HALF_BOTTOM":
-					case "HALF_CIRCLE":
-					case "HALF_TOP":
-					case "OPEN_HALF_CIRCLE":	*/
-						return "triangle";	
+						return cytoscapeArrowShape.toLowerCase();
 						
 					} };					
 

@@ -116,7 +116,7 @@ public class CX2ToCXVisualPropertyConverterTest {
 		assertEquals("3.0", cxnodeVPs.get("EDGE_WIDTH"));
 		assertEquals("#999999", cxnodeVPs.get("EDGE_STROKE_UNSELECTED_PAINT"));
 		assertEquals("204", cxnodeVPs.get("EDGE_TRANSPARENCY"));
-		assertEquals("EQUAL_DASH", cxnodeVPs.get("EDGE_LINE_TYPE"));
+		assertEquals("LONG_DASH", cxnodeVPs.get("EDGE_LINE_TYPE"));
 		assertEquals("NONE", cxnodeVPs.get("EDGE_SOURCE_ARROW_SHAPE"));
 		assertEquals("DIAMOND", cxnodeVPs.get("EDGE_TARGET_ARROW_SHAPE"));
 		assertEquals("#989898", cxnodeVPs.get("EDGE_SOURCE_ARROW_UNSELECTED_PAINT"));
