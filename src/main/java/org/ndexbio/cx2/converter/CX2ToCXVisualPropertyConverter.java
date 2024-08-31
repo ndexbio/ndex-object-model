@@ -33,34 +33,25 @@ public class CX2ToCXVisualPropertyConverter {
 	private static final CX2ToCXVisualPropertyCvtFunction nodeBorderTypeCvtr = (cytoscapeLineType) ->
 	{
 		switch ( cytoscapeLineType.toString() ) { 
-		case "solid":
-			return "SOLID";
 		case "dotted":
 			return "DOT";
 		case "double":
 			return "PARALLEL_LINES";
+		case "dashed":
+			return "LONG_DASH";
 		default: 
-			return "EQUAL_DASH";
+			return cytoscapeLineType.toString().toUpperCase();
 		} };
 		
 	private static final CX2ToCXVisualPropertyCvtFunction nodeShapeTypeCvtr =	
 		(nodeShape) -> {
 			String nodeShapeStr = (String)nodeShape; 
 			switch (nodeShapeStr ) { 
-		case "ellipse":
-		case "triangle":
-		case "rectangle":
-		case "parallelogram":
-		case "diamond":	
-		case "hexagon":
-		case "octagon":	
-		case "vee":	
-			return nodeShapeStr.toUpperCase();
-		case "round-rectangle":	
-			return "ROUND_RECTANGLE";
-		default: 
-			return nodeShapeStr;
-		} };
+				case "round-rectangle":	
+					return "ROUND_RECTANGLE";
+				default: 
+					return nodeShapeStr.toUpperCase();
+			} };
 		
 		private static final CX2ToCXVisualPropertyCvtFunction edgeLineTypeCvtr = (cytoscapeLineType) ->
 		{
@@ -70,8 +61,10 @@ public class CX2ToCXVisualPropertyConverter {
 				return "SOLID";
 			case "dotted":
 				return "DOT";
+			case "dashed":
+				return "LONG_DASH";
 			default: 
-				return "EQUAL_DASH";
+				return cytoscapeLineType.toString().toUpperCase();
 			} 
 		};
 			
@@ -86,20 +79,8 @@ public class CX2ToCXVisualPropertyConverter {
 				return "T";
 			case "triangle":
 				return "DELTA";
-			case "arrow":
-			case "circle":
-			case "cross_open_delta":
-			case "diamond":
-			case "none":
-			case "open_circle":
-			case "open_delta":
-			case "open_diamond":
-			case "open_square":
-			case "square":
-				return cytoscapeArrowShape.toString().toUpperCase(); 
 			default:
-				throw new IllegalArgumentException("Unknown arrow shape: " + cytoscapeArrowShape);	
-				
+				return cytoscapeArrowShape.toString().toUpperCase(); 				
 			} };						
 
 	private static final CX2ToCXVisualPropertyCvtFunction fontFaceCvtr = (fontFace) -> 
