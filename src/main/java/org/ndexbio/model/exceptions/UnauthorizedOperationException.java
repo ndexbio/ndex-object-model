@@ -67,9 +67,11 @@ public class UnauthorizedOperationException extends NdexException {
         super(message, description, ErrorCode.NDEx_Unauthorized_Operation_Exception, cause);
     }
     
-	public static UnauthorizedOperationException createUnVerifiedAccountError(String accountName) {
+	public static UnauthorizedOperationException createUnVerifiedAccountError(final String accountName, final String accountEmail) {
 		return new UnauthorizedOperationException(
-				"NDEx user account" + accountName + " is not verified yet. Please check your email from NDEx and verify the account before sign in to NDEx", 
+				"NDEx user account " + accountName 
+						+ " <" + accountEmail 
+								+ "> is not verified yet. Please check your email from NDEx and verify the account before sign in to NDEx", 
 				ErrorCode.NDEx_User_Account_Not_Verified);
 	}
 }
