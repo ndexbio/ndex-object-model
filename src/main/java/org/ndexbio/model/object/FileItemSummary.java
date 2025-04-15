@@ -1,6 +1,7 @@
 package org.ndexbio.model.object;
 
 import java.sql.Timestamp;
+import java.util.Map;
 import java.util.UUID;
 
 public class FileItemSummary {
@@ -9,6 +10,7 @@ public class FileItemSummary {
     private String name;
     private Timestamp  modificationTime; 
     private String     updatedBy;
+    private Map<String,Object> attributes;
 
     public FileItemSummary() {}
 
@@ -23,11 +25,19 @@ public class FileItemSummary {
             String name,
             Timestamp modificationTime,
             String updatedBy) {
-		this.uuid             = uuid;
-		this.type             = type;
-		this.name             = name;
+    	this(uuid,type,name);;
 		this.modificationTime = modificationTime;
 		this.updatedBy        = updatedBy;
+	}
+    
+    public FileItemSummary(UUID uuid,
+            String type,
+            String name,
+            Timestamp modificationTime,
+            String updatedBy,
+            Map<String,Object> attributes) {
+    	this(uuid,type,name,modificationTime,updatedBy);
+    	this.attributes = attributes;
 	}
 
     public UUID getUuid() {
@@ -50,17 +60,25 @@ public class FileItemSummary {
     public void setName(String name) {
         this.name = name;
     }
+    
     public Timestamp getModificationTime() {
     	return modificationTime; 
     }
     public void setModificationTime(Timestamp modificationTime) {
         this.modificationTime = modificationTime;
     }
-
+    
     public String getUpdatedBy() { 
     	return updatedBy; 
     }
     public void setUpdatedBy(String updatedBy) { 
     	this.updatedBy = updatedBy; 
+    }
+    
+    public Map<String,Object> getAttributes() { 
+    	return attributes; 
+    }
+    public void setAttributes(Map<String,Object> attributes) { 
+    	this.attributes = attributes; 
     }
 }
