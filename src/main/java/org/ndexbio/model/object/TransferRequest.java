@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class TransferRequest {
     private UUID uuid;      
-    private String type;    // "folder" | "network" | "shortcut"
+    private String type;    // "folder" | "network"
     private UUID to_user;
 
     public TransferRequest() {}
