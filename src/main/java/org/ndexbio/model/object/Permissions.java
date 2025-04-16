@@ -33,7 +33,6 @@ package org.ndexbio.model.object;
 public enum Permissions
 {
     READ,
-    EDIT,
     WRITE,
     ADMIN,
     MEMBER,
