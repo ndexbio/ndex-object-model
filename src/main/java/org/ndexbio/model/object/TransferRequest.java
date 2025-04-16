@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class TransferRequest {
     private UUID uuid;      
-    private String type;    // "folder" | "network"
+    private FileType type;    // "folder" | "network"
     private UUID to_user;
 
     public TransferRequest() {}
@@ -16,10 +16,10 @@ public class TransferRequest {
         this.uuid = uuid;
     }
 
-    public String getType() {
+    public FileType getType() {
         return type;
     }
-    public void setType(String type) {
+    public void setType(FileType type) {
         this.type = type;
     }
 

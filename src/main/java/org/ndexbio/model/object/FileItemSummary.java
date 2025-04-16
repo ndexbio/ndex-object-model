@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class FileItemSummary {
     private UUID uuid;
-    private String type; // "folder", "network", or "shortcut"
+    private FileType type; // "folder", "network", or "shortcut"
     private String name;
     private Timestamp  modificationTime; 
     private String     updatedBy;
@@ -21,14 +21,14 @@ public class FileItemSummary {
 
     public FileItemSummary() {}
 
-    public FileItemSummary(UUID uuid, String type, String name) {
+    public FileItemSummary(UUID uuid, FileType type, String name) {
         this.uuid = uuid;
         this.type = type;
         this.name = name;
     }
     
     public FileItemSummary(UUID uuid,
-            String type,
+    		FileType type,
             String name,
             Timestamp modificationTime,
             String updatedBy) {
@@ -38,7 +38,7 @@ public class FileItemSummary {
 	}
     
     public FileItemSummary(UUID uuid,
-            String type,
+    		FileType type,
             String name,
             Timestamp modificationTime,
             String updatedBy,
@@ -54,10 +54,10 @@ public class FileItemSummary {
         this.uuid = uuid;
     }
 
-    public String getType() {
+    public FileType getType() {
         return type;
     }
-    public void setType(String type) {
+    public void setType(FileType type) {
         this.type = type;
     }
 

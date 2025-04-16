@@ -1,31 +1,25 @@
 package org.ndexbio.model.object;
 
+import java.security.Permission;
 import java.util.Map;
 import java.util.UUID;
 
 public class SharingMemberRequest {
-    private UUID uuid;
-    private String type;       // "folder" or "network"
-    private Map<UUID,String> members;
+    private Map<UUID, FileType> files;       // map of file UUID and type: "folder" or "network"
+    private Map<UUID,Permission> members;
 
     public SharingMemberRequest() {}
 
-    public UUID getUuid() {
-        return uuid;
+    public Map<UUID, FileType> getFiles() {
+        return files;
     }
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setFiles(Map<UUID, FileType> files) {
+        this.files = files;
     }
-    public String getType() {
-        return type;
-    }
-    public void setType(String type) {
-        this.type = type;
-    }
-    public Map<UUID,String> getMembers() {
+    public Map<UUID,Permission> getMembers() {
         return members;
     }
-    public void setMembers(Map<UUID,String> members) {
+    public void setMembers(Map<UUID,Permission> members) {
         this.members = members;
     }
 }

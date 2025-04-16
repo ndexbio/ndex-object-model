@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class SharingSimpleRequest {
     private UUID uuid;      // The object to share/unshare
-    private String type;    // "network" | "folder"
+    private FileType type;    // "network" | "folder"
 
     public SharingSimpleRequest() {}
 
@@ -15,10 +15,10 @@ public class SharingSimpleRequest {
         this.uuid = uuid;
     }
 
-    public String getType() {
+    public FileType getType() {
         return type;
     }
-    public void setType(String type) {
+    public void setType(FileType type) {
         this.type = type;
     }
 }

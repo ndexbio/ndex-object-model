@@ -4,8 +4,8 @@ import java.util.UUID;
 
 public class CopyRequest {
     private UUID from_uuid;
-    private String type;    // "network", "folder" or "shortcut"
-    private UUID to_path;   // Destination folder ID
+    private FileType type;    // "network" or "shortcut"
+    private UUID to_path;   // Target folder ID
 
     public CopyRequest() {}
 
@@ -16,10 +16,10 @@ public class CopyRequest {
         this.from_uuid = from_uuid;
     }
 
-    public String getType() {
+    public FileType getType() {
         return type;
     }
-    public void setType(String type) {
+    public void setType(FileType type) {
         this.type = type;
     }
 
