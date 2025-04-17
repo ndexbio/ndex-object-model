@@ -1,32 +1,25 @@
 package org.ndexbio.model.object;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class TransferRequest {
-    private UUID uuid;      
-    private FileType type;    // "folder" | "network"
-    private UUID to_user;
+	private Map<UUID, FileType> files;    // files to transfer and type "folder" | "network"
+    private UUID new_owner;
 
     public TransferRequest() {}
 
-    public UUID getUuid() {
-        return uuid;
+    public Map<UUID, FileType> getFiles() {
+        return files;
     }
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public FileType getType() {
-        return type;
-    }
-    public void setType(FileType type) {
-        this.type = type;
+    public void setFiles(Map<UUID, FileType> files) {
+        this.files = files;
     }
 
-    public UUID getTo_user() {
-        return to_user;
+    public UUID getNewOwner() {
+        return new_owner;
     }
-    public void setTo_user(UUID to_user) {
-        this.to_user = to_user;
+    public void setNewOwner(UUID new_owner) {
+        this.new_owner = new_owner;
     }
 }

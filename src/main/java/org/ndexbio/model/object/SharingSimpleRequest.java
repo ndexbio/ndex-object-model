@@ -1,25 +1,18 @@
 package org.ndexbio.model.object;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class SharingSimpleRequest {
-    private UUID uuid;      // The object to share/unshare
-    private FileType type;    // "network" | "folder"
+    private Map<UUID, FileType> files;      // The object to share/unshare and type "network" | "folder"
 
     public SharingSimpleRequest() {}
 
-    public UUID getUuid() {
-        return uuid;
+    public Map<UUID, FileType> getFiles() {
+        return files;
     }
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public FileType getType() {
-        return type;
-    }
-    public void setType(FileType type) {
-        this.type = type;
+    public void setFiles(Map<UUID, FileType> files) {
+        this.files = files;
     }
 }
 
