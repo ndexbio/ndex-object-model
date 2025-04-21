@@ -6,6 +6,7 @@ public class ShortcutRequest {
 	private String name;
 	private UUID parent;
 	private UUID target;
+	private FileType targetType;
 	
 	public String getName() {
 		return name;
@@ -24,6 +25,12 @@ public class ShortcutRequest {
 	}
 	public void setTarget(UUID target) {
 		this.target = target;
+	}
+	public FileType getTargetType() {
+		return targetType;
+	}
+	public void setTargetType(FileType target_type) {
+		this.targetType = target_type;
 	}
 
 }
