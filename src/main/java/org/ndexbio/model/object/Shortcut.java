@@ -13,6 +13,7 @@ public class Shortcut extends NdexExternalObject {
 	private String name;
 	private UUID parent;
 	private UUID target;
+	private FileType targetType;
 	
 	public String getName() {
 		return name;
@@ -32,5 +33,10 @@ public class Shortcut extends NdexExternalObject {
 	public void setTarget(UUID target) {
 		this.target = target;
 	}
-
+	public FileType getTargetType() {
+		return targetType;
+	}
+	public void setTargetType(FileType targetType) {
+		this.targetType = targetType;
+	}
 }
