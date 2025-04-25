@@ -2,8 +2,15 @@ package org.ndexbio.model.object;
 
 import org.ndexbio.model.object.network.VisibilityType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import java.util.Map;
 import java.util.UUID;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 
 public class SetVisibilityRequest {
 
