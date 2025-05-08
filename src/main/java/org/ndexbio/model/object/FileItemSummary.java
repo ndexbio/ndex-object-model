@@ -3,20 +3,31 @@ package org.ndexbio.model.object;
 import java.sql.Timestamp;
 import java.util.Map;
 import java.util.UUID;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(Include.NON_NULL) 
-
+@JsonInclude(Include.NON_NULL)
+@Schema(description = "Summary information about a file item")
 public class FileItemSummary {
+    @Schema(description = "Unique identifier of the file", required = true)
     private UUID uuid;
+    
+    @Schema(description = "Type of the file (folder, network, or shortcut)", required = true)
     private FileType type; // "folder", "network", or "shortcut"
+    
+    @Schema(description = "Name of the file", required = true)
     private String name;
-    private Timestamp  modificationTime; 
-    private String     updatedBy;
+    
+    @Schema(description = "Last modification timestamp")
+    private Timestamp modificationTime;
+    
+    @Schema(description = "Username of the user who last updated the file")
+    private String updatedBy;
+    
+    @Schema(description = "Additional attributes associated with the file")
     private Map<String,Object> attributes;
 
     public FileItemSummary() {}

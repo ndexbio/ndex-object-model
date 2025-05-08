@@ -1,16 +1,19 @@
 package org.ndexbio.model.object;
 
 import java.util.UUID;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-
+@Schema(description = "Represents a folder in the NDEx system")
 public class Folder extends NdexExternalObject {
+	@Schema(description = "Name of the folder", required = true)
 	private String name;
+	
+	@Schema(description = "UUID of the parent folder", required = true)
 	private UUID parent;
 
 	public String getName() {
