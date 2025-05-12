@@ -12,7 +12,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 @Schema(description = "Request object for setting visibility of files")
-public class SetVisibilityRequest {
+public class FileVisibilityRequest {
     @Schema(description = "Visibility type to be set", required = true)
     private VisibilityType visibility;
     
