@@ -16,8 +16,8 @@ public class SetVisibilityRequest {
     @Schema(description = "Visibility type to be set", required = true)
     private VisibilityType visibility;
     
-    @Schema(description = "Map of item UUIDs and their types to be updated", required = true)
-    private Map<UUID, FileType> items;
+    @Schema(description = "Map of file UUIDs and their types to be updated", required = true)
+    private Map<UUID, FileType> files;
 
     public VisibilityType getVisibility() {
         return visibility;
@@ -27,11 +27,11 @@ public class SetVisibilityRequest {
         this.visibility = visibility;
     }
 
-    public Map<UUID, FileType> getItems() {
-        return items;
+    public Map<UUID, FileType> getFiles() {
+        return files;
     }
 
-    public void setItems(Map<UUID, FileType> items) {
-        this.items = items;
+    public void setFiles(Map<UUID, FileType> files) {
+        this.files = files;
     }
 }
