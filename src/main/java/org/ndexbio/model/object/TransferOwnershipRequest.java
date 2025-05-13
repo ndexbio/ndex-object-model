@@ -1,6 +1,6 @@
 package org.ndexbio.model.object;
 
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 
-public class TransferRequest {
-	private Map<UUID, FileType> files;    // files to transfer and type "folder" | "network"
+public class TransferOwnershipRequest {
+	private List<UUID> networks;
     private UUID new_owner;
 
-    public TransferRequest() {}
+    public TransferOwnershipRequest() {}
 
-    public Map<UUID, FileType> getFiles() {
-        return files;
+    public List<UUID> getNetworks() {
+        return networks;
     }
-    public void setFiles(Map<UUID, FileType> files) {
-        this.files = files;
+    public void setNetworks(List<UUID> networks) {
+        this.networks = networks;
     }
 
     public UUID getNewOwner() {
