@@ -15,6 +15,9 @@ public class FolderRequest {
 	
 	@Schema(description = "UUID of the parent folder", required = true)
 	private UUID parent;
+
+	@Schema(description = "Description of the folder")
+	private String description;
 	
 	public String getName() {
 		return name;
@@ -27,6 +30,13 @@ public class FolderRequest {
 	}
 	public void setParent(UUID parent) {
 		this.parent = parent;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
