@@ -1,6 +1,7 @@
 package org.ndexbio.model.object;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * Generalized query object for searching files (networks, folders, shortcuts, etc).
@@ -10,6 +11,9 @@ public class SimpleFileQuery extends SimpleQuery {
 
     private String _accountName;
     private Permissions _permission;
+	
+	@Schema(description = "Type of File. if null can be anything")
+	private FileType _type;
 
     public SimpleFileQuery() {
     }
@@ -29,4 +33,18 @@ public class SimpleFileQuery extends SimpleQuery {
     public Permissions getPermission() {
         return _permission;
     }
+
+	/**
+	 * Gets type of file, null assumes file can be anytype
+	 * @return 
+	 */
+	public FileType getType() {
+		return _type;
+	}
+
+	public void setType(FileType type) {
+		this._type = type;
+	}
+	
+	
 } 
