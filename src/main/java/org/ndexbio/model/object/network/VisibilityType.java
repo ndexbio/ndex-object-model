@@ -31,7 +31,21 @@
 package org.ndexbio.model.object.network;
 
 public enum VisibilityType {
-   PUBLIC, PRIVATE, UNLISTED 
-   //, DISCOVERABLE
-   ;
+
+	/**
+	 * Entity is publicly searchable by any user
+	 */
+	PUBLIC,
+	
+	/**
+	 * Entity is private only searchable by users with access
+	 */
+	PRIVATE,
+	
+	/**
+	 * Entity is only searchable by exact UUID for public users and
+	 * fully searchable by users with access
+	 */
+	UNLISTED; 
+
 }
