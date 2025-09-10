@@ -1,9 +1,9 @@
 package org.ndexbio.model.object;
 
 public enum FileType {
-    NETWORK("network"),
-    FOLDER("folder"),
-    SHORTCUT("shortcut");
+    NETWORK("NETWORK"),
+    FOLDER("FOLDER"),
+    SHORTCUT("SHORTCUT");
 	
 	private final String shortName; // Field to store the custom string
 	
