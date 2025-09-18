@@ -1,6 +1,8 @@
 package org.ndexbio.model.object;
 
+import java.lang.Boolean;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,10 +28,22 @@ public class FileItemSummary {
     
     @Schema(description = "Username of the user who last updated the file")
     private String updatedBy;
-    
+
     @Schema(description = "Additional attributes associated with the file")
     private Map<String,Object> attributes;
-
+    
+    @Schema(description = "Indicates if the file is read-only")
+    private Boolean isReadOnly;
+    
+    @Schema(description = "Error message if the file has issues")
+	private String errorMessage;
+	
+    @Schema(description = "List of warnings associated with the file")
+	private List<String> warnings;
+	
+    @Schema(description = "Indicates if the file processing is completed")
+	private Boolean isCompleted;
+    
     public FileItemSummary() {}
 
     public FileItemSummary(UUID uuid, FileType type, String name) {
@@ -42,21 +56,30 @@ public class FileItemSummary {
     		FileType type,
             String name,
             Timestamp modificationTime,
-            String updatedBy) {
-    	this(uuid,type,name);;
-		this.modificationTime = modificationTime;
-		this.updatedBy        = updatedBy;
-	}
-    
+            String updatedBy,
+            Map<String,Object> attributes) {
+    	this(uuid,type,name);
+        this.modificationTime = modificationTime;
+        this.updatedBy        = updatedBy;
+        this.attributes      = attributes;
+    }
+
     public FileItemSummary(UUID uuid,
     		FileType type,
             String name,
             Timestamp modificationTime,
             String updatedBy,
-            Map<String,Object> attributes) {
-    	this(uuid,type,name,modificationTime,updatedBy);
-    	this.attributes = attributes;
-	}
+            Map<String,Object> attributes, 
+            Boolean isReadOnly, 
+            String errorMessage, 
+            List<String> warnings, 
+            Boolean isCompleted) {
+    	this(uuid,type,name,modificationTime,updatedBy,attributes);
+    	this.isReadOnly = isReadOnly;
+        this.errorMessage = errorMessage;
+        this.warnings = warnings;
+        this.isCompleted = isCompleted;
+    }
 
     public UUID getUuid() {
         return uuid;
@@ -98,5 +121,30 @@ public class FileItemSummary {
     }
     public void setAttributes(Map<String,Object> attributes) { 
     	this.attributes = attributes; 
+    }
+    public Boolean getIsReadOnly() { 
+    	return isReadOnly; 
+    }
+    public void setIsReadOnly(Boolean isReadOnly) { 
+    	this.isReadOnly = isReadOnly;
+    }
+
+    public String getErrorMessage() { 
+    	return errorMessage; 
+    }
+    public void setErrorMessage(String errorMessage) { 
+    	this.errorMessage = errorMessage; 
+    }
+    public List<String> getWarnings() { 
+    	return warnings; 
+    }
+    public void setWarnings(List<String> warnings) { 
+    	this.warnings = warnings; 
+    }
+    public Boolean getIsCompleted() { 
+    	return isCompleted; 
+    }
+    public void setIsCompleted(Boolean isCompleted) { 
+    	this.isCompleted = isCompleted; 
     }
 }
