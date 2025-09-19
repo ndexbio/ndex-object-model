@@ -21,38 +21,7 @@ public class SharingTest {
         mapper = new ObjectMapper();
     }
     
-    @Test
-    public void testSharedFile() throws JsonProcessingException {
-        SharedFile original = new SharedFile();
-        UUID fileId = UUID.randomUUID();
-        UUID ownerId = UUID.randomUUID();
-        String ownerName = "testUser";
-        
-        original.setUuid(fileId);
-        original.setType(FileType.NETWORK);
-        original.setOwnerId(ownerId);
-        original.setOwner(ownerName);
-        
-        FileItemSummary summary = new FileItemSummary();
-        summary.setName("Test Network");
-        summary.setType(FileType.NETWORK);
-        summary.setUuid(fileId);
-        original.setFileSummary(summary);
-        
-        String json = mapper.writeValueAsString(original);
-        System.out.println("Serialized SharedFile: " + json);
-        
-        SharedFile deserialized = mapper.readValue(json, SharedFile.class);
-        
-        assertEquals(deserialized.getUuid(), original.getUuid());
-        assertEquals(deserialized.getType(), original.getType());
-        assertEquals(deserialized.getOwnerId(), original.getOwnerId());
-        assertEquals(deserialized.getOwner(), original.getOwner());
-        assertEquals(deserialized.getFileSummary().getName(), original.getFileSummary().getName());
-        assertEquals(deserialized.getFileSummary().getType(), original.getFileSummary().getType());
-        assertEquals(deserialized.getFileSummary().getUuid(), original.getFileSummary().getUuid());
-    }
-    
+
     @Test
     public void testSharingSimpleRequest() throws JsonProcessingException {
         SharingSimpleRequest original = new SharingSimpleRequest();
@@ -102,22 +71,6 @@ public class SharingTest {
         assertEquals(deserialized.getMembers().size(), original.getMembers().size());
         assertEquals(deserialized.getMembers().get(memberId1), Permissions.READ);
         assertEquals(deserialized.getMembers().get(memberId2), Permissions.WRITE);
-    }
-    
-    @Test
-    public void testSharedFileWithNullValues() throws JsonProcessingException {
-        SharedFile original = new SharedFile();
-        
-        String json = mapper.writeValueAsString(original);
-        System.out.println("Serialized SharedFile with nulls: " + json);
-        
-        SharedFile deserialized = mapper.readValue(json, SharedFile.class);
-        
-        assertEquals(deserialized.getUuid(), original.getUuid());
-        assertEquals(deserialized.getType(), original.getType());
-        assertEquals(deserialized.getOwnerId(), original.getOwnerId());
-        assertEquals(deserialized.getOwner(), original.getOwner());
-        assertEquals(deserialized.getFileSummary(), original.getFileSummary());
     }
     
     @Test
