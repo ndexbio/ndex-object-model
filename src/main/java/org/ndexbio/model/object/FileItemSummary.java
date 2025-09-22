@@ -43,6 +43,9 @@ public class FileItemSummary {
 	
     @Schema(description = "Indicates if the file processing is completed")
 	private Boolean isCompleted;
+
+    @Schema(description = "Indicates if the file has been shared with other users")
+    private Boolean isShared;
     
     public FileItemSummary() {}
 
@@ -146,5 +149,13 @@ public class FileItemSummary {
     }
     public void setIsCompleted(Boolean isCompleted) { 
     	this.isCompleted = isCompleted; 
+    }
+
+    public Boolean getIsShared() {
+        return isShared;
+    }
+
+    public void setIsShared(Boolean isShared) {
+        this.isShared = isShared;
     }
 }
