@@ -46,6 +46,12 @@ public class FileItemSummary {
 
     @Schema(description = "Indicates if the file has been shared with other users")
     private Boolean isShared;
+
+    @Schema(description = "Indicates if the network has passed validation")
+    private Boolean isValid;
+
+    @Schema(description = "Digital Object Identifier associated with the network")
+    private String doi;
     
     public FileItemSummary() {}
 
@@ -157,5 +163,21 @@ public class FileItemSummary {
 
     public void setIsShared(Boolean isShared) {
         this.isShared = isShared;
+    }
+
+    public Boolean getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
+    }
+
+    public String getDoi() {
+        return doi;
+    }
+
+    public void setDoi(String doi) {
+        this.doi = doi;
     }
 }
