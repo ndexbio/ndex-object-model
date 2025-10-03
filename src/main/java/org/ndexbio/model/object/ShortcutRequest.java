@@ -13,7 +13,7 @@ public class ShortcutRequest {
 	@Schema(description = "Name of the shortcut", required = true)
 	private String name;
 	
-	@Schema(description = "UUID of the parent folder", required = true)
+	@Schema(description = "UUID of the parent folder")
 	private UUID parent;
 	
 	@Schema(description = "UUID of the target item", required = true)

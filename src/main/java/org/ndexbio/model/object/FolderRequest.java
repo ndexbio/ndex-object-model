@@ -13,7 +13,7 @@ public class FolderRequest {
 	@Schema(description = "Name of the folder to be created", required = true)
 	private String name;
 	
-	@Schema(description = "UUID of the parent folder", required = true)
+	@Schema(description = "UUID of the parent folder")
 	private UUID parent;
 
 	@Schema(description = "Description of the folder")
