@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
@@ -31,6 +32,22 @@ public class FileItemSummary {
 
     @Schema(description = "Additional attributes associated with the file")
     private Map<String,Object> attributes;
+
+    @Schema(description = "Username of the owner of the file")
+    private String owner;
+
+    @Schema(description = "Unique identifier of the owner of the file")
+    @JsonProperty("owner_id")
+    private UUID ownerId;
+
+    @Schema(description = "Visibility of the file")
+    private String visibility;
+
+    @Schema(description = "Total number of edges in the network, when applicable")
+    private Integer edges;
+
+    @Schema(description = "Permission granted to the current user, when applicable")
+    private String permission;
     
     @Schema(description = "Indicates if the file is read-only")
     private Boolean isReadOnly;
@@ -130,6 +147,41 @@ public class FileItemSummary {
     }
     public void setAttributes(Map<String,Object> attributes) { 
     	this.attributes = attributes; 
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public UUID getOwnerId() {
+        return ownerId;
+    }
+    public void setOwnerId(UUID ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getVisibility() {
+        return visibility;
+    }
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public Integer getEdges() {
+        return edges;
+    }
+    public void setEdges(Integer edges) {
+        this.edges = edges;
+    }
+
+    public String getPermission() {
+        return permission;
+    }
+    public void setPermission(String permission) {
+        this.permission = permission;
     }
     public Boolean getIsReadOnly() { 
     	return isReadOnly; 

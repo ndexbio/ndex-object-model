@@ -1,6 +1,7 @@
 package org.ndexbio.model.object;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -51,6 +52,12 @@ public class FileTest {
         original.setName("Test Network");
         original.setModificationTime(modTime);
         original.setUpdatedBy("testUser");
+        original.setOwner("ownerUser");
+        UUID ownerId = UUID.randomUUID();
+        original.setOwnerId(ownerId);
+        original.setVisibility("PUBLIC");
+        original.setEdges(42);
+        original.setPermission("READ");
         
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("key1", "value1");
@@ -67,8 +74,16 @@ public class FileTest {
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getModificationTime(), original.getModificationTime());
         assertEquals(deserialized.getUpdatedBy(), original.getUpdatedBy());
+        assertEquals(deserialized.getOwner(), original.getOwner());
+        assertEquals(deserialized.getOwnerId(), original.getOwnerId());
+        assertEquals(deserialized.getVisibility(), original.getVisibility());
+        assertEquals(deserialized.getEdges(), original.getEdges());
+        assertEquals(deserialized.getPermission(), original.getPermission());
         assertEquals(deserialized.getAttributes().get("key1"), original.getAttributes().get("key1"));
         assertEquals(deserialized.getAttributes().get("key2"), original.getAttributes().get("key2"));
+        assertNull(deserialized.getAttributes().get("owner"));
+        assertNull(deserialized.getAttributes().get("owner_id"));
+        assertNull(deserialized.getAttributes().get("permission"));
     }
     
     @Test
@@ -126,6 +141,11 @@ public class FileTest {
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getModificationTime(), original.getModificationTime());
         assertEquals(deserialized.getUpdatedBy(), original.getUpdatedBy());
+        assertEquals(deserialized.getOwner(), original.getOwner());
+        assertEquals(deserialized.getOwnerId(), original.getOwnerId());
+        assertEquals(deserialized.getVisibility(), original.getVisibility());
+        assertEquals(deserialized.getEdges(), original.getEdges());
+        assertEquals(deserialized.getPermission(), original.getPermission());
         assertEquals(deserialized.getAttributes(), original.getAttributes());
     }
     
