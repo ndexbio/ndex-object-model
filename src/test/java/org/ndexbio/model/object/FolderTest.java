@@ -21,7 +21,7 @@ public class FolderTest {
     
     @Test
     public void testFolder() throws JsonProcessingException {
-        Folder original = new Folder();
+        NdexFolder original = new NdexFolder();
         UUID parentId = UUID.randomUUID();
         String folderName = "Test Folder";
         
@@ -31,7 +31,7 @@ public class FolderTest {
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Folder: " + json);
         
-        Folder deserialized = mapper.readValue(json, Folder.class);
+        NdexFolder deserialized = mapper.readValue(json, NdexFolder.class);
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
@@ -57,12 +57,12 @@ public class FolderTest {
     
     @Test
     public void testFolderWithNullValues() throws JsonProcessingException {
-        Folder original = new Folder();
+        NdexFolder original = new NdexFolder();
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Folder with nulls: " + json);
         
-        Folder deserialized = mapper.readValue(json, Folder.class);
+        NdexFolder deserialized = mapper.readValue(json, NdexFolder.class);
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());

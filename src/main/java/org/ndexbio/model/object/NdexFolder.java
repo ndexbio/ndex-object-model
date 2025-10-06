@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 @Schema(description = "Represents a folder in the NDEx system")
-public class Folder extends NdexExternalObject {
+public class NdexFolder extends NdexExternalObject {
 	@Schema(description = "Name of the folder", required = true)
 	private String name;
 	

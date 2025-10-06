@@ -21,7 +21,7 @@ public class ShortcutTest {
     
     @Test
     public void testShortcut() throws JsonProcessingException {
-        Shortcut original = new Shortcut();
+        NdexShortcut original = new NdexShortcut();
         UUID parentId = UUID.randomUUID();
         UUID targetId = UUID.randomUUID();
         String shortcutName = "Test Shortcut";
@@ -34,7 +34,7 @@ public class ShortcutTest {
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut: " + json);
         
-        Shortcut deserialized = mapper.readValue(json, Shortcut.class);
+        NdexShortcut deserialized = mapper.readValue(json, NdexShortcut.class);
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
@@ -67,12 +67,12 @@ public class ShortcutTest {
     
     @Test
     public void testShortcutWithNullValues() throws JsonProcessingException {
-        Shortcut original = new Shortcut();
+        NdexShortcut original = new NdexShortcut();
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut with nulls: " + json);
         
-        Shortcut deserialized = mapper.readValue(json, Shortcut.class);
+        NdexShortcut deserialized = mapper.readValue(json, NdexShortcut.class);
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
@@ -97,7 +97,7 @@ public class ShortcutTest {
     
     @Test
     public void testShortcutWithDifferentTargetTypes() throws JsonProcessingException {
-        Shortcut original = new Shortcut();
+        NdexShortcut original = new NdexShortcut();
         UUID parentId = UUID.randomUUID();
         UUID targetId = UUID.randomUUID();
         String shortcutName = "Test Shortcut";
@@ -110,7 +110,7 @@ public class ShortcutTest {
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut with FOLDER type: " + json);
         
-        Shortcut deserialized = mapper.readValue(json, Shortcut.class);
+        NdexShortcut deserialized = mapper.readValue(json, NdexShortcut.class);
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 @Schema(description = "Represents a shortcut in the NDEx system")
-public class Shortcut extends NdexExternalObject {
+public class NdexShortcut extends NdexExternalObject {
 	@Schema(description = "Name of the shortcut", required = true)
 	private String name;
 	
