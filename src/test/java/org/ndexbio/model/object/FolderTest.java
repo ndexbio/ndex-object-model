@@ -24,9 +24,11 @@ public class FolderTest {
         NdexFolder original = new NdexFolder();
         UUID parentId = UUID.randomUUID();
         String folderName = "Test Folder";
+        String owner = "owner1";
         
         original.setName(folderName);
         original.setParent(parentId);
+        original.setOwner(owner);
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Folder: " + json);
@@ -35,6 +37,7 @@ public class FolderTest {
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
+        assertEquals(deserialized.getOwner(), original.getOwner());
     }
     
     @Test
@@ -66,6 +69,7 @@ public class FolderTest {
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
+        assertEquals(deserialized.getOwner(), original.getOwner());
     }
     
     @Test

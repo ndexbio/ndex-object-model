@@ -25,11 +25,13 @@ public class ShortcutTest {
         UUID parentId = UUID.randomUUID();
         UUID targetId = UUID.randomUUID();
         String shortcutName = "Test Shortcut";
+        String owner = "owner1";
         
         original.setName(shortcutName);
         original.setParent(parentId);
         original.setTarget(targetId);
         original.setTargetType(FileType.NETWORK);
+        original.setOwner(owner);
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut: " + json);
@@ -40,6 +42,7 @@ public class ShortcutTest {
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), original.getTargetType());
+        assertEquals(deserialized.getOwner(), original.getOwner());
     }
     
     @Test
@@ -78,6 +81,7 @@ public class ShortcutTest {
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), original.getTargetType());
+        assertEquals(deserialized.getOwner(), original.getOwner());
     }
     
     @Test
@@ -101,11 +105,13 @@ public class ShortcutTest {
         UUID parentId = UUID.randomUUID();
         UUID targetId = UUID.randomUUID();
         String shortcutName = "Test Shortcut";
+        String owner = "owner2";
         
         original.setName(shortcutName);
         original.setParent(parentId);
         original.setTarget(targetId);
         original.setTargetType(FileType.FOLDER);
+        original.setOwner(owner);
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut with FOLDER type: " + json);
@@ -116,5 +122,6 @@ public class ShortcutTest {
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), FileType.FOLDER);
+        assertEquals(deserialized.getOwner(), original.getOwner());
     }
 }
