@@ -28,7 +28,7 @@ public class FolderTest {
         
         original.setName(folderName);
         original.setParent(parentId);
-        original.setOwner(owner);
+        original.setOwner_id(owner);
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Folder: " + json);
@@ -37,7 +37,7 @@ public class FolderTest {
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
-        assertEquals(deserialized.getOwner(), original.getOwner());
+        assertEquals(deserialized.getOwner_id(), original.getOwner_id());
     }
     
     @Test
@@ -69,7 +69,7 @@ public class FolderTest {
         
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
-        assertEquals(deserialized.getOwner(), original.getOwner());
+        assertEquals(deserialized.getOwner_id(), original.getOwner_id());
     }
     
     @Test
