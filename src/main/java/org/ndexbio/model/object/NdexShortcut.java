@@ -22,9 +22,13 @@ public class NdexShortcut extends NdexExternalObject {
 	@Schema(description = "Type of the target item", required = true)
 	private FileType targetType;
 
+	@Schema(description = "Owner id of the shortcut")
+	private String owner_id;
+
 	@Schema(description = "Owner of the shortcut")
 	private String owner;
-	
+
+
 	public String getName() {
 		return name;
 	}
@@ -49,10 +53,17 @@ public class NdexShortcut extends NdexExternalObject {
 	public void setTargetType(FileType targetType) {
 		this.targetType = targetType;
 	}
+	public String getOwner_id() {
+		return owner_id;
+	}
+	public void setOwner_id(String owner_id) {
+		this.owner_id = owner_id;
+	}
 	public String getOwner() {
 		return owner;
 	}
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
+
 }

@@ -31,7 +31,7 @@ public class ShortcutTest {
         original.setParent(parentId);
         original.setTarget(targetId);
         original.setTargetType(FileType.NETWORK);
-        original.setOwner(owner);
+        original.setOwner_id(owner);
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut: " + json);
@@ -42,7 +42,7 @@ public class ShortcutTest {
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), original.getTargetType());
-        assertEquals(deserialized.getOwner(), original.getOwner());
+        assertEquals(deserialized.getOwner_id(), original.getOwner_id());
     }
     
     @Test
@@ -81,7 +81,7 @@ public class ShortcutTest {
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), original.getTargetType());
-        assertEquals(deserialized.getOwner(), original.getOwner());
+        assertEquals(deserialized.getOwner_id(), original.getOwner_id());
     }
     
     @Test
@@ -111,7 +111,7 @@ public class ShortcutTest {
         original.setParent(parentId);
         original.setTarget(targetId);
         original.setTargetType(FileType.FOLDER);
-        original.setOwner(owner);
+        original.setOwner_id(owner);
         
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut with FOLDER type: " + json);
@@ -122,6 +122,6 @@ public class ShortcutTest {
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), FileType.FOLDER);
-        assertEquals(deserialized.getOwner(), original.getOwner());
+        assertEquals(deserialized.getOwner_id(), original.getOwner_id());
     }
 }

@@ -19,8 +19,13 @@ public class NdexFolder extends NdexExternalObject {
 	@Schema(description = "Description of the folder")
 	private String description;
 
-	@Schema(description = "Owner of the folder")
+	@Schema(description = "Owner ID of the folder")
+	private String owner_id;
+
+	@Schema(description = "Owner username of the folder")
 	private String owner;
+
+
 
 	public String getName() {
 		return name;
@@ -39,6 +44,12 @@ public class NdexFolder extends NdexExternalObject {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getOwner_id() {
+		return owner_id;
+	}
+	public void setOwner_id(String owner_id) {
+		this.owner_id = owner_id;
 	}
 	public String getOwner() {
 		return owner;
