@@ -24,7 +24,7 @@ public class NetworkSummaryV3Test {
 		String s1 = om.writeValueAsString(summary);
 		System.out.println(s1);
 		
-		assertEquals(s1, "{\"uuid\":\"7fc70ab6-9fb1-11ea-aaef-0ac135e8bacf\",\"modificationTime\":1683053081}");
+		assertEquals(s1, "{\"uuid\":\"7fc70ab6-9fb1-11ea-aaef-0ac135e8bacf\",\"modificationTime\":1683053081,\"showInTrash\":false}");
 		
 
 	}

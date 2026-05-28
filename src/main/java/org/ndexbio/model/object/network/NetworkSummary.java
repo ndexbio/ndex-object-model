@@ -92,6 +92,9 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 	
 	private long cx2FileSize;
 	
+	private UUID folderId;
+	private boolean showInTrash;
+	
 //	private boolean cxFileSize;
 	
 	public String getCxFormat() {
@@ -346,6 +349,22 @@ public class NetworkSummary extends NdexExternalObject implements PropertiedObje
 
 	public void setCx2FileSize(long cx2FileSize) {
 		this.cx2FileSize = cx2FileSize;
+	}
+
+	public UUID getFolderId() {
+		return folderId;
+	}
+
+	public void setFolderId(UUID folderId) {
+		this.folderId = folderId;
+	}
+
+	public boolean isShowInTrash() {
+		return showInTrash;
+	}
+
+	public void setShowInTrash(boolean showInTrash) {
+		this.showInTrash = showInTrash;
 	}
 
 }
