@@ -92,6 +92,9 @@ public class NetworkSummaryV3  {
 	
 	private Long cx2FileSize;
 	
+	private UUID folderId;
+	private boolean showInTrash;
+	
 	public String getCxFormat() {
 		return cxFormat;
 	}
@@ -328,6 +331,22 @@ public class NetworkSummaryV3  {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public UUID getFolderId() {
+		return folderId;
+	}
+
+	public void setFolderId(UUID folderId) {
+		this.folderId = folderId;
+	}
+
+	public boolean isShowInTrash() {
+		return showInTrash;
+	}
+
+	public void setShowInTrash(boolean showInTrash) {
+		this.showInTrash = showInTrash;
 	}
 	
 

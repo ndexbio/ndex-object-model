@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013, 2016, The Regents of the University of California, The Cytoscape Consortium
+ * Copyright (c) 2013, 2025, The Regents of the University of California, The Cytoscape Consortium
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,24 +28,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ndexbio.model.object.network;
+package org.ndexbio.model.object;
 
-public enum VisibilityType {
-
-	/**
-	 * Entity is publicly searchable by any user
-	 */
-	PUBLIC,
-	
-	/**
-	 * Entity is private only searchable by users with access
-	 */
-	PRIVATE,
-	
-	/**
-	 * Entity is only searchable by exact UUID for public users and
-	 * fully searchable by users with access
-	 */
-	UNLISTED; 
-
+public enum FileVisibilityType {
+   PUBLIC, PRIVATE;
 }
