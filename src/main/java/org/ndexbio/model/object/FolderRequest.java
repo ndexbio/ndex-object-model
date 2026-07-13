@@ -1,6 +1,7 @@
 package org.ndexbio.model.object;
 
 import java.util.UUID;
+import org.ndexbio.model.object.network.VisibilityType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,7 +19,10 @@ public class FolderRequest {
 
 	@Schema(description = "Description of the folder")
 	private String description;
-	
+
+	@Schema(description = "Visibility of the folder (defaults to PRIVATE when omitted)")
+	private VisibilityType visibility;
+
 	public String getName() {
 		return name;
 	}
@@ -37,6 +41,12 @@ public class FolderRequest {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public VisibilityType getVisibility() {
+		return visibility;
+	}
+	public void setVisibility(VisibilityType visibility) {
+		this.visibility = visibility;
 	}
 
 }
