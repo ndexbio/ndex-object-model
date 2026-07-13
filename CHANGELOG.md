@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.2] - 2026-07-13
+
 ### Added
 
 - **`visibility` on folder & shortcut objects** — `NdexFolder`, `NdexShortcut`, `FolderRequest`, and `ShortcutRequest` gain a `visibility` field of type `VisibilityType` (`PUBLIC`/`PRIVATE`/`UNLISTED`). This is purely additive — the classes are otherwise unchanged — so consumers can carry a folder's or shortcut's visibility on read responses and set it on create/update requests.
+
+### Changed
+
+- Bumped `org.apache.commons:commons-lang3` from 3.14.0 to 3.18.0.
+- cleanup tests, consistent write of temp output, added gh ci workflow for unit tests.
 
 ## [3.0.0] - 2026-05-28
 
