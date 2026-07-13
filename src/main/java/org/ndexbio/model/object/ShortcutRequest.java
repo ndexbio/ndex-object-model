@@ -1,6 +1,7 @@
 package org.ndexbio.model.object;
 
 import java.util.UUID;
+import org.ndexbio.model.object.network.VisibilityType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -21,7 +22,10 @@ public class ShortcutRequest {
 	
 	@Schema(description = "Type of the target item", required = true)
 	private FileType targetType;
-	
+
+	@Schema(description = "Visibility of the shortcut (defaults to PRIVATE when omitted)")
+	private VisibilityType visibility;
+
 	public String getName() {
 		return name;
 	}
@@ -45,6 +49,12 @@ public class ShortcutRequest {
 	}
 	public void setTargetType(FileType target_type) {
 		this.targetType = target_type;
+	}
+	public VisibilityType getVisibility() {
+		return visibility;
+	}
+	public void setVisibility(VisibilityType visibility) {
+		this.visibility = visibility;
 	}
 
 }

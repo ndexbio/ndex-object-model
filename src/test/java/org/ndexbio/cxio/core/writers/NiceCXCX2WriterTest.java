@@ -11,13 +11,18 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.ndexbio.cxio.core.readers.NiceCXNetworkReader;
 import org.ndexbio.model.cx.NiceCXNetwork;
 import org.ndexbio.model.exceptions.NdexException;
 
 public class NiceCXCX2WriterTest {
+
+	@TempDir
+	Path tempDir;
 
 	@Test
 	public void test() throws URISyntaxException, FileNotFoundException, IOException, NdexException {
@@ -31,16 +36,14 @@ public class NiceCXCX2WriterTest {
 	            origNetwork = reader.readNiceCXNetwork(fis);
 	    }
 	    
-	    String tmpFileName = "tempwntsignaling.cx2";
-	    try (FileOutputStream out = new FileOutputStream (tmpFileName) ) {
+	    File tmpFile = tempDir.resolve("tempwntsignaling.cx2").toFile();
+	    try (FileOutputStream out = new FileOutputStream (tmpFile) ) {
 	    	NiceCXCX2Writer cx2Writer = new  NiceCXCX2Writer (out);
 	    	cx2Writer.writeAsCX2(origNetwork);
 	    	fail("CX2 converter errror was not caught.");
 	    } catch ( NdexException e) {
 	    	assertEquals("Duplicate edges attribute on id: 0. Attribute 'DIRECT' has value (t) and (YES)",
 	    			e.getMessage());
-	    	File f = new File(tmpFileName);
-	    	f.delete();
 	    }
 	    
 	}
@@ -58,8 +61,8 @@ public class NiceCXCX2WriterTest {
 	            origNetwork = reader.readNiceCXNetwork(fis);
 	    }
 	    
-	    String tmpFileName = "temp3n2e.cx2";
-	    try (FileOutputStream out = new FileOutputStream (tmpFileName) ) {
+	    File tmpFile = tempDir.resolve("temp3n2e.cx2").toFile();
+	    try (FileOutputStream out = new FileOutputStream (tmpFile) ) {
 	    	NiceCXCX2Writer cx2Writer = new  NiceCXCX2Writer (out);
 	    	cx2Writer.writeAsCX2(origNetwork);
 	    }
@@ -79,8 +82,8 @@ public class NiceCXCX2WriterTest {
 	            origNetwork = reader.readNiceCXNetwork(fis);
 	    }
 	    
-	    String tmpFileName = "tempwntsignaling_fixed.cx2";
-	    try (FileOutputStream out = new FileOutputStream (tmpFileName) ) {
+	    File tmpFile = tempDir.resolve("tempwntsignaling_fixed.cx2").toFile();
+	    try (FileOutputStream out = new FileOutputStream (tmpFile) ) {
 	    	NiceCXCX2Writer cx2Writer = new  NiceCXCX2Writer (out);
 	    	cx2Writer.writeAsCX2(origNetwork);
 	    } 

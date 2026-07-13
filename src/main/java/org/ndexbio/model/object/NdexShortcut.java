@@ -1,6 +1,7 @@
 package org.ndexbio.model.object;
 
 import java.util.UUID;
+import org.ndexbio.model.object.network.VisibilityType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -27,6 +28,9 @@ public class NdexShortcut extends NdexExternalObject {
 
 	@Schema(description = "Owner of the shortcut")
 	private String owner;
+
+	@Schema(description = "Visibility of the shortcut")
+	private VisibilityType visibility;
 
 
 	public String getName() {
@@ -64,6 +68,12 @@ public class NdexShortcut extends NdexExternalObject {
 	}
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+	public VisibilityType getVisibility() {
+		return visibility;
+	}
+	public void setVisibility(VisibilityType visibility) {
+		this.visibility = visibility;
 	}
 
 }

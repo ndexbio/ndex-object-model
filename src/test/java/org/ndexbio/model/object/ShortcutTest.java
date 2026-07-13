@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.UUID;
 
+import org.ndexbio.model.object.network.VisibilityType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -32,17 +33,19 @@ public class ShortcutTest {
         original.setTarget(targetId);
         original.setTargetType(FileType.NETWORK);
         original.setOwner_id(owner);
-        
+        original.setVisibility(VisibilityType.PUBLIC);
+
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Shortcut: " + json);
-        
+
         NdexShortcut deserialized = mapper.readValue(json, NdexShortcut.class);
-        
+
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), original.getTargetType());
         assertEquals(deserialized.getOwner_id(), original.getOwner_id());
+        assertEquals(deserialized.getVisibility(), original.getVisibility());
     }
     
     @Test
@@ -56,16 +59,18 @@ public class ShortcutTest {
         original.setParent(parentId);
         original.setTarget(targetId);
         original.setTargetType(FileType.NETWORK);
-        
+        original.setVisibility(VisibilityType.PRIVATE);
+
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized ShortcutRequest: " + json);
-        
+
         ShortcutRequest deserialized = mapper.readValue(json, ShortcutRequest.class);
-        
+
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getTarget(), original.getTarget());
         assertEquals(deserialized.getTargetType(), original.getTargetType());
+        assertEquals(deserialized.getVisibility(), original.getVisibility());
     }
     
     @Test
