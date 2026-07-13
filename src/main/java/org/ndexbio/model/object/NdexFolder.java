@@ -1,6 +1,7 @@
 package org.ndexbio.model.object;
 
 import java.util.UUID;
+import org.ndexbio.model.object.network.VisibilityType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -24,6 +25,9 @@ public class NdexFolder extends NdexExternalObject {
 
 	@Schema(description = "Owner username of the folder")
 	private String owner;
+
+	@Schema(description = "Visibility of the folder")
+	private VisibilityType visibility;
 
 
 
@@ -56,6 +60,12 @@ public class NdexFolder extends NdexExternalObject {
 	}
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+	public VisibilityType getVisibility() {
+		return visibility;
+	}
+	public void setVisibility(VisibilityType visibility) {
+		this.visibility = visibility;
 	}
 
 }

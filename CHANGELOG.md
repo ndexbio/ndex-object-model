@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **`visibility` on folder & shortcut objects** — `NdexFolder`, `NdexShortcut`, `FolderRequest`, and `ShortcutRequest` gain a `visibility` field of type `VisibilityType` (`PUBLIC`/`PRIVATE`/`UNLISTED`). This is purely additive — the classes are otherwise unchanged — so consumers can carry a folder's or shortcut's visibility on read responses and set it on create/update requests.
+
 ## [3.0.0] - 2026-05-28
 
 First GA release of NDEx Object Model 3.0 — a major expansion of the Java object model to support the NDEx 3.x platform. Introduces a hierarchical file system model, unified file browsing types, trash lifecycle, granular sharing and ownership transfer, and a new network summary for the v3 API surface. For the full commit history of this release, refer to the [`ndex3develop`](https://github.com/ndexbio/ndex-object-model/tree/ndex3develop) branch.

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.UUID;
 
+import org.ndexbio.model.object.network.VisibilityType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -29,15 +30,17 @@ public class FolderTest {
         original.setName(folderName);
         original.setParent(parentId);
         original.setOwner_id(owner);
-        
+        original.setVisibility(VisibilityType.PUBLIC);
+
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized Folder: " + json);
-        
+
         NdexFolder deserialized = mapper.readValue(json, NdexFolder.class);
-        
+
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
         assertEquals(deserialized.getOwner_id(), original.getOwner_id());
+        assertEquals(deserialized.getVisibility(), original.getVisibility());
     }
     
     @Test
@@ -48,14 +51,16 @@ public class FolderTest {
         
         original.setName(folderName);
         original.setParent(parentId);
-        
+        original.setVisibility(VisibilityType.UNLISTED);
+
         String json = mapper.writeValueAsString(original);
         System.out.println("Serialized FolderRequest: " + json);
-        
+
         FolderRequest deserialized = mapper.readValue(json, FolderRequest.class);
-        
+
         assertEquals(deserialized.getName(), original.getName());
         assertEquals(deserialized.getParent(), original.getParent());
+        assertEquals(deserialized.getVisibility(), original.getVisibility());
     }
     
     @Test
