@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **`FileItemSummary.name` is no longer advertised as a required property.** The class is annotated `@JsonInclude(Include.NON_NULL)`, so a null `name` is dropped from the serialized payload entirely rather than emitted as `"name": null` — yet the field carried `required = true`, meaning the generated OpenAPI document promised a property the model is designed to omit. A network legitimately has no name in three cases: its CX2 declares no `networkAttributes` aspect, its `networkAttributes` carries no name attribute, or its CX2 failed validation (in which case `errorMessage` is populated instead). The `required` flag is dropped and the description now spells out that `name` is optional for `type=NETWORK` and absent rather than null, while remaining always present for `type=FOLDER` and `type=SHORTCUT`. Documentation only — no serialization or behavioral change, and `NdexFolder`/`NdexShortcut` keep their own required `name`. Resolves ndex-rest [issue #161](https://github.com/ndexbio/ndex-rest/issues/161).
+
 ## [3.0.2] - 2026-07-13
 
 ### Added
