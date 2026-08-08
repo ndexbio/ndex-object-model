@@ -21,7 +21,11 @@ public class FileItemSummary {
     @Schema(description = "Type of the file (folder, network, or shortcut)", required = true)
     private FileType type; // "folder", "network", or "shortcut"
     
-    @Schema(description = "Name of the file", required = true)
+    @Schema(description = "Name of the file. Always present for type=FOLDER and type=SHORTCUT. "
+            + "Optional for type=NETWORK, and omitted from the response entirely (rather than sent "
+            + "as null) when absent: a network whose CX2 declares no network name never receives "
+            + "one, and neither does a network whose CX2 failed validation - in that case "
+            + "errorMessage is populated. Clients must tolerate a missing name key.")
     private String name;
     
     @Schema(description = "Last modification timestamp")
