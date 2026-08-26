@@ -73,6 +73,10 @@ public class FileItemSummary {
 
     @Schema(description = "Digital Object Identifier associated with the network")
     private String doi;
+
+    @Schema(description = "Indicates if the network has been certified. A network with a DOI that is "
+            + "not yet certified is \"pre-certified\": its reference can still be added, which certifies it. This attribute only applies to networks.")
+    private Boolean isCertified;
     
     public FileItemSummary() {}
 
@@ -235,5 +239,13 @@ public class FileItemSummary {
 
     public void setDoi(String doi) {
         this.doi = doi;
+    }
+
+    public Boolean getIsCertified() {
+        return isCertified;
+    }
+
+    public void setIsCertified(Boolean isCertified) {
+        this.isCertified = isCertified;
     }
 }
