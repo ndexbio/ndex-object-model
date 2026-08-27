@@ -1,0 +1,14 @@
+<settings>
+  <servers>
+    <server>
+      <id>cytoscape_releases</id>
+      <username>${env.REPO_USER}</username>
+      <password>${env.REPO_PWD}</password>
+    </server>
+    <server>
+      <id>cytoscape_snapshots</id>
+      <username>${env.REPO_USER}</username>
+      <password>${env.REPO_PWD}</password>
+    </server>
+  </servers>
+</settings>
